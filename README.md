@@ -1,6 +1,8 @@
 # hermitly-ext
 The hermitly extension
 
+[![CircleCI](https://circleci.com/gh/PChwistek/hermitly-ext.svg?style=svg&circle-token=c1d0f29722b0456d275fef78483644443cdca7df)](https://circleci.com/gh/PChwistek/hermitly-ext)
+
 ## Dev Environment
 
 This project uses:
