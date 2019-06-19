@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#cp LICENSE.txt README.md dist/
+cp README.md dist/
 
-#rm tomato-clock.zip
-#(cd dist/ && zip -r tomato-clock *)
-#mv dist/tomato-clock.zip .
+rm tomato-clock.zip
+(cd dist/ && zip -r hermitly *)
+mv dist/hermitly.zip .

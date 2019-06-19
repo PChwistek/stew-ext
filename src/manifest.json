@@ -1,0 +1,26 @@
+{
+  "name": "hermitly",
+  "description": "The Pomodoro inspired task manager that blocks distractions while you work.",
+  "version": "0.0.0.1",
+  "manifest_version": 2,
+  "icons": {
+    "128": "assets/hermitly-ext-icon128.png"
+  },
+  "permissions": [
+    "alarms", 
+    "notifications", 
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "background/background.js"
+    ],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_icon": {
+      "128": "assets/hermitly-ext-icon128.png"
+    },
+    "default_title": "hermitly"
+  }
+}
