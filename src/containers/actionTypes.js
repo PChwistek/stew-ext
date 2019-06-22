@@ -1,0 +1,3 @@
+export const POPUP = {
+  OPEN_DASHBOARD: 'OPEN_DASHBOARD'
+}
