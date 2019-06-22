@@ -15,12 +15,18 @@
     "scripts": [
       "background/background.js"
     ],
-    "persistent": false
+    "persistent": true
   },
   "browser_action": {
     "default_icon": {
       "128": "assets/hermitly-ext-icon128.png"
     },
-    "default_title": "hermitly"
+    "default_title": "hermitly",
+    "default_popup": "popup/popup.html",
+    "theme_icons": [{
+      "light": "assets/hermitly-ext-icon128.png",
+      "dark": "assets/hermitly-ext-icon128.png",
+      "size": 128
+    }]
   }
 }
