@@ -12,7 +12,8 @@
       "^.+\\.(css|less|scss)$": "identity-obj-proxy"
     },
     "setupFilesAfterEnv": [
-      "/Users/phil/Documents/hermitly/repos/hermitly-ext/src/test/enzyme-setup.js"
+      "/Users/phil/Documents/hermitly/repos/hermitly-ext/src/test/enzyme-setup.js",
+      "/home/circleci/repo/src/test/enzyme-setup.js"
     ]
   },
   "devDependencies": {
