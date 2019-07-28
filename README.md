@@ -3,6 +3,15 @@ The hermitly extension
 
 [![CircleCI](https://circleci.com/gh/PChwistek/hermitly-ext.svg?style=svg&circle-token=c1d0f29722b0456d275fef78483644443cdca7df)](https://circleci.com/gh/PChwistek/hermitly-ext)
 
+## Commands
+
+* yarn storybook 
+  * runs storybook for testing components
+* yarn build
+  * builds extension
+* yarn watch
+  * builds extension and watches for changes
+
 ## Dev Environment
 
 This project uses:
@@ -24,4 +33,6 @@ This project uses:
   * for easy upload to chrome webstore
 * Sass
   * for easier stylesheets
+
+
 
