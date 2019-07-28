@@ -13,7 +13,7 @@ export function dashboardOpened() {
 export function goToDashboard() {
   return dispatch => {
     dispatch(openDashboard())
-    return browser.tabs.create({ url: './dashboard/dashboard.html' }).then(dispatch => {
+    return browser.tabs.create({ url: './dashboard/dashboard.html' }).then(() => {
       dispatch(dashboardOpened())
     })
   }
