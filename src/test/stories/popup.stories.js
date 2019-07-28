@@ -4,5 +4,8 @@ import { Popup } from '../../containers/popup/Popup'
 
 storiesOf('Popup', module)
   .add('with text', () => (
-    <Popup addCount={ () => {} } />
+    <Popup 
+      addCount={ () => {} } 
+      startTimer={ () => new Promise(() => {}) } 
+    />
   ))
