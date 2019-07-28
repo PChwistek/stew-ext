@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { addCount, goToDashboard } from './popup.actions'
 
 import './popup.scss'
 
@@ -13,9 +14,7 @@ import './popup.scss'
 export class Popup extends Component {
   
   componentDidMount() {
-    this.props.dispatch({
-      type: 'ADD_COUNT'
-    })
+    this.props.addCount()
   }
 
   render() {
@@ -28,11 +27,20 @@ export class Popup extends Component {
   }
 }
 
+
 Popup.propTypes = {
   goToDashboard: PropTypes.func,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  addCount: PropTypes.func,
 }
 
-export default connect()(Popup)
+const stateToProps = () => ({
+  
+})
 
+const dispatchToProps = {
+  goToDashboard,
+  addCount,
+}
 
+export default connect(stateToProps, dispatchToProps)(Popup)

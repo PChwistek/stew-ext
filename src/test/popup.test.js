@@ -5,12 +5,12 @@ import sinon from 'sinon'
 
 import { Popup } from '../containers/popup/Popup.jsx'
 import { POPUP } from '../containers/actionTypes'
-import { OpenDashboard } from '../containers/popup/popup.actions'
+import { openDashboard, addCount } from '../containers/popup/popup.actions'
 
 describe('<Popup />', () => {
   it('has a dashboard button', () => {
     const clickToDashboard = sinon.spy()
-    const wrapper = shallow(<Popup goToDashboard={ clickToDashboard } dispatch={ () => {} } />)
+    const wrapper = shallow(<Popup goToDashboard={ clickToDashboard } addCount={ addCount } />)
     wrapper.find('.popup').simulate('click')
     expect(clickToDashboard).to.have.property('callCount', 1)
   })
@@ -22,7 +22,7 @@ describe('Popup actions', () => {
       type: POPUP.OPEN_DASHBOARD
     }
 
-    expect(OpenDashboard()).to.eql(expectedAction)
+    expect(openDashboard()).to.eql(expectedAction)
 
   })
 })

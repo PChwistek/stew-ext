@@ -52,7 +52,7 @@ module.exports = {
           "error",
           "single"
         ],
-        "indent": ["error", 2],
+        "indent": ["error", 2, { "SwitchCase": 1 } ],
         "react/jsx-indent": 0,
         "semi": [
           "error",
