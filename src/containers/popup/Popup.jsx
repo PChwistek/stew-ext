@@ -12,6 +12,7 @@ export class Popup extends Component {
   
   componentDidMount() {
     this.props.addCount()
+    this.props.startTimer().then(data => console.log('from bg', data)).catch((err) => console.log(err))
   }
 
   render() {
@@ -29,4 +30,5 @@ Popup.propTypes = {
   goToDashboard: PropTypes.func,
   dispatch: PropTypes.func,
   addCount: PropTypes.func,
+  startTimer: PropTypes.func,
 }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { Popup } from './Popup'
-import { addCount, goToDashboard } from './popup.actions'
+import { addCount, goToDashboard, startTimer } from './popup.actions'
 
 const stateToProps = () => ({
   
@@ -9,6 +9,7 @@ const stateToProps = () => ({
 const dispatchToProps = {
   goToDashboard,
   addCount,
+  startTimer,
 }
 
 export default connect(stateToProps, dispatchToProps)(Popup)
