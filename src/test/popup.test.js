@@ -2,10 +2,11 @@ import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
+import { addCount, openDashboard } from '../containers/popup/popup.actions'
 
 import { Popup } from '../containers/popup/Popup.jsx'
 import { POPUP } from '../containers/actionTypes'
-import { openDashboard, addCount } from '../containers/popup/popup.actions'
+
 
 describe('<Popup />', () => {
   it('has a dashboard button', () => {
@@ -17,6 +18,7 @@ describe('<Popup />', () => {
 })
 
 describe('Popup actions', () => {
+
   it('should create a Popup - Open Dashboard action', () => {
     const expectedAction = {
       type: POPUP.OPEN_DASHBOARD

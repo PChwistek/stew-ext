@@ -18,7 +18,7 @@ describe('Timer...', () => {
     testTimer.setTimer(1000)
     const terminationDate = Date.now() + 1000
     const timeLeft = testTimer.getTerminationDate()
-    expect(timeLeft).toBeCloseTo(terminationDate, 5)
+    expect(timeLeft - terminationDate).toBeLessThan(100)
   })
 
   it('reset should clear the timer', () => {

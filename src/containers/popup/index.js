@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import proxyStore from '../common-ui/store'
 
-import Popup from './Popup'
+import Popup from './Popup.container'
 
 proxyStore.ready().then(() => {
   render(

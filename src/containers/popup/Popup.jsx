@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { addCount, goToDashboard } from './popup.actions'
-
 import './popup.scss'
 
 /*
@@ -33,14 +30,3 @@ Popup.propTypes = {
   dispatch: PropTypes.func,
   addCount: PropTypes.func,
 }
-
-const stateToProps = () => ({
-  
-})
-
-const dispatchToProps = {
-  goToDashboard,
-  addCount,
-}
-
-export default connect(stateToProps, dispatchToProps)(Popup)
