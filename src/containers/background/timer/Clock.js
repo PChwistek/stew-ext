@@ -10,7 +10,7 @@ export default class Clock {
     this.intervalAction = anIntervalAction
   }
 
-  setTimer(milliseconds) {
+  setClock(milliseconds) {
     
     this.scheduledTime = Date.now() + milliseconds
     const sTime = this.scheduledTime
@@ -29,7 +29,7 @@ export default class Clock {
     return this.interval
   }
 
-  clearTimer() {
+  clearClock() {
     console.log('resetting!')
     clearInterval(this.interval)
     this.interval = null
