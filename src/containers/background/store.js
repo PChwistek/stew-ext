@@ -10,18 +10,15 @@ import aliases from './aliases'
 const middleware = [alias(aliases), thunk, logger]
 const composeEnhancers= composeWithDevTools({ port: 8000 })
 
-export const initializeStore = () => {
+const enhancers = composeEnhancers(applyMiddleware(...middleware))
+const store = createStore(
+  rootReducer,
+  {},
+  enhancers
+)
 
-  const enhancers = composeEnhancers(applyMiddleware(...middleware))
-  const store = createStore(
-    rootReducer,
-    {},
-    enhancers
-  )
+wrapStore(store)
 
-  wrapStore(store)
-  
-  return store
-}
+export default store
 
 

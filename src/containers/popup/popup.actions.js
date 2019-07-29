@@ -1,5 +1,5 @@
 
-import { POPUP } from '../actionTypes'
+import { POPUP, TIMER } from '../actionTypes'
 import browser from 'webextension-polyfill'
 
 export function openDashboard() {
@@ -17,18 +17,18 @@ export function addCount() {
   }
 }
 
-export function startTimer() {
-  const data = {
-    type: POPUP.TIMER_START,
-    payload: {}
+export function startTimer(milliseconds) {
+  return {
+    type: TIMER.START,
+    payload: {
+      milliseconds,
+    }
   }
-
-  return data
 }
 
 export function stopTimer() {
   return {
-    type: POPUP.TIMER_STOP
+    type: TIMER.STOP
   }
 }
 

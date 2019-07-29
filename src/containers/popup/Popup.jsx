@@ -11,14 +11,11 @@ import './popup.scss'
 export class Popup extends Component {
   
   componentDidMount() {
-    this.props.addCount()
-    this.props.startTimer().then(data => console.log('from bg', data)).catch((err) => console.log(err))
   }
 
   render() {
-    const { goToDashboard } = this.props
     return (
-      <div className="popup" onClick={ goToDashboard }>
+      <div className="popup">
         Hello world, this is the popup.
       </div>
     )
@@ -28,7 +25,7 @@ export class Popup extends Component {
 
 Popup.propTypes = {
   goToDashboard: PropTypes.func,
-  dispatch: PropTypes.func,
   addCount: PropTypes.func,
   startTimer: PropTypes.func,
+  stopTimer: PropTypes.func
 }

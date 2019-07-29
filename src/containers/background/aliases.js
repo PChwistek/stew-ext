@@ -1,13 +1,25 @@
-import { POPUP } from '../actionTypes'
+import { TIMER } from '../actionTypes'
+import { startInterval, clearInterval } from './timer/timer.actions'
+
+/* these action maps to the actions called by the popup */
 
 const startTimer = (originalAction) => {
-  return (dispatch, getState) => {
-    console.log('here')
-    originalAction.payload = 'hello'
+  return (dispatch) => {
+    const milliseconds = originalAction.payload.milliseconds
+    dispatch(startInterval(milliseconds))
     return originalAction
   }
 }
 
+const stopTimer = (originalAction) => {
+  return dispatch => {
+    dispatch(clearInterval())
+    return originalAction
+  }
+}
+
+
 export default {
-  [POPUP.TIMER_START]: startTimer,
+  [TIMER.START]: startTimer,
+  [TIMER.STOP]: stopTimer
 }
