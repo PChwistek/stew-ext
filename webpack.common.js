@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -15,7 +15,6 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       { from: './src/manifest.json', to: './manifest.json' },
       { from: './src/assets', to: './assets' }

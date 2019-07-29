@@ -1,5 +1,2 @@
-import { initializeStore } from './store'
-
-console.log('in the background')
-initializeStore()
+import store from './store'
 
