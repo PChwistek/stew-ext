@@ -1,5 +1,5 @@
 
-export default class Timer {
+export default class Clock {
   contructor() {
     this.interval = null
     this.terminationTime = null
