@@ -9,7 +9,11 @@
   "permissions": [
     "alarms", 
     "notifications", 
-    "storage"
+    "storage",
+    "webNavigation",
+    "tabs",
+    "https://*/*",
+    "http://*/*"
   ],
   "background": {
     "scripts": [
