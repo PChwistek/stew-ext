@@ -7,7 +7,7 @@ module.exports = {
   entry: {
     background: './src/containers/background/background.js',
     popup: './src/containers/popup/',
-    dashboard: './src/containers/dashboard/'
+    dashboard: './src/containers/dashboard/'  
   },
   output: {
     filename: '[name]/[name].js',
@@ -17,7 +17,8 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       { from: './src/manifest.json', to: './manifest.json' },
-      { from: './src/assets', to: './assets' }
+      { from: './src/assets', to: './assets' },
+      { from: './src/containers/content', to: './content' }
     ]),
     new HtmlWebpackPlugin({
       title: 'Popup - hermitly',
