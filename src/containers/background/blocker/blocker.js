@@ -1,16 +1,60 @@
 import browser from 'webextension-polyfill'
 
-// need to fix a bug where everything closes and doesn't fully update on tab updating... and listeners...
 export default class Blocker {
   constructor(blacklist) {
     this.blacklist = blacklist
-    this.currentlyBlocking = {}
+    this.currentlyBlocking = {} //helper for more accurate statistics regarding blocked site visits
+    
+    this.blockingListener = function(siteToVisit) {
+      if(!this.currentlyBlocking[siteToVisit.tabId]) {
+        this.currentlyBlocking[siteToVisit.tabId] = { 
+          isBlocking: true,
+          url: this.getBaseUrl(siteToVisit.url)
+        }
+        this.blockSite(siteToVisit.tabId)
+      }
+    }
+
+    this.onUpdateListener = function(tabId, tab) {
+      if(tab.url) {
+        console.log(this.currentlyBlocking)
+        const baseUrl = this.getBaseUrl(tab.url)
+        if(!this.checkIfInBlacklist(baseUrl)) {
+          this.currentlyBlocking[tabId] = {
+            isBlocking: false,
+            url: baseUrl
+          }
+        } else if(tab.url != baseUrl) {
+          this.blockSite(tabId)
+          this.currentlyBlocking[tabId] = {
+            isBlocking: true,
+            url: baseUrl
+          }
+        }
+      }
+    }
+
+    this.onUpdateHandler = this.onUpdateListener.bind(this)
+    this.blockingHandler = this.blockingListener.bind(this)
+  }
+
+  blockSite(tabId) {
+    browser.tabs.executeScript(tabId, {
+      file: 'content/block.js'
+    }).then(() => {}).catch(err => console.log('err', err))
+  }
+
+  getBaseUrl(urlToParse) {
+    const regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/g
+    const filteredURL = urlToParse.match(regex)
+    if(filteredURL.length > 0) {
+      return filteredURL[0]
+    }
+    return ''
   }
 
   checkIfInBlacklist(url) {
-    const regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/g // verifies domain is actually a link
-    const filteredURL = url.match(regex)[0]
-    if(this.blacklist[filteredURL]) {
+    if(this.blacklist[url]) {
       return true
     }
     return false
@@ -19,35 +63,21 @@ export default class Blocker {
   checkAllTabs() {
     browser.tabs.query({windowId: null}).then(tabs => {
       tabs.forEach(tab => {
-        if(this.checkIfInBlacklist(tab.url)) {
-          browser.tabs.executeScript(tab.id, {
-            file: 'content/block.js'
-          }).then(res => console.log(res)).catch(err => console.log('err', err))
+        if(this.checkIfInBlacklist(this.getBaseUrl(tab.url))) {
+          this.blockSite(tab.id)
         }
       })
     })
   }
 
   setListeners() {
-    browser.tabs.onUpdated.addListener(tabId => {
-      browser.tabs.get(tabId).then(tab => {
-        if(!this.checkIfInBlacklist(tab.url)) {
-          this.currentlyBlocking[tabId] = false
-        } else {
-          this.currentlyBlocking[tabId] = false
-        }
-      })
-    })
-  
-    browser.webNavigation.onDOMContentLoaded.addListener(siteToVisit => {
-      if(this.checkIfInBlacklist(siteToVisit.url)) {
-        if(!this.currentlyBlocking[siteToVisit.tabId]) {
-          this.currentlyBlocking[siteToVisit.tabId] = true
-          browser.tabs.executeScript(siteToVisit.tabId, {
-            file: 'content/block.js'
-          }).then(res => console.log(res)).catch(err => console.log('err', err))
-        }
-      }
-    })
+    browser.tabs.onUpdated.addListener(this.onUpdateHandler)
+    browser.webNavigation.onDOMContentLoaded.addListener(this.blockingHandler)
+  }
+
+  removeListeners() {
+    console.log('removing')
+    browser.tabs.onUpdated.removeListener(this.onUpdateHandler)
+    browser.webNavigation.onDOMContentLoaded.removeListener(this.blockingHandler)
   }
 }

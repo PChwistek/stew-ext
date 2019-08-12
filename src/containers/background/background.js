@@ -13,6 +13,8 @@ const blocker = new Blocker(blacklist)
 
 blocker.setListeners()
 blocker.checkAllTabs()
+setTimeout(() => blocker.removeListeners(), 10000)
+
 
 const startupTabs = [
   'http://localhost:64690/', 
@@ -22,5 +24,5 @@ const startupTabs = [
 ]
 
 const manager = new Manager(4, startupTabs)
-manager.nukeAndReplace()
-manager.setTabLimits()
+// manager.nukeAndReplace()
+// manager.setTabLimits()
