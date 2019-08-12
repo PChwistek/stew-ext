@@ -1,64 +1,83 @@
 import browser from 'webextension-polyfill'
 
-const blacklist = {
-  'https://www.facebook.com': true,
-  'https://www.reddit.com': true,
-  'https://www.youtube.com': true,
-  'https://twitter.com': true
-}
-
-const currentlyBlocking = {}
-
-function checkIfInBlacklist(url) {
-  const regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/g // verifies domain is actually a link
-  const filteredURL = url.match(regex)[0]
-  if(blacklist[filteredURL]) {
-    return true
-  }
-  return false
-}
-
-function checkAllTabs() {
-  browser.tabs.getAllInWindow(tabs => {
-    tabs.forEach(tab => {
-      if(checkIfInBlacklist(tab.url)) {
-        console.log('block it', tab)
-        browser.tabs.executeScript(tab.id, {
-          file: 'content/block.js'
-        }).then(res => console.log(res)).catch(err => console.log('err', err))
-      }
-    })
-  })
-}
-
-function setListeners() {
-  browser.tabs.onCreated.addListener(tabId => {
-    console.log('tab created', tabId)
-  })
-
-  browser.tabs.onUpdated.addListener(tabId => {
-    console.log('currently', currentlyBlocking)
-    browser.tabs.get(tabId).then(tab => {
-      if(!checkIfInBlacklist(tab.url)) {
-        currentlyBlocking[tabId] = false
-      }
-    })
-  })
-
-  browser.webNavigation.onDOMContentLoaded.addListener(siteToVisit => {
-    if(checkIfInBlacklist(siteToVisit.url)) {
-      if(!currentlyBlocking[siteToVisit.tabId]) {
-        currentlyBlocking[siteToVisit.tabId] = true
-        browser.tabs.executeScript(siteToVisit.tabId, {
-          file: 'content/block.js'
-        }).then(res => console.log(res)).catch(err => console.log('err', err))
+export default class Blocker {
+  constructor(blacklist) {
+    this.blacklist = blacklist
+    this.currentlyBlocking = {} //helper for more accurate statistics regarding blocked site visits
+    
+    this.blockingListener = function(siteToVisit) {
+      if(!this.currentlyBlocking[siteToVisit.tabId]) {
+        this.currentlyBlocking[siteToVisit.tabId] = { 
+          isBlocking: true,
+          url: this.getBaseUrl(siteToVisit.url)
+        }
+        this.blockSite(siteToVisit.tabId)
       }
     }
-  })
-}
 
-export default {
-  setListeners,
-  checkAllTabs
-}
+    this.onUpdateListener = function(tabId, tab) {
+      if(tab.url) {
+        console.log(this.currentlyBlocking)
+        const baseUrl = this.getBaseUrl(tab.url)
+        if(!this.checkIfInBlacklist(baseUrl)) {
+          this.currentlyBlocking[tabId] = {
+            isBlocking: false,
+            url: baseUrl
+          }
+        } else if(tab.url != baseUrl) {
+          this.blockSite(tabId)
+          this.currentlyBlocking[tabId] = {
+            isBlocking: true,
+            url: baseUrl
+          }
+        }
+      }
+    }
 
+    this.onUpdateHandler = this.onUpdateListener.bind(this)
+    this.blockingHandler = this.blockingListener.bind(this)
+  }
+
+  blockSite(tabId) {
+    browser.tabs.executeScript(tabId, {
+      file: 'content/block.js'
+    }).then(() => {}).catch(err => console.log('err', err))
+  }
+
+  getBaseUrl(urlToParse) {
+    const regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/g
+    const filteredURL = urlToParse.match(regex)
+    if(filteredURL.length > 0) {
+      return filteredURL[0]
+    }
+    return ''
+  }
+
+  checkIfInBlacklist(url) {
+    if(this.blacklist[url]) {
+      return true
+    }
+    return false
+  }
+
+  checkAllTabs() {
+    browser.tabs.query({windowId: null}).then(tabs => {
+      tabs.forEach(tab => {
+        if(this.checkIfInBlacklist(this.getBaseUrl(tab.url))) {
+          this.blockSite(tab.id)
+        }
+      })
+    })
+  }
+
+  setListeners() {
+    browser.tabs.onUpdated.addListener(this.onUpdateHandler)
+    browser.webNavigation.onDOMContentLoaded.addListener(this.blockingHandler)
+  }
+
+  removeListeners() {
+    console.log('removing')
+    browser.tabs.onUpdated.removeListener(this.onUpdateHandler)
+    browser.webNavigation.onDOMContentLoaded.removeListener(this.blockingHandler)
+  }
+}
