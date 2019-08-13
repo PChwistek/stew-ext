@@ -1,6 +1,7 @@
 import store from './store'
 import Blocker from './blocker'
 import Manager from './tabmanager'
+import socket from './socket'
 
 const blacklist = {
   'https://www.facebook.com': true,
@@ -13,7 +14,7 @@ const blocker = new Blocker(blacklist)
 
 blocker.setListeners()
 blocker.checkAllTabs()
-setTimeout(() => blocker.removeListeners(), 10000)
+// setTimeout(() => blocker.removeListeners(), 10000)
 
 
 const startupTabs = [
@@ -24,5 +25,6 @@ const startupTabs = [
 ]
 
 const manager = new Manager(4, startupTabs)
-// manager.nukeAndReplace()
-// manager.setTabLimits()
+// manager.nukeAndReplace() // need to fix this one here...
+manager.setTabLimits()
+socket()
