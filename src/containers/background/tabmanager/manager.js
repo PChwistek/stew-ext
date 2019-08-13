@@ -19,12 +19,16 @@ export default class Manager {
   nukeAndReplace() {
     this.removeListeners()
     browser.tabs.query({windowId: null}).then(tabs => {
-      browser.tabs.remove(tabs.map(tab => tab.id)).then(() => {
-        this.startupTabs.forEach(tab => {
-          browser.tabs.create({ url: tab})
-        })
-      })
+      browser.tabs.update(tabs[0].id, { url: this.startupTabs[0] })
+      tabs.shift()
+      browser.tabs.remove(tabs.map(tab => tab.id)).then(() => {})
     })
+
+    for (let index = 1; index < this.startupTabs.length; index++) {
+      const newUrl = this.startupTabs[index]
+      browser.tabs.create({ url: newUrl })
+    }
+
 
   }
 

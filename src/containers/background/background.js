@@ -25,6 +25,6 @@ const startupTabs = [
 ]
 
 const manager = new Manager(4, startupTabs)
-// manager.nukeAndReplace() // need to fix this one here...
+manager.nukeAndReplace() // need to fix this one here...
 manager.setTabLimits()
 socket()
