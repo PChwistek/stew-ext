@@ -18,3 +18,7 @@ export const BLACKLIST = {
   BLOCKED: 'BLACKLIST_SITE_BLOCKED',
   STOP: 'STOP_BLACKLIST_BLOCKING'
 }
+
+export const SESSION = {
+  
+}

@@ -1,0 +1,43 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Oxygen:300,400|Quicksand:400,700&display=swap');
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+
+// Define defaults for each variable.
+$base-font-family: Quicksand, Helvetica, Arial;
+$oxygen: Oxygen, Helvetica, Arial;
+
+$base-font-size:   16px !default;
+$base-font-weight: 400 !default;
+$small-font-size:  $base-font-size * 0.875 !default;
+$base-line-height: 1.5 !default;
+
+$spacing-unit:     30px !default;
+
+$text-color:       #4C5B5C !default;
+$brand-color:      #E74B85 !default;
+$grey-color: rgba(242, 244, 243, 0.43);
+$white: #fdfdfd;
+
+$modal-background-color: rgba(242, 244, 243, 0.95);
+$white-background: #fdfdfd !default;
+$grey-background: linear-gradient(to right,$grey-color 0%, $grey-color 100%);
+$modal-background: linear-gradient(to right,$modal-background-color 0%, $modal-background-color 100%);
+
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) { @content };    //600px
+    }
+    @if $breakpoint == tablet {
+        @media only screen and (max-width: 67.25em) { @content };     //900px
+    }
+  
+}

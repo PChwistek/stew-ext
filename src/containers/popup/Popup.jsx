@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Navigation from './navigation'
 import './popup.scss'
 
 /*
@@ -16,7 +17,12 @@ export class Popup extends Component {
   render() {
     return (
       <div className="popup">
-        Hello world, this is the popup.
+        <div className="popup__container">
+          <Navigation />
+          <div>
+            Hello world, this is the popup.
+          </div>
+        </div>
       </div>
     )
   }

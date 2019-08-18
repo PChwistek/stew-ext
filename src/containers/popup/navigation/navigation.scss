@@ -1,0 +1,19 @@
+@import "../../../styles/variables";
+
+.navigation {
+  &__container {
+    display: flex;
+    background: $grey-background;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+
+  &__logo--img {
+    width: 100px;
+  }
+
+  &__menu--img {
+    width: 20px;
+  }
+}
