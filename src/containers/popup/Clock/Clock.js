@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Button from '../../common-ui/Button'
 
-export class Clock extends Component {
+import './clock.scss'
+
+export default class Clock extends Component {
   render() {
+    const { time } = this.props
     return (
-      <div>
-
+      <div className="clock clock__container">
+        <p className="clock__time">  { time } </p>
+        <div className="clock__pause-container">
+          <Button text={ 'Pause' } type={ 'secondary' }/>
+        </div>
+        <p className="clock__early"> End Early </p>
       </div>
     )
   }

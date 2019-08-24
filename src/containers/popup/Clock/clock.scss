@@ -1,0 +1,25 @@
+@import "../../../styles/variables";
+
+.clock {
+  font-family: $base-font-family;
+  padding-top: 20px; 
+  
+  &__container {
+    text-align: center;
+    margin: auto;
+  }
+
+  &__pause-container {
+    padding-top: 40px;
+  }
+
+  &__early {
+    padding-top: 20px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &__time {
+    font-size: $font-size-big;
+  }
+}
