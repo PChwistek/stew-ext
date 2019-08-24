@@ -51,10 +51,51 @@ exports[`Storyshots Dashboard with text 1`] = `
 </div>
 `;
 
+exports[`Storyshots Popup navigation standard 1`] = `
+<div
+  className="navigation__container"
+>
+  <div>
+    <img
+      className="navigation__logo--img"
+      src={Object {}}
+    />
+  </div>
+  <div>
+    <img
+      className="navigation__menu--img"
+      src={Object {}}
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Popup with text 1`] = `
 <div
   className="popup"
 >
-  Hello world, this is the popup.
+  <div
+    className="popup__container"
+  >
+    <div
+      className="navigation__container"
+    >
+      <div>
+        <img
+          className="navigation__logo--img"
+          src={Object {}}
+        />
+      </div>
+      <div>
+        <img
+          className="navigation__menu--img"
+          src={Object {}}
+        />
+      </div>
+    </div>
+    <div>
+      Hello world, this is the popup.
+    </div>
+  </div>
 </div>
 `;

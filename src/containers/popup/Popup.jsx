@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Navigation from './navigation'
+import TaskView from './taskview'
 import './popup.scss'
 
 /*
@@ -19,9 +20,7 @@ export class Popup extends Component {
       <div className="popup">
         <div className="popup__container">
           <Navigation />
-          <div>
-            Hello world, this is the popup.
-          </div>
+          <TaskView projectTitle={ 'thesis' } taskName={ 'write chapter 2' } />
         </div>
       </div>
     )

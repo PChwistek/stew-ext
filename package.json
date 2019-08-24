@@ -9,7 +9,8 @@
   "private": true,
   "jest": {
     "moduleNameMapper": {
-      "^.+\\.(css|less|scss)$": "identity-obj-proxy"
+      "^.+\\.(css|less|scss)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/mocks"
     },
     "setupFilesAfterEnv": [
       "<rootDir>/src/test/enzyme-setup.js"
@@ -49,6 +50,7 @@
     "style-loader": "^0.23.1",
     "webextension-polyfill": "^0.4.0",
     "webpack": "^4.34.0",
+    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.4",
     "webpack-merge": "^4.2.1"
   },

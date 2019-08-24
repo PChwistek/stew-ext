@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
@@ -15,6 +16,7 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new CopyWebpackPlugin([
       { from: './src/manifest.json', to: './manifest.json' },
       { from: './src/assets', to: './assets' },
