@@ -8,7 +8,7 @@ import aliases from './aliases'
 
 // create aliases that are actions that only run in bg
 const middleware = [alias(aliases), thunk, logger]
-const composeEnhancers= composeWithDevTools({ port: 8000 })
+const composeEnhancers= composeWithDevTools({ port: 7888, realtime: true })
 
 const enhancers = composeEnhancers(applyMiddleware(...middleware))
 const store = createStore(

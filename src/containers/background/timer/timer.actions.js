@@ -2,12 +2,12 @@ import { TIMER } from '../../actionTypes'
 import Clock from './Clock'
 import store from '../store'
 
-const theTimer = new Clock()
+const theClock = new Clock()
 
 export const startInterval = (milliseconds) => {
-  
-  theTimer.setIntervalAction(() => store.dispatch({ type: TIMER.TICK }))
-  theTimer.setTimer(milliseconds)
+  console.log('milli', milliseconds)
+  theClock.setIntervalAction(() => store.dispatch({ type: TIMER.TICK }))
+  theClock.setClock(milliseconds)
 
   return {
     type: TIMER.START_INTERVAL_SUCCESS,
@@ -18,7 +18,7 @@ export const startInterval = (milliseconds) => {
 }
 
 export const clearInterval = () => {
-  theTimer.clearTimer()
+  theClock.clearClock()
   return {
     type: TIMER.STOP_TIMER_SUCCESS
   }

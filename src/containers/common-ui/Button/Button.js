@@ -12,9 +12,9 @@ function getAppropriateStyle(prop) {
   }
 }
 
-const Button = ({ type, text, actionOnClick }) => {
+const Button = ({ type, text, onClick }) => {
   return (
-    <div className={ getAppropriateStyle(type) } onClick={ actionOnClick }>
+    <div className={ getAppropriateStyle(type) } onClick={ onClick }>
       <p className="button__text"> { text } </p>
     </div>
   )
@@ -23,7 +23,7 @@ const Button = ({ type, text, actionOnClick }) => {
 Button.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
-  actionOnClick: PropTypes.func
+  onClick: PropTypes.func
 }
 
 export default Button

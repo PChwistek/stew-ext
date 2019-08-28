@@ -15,9 +15,10 @@ export default (state = initialState, action ) => {
         {},
         state,
         {
-          time: millisecondsToDigitalClock(action.milliseconds),
-          milliseconds: action.milliseconds,
-          terminationTime : action.milliseconds,
+          time: millisecondsToDigitalClock(action.payload.milliseconds),
+          milliseconds: action.payload.milliseconds,
+          terminationTime : action.payload.milliseconds,
+          running: true,
         }
       )
     case TIMER.STOP:

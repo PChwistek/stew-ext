@@ -6,14 +6,15 @@ import './clock.scss'
 
 export default class Clock extends Component {
   render() {
-    const { time } = this.props
+    console.log(this.props)
+    const { time, activeSession, stopTimer, startTimer } = this.props
     return (
       <div className="clock clock__container">
-        <p className="clock__time">  { time } </p>
+        <p className="clock__time">  { activeSession ? time: '40:00' } </p>
         <div className="clock__pause-container">
-          <Button text={ 'Pause' } type={ 'secondary' }/>
+          <Button text={ activeSession ? 'Pause' : 'Start' } type={ activeSession ? 'secondary' : 'primary' } onClick={ activeSession ? stopTimer : () => startTimer(4000) } />
         </div>
-        <p className="clock__early"> End Early </p>
+        { activeSession && <p className="clock__early"> End Early </p> }
       </div>
     )
   }
@@ -21,6 +22,8 @@ export default class Clock extends Component {
 
 Clock.propTypes = {
   time: PropTypes.string,
+  startTimer: PropTypes.func,
+  stopTimer: PropTypes.func,
   paused: PropTypes.bool,
   activeSession: PropTypes.bool
 }

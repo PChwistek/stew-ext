@@ -18,7 +18,7 @@ export default class Clock {
       const timeLeft = sTime - Date.now()
       this.intervalAction()
       if(timeLeft <= 0) {
-        this.clearTimer()
+        this.clearClock()
       }
     }
   
