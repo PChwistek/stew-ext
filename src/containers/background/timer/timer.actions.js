@@ -6,7 +6,7 @@ const theClock = new Clock()
 
 export const startInterval = (milliseconds) => {
   console.log('milli', milliseconds)
-  theClock.setIntervalAction(() => store.dispatch({ type: TIMER.TICK }))
+  theClock.setActions(() => store.dispatch({ type: TIMER.TICK }), () => store.dispatch({ type: TIMER.FINISHED }))
   theClock.setClock(milliseconds)
 
   return {
@@ -17,9 +17,30 @@ export const startInterval = (milliseconds) => {
   }
 }
 
+export const pauseTimer = () => {
+  theClock.pause()
+  return {
+    type: TIMER.PAUSE_SUCCESS
+  }
+}
+
+export const resumeTimer = () => {
+  theClock.resume()
+  return {
+    type: TIMER.RESUME_SUCCESS
+  }
+}
+
 export const clearInterval = () => {
   theClock.clearClock()
   return {
     type: TIMER.STOP_TIMER_SUCCESS
+  }
+}
+
+export const endEarly = () => {
+  clearInterval()
+  return {
+    type: TIMER.END_EARLY_SUCCESS
   }
 }

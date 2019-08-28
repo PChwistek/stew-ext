@@ -6,6 +6,7 @@ const initialState = {
   milliseconds: 0,
   terminationTime : 0,
   running: false,
+  paused: false,
 }
 
 export default (state = initialState, action ) => {
@@ -19,13 +20,14 @@ export default (state = initialState, action ) => {
           milliseconds: action.payload.milliseconds,
           terminationTime : action.payload.milliseconds,
           running: true,
+          paused: false,
         }
       )
     case TIMER.STOP:
       return Object.assign(
         {},
         state,
-        { running:false }
+        { running: false }
       )
     case TIMER.STOP_TIMER_SUCCESS:
       return initialState
@@ -37,6 +39,26 @@ export default (state = initialState, action ) => {
           time: millisecondsToDigitalClock(state.milliseconds - 1000)
         }
       )
+    case TIMER.PAUSE_SUCCESS:
+      return Object.assign(
+        {},
+        state,
+        {
+          paused: true
+        }
+      )
+    case TIMER.RESUME_SUCCESS:
+      return Object.assign(
+        {},
+        state,
+        {
+          paused: false
+        }
+      )
+    case TIMER.FINISHED:
+      return initialState
+    case TIMER.END_EARLY_SUCCESS:
+      return initialState
     default:
       return state
   }

@@ -32,6 +32,24 @@ export function stopTimer() {
   }
 }
 
+export function pauseTimer() {
+  return {
+    type: TIMER.PAUSE
+  }
+}
+
+export function resumeTimer() {
+  return {
+    type: TIMER.RESUME
+  }
+}
+
+export function endEarly() {
+  return {
+    type: TIMER.END_EARLY
+  }
+}
+
 export function goToDashboard() {
   return dispatch => {
     dispatch(openDashboard())
