@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import './popup.scss'
 
 /*
@@ -9,14 +9,11 @@ import './popup.scss'
 */
 
 export class Popup extends Component {
-  
-  componentDidMount() {
-  }
 
   render() {
     return (
       <div className="popup">
-        Hello world, this is the popup.
+        <div> test </div>
       </div>
     )
   }
@@ -24,8 +21,4 @@ export class Popup extends Component {
 
 
 Popup.propTypes = {
-  goToDashboard: PropTypes.func,
-  addCount: PropTypes.func,
-  startTimer: PropTypes.func,
-  stopTimer: PropTypes.func
 }

@@ -1,5 +1,4 @@
 import store from './store'
-import Blocker from './blocker'
 import Manager from './tabmanager'
 import socket from './socket'
 
@@ -10,10 +9,6 @@ const blacklist = {
   'https://twitter.com': true
 }
 
-const blocker = new Blocker(blacklist)
-
-blocker.setListeners()
-blocker.checkAllTabs()
 // setTimeout(() => blocker.removeListeners(), 10000)
 
 
@@ -24,7 +19,14 @@ const startupTabs = [
   'https://developer.chrome.com/extensions/tabs#method-remove'
 ]
 
-const manager = new Manager(4, startupTabs)
-manager.nukeAndReplace() // need to fix this one here...
-manager.setTabLimits()
-socket()
+function callOnStart() {
+  const manager = new Manager(4, startupTabs)
+
+  blocker.setListeners()
+  blocker.checkAllTabs()
+
+  manager.nukeAndReplace()
+  manager.setTabLimits()
+}
+
+socket(callOnStart)

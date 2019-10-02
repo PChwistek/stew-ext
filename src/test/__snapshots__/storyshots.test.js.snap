@@ -51,10 +51,130 @@ exports[`Storyshots Dashboard with text 1`] = `
 </div>
 `;
 
+exports[`Storyshots Popup navigation standard 1`] = `
+<div
+  className="navigation__container"
+>
+  <div>
+    <img
+      className="navigation__logo--img"
+      src={Object {}}
+    />
+  </div>
+  <div>
+    <img
+      className="navigation__menu--img"
+      src={Object {}}
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots Popup with text 1`] = `
 <div
   className="popup"
 >
-  Hello world, this is the popup.
+  <div
+    className="popup__container"
+  >
+    <div
+      className="navigation__container"
+    >
+      <div>
+        <img
+          className="navigation__logo--img"
+          src={Object {}}
+        />
+      </div>
+      <div>
+        <img
+          className="navigation__menu--img"
+          src={Object {}}
+        />
+      </div>
+    </div>
+    <div
+      className="taskview taskview__container"
+    >
+      <div
+        className="taskview__box"
+      >
+        <div
+          className="taskview__box__pin-container"
+        >
+          <img
+            className="taskview__box__pin"
+            src={Object {}}
+          />
+        </div>
+        <p
+          className="taskview__title"
+        >
+           
+          thesis
+           
+        </p>
+        <p
+          className="taskview__task"
+        >
+           
+          write chapter 2
+           
+        </p>
+      </div>
+    </div>
+    <div
+      className="clock clock__container"
+    >
+      <p
+        className="clock__time"
+      >
+          
+        25:39
+         
+      </p>
+      <div
+        className="clock__pause-container"
+      >
+        <div
+          className="button button--secondary"
+        >
+          <p
+            className="button__text"
+          >
+             
+            Pause
+             
+          </p>
+        </div>
+      </div>
+      <p
+        className="clock__early"
+      >
+         End Early 
+      </p>
+    </div>
+    <div
+      className="popup__connected-text"
+    >
+       Connected devices 
+    </div>
+    <div
+      className="popup__connected-container"
+    >
+      <div>
+        <img
+          className="device-icon"
+          src={Object {}}
+        />
+      </div>
+      <div>
+        <img
+          className="device-icon"
+          src={Object {}}
+        />
+      </div>
+    </div>
+  </div>
 </div>
 `;

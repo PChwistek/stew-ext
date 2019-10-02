@@ -3,7 +3,7 @@ const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 
 var remotedev = require('remotedev-server')
-remotedev({ hostname: 'localhost', port: 8000 })
+remotedev({ hostname: 'localhost', port: 7888 })
 
 module.exports = merge(common, {
   mode: 'development',

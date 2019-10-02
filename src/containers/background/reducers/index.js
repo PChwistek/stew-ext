@@ -1,9 +1,7 @@
 
 import {combineReducers} from 'redux'
-import count from './count'
-import timer from './timer'
+import user from './user'
 
 export default combineReducers({
-  count,
-  timer
+  user
 })

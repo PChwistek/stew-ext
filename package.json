@@ -9,7 +9,8 @@
   "private": true,
   "jest": {
     "moduleNameMapper": {
-      "^.+\\.(css|less|scss)$": "identity-obj-proxy"
+      "^.+\\.(css|less|scss)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/mocks"
     },
     "setupFilesAfterEnv": [
       "<rootDir>/src/test/enzyme-setup.js"
@@ -49,8 +50,10 @@
     "style-loader": "^0.23.1",
     "webextension-polyfill": "^0.4.0",
     "webpack": "^4.34.0",
+    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.4",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "web-ext": "^3.2.0"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -58,9 +61,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
-    "react-router-dom": "^5.0.1",
     "redux": "^4.0.1",
-    "redux-saga": "^1.0.3",
     "redux-thunk": "^2.3.0",
     "remotedev-server": "^0.3.1",
     "socket.io-client": "^2.2.0",
@@ -73,6 +74,7 @@
     "lint:fix": "yarn run lint --fix",
     "storybook": "start-storybook",
     "test": "jest",
-    "watch": "NODE_ENV=development webpack --config ./webpack.config.dev.js --watch"
+    "watch": "NODE_ENV=development webpack --config ./webpack.config.dev.js --watch",
+    "watch-firefox": "web-ext run --source-dir ./dist"
   }
 }
