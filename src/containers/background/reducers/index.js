@@ -1,11 +1,7 @@
 
 import {combineReducers} from 'redux'
-import count from './count'
-import timer from './timer'
-import session from './session'
+import user from './user'
 
 export default combineReducers({
-  session,
-  count,
-  timer
+  user
 })

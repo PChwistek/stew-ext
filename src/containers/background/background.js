@@ -1,5 +1,4 @@
 import store from './store'
-import Blocker from './blocker'
 import Manager from './tabmanager'
 import socket from './socket'
 
@@ -21,7 +20,6 @@ const startupTabs = [
 ]
 
 function callOnStart() {
-  const blocker = new Blocker(blacklist)
   const manager = new Manager(4, startupTabs)
 
   blocker.setListeners()

@@ -7,8 +7,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = {
   entry: {
     background: './src/containers/background/background.js',
-    popup: './src/containers/popup/',
-    dashboard: './src/containers/dashboard/'  
+    popup: './src/containers/popup/'
   },
   output: {
     filename: '[name]/[name].js',
@@ -28,12 +27,6 @@ module.exports = {
       filename: 'popup/popup.html',
       chunks: ['popup']
     }),
-    new HtmlWebpackPlugin({
-      title: 'Dashboard - hermitly',
-      template: 'src/public/dashboard.html',
-      filename: 'dashboard/dashboard.html',
-      chunks: ['dashboard']
-    })
   ],
   resolve: {
     extensions: [
