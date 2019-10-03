@@ -1,6 +1,6 @@
 import store from './store'
 import Manager from './tabmanager'
-import socket from './socket'
+import browser from 'webextension-polyfill'
 
 const blacklist = {
   'https://www.facebook.com': true,
@@ -19,6 +19,7 @@ const startupTabs = [
   'https://developer.chrome.com/extensions/tabs#method-remove'
 ]
 
+
 function callOnStart() {
   const manager = new Manager(4, startupTabs)
 
@@ -29,4 +30,6 @@ function callOnStart() {
   manager.setTabLimits()
 }
 
-socket(callOnStart)
+browser.commands.onCommand.addListener(function(command) {
+  console.log('Command:', command)
+})

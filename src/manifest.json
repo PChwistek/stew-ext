@@ -25,12 +25,20 @@
     "default_icon": {
       "100": "assets/120x120.png"
     },
-    "default_title": "hermitly",
+    "default_title": "stew",
     "default_popup": "popup/popup.html",
     "theme_icons": [{
-      "light": "assets/hermitly-ext-icon128.png",
-      "dark": "assets/hermitly-ext-icon128.png",
+      "light": "assets/310x310.png",
+      "dark": "assets/310x310.png",
       "size": 128
     }]
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Comma"
+      },
+      "global": true
+    }
   }
 }
