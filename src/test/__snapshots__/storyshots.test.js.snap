@@ -49,8 +49,114 @@ exports[`Storyshots Popup with text 1`] = `
 <div
   className="popup"
 >
+  <div
+    className="header"
+  >
+    <div
+      className="header header__content"
+    >
+      <div>
+        <img
+          className="header__logo"
+          src="../../../assets/144x144.png"
+        />
+      </div>
+      <div>
+        <img
+          className="header__more"
+          src="../../../assets/more.png"
+        />
+      </div>
+    </div>
+    <hr
+      className="divider"
+    />
+  </div>
+  <div
+    className="createtab"
+  >
+    hey there!!!
+  </div>
+  <div
+    className="search"
+  >
+    <div
+      className="search__content"
+    >
+      <div
+        className="search__field"
+      >
+        <div
+          className="search-field  undefined && "
+        >
+          <div
+            className="search-field__image-container"
+          >
+            <img
+              className="search-field__image"
+              src="../../../../assets/search.png"
+            />
+          </div>
+          <input
+            autoComplete="off"
+            id={1}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            placeholder="Search for recipes..."
+            type="text"
+            value=""
+          />
+          <label
+            className=""
+            htmlFor={1}
+          >
+            
+          </label>
+        </div>
+      </div>
+      <div
+        className="search__plus"
+        onClick={[Function]}
+      >
+        <img
+          className="search__image"
+          src="../../../assets/plus-green.png"
+        />
+      </div>
+    </div>
+    <hr
+      className="divider--heavy"
+    />
+  </div>
   <div>
-     test 
+    <div
+      className="table__sort-bar"
+    >
+      <div
+        className="table__sort-bar-title"
+      >
+        All
+      </div>
+      <div
+        className="table__sort-bar-icons"
+      >
+        <div>
+          <img
+            className="table__sort-bar-icon"
+            src="../../../../assets/creativity.png"
+          />
+        </div>
+        <div>
+          <img
+            className="table__sort-bar-sort"
+            src="../../../../assets/sort.png"
+          />
+        </div>
+      </div>
+    </div>
+    This is the table
   </div>
 </div>
 `;

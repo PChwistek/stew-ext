@@ -1,0 +1,70 @@
+.slide-in {
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: -100%;
+  display: flex;
+
+
+
+  &--visible {
+    right: 0%;
+    -webkit-animation: slidein-anim 0.3s ease-in-out; /* Safari 4.0 - 8.0 */
+    animation: slidein-anim 0.3s ease-in-out;
+  }
+
+  &--hide {
+    right: -100%;
+    -webkit-animation: slideout-anim 0.3s ease-in-out; /* Safari 4.0 - 8.0 */
+    animation: slideout-anim 0.3s ease-in-out;
+  }
+
+}
+
+.slide-in-button {
+  position: relative;
+  top: 15px;
+  left: 15px;
+  padding: 5px;
+  width: 45px;
+  cursor: pointer;
+}
+
+@keyframes slidein-anim {
+  0%   {right: -100%;}
+  90% {right: 2%;}
+  100% {right: 0%;}
+}
+
+@keyframes slideout-anim {
+  0%   {right: 0%;}
+  40% { right: 2%;}
+  100% {right: -100%;}
+}
+
+
+.slide-in-filler {
+  opacity: 0.7;
+  background: #fff;
+  width: 10%;
+}
+
+ 
+
+.slide-in-content {
+  opacity: 1;
+  background: #fff;
+  height: 100%;
+  width: 90%;
+
+  &__title {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__body {
+    padding: 30px;
+  }
+
+}

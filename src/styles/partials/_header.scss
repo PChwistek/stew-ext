@@ -1,0 +1,56 @@
+.header {
+  color: $text-color;
+  background: transparent;
+
+  &__container {
+    max-height: 100px;
+  }
+
+  &__body {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  &__logo {
+    width: 100px;
+    cursor: pointer;
+  }
+
+  &__items {
+    display: inline-block;
+    align-self: center;
+    display: flex;
+    margin-left: auto;
+  }
+  
+  &__item {
+    align-self: center;
+    font-family: $base-font-family;
+    font-weight: 600;
+    font-size: $font-size-regular;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: $text-color;
+  }
+
+}
+
+.footer {
+  padding-top: 16px;
+  color: $text-color;
+  text-align: center;
+  font-size: $font-size-tiny;
+  font-family: $oxygen;
+  padding-bottom: 10px;
+
+  &__image {
+    width: 25px;
+    padding-bottom: 5px;
+  }
+}

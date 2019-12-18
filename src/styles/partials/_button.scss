@@ -1,0 +1,43 @@
+.button {
+  
+    cursor: pointer;
+
+    &--primary {
+      background-color: $brand-color;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-family: $base-font-family;
+      font-size: $font-size-regular;
+      border-radius: 50px;
+    }
+
+    &--smaller {
+      background-color: $brand-color;
+      border: none;
+      color: white;
+      padding: 10px 28px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-family: $base-font-family;
+      font-size: $font-size-regular;
+      border-radius: 5px;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:hover {
+      margin-top: -2px;
+      margin-bottom: 2px;
+      transition: all .1s ease-in-out;
+    }
+
+
+
+}

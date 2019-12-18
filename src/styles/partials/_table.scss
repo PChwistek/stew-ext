@@ -1,0 +1,38 @@
+.table {
+  position: relative;
+  width: 100%;
+
+
+  &__sort-bar {
+    height: 25px;
+    background: rgba(216, 216, 216, .3);
+    position: relative;
+    padding: 7px;
+    display: flex; 
+    flex-direction: row;
+  }
+
+  &__sort-bar-title {
+    font-size: $font-size-large;
+    font-family: $oxygen;
+    color: $text-color;
+    position: relative;
+  }
+
+  &__sort-bar-icons {
+    display: flex;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+
+  &__sort-bar-icon {
+    height: 28px;
+  }
+
+  &__sort-bar-sort {
+    height: 32px;
+  }
+
+}

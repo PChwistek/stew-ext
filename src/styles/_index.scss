@@ -9,6 +9,16 @@
     box-sizing: inherit;
 }
 
+nav {
+    position: absolute;
+    top: 0; /* required */
+    z-index: 10;
+    width: 100%;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
 
 // Define defaults for each variable.
 $base-font-family: Quicksand, Helvetica, Arial;
@@ -22,9 +32,11 @@ $base-line-height: 1.5 !default;
 $spacing-unit:     30px !default;
 
 $text-color:       #4C5B5C !default;
-$brand-color:      #E74B85 !default;
+$text-color-lighter:       rgba(76, 91, 92, 0.486) !default;
+$link-color: #067bc2;
+$brand-color:      #BCDB71 !default;
+$error-color: #E26D5A !default;
 $grey-color: rgba(242, 244, 243, 0.43);
-$green-color: #a1c084 !default;
 $white: #fdfdfd;
 
 $modal-background-color: rgba(242, 244, 243, 0.95);
@@ -32,14 +44,22 @@ $white-background: #fdfdfd !default;
 $grey-background: linear-gradient(to right,$grey-color 0%, $grey-color 100%);
 $modal-background: linear-gradient(to right,$modal-background-color 0%, $modal-background-color 100%);
 
-$font-size-ginormous: 7.594em;
-$font-size-huge: 5.063em;
-$font-size-big: 3.375em;
-$font-size-larger: 2.25em;
-$font-size-large: 1.5em;
-$font-size-regular: 1em;
-$font-size-smaller: 0.667em;
-$font-size-tiny: 0.444em;
+
+a {
+    text-decoration: none;
+    color: $link-color;
+    cursor: pointer;
+}
+
+a:visited {
+    color: $link-color;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
 
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
@@ -50,3 +70,18 @@ $font-size-tiny: 0.444em;
     }
   
 }
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@import "partials/typography";
+@import "partials/button";
+@import "partials/modal";
+@import "partials/textfield";
+@import "partials/checkbox";
+@import "partials/table";
+@import "partials/slidein";
