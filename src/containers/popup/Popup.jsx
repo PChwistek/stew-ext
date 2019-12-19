@@ -6,12 +6,6 @@ import Table from './Table'
 import CreateTab from './CreateTab'
 import './popup.scss'
 
-/*
-  document.getElementById("stats-link").addEventListener("click", () => {
-      browser.tabs.create({ url: "/stats/stats.html" });
-    });
-*/
-
 export class Popup extends Component {
 
   constructor(props) {
@@ -25,16 +19,13 @@ export class Popup extends Component {
   toggleCreateTab = () => {
     const { createVisible } = this.state
     const { getCurrentTabs } = this.props
-    
-    if(!createVisible) {
-      getCurrentTabs()
-    }
-
     this.setState({
       createVisible: !createVisible,
       wasOpened: true
     })
-
+    if(!createVisible) {
+      getCurrentTabs()
+    }
   }
 
 

@@ -4,11 +4,11 @@ import { getCurrentTabs } from './popup.actions'
 
 const stateToProps = ({ user, popup }) => ({
   user,
-  popup
+  popup,
 })
 
 const dispatchToProps = {
-  getCurrentTabs,
+  getCurrentTabs
 }
 
 export default connect(stateToProps, dispatchToProps)(Popup)

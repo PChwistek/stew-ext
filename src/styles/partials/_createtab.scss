@@ -1,0 +1,145 @@
+.createtab {
+  display: flex;
+  height: 100%;
+
+  &__form {
+    height: 100%;
+    flex-grow: 1;
+    
+  }
+
+  &__session {
+    position: relative;
+    padding: 10px;
+    width: 50%;
+    height: 550px;
+    background: $grey-background;
+    flex-grow: 0;
+    overflow-y: scroll;
+  }
+
+  &__title {
+    font-family: $base-font-family;
+    font-size: $font-size-regular;
+    color: $text-color-lighter;
+    width: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-variant: small-caps;
+  }
+  
+  &__window-row {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &__window-title {
+    padding-left: 10px;
+    font-family: $base-font-family;
+    font-size: $font-size-large;
+    color: $brand-color;
+    width: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-variant: small-caps;
+  }
+
+  &__window-icon {
+    height: 32px;
+  }
+
+}
+
+.tab {
+
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__row:hover &__remove {
+    visibility: visible;
+  }
+
+  &__row:hover &__body {
+    background: transparent;
+    border: 1px solid $brand-color;
+    margin-bottom: -2px;
+    cursor: pointer;
+  }
+
+  &__col {
+    position: relative;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding-bottom: 10px;
+  }
+
+  &__body {
+    display: flex;
+    width: 200px;
+    height: 30px;
+    margin-top: 10px;
+    align-items: center;
+    background: rgb(232, 233, 233);
+    padding: 3px;
+    border-radius: 5px;
+  }
+
+  &__body:hover {
+    background: transparent;
+    border: 1px solid $brand-color;
+    margin-bottom: -2px;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-family: $oxygen;
+    width: 100%;
+    padding-right: 7px;
+    font-size: $font-size-regular;
+    color: $text-color;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__fav {
+    height: 18px;
+    padding-right: 10px;
+    padding-left: 7px;
+  }
+
+  &__remove {
+    height: 24px;
+    width: 24px;
+    background-repeat: no-repeat;
+    background: url('../../assets/remove-gray.png');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    cursor: pointer;
+    background-size: 24px 24px;
+    visibility: hidden;
+  }
+
+  &__remove:hover {
+    height: 24px;
+    width: 24px;
+    visibility: visible;
+    background: url('../../assets/remove-red.png');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    cursor: pointer;
+    visibility: visible;
+  }
+
+  &__remove-container {
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+  
+}

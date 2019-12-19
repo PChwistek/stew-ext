@@ -18,15 +18,11 @@ export default function SlideIn(props) {
 
   return (
     <div className={ getAnimation() }>
-      <div className={'slide-in-filler'}>
-
-      </div>
       <div className='slide-in-content'>
+        <div className='slide-in-content slide-in-content__body'>
         <div>
           <img src={ '../../../assets/close.png'} className='slide-in-button'  onClick={ onCloseClick } />
-          <h1 className='slide-in-content__title'> { props.title } </h1> 
         </div>
-        <div className='slide-in-content slide-in-content__body'>
           { props.children }
         </div>
       </div>
@@ -38,6 +34,5 @@ SlideIn.propTypes = {
   visible: PropTypes.bool.isRequired,
   wasOpened: PropTypes.bool.isRequired,
   onCloseClick: PropTypes.func.isRequired,
-  title: PropTypes.string,
   children: PropTypes.node
 }

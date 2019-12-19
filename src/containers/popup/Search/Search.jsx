@@ -8,7 +8,7 @@ export default function Search(props) {
     <div className='search'>
       <div className='search__content'>
         <div className="search__field">
-          <SearchTextField type={ 'text' } label={ 'Search for recipes...' } />
+          <SearchTextField type={ 'text' } label={ 'Search for recipes...' } setValue={ () => {} } />
         </div>
         <div className='search__plus' onClick={ onPlusClick } >
           <img src={ '../../../assets/plus-green.png' } className='search__image' />

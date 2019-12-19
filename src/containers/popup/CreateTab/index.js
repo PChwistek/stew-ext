@@ -1,1 +1,1 @@
-export { default } from './CreateTab'
+export { default } from './CreateTab.container'

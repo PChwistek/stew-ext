@@ -57,7 +57,7 @@
 
 .field input {
   font-size: $font-size-regular;
-  font-family: $oxygen;
+  font-family: $base-font-family;
   line-height: 28px;
   font-weight: 300;
 
@@ -122,7 +122,7 @@
   background-color: rgba(255, 255, 255, 0.3);
   transition: 0.2s background-color ease-in-out, 0.2s box-shadow ease-in-out;
   font-size: $font-size-large;
-  font-family: $oxygen;
+  font-family: $base-font-family;
   line-height: 48px;
   font-weight: 300;
 
@@ -155,7 +155,7 @@
 
 .search-field input {
   font-size: $font-size-large;
-  font-family: $oxygen;
+  font-family: $base-font-family;
   line-height: 48px;
   font-weight: 300;
   width: 100%;

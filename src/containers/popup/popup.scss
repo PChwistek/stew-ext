@@ -69,6 +69,12 @@
   &__image {
     height: 45px;
     cursor: pointer;
+    transition: 0.2s all ease-in-out;
+  }
+
+
+  &__image:hover {
+    margin-top: -2px;
   }
 
 }
