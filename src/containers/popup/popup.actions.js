@@ -1,8 +1,8 @@
-import { TABS_CURRENT } from '../actionTypes'
+import { TABS_SNAP } from '../actionTypes'
 
 export function getCurrentTabs() {
   return {
-    type: TABS_CURRENT,
+    type: TABS_SNAP,
     payload: {}
   }
 }

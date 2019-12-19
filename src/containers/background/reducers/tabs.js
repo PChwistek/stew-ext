@@ -1,4 +1,4 @@
-import { TABS_SETCURRENT } from '../../actionTypes'
+import { TABS_SETSNAP } from '../../actionTypes'
 
 const initialState = {
 }
@@ -7,9 +7,9 @@ const initialState = {
 export default (state = initialState, action) => {
   const { payload } = action
   switch (action.type) {
-    case TABS_SETCURRENT:
+    case TABS_SETSNAP:
       return Object.assign({}, state, {
-        currentTabs: payload.tabs
+        session: payload.session
       })
     default:
       return state

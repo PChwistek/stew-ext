@@ -115,26 +115,23 @@
   }
 
   &__remove {
-    height: 24px;
-    width: 24px;
+    height: 16px;
+    width: 16px;
     background-repeat: no-repeat;
     background: url('../../assets/remove-gray.png');
-    background-repeat: no-repeat;
-    background-size: 24px 24px;
     cursor: pointer;
-    background-size: 24px 24px;
+    background-size: 16px 16px;
     visibility: hidden;
   }
 
   &__remove:hover {
-    height: 24px;
-    width: 24px;
+    height: 16px;
+    width: 16px;
     visibility: visible;
     background: url('../../assets/remove-red.png');
     background-repeat: no-repeat;
-    background-size: 24px 24px;
+    background-size: 16px 16px;
     cursor: pointer;
-    visibility: visible;
   }
 
   &__remove-container {

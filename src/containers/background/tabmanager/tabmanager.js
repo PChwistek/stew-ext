@@ -2,9 +2,24 @@ import browser from 'webextension-polyfill'
 
 export default class Manager {
 
-  async getCurrentTabs() {
-    const tabs = await browser.tabs.query({windowId: null})
-    return tabs
+  async getSession() {
+    let windows = await browser.windows.getAll()
+    windows = windows.filter(win => win.type === 'normal')
+    
+    let session = []
+
+    var i = 0
+    for (i = 0; i < windows.length; i++) {
+      const index = i
+      const windowTabs = await browser.tabs.query({ windowId: windows[index].id})
+      const win = {
+        id: windows[index].id,
+        tabs: windowTabs
+      }
+      session.push(win)
+    }    
+
+    return session
   }
 
   nukeAndReplace(desiredTabs) {
