@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Header from './Header'
 import Search from './Search'
 import Table from './Table'
@@ -23,12 +23,18 @@ export class Popup extends Component {
   }
 
   toggleCreateTab = () => {
-    console.log('create tab should be visible')
     const { createVisible } = this.state
+    const { getCurrentTabs } = this.props
+    
+    if(!createVisible) {
+      getCurrentTabs()
+    }
+
     this.setState({
       createVisible: !createVisible,
       wasOpened: true
     })
+
   }
 
 
@@ -37,7 +43,7 @@ export class Popup extends Component {
     return (
       <div className="popup">
         <Header />
-        <div>
+        <div className="popup__body">
           <CreateTab visible={ createVisible } wasOpened={ wasOpened } onCloseClick={ this.toggleCreateTab } />
           <Search onPlusClick={ this.toggleCreateTab } />
           <Table />
@@ -49,4 +55,5 @@ export class Popup extends Component {
 
 
 Popup.propTypes = {
+  getCurrentTabs: PropTypes.func,
 }

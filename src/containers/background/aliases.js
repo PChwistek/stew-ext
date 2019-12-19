@@ -1,13 +1,21 @@
+import TabManager from './TabManager'
+import { TABS_CURRENT, TABS_SETCURRENT } from '../actionTypes'
 
-/* these action maps to the actions called by the popup */
+const manager = new TabManager()
 
-// const stopTimer = (originalAction) => {
-//   return dispatch => {
-//     dispatch(clearInterval())
-//     return originalAction
-//   }
-// }
+const getCurrentsTabs = (originalAction) => {
+  console.log('original action', originalAction)
+  return async (dispatch) => {
+    const tabs = await manager.getCurrentTabs()
+    dispatch({
+      type: TABS_SETCURRENT,
+      payload: {
+        tabs
+      }
+    })
+  }
+}
 
 export default {
-  // [TIMER.START]: startTimer,
+  TABS_CURRENT: getCurrentsTabs
 }

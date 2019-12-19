@@ -59,6 +59,9 @@
   width: 90%;
 
   &__title {
+    font-size: $font-size-larger;
+    font-family: $oxygen;
+    color: $text-color;
     width: 100%;
     text-align: center;
   }
