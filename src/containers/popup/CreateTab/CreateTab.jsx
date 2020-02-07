@@ -3,21 +3,20 @@ import SlideIn from '../SlideIn'
 
 export default function CreateTab(props) {
 
-  const { tabs } = props
+  const { tabs, removeTabFromSnap } = props
   const session = tabs.session
 
   function windowTabs(win, index) {
-    
     return (
-      <div>
+      <div key={ index }>
         <div className='createtab__window-row'>
           <div className='createtab__window-title'>Window { index + 1 } </div>
           <img src={ '../../../assets/window-sketch.png' } className='createtab__window-icon' />
         </div>
         {
           win && win.tabs.map(tab => (
-            <div className='tab__row'>
-              <div className='tab__remove-container'> 
+            <div className='tab__row' key={ tab.id }>
+              <div className='tab__remove-container' onClick={ () => removeTabFromSnap(win, tab) }> 
                 <img src={ '' } className='tab__remove' />
               </div>
               <div className='tab__body'>
