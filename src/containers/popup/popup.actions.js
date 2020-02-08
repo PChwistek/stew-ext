@@ -1,4 +1,4 @@
-import { TABS_SNAP, TABS_REMOVETAB } from '../actionTypes'
+import { TABS_SNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW } from '../actionTypes'
 
 export function getCurrentTabs() {
   return {
@@ -13,6 +13,15 @@ export function removeTabFromSnap(win, tab) {
     payload: {
       win, 
       tab
+    }
+  }
+}
+
+export function removeWindowFromSnap(win) {
+  return {
+    type: TABS_REMOVEWINDOW,
+    payload: {
+      windowToRemove: win
     }
   }
 }
