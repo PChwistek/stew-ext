@@ -1,6 +1,13 @@
-import { TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW } from '../../actionTypes'
+import { 
+  TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
+  TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME } from '../../actionTypes'
 
 const initialState = {
+  recipeForm: {
+    recipeName: '',
+    recipeTags: [],
+    isPublic: false,
+  }
 }
 
 /*
@@ -37,6 +44,14 @@ export default (state = initialState, action) => {
       }
       return Object.assign({}, state, {})
     }
+    case TABS_SETRECIPENAME:
+      const { recipeName } = payload
+      state.recipeForm.recipeName = recipeName
+      return Object.assign({}, state, {} )
+    case TABS_SETRECIPEPUBLIC: 
+      const { isPublic } = payload
+      state.recipeForm.isPublic = isPublic
+      return Object.assign({}, state, {} )
     default:
       return state
   }

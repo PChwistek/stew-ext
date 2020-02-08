@@ -1,4 +1,5 @@
-import { TABS_SNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW } from '../actionTypes'
+import { TABS_SNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
+  TABS_SETRECIPENAME, TABS_SETRECIPEPUBLIC } from '../actionTypes'
 
 export function getCurrentTabs() {
   return {
@@ -22,6 +23,24 @@ export function removeWindowFromSnap(win) {
     type: TABS_REMOVEWINDOW,
     payload: {
       windowToRemove: win
+    }
+  }
+}
+
+export function setRecipeName(recipeName) {
+  return {
+    type: TABS_SETRECIPENAME,
+    payload: {
+      recipeName,
+    }
+  }
+}
+
+export function setRecipePublic(isPublic) {
+  return {
+    type: TABS_SETRECIPEPUBLIC,
+    payload: {
+      isPublic,
     }
   }
 }

@@ -6,8 +6,10 @@ import Button from '../../common-ui/Button'
 
 export default function CreateTab(props) {
 
-  const { tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap } = props
+  const { tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap, 
+    setRecipeName, setRecipePublic } = props
   const session = tabs.session
+  const { recipeForm: { recipeName, recipeTags, isPublic } } = tabs
 
   function windowTabs(win, index) {
     return (
@@ -42,16 +44,21 @@ export default function CreateTab(props) {
       <div className={ 'createtab' }>
         <div className={ 'createtab__form'}>
           <div className={ 'createtab__form-row'}>
-            <TextField type={ 'text' } label={ 'Recipe Name' } /> 
+            <TextField type={ 'text' } label={ 'Recipe Name' } setValue={ setRecipeName } /> 
           </div>
           <div className={ 'createtab__form-row'}>
-            <TextField type={ 'text' } label={ 'Tags' } predicted={ false }/> 
+            <TextField type={ 'text' } label={ 'Add tags' } predicted={ false } setValue={ () => {}}/> 
+          </div>
+          <div className={ 'createtab__form-row--tags' } >
+            tags..
           </div>
           <div className={ 'createtab__form-row'}>
-            <Checkbox label={ 'Make public?' } checked={ () => {} } setValue={ () => {} } />
-          </div>
-          <div className={ 'createtab__form-row'}>
-            <Button text={ 'Save' } type={ 'primary' } />
+              <Checkbox label={ 'Make public?' } checked={ isPublic } setValue={ () => setRecipePublic(!isPublic) }/>
+            </div>
+          <div className={'createtab__bottom-row'}>
+            <div className={ 'createtab__form-row--submit'}>
+              <Button text={ 'Save' } type={ 'primary' } />
+            </div>
           </div>
         </div>
         <div className='createtab__session'>
