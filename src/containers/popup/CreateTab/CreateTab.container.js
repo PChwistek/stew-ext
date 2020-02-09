@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import CreateTab from './CreateTab'
 import { removeTabFromSnap, getCurrentTabs, 
-  removeWindowFromSnap, setRecipeName, setRecipePublic } from '../popup.actions'
+  removeWindowFromSnap, setRecipeName, setRecipePublic, setRecipeTag, addRecipeTag, removeRecipeTag } from '../popup.actions'
 
 const stateToProps = ({ tabs }) => ({
   tabs,
@@ -12,7 +12,10 @@ const dispatchToProps = {
   getCurrentTabs,
   removeWindowFromSnap,
   setRecipeName,
-  setRecipePublic
+  setRecipePublic,
+  setRecipeTag,
+  addRecipeTag,
+  removeRecipeTag,
 }
 
 export default connect(stateToProps, dispatchToProps)(CreateTab)

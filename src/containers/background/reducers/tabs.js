@@ -1,10 +1,13 @@
 import { 
   TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
-  TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME } from '../../actionTypes'
+  TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
+  TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG
+} from '../../actionTypes'
 
 const initialState = {
   recipeForm: {
     recipeName: '',
+    recipeTag: '',
     recipeTags: [],
     isPublic: false,
   }
@@ -52,6 +55,28 @@ export default (state = initialState, action) => {
       const { isPublic } = payload
       state.recipeForm.isPublic = isPublic
       return Object.assign({}, state, {} )
+    case TABS_SETRECIPETAG:
+      const { recipeTag } = payload
+      state.recipeForm.recipeTag = recipeTag
+      return Object.assign({}, state, {} )
+    case TABS_ADDRECIPETAG: {
+      const theTag = state.recipeForm.recipeTag
+      state.recipeForm.recipeTags.push({
+        id: state.recipeForm.recipeTags.length,
+        text: theTag
+      })
+      state.recipeForm = {
+        ...state.recipeForm,
+        recipeTag: ''
+      }
+      return Object.assign({}, state, {} )
+    }
+    case TABS_REMOVERECIPETAG: {
+      const { recipeTag } = payload
+      const tagId = recipeTag.id
+      state.recipeForm.recipeTags = state.recipeForm.recipeTags.filter(tag => tag.id != tagId)
+      return Object.assign({}, state, {})
+    }
     default:
       return state
   }

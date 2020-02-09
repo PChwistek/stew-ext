@@ -32,8 +32,11 @@ class TextField extends Component {
   }
 
   handleKeyPress(event) {
+    const { onEnter, clearOnEnter } = this.props
     if (event.which === 13) {
-      this.setState({ value: this.props.predicted })
+      onEnter && onEnter()
+      clearOnEnter && this.setState({ value: '' })
+      // this.setState({ value: this.props.predicted })
     }
   }
 
@@ -68,7 +71,9 @@ class TextField extends Component {
 }
 
 TextField.propTypes = {
+  clearOnEnter: PropTypes.bool,
   locked: PropTypes.bool,
+  onEnter: PropTypes.func,
   active: PropTypes.bool,
   predicted: PropTypes.any,
   value: PropTypes.string,

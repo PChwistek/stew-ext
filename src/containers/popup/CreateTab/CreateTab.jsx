@@ -7,9 +7,9 @@ import Button from '../../common-ui/Button'
 export default function CreateTab(props) {
 
   const { tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap, 
-    setRecipeName, setRecipePublic } = props
+    setRecipeName, setRecipePublic, setRecipeTag, addRecipeTag, removeRecipeTag } = props
   const session = tabs.session
-  const { recipeForm: { recipeName, recipeTags, isPublic } } = tabs
+  const { recipeForm: { recipeName, isPublic, recipeTags } } = tabs
 
   function windowTabs(win, index) {
     return (
@@ -37,7 +37,6 @@ export default function CreateTab(props) {
       </div>
     )
   }
-
   
   return (
     <SlideIn { ...props } >
@@ -47,11 +46,23 @@ export default function CreateTab(props) {
             <TextField type={ 'text' } label={ 'Recipe Name' } setValue={ setRecipeName } /> 
           </div>
           <div className={ 'createtab__form-row'}>
-            <TextField type={ 'text' } label={ 'Add tags' } predicted={ false } setValue={ () => {}}/> 
+            <TextField type={ 'text' } label={ 'Add tags' } setValue={ setRecipeTag } clearOnEnter={ true } onEnter={ addRecipeTag } /> 
           </div>
-          <div className={ 'createtab__form-row--tags' } >
-            tags..
-          </div>
+          <div className={ 'tag-container' } >
+          {
+            recipeTags && 
+              recipeTags.map(tag => {
+              return (
+                <div className={ 'tag' }>
+                  { tag.text }
+                  <div className={ 'tag__remove' } onClick={ () => removeRecipeTag(tag)}>
+                    <img src={'../../../assets/remove-white.png'} />
+                  </div>
+                </div>
+              )
+            })
+          }
+          </div>   
           <div className={ 'createtab__form-row'}>
               <Checkbox label={ 'Make public?' } checked={ isPublic } setValue={ () => setRecipePublic(!isPublic) }/>
             </div>

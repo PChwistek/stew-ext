@@ -1,5 +1,5 @@
 import { TABS_SNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
-  TABS_SETRECIPENAME, TABS_SETRECIPEPUBLIC } from '../actionTypes'
+  TABS_SETRECIPENAME, TABS_SETRECIPEPUBLIC, TABS_SETRECIPETAG, TABS_ADDRECIPETAG, TABS_REMOVERECIPETAG } from '../actionTypes'
 
 export function getCurrentTabs() {
   return {
@@ -32,6 +32,33 @@ export function setRecipeName(recipeName) {
     type: TABS_SETRECIPENAME,
     payload: {
       recipeName,
+    }
+  }
+}
+
+export function setRecipeTag(recipeTag) {
+  return {
+    type: TABS_SETRECIPETAG,
+    payload: {
+      recipeTag,
+    }
+  }
+}
+
+export function addRecipeTag(recipeTag) {
+  return {
+    type: TABS_ADDRECIPETAG,
+    payload: {
+      recipeTag,
+    }
+  }
+}
+
+export function removeRecipeTag(recipeTag) {
+  return {
+    type: TABS_REMOVERECIPETAG,
+    payload: {
+      recipeTag,
     }
   }
 }

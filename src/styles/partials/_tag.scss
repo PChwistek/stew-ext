@@ -1,0 +1,32 @@
+.tag {
+  display: flex;
+  align-items: center;
+  background: $brand-color;
+  font-family: $base-font-family;
+  font-size: $font-size-large;
+  color: $white;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+
+  &__remove {
+    margin-top: 2px;
+    padding-left: 5px;
+    display: inline;
+    cursor: pointer;
+    img {
+      width: 16px;
+    }
+  }
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  border-radius: 5px;
+  background: $grey-background;
+  max-height: 250px;
+  width: auto;
+  overflow-y: scroll;
+}
