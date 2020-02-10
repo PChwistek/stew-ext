@@ -41,8 +41,8 @@ class TextField extends Component {
   }
 
   render() {
-    const { active, value, error, label } = this.state
-    const { predicted, locked, type } = this.props
+    const { active, error, label } = this.state
+    const { predicted, locked, type, value } = this.props
     const fieldClassName = `field ${(locked ? active : active || value) &&
       "active"} ${locked && !active && "locked"} && ${error && 'error'}`
 

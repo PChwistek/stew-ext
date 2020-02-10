@@ -1,7 +1,7 @@
 import { 
   TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
-  TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG
+  TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS
 } from '../../actionTypes'
 
 const initialState = {
@@ -77,6 +77,15 @@ export default (state = initialState, action) => {
       state.recipeForm.recipeTags = state.recipeForm.recipeTags.filter(tag => tag.id != tagId)
       return Object.assign({}, state, {})
     }
+    case TABS_CLEARFIELDS: 
+      return Object.assign({}, state, {
+        recipeForm: {
+          recipeName: '',
+          recipeTag: '',
+          recipeTags: [],
+          isPublic: false,
+        }
+      })
     default:
       return state
   }

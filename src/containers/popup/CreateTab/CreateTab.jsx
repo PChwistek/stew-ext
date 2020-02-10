@@ -6,10 +6,12 @@ import Button from '../../common-ui/Button'
 
 export default function CreateTab(props) {
 
-  const { tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap, 
-    setRecipeName, setRecipePublic, setRecipeTag, addRecipeTag, removeRecipeTag } = props
+  const { 
+    tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap, 
+    setRecipeName, setRecipePublic, setRecipeTag, addRecipeTag, 
+    removeRecipeTag, clearFields } = props
   const session = tabs.session
-  const { recipeForm: { recipeName, isPublic, recipeTags } } = tabs
+  const { recipeForm: { recipeName, isPublic, recipeTags, recipeTag } } = tabs
 
   function windowTabs(win, index) {
     return (
@@ -43,10 +45,10 @@ export default function CreateTab(props) {
       <div className={ 'createtab' }>
         <div className={ 'createtab__form'}>
           <div className={ 'createtab__form-row'}>
-            <TextField type={ 'text' } label={ 'Recipe Name' } setValue={ setRecipeName } /> 
+            <TextField type={ 'text' } label={ 'Recipe Name' } setValue={ setRecipeName } value={ recipeName } /> 
           </div>
           <div className={ 'createtab__form-row'}>
-            <TextField type={ 'text' } label={ 'Add tags' } setValue={ setRecipeTag } clearOnEnter={ true } onEnter={ addRecipeTag } /> 
+            <TextField type={ 'text' } label={ 'Add tags' } setValue={ setRecipeTag } clearOnEnter={ true } onEnter={ addRecipeTag } value={ recipeTag } /> 
           </div>
           <div className={ 'tag-container' } >
           {
@@ -69,6 +71,11 @@ export default function CreateTab(props) {
           <div className={'createtab__bottom-row'}>
             <div className={ 'createtab__form-row--submit'}>
               <Button text={ 'Save' } type={ 'primary' } />
+            </div>
+            <div className={ 'createtab__clear content' }>
+              <div className={ 'link' } onClick={ clearFields }>
+                Clear Fields
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import { TABS_SNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
-  TABS_SETRECIPENAME, TABS_SETRECIPEPUBLIC, TABS_SETRECIPETAG, TABS_ADDRECIPETAG, TABS_REMOVERECIPETAG } from '../actionTypes'
+  TABS_SETRECIPENAME, TABS_SETRECIPEPUBLIC, TABS_SETRECIPETAG, 
+  TABS_ADDRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS
+} from '../actionTypes'
 
 export function getCurrentTabs() {
   return {
@@ -69,5 +71,12 @@ export function setRecipePublic(isPublic) {
     payload: {
       isPublic,
     }
+  }
+}
+
+export function clearFields() {
+  return {
+    type: TABS_CLEARFIELDS,
+    payload: {}
   }
 }
