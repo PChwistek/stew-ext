@@ -1,0 +1,60 @@
+.dropdown {
+
+  &--invisible {
+    display: none;
+  }
+}
+
+.dropdown-toggler {
+  display: flex;
+  justify-content: flex-end;
+  width: 240px;
+  color: $text-color;
+  cursor: pointer;
+
+  &__icon {
+    margin-left: 5px;
+    height: 24px;
+  }
+
+  &__all-icon {
+    height: 28px;
+    margin-right: 10px;
+  }
+
+}
+
+.dropdown-toggler:active {
+  opacity: 0.5;
+}
+
+.dropdown-menu {
+  border-radius: 5px;
+  list-style: none;
+  padding-left: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0;
+}
+
+.dropdown-menu-item {
+  display: flex;
+  width: 220px;
+  background: $white;
+  padding: 6px 12px;
+  color: black;
+  border: 1px solid #ececec;
+  outline: none;
+  font-size: 16px;
+  cursor: pointer;
+
+  &__icon {
+    margin-right: 10px;
+    height: 32px;
+  }
+}
+
+.dropdown-menu-item:active {
+  opacity: 0.5;
+}
