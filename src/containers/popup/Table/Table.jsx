@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SortBar from './SortBar'
 import Button from '../../common-ui/Button'
 
@@ -17,29 +17,42 @@ const rows = [
     ],
     usedBy: '1.4K',
     favorites: '400'
+  },
+  {
+    name: 'React Development',
+    author: 'JubJubTumTum',
+    tags: [
+      'react',
+      'webdevelopment',
+      'fast'
+    ],
+    attributes: [
+      'Popular', 
+      'Favorite'
+    ],
+    usedBy: '1.4K',
+    favorites: '400'
   }
 ]
 
 function getSrc(attribute) {
-
   switch(attribute){
     case 'Popular': 
       return '../../../assets/fire.png'
     case 'Favorite':
       return '../../../assets/star1.png'
   }
-
-
 }
 
-export default function Table() {
+export default function Table(props) {
+  const { selectedRow = 0 } = props
   return (
     <div>
       <SortBar title={ 'All' }/>
       <div className={ 'table__container' }>
         {
-          rows.map(row => (
-            <div className={'table__row'}>
+          rows.map( (row, index) => (
+            <div className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
               <div className={ 'table__row__title '}>
                 { row.name }
                 <div className={ 'table__row__attributes '}>

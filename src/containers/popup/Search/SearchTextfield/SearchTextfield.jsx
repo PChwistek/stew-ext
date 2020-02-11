@@ -57,6 +57,7 @@ class SearchTextField extends Component {
           id={1}
           type={ type }
           value={value}
+          autoFocus
           placeholder={label}
           onChange={this.changeValue.bind(this)}
           onKeyPress={this.handleKeyPress.bind(this)}

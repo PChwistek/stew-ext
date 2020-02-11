@@ -9,9 +9,13 @@
 
   &__row {
     height: 100px;
-    padding: 20px;
+    padding: 10px;
     color: $text-color;
     position: relative;
+
+    &--selected {
+      background: $grey-background;
+    }
 
     &__title {
       display: flex;
@@ -46,7 +50,7 @@
       position: absolute;
       z-index: 2;
       right: 20px;
-      top: 40px;
+      top: 30px;
     }
 
     &:hover &__launch {
