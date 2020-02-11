@@ -10,8 +10,8 @@
 
   &--visible {
     right: 0%;
-    -webkit-animation: slidein-anim 0.3s ease-in-out; /* Safari 4.0 - 8.0 */
-    animation: slidein-anim 0.3s ease-in-out;
+    -webkit-animation: slidein-anim 0.2s ease-in-out; /* Safari 4.0 - 8.0 */
+    animation: slidein-anim 0.2s ease-in-out;
   }
 
   &--hide {
@@ -34,7 +34,6 @@
 
 @keyframes slidein-anim {
   0%   {right: -100%;}
-  90% {right: 2%;}
   100% {right: 0%;}
 }
 

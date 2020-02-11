@@ -8,13 +8,11 @@
     background: rgba(216, 216, 216, .3);
     position: relative;
     padding: 7px;
-    cursor: pointer;
     display: flex; 
     flex-direction: row;
   }
 
   &__sort-bar-title {
-    cursor: pointer;
     font-size: $font-size-large;
     font-family: $base-font-family;
     color: $text-color;

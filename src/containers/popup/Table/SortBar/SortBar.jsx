@@ -8,6 +8,10 @@ const options = [
     src: '../../../../assets/planet.png',
   },
   {
+    text: 'Used Recently',
+    src: '../../../../assets/rocket.png'
+  },
+  {
     text: 'Favorites',
     src: '../../../../assets/star2.png'
   },
