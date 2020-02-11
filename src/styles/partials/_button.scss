@@ -15,16 +15,19 @@
       border-radius: 50px;
     }
 
-    &--smaller {
-      background-color: $brand-color;
-      border: none;
+    &--secondary {
+      background-color: $white;
+      border: 1px;
       color: white;
       padding: 10px 28px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-family: $base-font-family;
-      font-size: $font-size-regular;
+      font-size: $font-size-large;
+      color: $brand-color;
+      border-color: $brand-color;
+      border-style: solid;
       border-radius: 5px;
     }
 
