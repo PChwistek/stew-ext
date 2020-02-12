@@ -28,11 +28,24 @@ export class Popup extends Component {
     }
   }
 
-
   render() {
+    const { nextRow, previousRow } = this.props
     const { createVisible, wasOpened } = this.state
+
+    document.onkeydown = checkKey;
+    function checkKey(e) {
+      console.log('here!!')
+      e = e || window.event;
+      if (e.keyCode == '38') {
+        previousRow()
+      }
+      else if (e.keyCode == '40') {
+        nextRow()
+      }
+    }
+
     return (
-      <div className="popup">
+      <div className="popup" tabIndex="0" onKeyPress={ this.handleKeyPress } >
         <Header />
         <div className="popup__body">
           <CreateTab visible={ createVisible } wasOpened={ wasOpened } onCloseClick={ this.toggleCreateTab } />

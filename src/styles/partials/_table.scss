@@ -3,9 +3,9 @@
   width: 100%;
 
   &__container {
-    overflow-y: scroll;
+    height: 456px;
+    overflow: auto;
   }
-
 
   &__row {
     height: 100px;

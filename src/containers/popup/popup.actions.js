@@ -1,6 +1,15 @@
-import { TABS_SNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
-  TABS_SETRECIPENAME, TABS_SETRECIPEPUBLIC, TABS_SETRECIPETAG, 
-  TABS_ADDRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS
+import { 
+  TABS_SNAP, 
+  TABS_REMOVETAB, 
+  TABS_REMOVEWINDOW, 
+  TABS_SETRECIPENAME, 
+  TABS_SETRECIPEPUBLIC, 
+  TABS_SETRECIPETAG, 
+  TABS_ADDRECIPETAG, 
+  TABS_REMOVERECIPETAG, 
+  TABS_CLEARFIELDS,
+  SEARCH_NEXTROW,
+  SEARCH_PREVIOUSROW
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -77,6 +86,20 @@ export function setRecipePublic(isPublic) {
 export function clearFields() {
   return {
     type: TABS_CLEARFIELDS,
+    payload: {}
+  }
+}
+
+export function nextRow() {
+  return {
+    type: SEARCH_NEXTROW,
+    payload: {}
+  }
+}
+
+export function previousRow() {
+  return {
+    type: SEARCH_PREVIOUSROW,
     payload: {}
   }
 }

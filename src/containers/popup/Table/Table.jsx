@@ -32,6 +32,65 @@ const rows = [
     ],
     usedBy: '1.4K',
     favorites: '400'
+  },
+  {
+    name: 'React Development',
+    author: 'JubJubTumTum',
+    tags: [
+      'react',
+      'webdevelopment',
+      'fast'
+    ],
+    attributes: [
+      'Popular', 
+      'Favorite'
+    ],
+    usedBy: '1.4K',
+    favorites: '400'
+  },
+  {
+    name: 'React Development',
+    author: 'JubJubTumTum',
+    tags: [
+      'react',
+      'webdevelopment',
+      'fast'
+    ],
+    attributes: [
+      'Popular', 
+      'Favorite'
+    ],
+    usedBy: '1.4K',
+    favorites: '400'
+  },  {
+    name: 'React Development',
+    author: 'JubJubTumTum',
+    tags: [
+      'react',
+      'webdevelopment',
+      'fast'
+    ],
+    attributes: [
+      'Popular', 
+      'Favorite'
+    ],
+    usedBy: '1.4K',
+    favorites: '400'
+  },
+  {
+    name: 'React Development',
+    author: 'JubJubTumTum',
+    tags: [
+      'react',
+      'webdevelopment',
+      'fast'
+    ],
+    attributes: [
+      'Popular', 
+      'Favorite'
+    ],
+    usedBy: '1.4K',
+    favorites: '400'
   }
 ]
 
@@ -45,7 +104,8 @@ function getSrc(attribute) {
 }
 
 export default function Table(props) {
-  const { selectedRow = 0 } = props
+  const { selectedRow = 0 } = props.search
+  console.log(props)
   return (
     <div>
       <SortBar title={ 'All' }/>
@@ -60,7 +120,7 @@ export default function Table(props) {
                     row.attributes.map(attrib => (
                       <div className={ 'tooltip' }>
                         <img src={ getSrc(attrib) } className={ `table__row__attribute-icon` }/>
-                        <span class="tooltiptext"> { attrib }</span>
+                        <span className="tooltiptext"> { attrib }</span>
                       </div>
                     ))
                   }
