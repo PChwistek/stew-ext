@@ -1,48 +1,50 @@
-import React from 'react'
-import { Component } from 'react'
+import React,{ Component } from 'react'
 import PropTypes from 'prop-types'
 
-class SearchTextField extends Component {
+class TextField extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       active: (props.locked && props.active) || false,
-      value: props.value || '',
-      error: props.error || '',
-      label: props.label || 'Label'
+      value: props.value || "",
+      error: props.error || "",
+      label: props.label || "Label"
     }
   }
 
   changeValue(event) {
-    const value = event.target.value
-    const { validate } = this.props
+    const value = event.target.value;
+    const { validate, setValue } = this.props
 
     if(validate) {
       const { isValid, error } = validate(value)
       if(isValid) {
         this.setState({ value, error })
-        // setValue(value)
+        setValue(value)
       }
 
     } else {
-      // setValue(value)
-      this.setState({ value, error: '' })
+      setValue(value)
+      this.setState({ value, error: "" })
     }
     
   }
 
   handleKeyPress(event) {
+    const { onEnter, clearOnEnter } = this.props
     if (event.which === 13) {
-      this.setState({ value: this.props.predicted })
+      onEnter && onEnter()
+      clearOnEnter && this.setState({ value: '' })
+      // this.setState({ value: this.props.predicted })
     }
   }
 
   render() {
-    const { active, value, error, label } = this.state
-    const { predicted, locked, type } = this.props
-    const fieldClassName = `search-field ${(locked ? active : active || value) &&
-      'active'} ${locked && !active && 'locked'} && ${error && 'error'}`
+    const { active, error, label } = this.state
+    const { predicted, locked, type, value, autoFocus } = this.props
+    const fieldClassName = `field ${(locked ? active : active || value) &&
+      "active"} ${locked && !active && "locked"} && ${error && 'error'}`
 
     return (
       <div className={fieldClassName}>
@@ -50,14 +52,11 @@ class SearchTextField extends Component {
           value &&
           predicted &&
           predicted.includes(value) && <p className="predicted">{predicted}</p>}
-        <div className={ 'search-field__image-container'}>
-          <img src={ '../../../../assets/search.png' } className='search-field__image' />
-        </div>
         <input
           id={1}
           type={ type }
           value={value}
-          autoFocus
+          autoFocus={ autoFocus }
           placeholder={label}
           onChange={this.changeValue.bind(this)}
           onKeyPress={this.handleKeyPress.bind(this)}
@@ -65,16 +64,18 @@ class SearchTextField extends Component {
           onBlur={() => !locked && this.setState({ active: false })}
           autoComplete="off"       
         />
-        <label htmlFor={1} className={error && 'error'}>
-          {error}
+        <label htmlFor={1} className={error && "error"}>
+          {error || label}
         </label>
       </div>
-    )
+    );
   }
 }
 
-SearchTextField.propTypes = {
+TextField.propTypes = {
+  clearOnEnter: PropTypes.bool,
   locked: PropTypes.bool,
+  onEnter: PropTypes.func,
   active: PropTypes.bool,
   predicted: PropTypes.any,
   value: PropTypes.string,
@@ -85,4 +86,4 @@ SearchTextField.propTypes = {
   setValue: PropTypes.func.isRequired,
 }
   
-export default SearchTextField
+export default TextField

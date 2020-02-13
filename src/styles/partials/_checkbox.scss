@@ -6,12 +6,13 @@
   margin-bottom: 12px;
   cursor: pointer;
   font-size: $font-size-large;
+  font-family: $oxygen;
+  color: $text-color;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-
 /* Hide the browser's default checkbox-container */
 .checkbox-container input {
   position: absolute;

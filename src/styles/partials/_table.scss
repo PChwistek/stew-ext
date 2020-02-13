@@ -2,10 +2,78 @@
   position: relative;
   width: 100%;
 
+  &__no-results {
+    @include absCenter();
+    font-family: $base-font-family;
+    font-size: $font-size-larger;
+    font-weight: 700;
+    color: $brand-color;
+  }
+
+  &__container {
+    height: 456px;
+    overflow: auto;
+  }
+
+  &__row {
+    height: 100px;
+    padding: 20px;
+    color: $text-color;
+    position: relative;
+
+    &--selected {
+      background: $row-highlight;
+    }
+
+    &__top {
+      display: flex;
+    }
+
+    &__title {
+      display: flex;
+      cursor: pointer;
+      text-decoration: underline;
+      font-weight: 700;
+      font-family: $base-font-family;
+      font-size: $font-size-larger;
+    }
+
+    &__author {
+      padding-top: 5px;
+      font-family: $base-font-family;
+      font-size: $font-size-regular;
+    }
+
+    &__attributes {
+      margin-left: 5px;
+      display: flex;
+    }
+
+    &__attribute-icon {
+      height: 24px;
+    }
+
+    &__tags {
+      display: flex;
+    }
+
+    &__launch {
+      visibility: hidden;
+      position: absolute;
+      z-index: 2;
+      right: 20px;
+      top: 30px;
+    }
+
+    &:hover &__launch {
+      visibility: visible;
+    }
+
+  }
 
   &__sort-bar {
     height: 25px;
-    background: rgba(216, 216, 216, .3);
+    background: $white;
     position: relative;
     padding: 7px;
     display: flex; 
@@ -17,6 +85,15 @@
     font-family: $base-font-family;
     color: $text-color;
     position: relative;
+  }
+
+  &__sort-bar-dropdown-container {
+    cursor: pointer;
+    font-size: $font-size-large;
+    font-family: $base-font-family;
+    color: $text-color;
+    position: relative;
+    margin-left: auto;
   }
 
   &__sort-bar-icons {

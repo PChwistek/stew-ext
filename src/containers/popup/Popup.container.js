@@ -1,14 +1,17 @@
 import { connect } from 'react-redux'
 import { Popup } from './Popup'
-import { getCurrentTabs } from './popup.actions'
+import { getCurrentTabs, nextRow, previousRow } from './popup.actions'
 
-const stateToProps = ({ user, popup }) => ({
+const stateToProps = ({ auth, user, popup }) => ({
+  loggedIn: auth.loggedIn,
   user,
   popup,
 })
 
 const dispatchToProps = {
-  getCurrentTabs
+  getCurrentTabs,
+  nextRow,
+  previousRow
 }
 
 export default connect(stateToProps, dispatchToProps)(Popup)

@@ -1,55 +1,65 @@
 import React from 'react'
 import SlideIn from '../SlideIn'
+import TextField from '../../common-ui/TextField'
+import Checkbox from '../../common-ui/Checkbox'
+import Button from '../../common-ui/Button'
+import SessionView from '../SessionView'
 
 export default function CreateTab(props) {
 
-  const { tabs } = props
+  const { 
+    tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap, 
+    setRecipeName, setRecipePublic, setRecipeTag, addRecipeTag, 
+    removeRecipeTag, clearFields } = props
   const session = tabs.session
-
-  function windowTabs(win, index) {
-    
-    return (
-      <div>
-        <div className='createtab__window-row'>
-          <div className='createtab__window-title'>Window { index + 1 } </div>
-          <img src={ '../../../assets/window-sketch.png' } className='createtab__window-icon' />
-        </div>
-        {
-          win && win.tabs.map(tab => (
-            <div className='tab__row'>
-              <div className='tab__remove-container'> 
-                <img src={ '' } className='tab__remove' />
-              </div>
-              <div className='tab__body'>
-                <img src={ tab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
-                <p className='tab__title'> { tab.title } </p>
-              </div>
-          </div>
-        ))
-      }
-      </div>
-    )
-  }
-
+  const { recipeForm: { recipeName, isPublic, recipeTags, recipeTag } } = tabs
   
   return (
     <SlideIn { ...props } >
       <div className={ 'createtab' }>
         <div className={ 'createtab__form'}>
-          Open Tabs
-        </div>
-        <div className='createtab__session'>
-          <div className='createtab__title'>
-            Session Snapshot
+          <div className={ 'createtab__form-row'}>
+            <TextField type={ 'text' } label={ 'Recipe Name' } setValue={ setRecipeName } value={ recipeName } /> 
           </div>
-          <div className='tab__col'>
-            {
-              session && session.map((win, index) => {
-                return windowTabs(win, index)
-              })
-            }
+          <div className={ 'createtab__form-row'}>
+            <TextField type={ 'text' } label={ 'Add tags' } setValue={ setRecipeTag } clearOnEnter={ true } onEnter={ addRecipeTag } value={ recipeTag } /> 
+          </div>
+          <div className={ 'tag-container' } >
+          {
+            recipeTags && 
+              recipeTags.map(tag => {
+              return (
+                <div className={ 'tag' }>
+                  { tag.text }
+                  <div className={ 'tag__remove' } onClick={ () => removeRecipeTag(tag)}>
+                    <img src={'../../../assets/remove-white.png'} />
+                  </div>
+                </div>
+              )
+            })
+          }
+          </div>   
+          <div className={ 'createtab__form-row'}>
+              <Checkbox label={ 'Make public?' } checked={ isPublic } setValue={ () => setRecipePublic(!isPublic) }/>
+            </div>
+          <div className={'createtab__bottom-row'}>
+            <div className={ 'createtab__form-row--submit'}>
+              <Button text={ 'Save' } type={ 'primary' } />
+            </div>
+            <div className={ 'createtab__clear content' }>
+              <div className={ 'link' } onClick={ clearFields }>
+                Clear Fields
+              </div>
+            </div>
           </div>
         </div>
+        <SessionView 
+          session={ session } 
+          removeTabFromSnap={ removeTabFromSnap } 
+          removeWindowFromSnap={ removeWindowFromSnap } 
+          getCurrentTabs={ getCurrentTabs }
+          canEdit
+        />
       </div>
     </SlideIn>
   )

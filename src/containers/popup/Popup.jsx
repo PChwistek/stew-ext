@@ -4,6 +4,8 @@ import Header from './Header'
 import Search from './Search'
 import Table from './Table'
 import CreateTab from './CreateTab'
+import DetailTab from './DetailTab'
+import Login from './Login'
 import './popup.scss'
 
 export class Popup extends Component {
@@ -12,7 +14,10 @@ export class Popup extends Component {
     super(props)
     this.state = {
       createVisible: false,
-      wasOpened: false,
+      detailVisible: false,
+      detailWasOpened: false,
+      createWasOpened: false,
+      selectedRow: {}
     }
   }
 
@@ -21,24 +26,57 @@ export class Popup extends Component {
     const { getCurrentTabs } = this.props
     this.setState({
       createVisible: !createVisible,
-      wasOpened: true
+      createWasOpened: true
     })
     if(!createVisible) {
       getCurrentTabs()
     }
   }
 
+  toggleRowDetailTab = (row) => {
+    const { detailVisible } = this.state
+    this.setState({
+      detailVisible: !detailVisible,
+      detailWasOpened: true,
+      selectedRow: row
+    })
+  }
 
   render() {
-    const { createVisible, wasOpened } = this.state
+    const { nextRow, previousRow, loggedIn } = this.props
+    const { detailVisible, createVisible, detailWasOpened, createWasOpened, selectedRow } = this.state
+
+    // document.onkeydown = checkKey;
+    // function checkKey(e) {
+    //   e = e || window.event;
+    //   if (e.keyCode == '38') {
+    //     previousRow()
+    //   }
+    //   else if (e.keyCode == '40') {
+    //     nextRow()
+    //   }
+      
+    // }
+
     return (
-      <div className="popup">
-        <Header />
-        <div className="popup__body">
-          <CreateTab visible={ createVisible } wasOpened={ wasOpened } onCloseClick={ this.toggleCreateTab } />
-          <Search onPlusClick={ this.toggleCreateTab } />
-          <Table />
-        </div>
+      <div className="popup" >
+      {
+        !loggedIn ? <Login /> 
+          : <div>
+            <Header />
+            <div className="popup__body">
+              <CreateTab visible={ createVisible } wasOpened={ createWasOpened } onCloseClick={ this.toggleCreateTab } />
+              <DetailTab 
+                visible= { detailVisible } 
+                wasOpened={ detailWasOpened }
+                onCloseClick={ this.toggleRowDetailTab } 
+                toView={ selectedRow } 
+              />
+              <Search onPlusClick={ this.toggleCreateTab } />
+              <Table onRowSelect={ this.toggleRowDetailTab } />
+            </div>
+          </div>
+      }
       </div>
     )
   }
