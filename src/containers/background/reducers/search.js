@@ -1,107 +1,12 @@
 import { 
-  SEARCH_NEXTROW, SEARCH_PREVIOUSROW
+  SEARCH_NEXTROW, SEARCH_PREVIOUSROW, SEARCH_SETROW
 } from '../../actionTypes'
 
 const initialState = {
   searchTerms: '',
-  results: [
-    {
-      name: 'React Development',
-      author: 'JubJubTumTum',
-      tags: [
-        'react',
-        'webdevelopment',
-        'fast'
-      ],
-      attributes: [
-        'Popular', 
-        'Favorite'
-      ],
-      usedBy: '1.4K',
-      favorites: '400'
-    },
-    {
-      name: 'React Development',
-      author: 'JubJubTumTum',
-      tags: [
-        'react',
-        'webdevelopment',
-        'fast'
-      ],
-      attributes: [
-        'Popular', 
-        'Favorite'
-      ],
-      usedBy: '1.4K',
-      favorites: '400'
-    },
-    {
-      name: 'React Development',
-      author: 'JubJubTumTum',
-      tags: [
-        'react',
-        'webdevelopment',
-        'fast'
-      ],
-      attributes: [
-        'Popular', 
-        'Favorite'
-      ],
-      usedBy: '1.4K',
-      favorites: '400'
-    },
-    {
-      name: 'React Development',
-      author: 'JubJubTumTum',
-      tags: [
-        'react',
-        'webdevelopment',
-        'fast'
-      ],
-      attributes: [
-        'Popular', 
-        'Favorite'
-      ],
-      usedBy: '1.4K',
-      favorites: '400'
-    },  {
-      name: 'React Development',
-      author: 'JubJubTumTum',
-      tags: [
-        'react',
-        'webdevelopment',
-        'fast'
-      ],
-      attributes: [
-        'Popular', 
-        'Favorite'
-      ],
-      usedBy: '1.4K',
-      favorites: '400'
-    },
-    {
-      name: 'React Development',
-      author: 'JubJubTumTum',
-      tags: [
-        'react',
-        'webdevelopment',
-        'fast'
-      ],
-      attributes: [
-        'Popular', 
-        'Favorite'
-      ],
-      usedBy: '1.4K',
-      favorites: '400',
-      session: {
-        tabs: [
-          
-        ]
-      }
-    }
-  ],
+  results: [],
   isDropdownOpen: false,
-  selectedRow: 0,
+  selectedRow: -1,
   sortedBy: ''
 }
 
@@ -114,6 +19,11 @@ export default (state = initialState, action) => {
       }
       return Object.assign({}, state, {
         selectedRow: nextRow
+      })
+    case SEARCH_SETROW:
+      const { row } = action.payload
+      return Object.assign({}, state, {
+        selectedRow: row,
       })
     case SEARCH_PREVIOUSROW:
       let prevRow = state.selectedRow - 1

@@ -46,19 +46,20 @@ export class Popup extends Component {
     const { nextRow, previousRow, loggedIn } = this.props
     const { detailVisible, createVisible, detailWasOpened, createWasOpened, selectedRow } = this.state
 
-    document.onkeydown = checkKey;
-    function checkKey(e) {
-      e = e || window.event;
-      if (e.keyCode == '38') {
-        previousRow()
-      }
-      else if (e.keyCode == '40') {
-        nextRow()
-      }
-    }
+    // document.onkeydown = checkKey;
+    // function checkKey(e) {
+    //   e = e || window.event;
+    //   if (e.keyCode == '38') {
+    //     previousRow()
+    //   }
+    //   else if (e.keyCode == '40') {
+    //     nextRow()
+    //   }
+      
+    // }
 
     return (
-      <div className="popup" tabIndex="0" onKeyPress={ this.handleKeyPress } >
+      <div className="popup" >
       {
         !loggedIn ? <Login /> 
           : <div>

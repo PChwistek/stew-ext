@@ -2,6 +2,14 @@
   position: relative;
   width: 100%;
 
+  &__no-results {
+    @include absCenter();
+    font-family: $base-font-family;
+    font-size: $font-size-larger;
+    font-weight: 700;
+    color: $brand-color;
+  }
+
   &__container {
     height: 456px;
     overflow: auto;
@@ -15,6 +23,10 @@
 
     &--selected {
       background: $row-highlight;
+    }
+
+    &__top {
+      display: flex;
     }
 
     &__title {
@@ -56,6 +68,7 @@
     &:hover &__launch {
       visibility: visible;
     }
+
   }
 
   &__sort-bar {

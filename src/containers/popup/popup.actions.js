@@ -10,7 +10,8 @@ import {
   TABS_CLEARFIELDS,
   SEARCH_NEXTROW,
   SEARCH_PREVIOUSROW,
-  AUTH_LOGIN
+  AUTH_LOGIN,
+  SEARCH_SETROW
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -95,6 +96,15 @@ export function nextRow() {
   return {
     type: SEARCH_NEXTROW,
     payload: {}
+  }
+}
+
+export function selectRow(row) {
+  return {
+    type: SEARCH_SETROW,
+    payload: {
+      row
+    }
   }
 }
 

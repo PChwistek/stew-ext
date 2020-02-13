@@ -1,13 +1,16 @@
 import { connect } from 'react-redux'
 import Table from './Table'
-// import { 
-// } from '../popup.actions'
+import { 
+  selectRow
+} from '../popup.actions'
 
 const stateToProps = ({ search }) => ({
+  
   search,
 })
 
 const dispatchToProps = {
+  selectRow
 }
 
 export default connect(stateToProps, dispatchToProps)(Table)

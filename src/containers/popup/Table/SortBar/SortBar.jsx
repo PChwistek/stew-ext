@@ -8,16 +8,16 @@ const options = [
     src: '../../../../assets/planet.png',
   },
   {
+    text: 'Created by me',
+    src: '../../../../assets/astronaut.png'
+  },
+  {
     text: 'Used Recently',
     src: '../../../../assets/rocket.png'
   },
   {
     text: 'Favorites',
     src: '../../../../assets/star2.png'
-  },
-  {
-    text: 'Created by me',
-    src: '../../../../assets/astronaut.png'
   },
   {
     text: 'Created by others',

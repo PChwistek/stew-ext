@@ -62,6 +62,7 @@ class TextField extends Component {
           onKeyPress={this.handleKeyPress.bind(this)}
           onFocus={() => !locked && this.setState({ active: true })}
           onBlur={() => !locked && this.setState({ active: false })}
+          autoComplete="off"       
         />
         <label htmlFor={1} className={error && "error"}>
           {error || label}

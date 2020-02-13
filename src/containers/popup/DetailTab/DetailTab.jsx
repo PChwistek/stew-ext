@@ -1,6 +1,7 @@
 import React from 'react'
 import SlideIn from '../SlideIn'
 import SessionView from '../SessionView'
+import { getSrc } from '../utils'
 
 export default function DetailTab(props) {
   const { toView } = props
@@ -13,10 +14,13 @@ export default function DetailTab(props) {
             { toView.name }
           </div>
           <div>
-            { toView.map}
+            {/* {
+               toView.attributes.map(attrib => {
+              <img src={ getSrc(attrib) } />
+            })} */}
           </div>
           <div>
-            { toView.author}
+            { toView.author }
           </div>
         </div>
         <SessionView />
