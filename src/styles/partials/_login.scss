@@ -1,0 +1,31 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  @include absCenter;
+
+  &__image-container {
+    text-align: center;
+  }
+
+  &__image {
+    height: 128px;
+    text-align: center;
+  }
+
+  &__form-row {
+    width: 300px;
+    padding-top: 10px;
+    
+    &--submit {
+      padding-top: 10px;
+      text-align: center;
+    }
+  }
+
+  &__register {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+  }
+}

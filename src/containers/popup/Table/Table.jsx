@@ -2,98 +2,6 @@ import React, { useState } from 'react'
 import SortBar from './SortBar'
 import Button from '../../common-ui/Button'
 
-const rows = [
-  {
-    name: 'React Development',
-    author: 'JubJubTumTum',
-    tags: [
-      'react',
-      'webdevelopment',
-      'fast'
-    ],
-    attributes: [
-      'Popular', 
-      'Favorite'
-    ],
-    usedBy: '1.4K',
-    favorites: '400'
-  },
-  {
-    name: 'React Development',
-    author: 'JubJubTumTum',
-    tags: [
-      'react',
-      'webdevelopment',
-      'fast'
-    ],
-    attributes: [
-      'Popular', 
-      'Favorite'
-    ],
-    usedBy: '1.4K',
-    favorites: '400'
-  },
-  {
-    name: 'React Development',
-    author: 'JubJubTumTum',
-    tags: [
-      'react',
-      'webdevelopment',
-      'fast'
-    ],
-    attributes: [
-      'Popular', 
-      'Favorite'
-    ],
-    usedBy: '1.4K',
-    favorites: '400'
-  },
-  {
-    name: 'React Development',
-    author: 'JubJubTumTum',
-    tags: [
-      'react',
-      'webdevelopment',
-      'fast'
-    ],
-    attributes: [
-      'Popular', 
-      'Favorite'
-    ],
-    usedBy: '1.4K',
-    favorites: '400'
-  },  {
-    name: 'React Development',
-    author: 'JubJubTumTum',
-    tags: [
-      'react',
-      'webdevelopment',
-      'fast'
-    ],
-    attributes: [
-      'Popular', 
-      'Favorite'
-    ],
-    usedBy: '1.4K',
-    favorites: '400'
-  },
-  {
-    name: 'React Development',
-    author: 'JubJubTumTum',
-    tags: [
-      'react',
-      'webdevelopment',
-      'fast'
-    ],
-    attributes: [
-      'Popular', 
-      'Favorite'
-    ],
-    usedBy: '1.4K',
-    favorites: '400'
-  }
-]
-
 function getSrc(attribute) {
   switch(attribute){
     case 'Popular': 
@@ -104,16 +12,17 @@ function getSrc(attribute) {
 }
 
 export default function Table(props) {
-  const { selectedRow = 0 } = props.search
+  const { onRowSelect } = props
+  const { selectedRow = 0, results } = props.search
   console.log(props)
   return (
     <div>
       <SortBar title={ 'All' }/>
       <div className={ 'table__container' }>
         {
-          rows.map( (row, index) => (
+          results.map( (row, index) => (
             <div className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
-              <div className={ 'table__row__title '}>
+              <div className={ 'table__row__title '} onClick={ onRowSelect }>
                 { row.name }
                 <div className={ 'table__row__attributes '}>
                   {
