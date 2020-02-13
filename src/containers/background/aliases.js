@@ -41,6 +41,7 @@ const loginFailure = () => {
 const login = (originalAction) => {
   console.log('logging in')
   return dispatch => {
+    dispatch(loginPending())
     axios
       .post(`http://localhost:3009/auth/login`, {
         ...originalAction.payload

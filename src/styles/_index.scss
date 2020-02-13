@@ -34,6 +34,7 @@ $spacing-unit:     30px !default;
 $text-color:       #4C5B5C !default;
 $text-color-lighter:       rgba(76, 91, 92, 0.486) !default;
 $link-color: #067bc2;
+$row-highlight: rgba(242, 244, 243, 0.884);
 $brand-color:      #BCDB71 !default;
 $error-color: #E26D5A !default;
 $grey-color: rgba(242, 244, 243, 0.43);
@@ -76,6 +77,10 @@ a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.loading {
+    height: 128px;
 }
 
 @import "partials/typography";

@@ -17,6 +17,7 @@ export class Popup extends Component {
       detailVisible: false,
       detailWasOpened: false,
       createWasOpened: false,
+      selectedRow: {}
     }
   }
 
@@ -32,21 +33,21 @@ export class Popup extends Component {
     }
   }
 
-  toggleRowDetailTab = () => {
+  toggleRowDetailTab = (row) => {
     const { detailVisible } = this.state
     this.setState({
       detailVisible: !detailVisible,
-      detailWasOpened: true
+      detailWasOpened: true,
+      selectedRow: row
     })
   }
 
   render() {
     const { nextRow, previousRow, loggedIn } = this.props
-    const { detailVisible, createVisible, detailWasOpened, createWasOpened } = this.state
+    const { detailVisible, createVisible, detailWasOpened, createWasOpened, selectedRow } = this.state
 
     document.onkeydown = checkKey;
     function checkKey(e) {
-      console.log('here!!')
       e = e || window.event;
       if (e.keyCode == '38') {
         previousRow()
@@ -64,7 +65,12 @@ export class Popup extends Component {
             <Header />
             <div className="popup__body">
               <CreateTab visible={ createVisible } wasOpened={ createWasOpened } onCloseClick={ this.toggleCreateTab } />
-              <DetailTab visible= { detailVisible } wasOpened={ detailWasOpened } onCloseClick={ this.toggleRowDetailTab } />
+              <DetailTab 
+                visible= { detailVisible } 
+                wasOpened={ detailWasOpened }
+                onCloseClick={ this.toggleRowDetailTab } 
+                toView={ selectedRow } 
+              />
               <Search onPlusClick={ this.toggleCreateTab } />
               <Table onRowSelect={ this.toggleRowDetailTab } />
             </div>

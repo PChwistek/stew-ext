@@ -1,33 +1,24 @@
 import React, { useState } from 'react'
 import SortBar from './SortBar'
 import Button from '../../common-ui/Button'
-
-function getSrc(attribute) {
-  switch(attribute){
-    case 'Popular': 
-      return '../../../assets/fire.png'
-    case 'Favorite':
-      return '../../../assets/star1.png'
-  }
-}
+import { getSrc } from '../utils'
 
 export default function Table(props) {
   const { onRowSelect } = props
   const { selectedRow = 0, results } = props.search
-  console.log(props)
   return (
     <div>
       <SortBar title={ 'All' }/>
       <div className={ 'table__container' }>
         {
           results.map( (row, index) => (
-            <div className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
-              <div className={ 'table__row__title '} onClick={ onRowSelect }>
+            <div key={ 'row' + index } className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
+              <div className={ 'table__row__title '} onClick={ () => onRowSelect(row) }>
                 { row.name }
                 <div className={ 'table__row__attributes '}>
                   {
                     row.attributes.map(attrib => (
-                      <div className={ 'tooltip' }>
+                      <div key={ attrib} className={ 'tooltip' }>
                         <img src={ getSrc(attrib) } className={ `table__row__attribute-icon` }/>
                         <span className="tooltiptext"> { attrib }</span>
                       </div>
@@ -41,7 +32,7 @@ export default function Table(props) {
               <div className={ 'table__row__tags'}>
               {
                 row.tags.map(tag => (
-                  <div className={ 'tag-result' }>
+                  <div key={ tag } className={ 'tag-result' }>
                     { tag }
                   </div>
                 ))

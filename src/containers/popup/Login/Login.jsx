@@ -5,7 +5,7 @@ import Checkbox from '../../common-ui/Checkbox'
 
 export default function Login(props) {
 
-  const { login } = props
+  const { login, isPending } = props
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
@@ -21,7 +21,7 @@ export default function Login(props) {
           <img src={ '../../../assets/stew-logo.png' } className={ 'login__image '} />
         </div>
         <div className={ 'login__form-row'}>
-          <TextField type={ 'text' } label={ 'Username' } setValue={ setUsername } value={ username } />
+          <TextField type={ 'text' } label={ 'Username' } autoFocus setValue={ setUsername } value={ username } />
         </div>
         <div className={ 'login__form-row'}>
           <TextField type={ 'password' } label={ 'Password' } setValue={ setPassword } value={ password }/>
@@ -30,12 +30,16 @@ export default function Login(props) {
           <Checkbox label={ 'Remember Me?' } checked={ remember } setValue={ setRemember } />
         </div>
         <div className={ 'login__form-row--submit'}>
-          <Button type={ 'primary'} text={ 'Login'} onClick={ handleLogin } />
+        {
+          isPending 
+            ? <img src={ '../../../assets/flask.svg' } className={ 'loading' }/>
+            : <Button type={ 'primary'} text={ 'Login'} onClick={ handleLogin } />
+        }
         </div>
       </div>
       <div className={ 'login__register content' }>
         <div className={ 'link' }>
-          Need an account? <a a href="https://getstew.com" target="blank"> Register. </a>
+          Need an account? <a href="https://getstew.com" target="blank"> Register. </a>
         </div>
       </div>
     </div>

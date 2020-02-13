@@ -2,8 +2,8 @@ import { connect } from 'react-redux'
 import Login from './Login'
 import { login } from '../popup.actions'
 
-const stateToProps = () => ({
- 
+const stateToProps = ({ auth }) => ({
+  pending: auth.pending
 })
 
 const dispatchToProps = {
