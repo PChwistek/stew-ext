@@ -9,7 +9,8 @@ import {
   TABS_REMOVERECIPETAG, 
   TABS_CLEARFIELDS,
   SEARCH_NEXTROW,
-  SEARCH_PREVIOUSROW
+  SEARCH_PREVIOUSROW,
+  AUTH_LOGIN
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -101,5 +102,15 @@ export function previousRow() {
   return {
     type: SEARCH_PREVIOUSROW,
     payload: {}
+  }
+}
+
+export function login(username, password) {
+  return {
+    type: AUTH_LOGIN,
+    payload: {
+      username,
+      password,
+    }
   }
 }
