@@ -10,7 +10,8 @@ export default function CreateTab(props) {
   const { 
     tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap, 
     setRecipeName, setRecipePublic, setRecipeTag, addRecipeTag, 
-    removeRecipeTag, clearFields } = props
+    removeRecipeTag, clearFields, createRecipe
+   } = props
   const session = tabs.session
   const { recipeForm: { recipeName, isPublic, recipeTags, recipeTag } } = tabs
   
@@ -44,7 +45,7 @@ export default function CreateTab(props) {
             </div>
           <div className={'createtab__bottom-row'}>
             <div className={ 'createtab__form-row--submit'}>
-              <Button text={ 'Save' } type={ 'primary' } />
+              <Button text={ 'Save' } type={ 'primary' } onClick={ createRecipe } />
             </div>
             <div className={ 'createtab__clear content' }>
               <div className={ 'link' } onClick={ clearFields }>

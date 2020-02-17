@@ -36,4 +36,19 @@ export default class Manager {
     }
   }
 
+  async addRecipeToStore(recipe) {
+    const theRecipes = this.fetchAllRecipes()
+    console.log(theRecipes)
+
+  }
+
+  async fetchAllRecipes() {
+    const theResult = await browser.storage.local.get(['recipes'])
+    return theResult
+  }
+
+  searchRecipes() {
+    
+  }
+
 }

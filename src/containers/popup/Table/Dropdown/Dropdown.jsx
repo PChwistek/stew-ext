@@ -49,7 +49,7 @@ const Dropdown = ({ value, options, placeholder, onChange }) => {
       {open && (
         <ul className="dropdown-menu">
           {options.map(opt => (
-            <li className="dropdown-menu-item" onClick={e => handleChange(opt)}>
+            <li key={ opt.text } className="dropdown-menu-item" onClick={e => handleChange(opt)}>
                 <div>
                   <img src={ opt.src } className='dropdown-menu-item__icon' />
                 </div>
@@ -65,17 +65,3 @@ const Dropdown = ({ value, options, placeholder, onChange }) => {
 }
 
 export default Dropdown
-
-
-/*
- <div className='dropdown-title-element'>
-          <img src={ '../../../../assets/creativity.png' } className='table__sort-bar-icon' />
-        </div>
-         <div className='dropdown-title dropdown-title-element'>
-          All
-        </div>
-        <div className='dropdown-title-element'>
-          <img src={ '../../../../assets/sort.png' } className='table__sort-bar-sort'  />
-        </div>
-
-*/

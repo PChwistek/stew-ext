@@ -11,7 +11,11 @@ import {
   SEARCH_NEXTROW,
   SEARCH_PREVIOUSROW,
   AUTH_LOGIN,
-  SEARCH_SETROW
+  SEARCH_SETROW,
+  TABS_CREATERECIPE,
+  POPUP_SELECTROW,
+  POPUP_TOGGLE_DETAILVISIBLE,
+  POPUP_TOGGLE_CREATEVISIBLE
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -121,6 +125,43 @@ export function login(username, password) {
     payload: {
       username,
       password,
+    }
+  }
+}
+
+export function createRecipe() {
+  return {
+    type: TABS_CREATERECIPE,
+    payload: {}
+  }
+}
+
+export function popupSelectRow(row) {
+  return {
+    type: POPUP_SELECTROW,
+    payload: {
+      selectedRow: row,
+    }
+  }
+}
+
+export function toggleCreateView(visible) {
+  return {
+    type: POPUP_TOGGLE_CREATEVISIBLE,
+    payload: {
+      createVisible: visible,
+      createWasOpened: !visible
+    }
+  }
+}
+
+export function toggleDetailView(visible, opened, row) {
+  return {
+    type: POPUP_TOGGLE_DETAILVISIBLE,
+    payload: {
+      detailVisible: visible,
+      detailWasOpened: opened,
+      selectedRow: row,
     }
   }
 }

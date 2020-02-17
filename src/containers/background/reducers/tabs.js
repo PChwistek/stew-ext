@@ -1,7 +1,8 @@
 import { 
   TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
-  TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS
+  TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
+  TABS_CREATERECIPE
 } from '../../actionTypes'
 
 const initialState = {
@@ -85,6 +86,15 @@ export default (state = initialState, action) => {
           recipeTags: [],
           isPublic: false,
         }
+      })
+    case TABS_CREATERECIPE:
+      const theRecipe = {
+        ...state.recipeForm,
+        config: state.session,
+      }
+      console.log('create recipe', theRecipe)
+      return Object.assign({}, state, {
+
       })
     default:
       return state
