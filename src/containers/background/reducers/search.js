@@ -1,5 +1,5 @@
 import { 
-  SEARCH_NEXTROW, SEARCH_PREVIOUSROW, SEARCH_SETROW, SEARCH_SETSEARCHTERMS
+  SEARCH_NEXTROW, SEARCH_PREVIOUSROW, SEARCH_SETROW, SEARCH_SETSEARCHTERMS_ALIAS, SEARCH_SETRESULTS_SUCCESS
 } from '../../actionTypes'
 
 const initialState = {
@@ -33,9 +33,13 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         selectedRow: prevRow
       })
-    case SEARCH_SETSEARCHTERMS:
+    case SEARCH_SETSEARCHTERMS_ALIAS:
       return Object.assign({}, state, {
         searchTerms: action.payload.searchTerms
+      })
+    case SEARCH_SETRESULTS_SUCCESS:
+      return Object.assign({}, state, {
+        results: action.payload.results
       })
     default:
       return state

@@ -8,6 +8,7 @@ import {
   AUTH_LOGIN_FAILED, 
   AUTH_LOGIN_SUCCESS,
   TABS_CREATERECIPE,
+  TABS_CLEARFIELDS,
   TABS_CREATERECIPE_FAILED,
   TABS_CREATERECIPE_PENDING,
   TABS_CREATERECIPE_SUCCESS,
@@ -19,10 +20,14 @@ import {
   SEARCH_SETRESULTS_PENDING,
   SEARCH_SETRESULTS_SUCCESS,
   SEARCH_SETSEARCHTERMS,
+  SEARCH_GET_INITIAL_RESULTS,
+  SEARCH_SETSEARCHTERMS_POPUP,
+  SEARCH_SETSEARCHTERMS_ALIAS,
  } from '../actionTypes'
+import { toggleCreateView } from '../popup/popup.actions'
 
 const manager = new TabManager()
- chrome.storage.local.clear()
+chrome.storage.local.clear()
 
 const getCurrentSession = (originalAction) => {
   console.log('original action', originalAction)
@@ -34,6 +39,13 @@ const getCurrentSession = (originalAction) => {
         session
       }
     })
+  }
+}
+
+const getInitialResults = (originalAction) => {
+  return async dispatch => {
+    const recipes = await manager.fetchAllRecipes()
+    dispatch(searchSuccess(recipes))
   }
 }
 
@@ -54,14 +66,20 @@ const createRecipeAlias = (originalAction) => {
       })))
 
       const theRecipe = {
+        uId: Math.floor(Math.random() * 101),    // returns a random integer from 0 to 100
         name: tabsState.recipeForm.recipeName,
         author: authState.loggedInAs,
         tags: tabsState.recipeForm.recipeTags,
+        attributes: ['Popular', 'Favorite'],
         isPublic: tabsState.recipeForm.isPublic,
         config: reducedSession,
       }
       await manager.addRecipeToStore(theRecipe)
       dispatch(createRecipeSuccess())
+      dispatch({ 
+        type: TABS_CLEARFIELDS,
+      })
+
     } catch(err) {
       console.log(err)
       dispatch(createRecipeFailed(err))
@@ -124,8 +142,18 @@ const searchSuccess = (results) => {
 
 const searchRecipes = (originalAction) => {
   return async dispatch => {
-    await manager.searchRecipes(originalAction.payload.searchTerms)
-    dispatch(searchSuccess())
+    dispatch(setSearchTerms(originalAction))
+    const recipes = await manager.searchRecipes(originalAction.payload.searchTerms)
+    dispatch(searchSuccess(recipes))
+  }
+}
+
+const setSearchTerms = (originalAction) => {
+  return {
+    type: SEARCH_SETSEARCHTERMS_ALIAS,
+    payload: {
+      searchTerms: originalAction.payload.searchTerms
+    }
   }
 }
 
@@ -152,5 +180,6 @@ export default {
   [TABS_SNAP]: getCurrentSession,
   [AUTH_LOGIN]: login,
   [TABS_CREATERECIPE]: createRecipeAlias,
-  [SEARCH_SETSEARCHTERMS]: searchRecipes,
+  [SEARCH_SETSEARCHTERMS_POPUP]: searchRecipes,
+  [SEARCH_GET_INITIAL_RESULTS]: getInitialResults,
 }

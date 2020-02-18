@@ -29,8 +29,16 @@ export default function Popup(props) {
     const { toggleDetailView } = props
     toggleDetailView(!detailVisible, true, row)
   }
+
+  function handleSearchTerms(terms) {
+    const { setSearchTerms } = props
+    setSearchTerms(terms)
+  }
   
-  const { loggedIn, selectedRow, setSearchTerms } = props
+  const { loggedIn, selectedRow, getFirstResults, terms } = props
+  if(terms == '') {
+    getFirstResults()
+  }
   return (
     <div className="popup" >
     {
@@ -45,7 +53,7 @@ export default function Popup(props) {
               onCloseClick={ handleToggleRowDetailTab } 
               toView={ selectedRow } 
             />
-            <Search onPlusClick={ handleToggleCreateTab } setSearchTerms={ setSearchTerms }/>
+            <Search onPlusClick={ handleToggleCreateTab } setSearchTerms={ handleSearchTerms }/>
             <Table onRowSelect={ handleToggleRowDetailTab } />
           </div>
         </div>

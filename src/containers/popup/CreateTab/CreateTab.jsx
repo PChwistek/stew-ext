@@ -10,10 +10,15 @@ export default function CreateTab(props) {
   const { 
     tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap, 
     setRecipeName, setRecipePublic, setRecipeTag, addRecipeTag, 
-    removeRecipeTag, clearFields, createRecipe
+    removeRecipeTag, clearFields, createRecipe, onCloseClick
    } = props
   const session = tabs.session
   const { recipeForm: { recipeName, isPublic, recipeTags, recipeTag } } = tabs
+
+  function handleSave() {
+    onCloseClick()
+    createRecipe()
+  }
   
   return (
     <SlideIn { ...props } >
@@ -30,8 +35,8 @@ export default function CreateTab(props) {
             recipeTags && 
               recipeTags.map(tag => {
               return (
-                <div key={ tag.text } className={ 'tag' }>
-                  { tag.text }
+                <div key={ tag } className={ 'tag' }>
+                  { tag }
                   <div className={ 'tag__remove' } onClick={ () => removeRecipeTag(tag)}>
                     <img src={'../../../assets/remove-white.png'} />
                   </div>
@@ -45,7 +50,7 @@ export default function CreateTab(props) {
             </div>
           <div className={'createtab__bottom-row'}>
             <div className={ 'createtab__form-row--submit'}>
-              <Button text={ 'Save' } type={ 'primary' } onClick={ createRecipe } />
+              <Button text={ 'Save' } type={ 'primary' } onClick={ handleSave } />
             </div>
             <div className={ 'createtab__clear content' }>
               <div className={ 'link' } onClick={ clearFields }>

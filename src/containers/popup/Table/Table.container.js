@@ -5,7 +5,6 @@ import {
 } from '../popup.actions'
 
 const stateToProps = ({ search }) => ({
-  
   search,
 })
 

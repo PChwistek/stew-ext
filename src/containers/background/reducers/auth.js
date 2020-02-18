@@ -1,7 +1,7 @@
 import { AUTH_LOGIN_SUCCESS, AUTH_LOGIN_PENDING, AUTH_LOGIN_FAILED } from '../../actionTypes'
 
 const initialState = {
-  loggedIn: false,
+  loggedIn: true,
   isPending: false,
   loggedInAs: 'Phil',
   jwt: '',

@@ -62,10 +62,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {} )
     case TABS_ADDRECIPETAG: {
       const theTag = state.recipeForm.recipeTag
-      state.recipeForm.recipeTags.push({
-        id: state.recipeForm.recipeTags.length,
-        text: theTag
-      })
+      state.recipeForm.recipeTags.push(theTag)
       state.recipeForm = {
         ...state.recipeForm,
         recipeTag: ''
@@ -74,8 +71,7 @@ export default (state = initialState, action) => {
     }
     case TABS_REMOVERECIPETAG: {
       const { recipeTag } = payload
-      const tagId = recipeTag.id
-      state.recipeForm.recipeTags = state.recipeForm.recipeTags.filter(tag => tag.id != tagId)
+      state.recipeForm.recipeTags = state.recipeForm.recipeTags.filter(tag => tag !== recipeTag)
       return Object.assign({}, state, {})
     }
     case TABS_CLEARFIELDS: 

@@ -3,15 +3,15 @@ import SortBar from './SortBar'
 import Button from '../../common-ui/Button'
 import { getSrc } from '../utils'
 
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
+// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 export default function Table(props) {
   const { onRowSelect, selectRow } = props
-  const { selectedRow = 0, results } = props.search
+  const { selectedRow = 0, results = [], searchTerms } = props.search
 
   return (
     <div>
-      <SortBar title={ 'All' }/>
+      <SortBar title={ 'All' } numResults={ `${results.length}` } terms={ searchTerms } />
       <div className={ 'table__container'}>
         {
           results.length <= 0 
@@ -19,7 +19,7 @@ export default function Table(props) {
                 No results :(
               </div>
             : results.map( (row, index) => (
-              <div ref={ myRef } key={ 'row' + index } onClick={ () => selectRow(index) } className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
+              <div key={ 'row' + index } onClick={ () => selectRow(index) } className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
                 <div className={ 'table__row__top'}>
                   <div className={ 'table__row__title '} onClick={ () => onRowSelect(row) }>
                     { row.name }

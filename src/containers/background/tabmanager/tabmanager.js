@@ -10,7 +10,6 @@ export default class Manager {
           console.log('cache redone')
         })
     })
-  
   }
 
   async getSession() {
@@ -70,13 +69,14 @@ export default class Manager {
   async searchRecipes(searchTerm) {
     const allRecipes = await this.fetchAllRecipes()
     console.log('all recipes in search', allRecipes)
-    const search = new JsSearch.Search('name')
+    var search = new JsSearch.Search('uId')
+    search.addIndex('name')
     search.addIndex('author')
+    search.addIndex('tags')
 
     search.addDocuments(allRecipes)
-
     const results = search.search(searchTerm)
-    console.log(`results for ${searchTerm}`, search.search(searchTerm))
+    console.log(`results for ${searchTerm}`, results)
 
     return results
   }

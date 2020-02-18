@@ -16,7 +16,8 @@ import {
   POPUP_SELECTROW,
   POPUP_TOGGLE_DETAILVISIBLE,
   POPUP_TOGGLE_CREATEVISIBLE,
-  SEARCH_SETSEARCHTERMS
+  SEARCH_GET_INITIAL_RESULTS,
+  SEARCH_SETSEARCHTERMS_POPUP
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -26,9 +27,16 @@ export function getCurrentTabs() {
   }
 }
 
+export function getFirstResults() {
+  return {
+    type: SEARCH_GET_INITIAL_RESULTS,
+    payload: {}
+  }
+}
+
 export function setSearchTerms(terms) {
   return {
-    type: SEARCH_SETSEARCHTERMS,
+    type: SEARCH_SETSEARCHTERMS_POPUP,
     payload: {
       searchTerms: terms,
     }
