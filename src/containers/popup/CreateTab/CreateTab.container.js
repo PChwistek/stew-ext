@@ -7,8 +7,9 @@ import {
   clearFields, createRecipe
 } from '../popup.actions'
 
-const stateToProps = ({ tabs }) => ({
+const stateToProps = ({ tabs, popup }) => ({
   tabs,
+  visible: popup.createVisible
 })
 
 const dispatchToProps = {

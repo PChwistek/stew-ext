@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import Search from './Search'
@@ -11,21 +11,26 @@ import './popup.scss'
 
 export default function Popup(props) {
   
+  const [closing, setClosing] = useState(false)
+  const { createVisible, detailVisible } = props
+
   function handleToggleCreateTab() {
-    const { getCurrentTabs, toggleCreateView, createVisible } = props
+    const { getCurrentTabs, toggleCreateView } = props
     if(!createVisible) {
       getCurrentTabs()
+      setClosing(false)
+    } else {
+      setClosing(true)
     }
     toggleCreateView(!createVisible)
-
   }
 
   function handleToggleRowDetailTab(row) {
-    const { detailVisible , toggleDetailView } = props
+    const { toggleDetailView } = props
     toggleDetailView(!detailVisible, true, row)
   }
   
-  const { loggedIn, detailVisible, createVisible, detailWasOpened, createWasOpened, selectedRow } = props
+  const { loggedIn, selectedRow } = props
   console.log(props)
   return (
     <div className="popup" >
@@ -34,10 +39,10 @@ export default function Popup(props) {
         : <div>
           <Header />
           <div className="popup__body">
-            <CreateTab visible={ createVisible } wasOpened={ createWasOpened } onCloseClick={ handleToggleCreateTab } />
+            <CreateTab onCloseClick={ handleToggleCreateTab } wasOpened={ closing } />
             <DetailTab 
               visible= { detailVisible } 
-              wasOpened={ detailWasOpened }
+              wasOpened={ detailVisible }
               onCloseClick={ handleToggleRowDetailTab } 
               toView={ selectedRow } 
             />

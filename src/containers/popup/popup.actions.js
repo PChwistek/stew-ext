@@ -150,17 +150,15 @@ export function toggleCreateView(visible) {
     type: POPUP_TOGGLE_CREATEVISIBLE,
     payload: {
       createVisible: visible,
-      createWasOpened: !visible
     }
   }
 }
 
-export function toggleDetailView(visible, opened, row) {
+export function toggleDetailView(visible, row) {
   return {
     type: POPUP_TOGGLE_DETAILVISIBLE,
     payload: {
       detailVisible: visible,
-      detailWasOpened: opened,
       selectedRow: row,
     }
   }

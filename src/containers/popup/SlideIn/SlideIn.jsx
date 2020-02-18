@@ -13,7 +13,6 @@ export default function SlideIn(props) {
       return 'slide-in slide-in--hide'
     }
     return 'slide-in'
-
   }
 
   return (
@@ -21,7 +20,7 @@ export default function SlideIn(props) {
       <div className='slide-in-content'>
         <div className='slide-in-content slide-in-content__body'>
         <div>
-          <img src={ '../../../assets/close.png'} className='slide-in-button'  onClick={ onCloseClick } />
+          <img src={ '../../../assets/close.png'} className='slide-in-button' onClick={ onCloseClick } />
         </div>
           { props.children }
         </div>
