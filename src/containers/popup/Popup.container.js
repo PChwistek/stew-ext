@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Popup from './Popup'
-import { getCurrentTabs, toggleCreateView, toggleDetailView } from './popup.actions'
+import { getCurrentTabs, toggleCreateView, toggleDetailView, setSearchTerms } from './popup.actions'
 
 const stateToProps = ({ auth, user, popup }) => ({
   loggedIn: auth.loggedIn,
@@ -11,7 +11,8 @@ const stateToProps = ({ auth, user, popup }) => ({
 const dispatchToProps = {
   getCurrentTabs,
   toggleCreateView,
-  toggleDetailView
+  toggleDetailView,
+  setSearchTerms
 }
 
 export default connect(stateToProps, dispatchToProps)(Popup)

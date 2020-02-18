@@ -30,7 +30,7 @@ export default function CreateTab(props) {
             recipeTags && 
               recipeTags.map(tag => {
               return (
-                <div className={ 'tag' }>
+                <div key={ tag.text } className={ 'tag' }>
                   { tag.text }
                   <div className={ 'tag__remove' } onClick={ () => removeRecipeTag(tag)}>
                     <img src={'../../../assets/remove-white.png'} />

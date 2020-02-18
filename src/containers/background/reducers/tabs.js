@@ -87,15 +87,6 @@ export default (state = initialState, action) => {
           isPublic: false,
         }
       })
-    case TABS_CREATERECIPE:
-      const theRecipe = {
-        ...state.recipeForm,
-        config: state.session,
-      }
-      console.log('create recipe', theRecipe)
-      return Object.assign({}, state, {
-
-      })
     default:
       return state
   }

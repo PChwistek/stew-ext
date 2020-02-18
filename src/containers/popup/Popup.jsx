@@ -30,8 +30,7 @@ export default function Popup(props) {
     toggleDetailView(!detailVisible, true, row)
   }
   
-  const { loggedIn, selectedRow } = props
-  console.log(props)
+  const { loggedIn, selectedRow, setSearchTerms } = props
   return (
     <div className="popup" >
     {
@@ -46,7 +45,7 @@ export default function Popup(props) {
               onCloseClick={ handleToggleRowDetailTab } 
               toView={ selectedRow } 
             />
-            <Search onPlusClick={ handleToggleCreateTab } />
+            <Search onPlusClick={ handleToggleCreateTab } setSearchTerms={ setSearchTerms }/>
             <Table onRowSelect={ handleToggleRowDetailTab } />
           </div>
         </div>

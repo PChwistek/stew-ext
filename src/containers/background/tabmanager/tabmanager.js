@@ -1,6 +1,17 @@
 import browser from 'webextension-polyfill'
+import * as JsSearch from 'js-search'
 
 export default class Manager {
+
+  constructor() {
+    browser.storage.local.clear().then(() => {
+      browser.storage.local.set({ stew: { recipes: [] } })
+        .then(() => {
+          console.log('cache redone')
+        })
+    })
+  
+  }
 
   async getSession() {
     let windows = await browser.windows.getAll()
@@ -37,18 +48,37 @@ export default class Manager {
   }
 
   async addRecipeToStore(recipe) {
-    const theRecipes = this.fetchAllRecipes()
-    console.log(theRecipes)
+    let recipes = await this.fetchAllRecipes()
+    console.log('before adding', recipes)
+    recipes = recipes || []
+    recipes.push(recipe)
 
+    const newStew = {
+      recipes
+    } 
+
+    browser.storage.local.set({ stew: newStew })
+
+    return recipes
   }
 
   async fetchAllRecipes() {
-    const theResult = await browser.storage.local.get(['recipes'])
-    return theResult
+    const theResult = await browser.storage.local.get('stew')
+    return theResult.stew.recipes 
   }
 
-  searchRecipes() {
-    
+  async searchRecipes(searchTerm) {
+    const allRecipes = await this.fetchAllRecipes()
+    console.log('all recipes in search', allRecipes)
+    const search = new JsSearch.Search('name')
+    search.addIndex('author')
+
+    search.addDocuments(allRecipes)
+
+    const results = search.search(searchTerm)
+    console.log(`results for ${searchTerm}`, search.search(searchTerm))
+
+    return results
   }
 
 }

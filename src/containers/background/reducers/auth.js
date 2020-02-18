@@ -3,7 +3,7 @@ import { AUTH_LOGIN_SUCCESS, AUTH_LOGIN_PENDING, AUTH_LOGIN_FAILED } from '../..
 const initialState = {
   loggedIn: false,
   isPending: false,
-  loggedInAs: '',
+  loggedInAs: 'Phil',
   jwt: '',
   updatedOn: ''
 }

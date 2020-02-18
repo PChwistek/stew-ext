@@ -15,13 +15,23 @@ import {
   TABS_CREATERECIPE,
   POPUP_SELECTROW,
   POPUP_TOGGLE_DETAILVISIBLE,
-  POPUP_TOGGLE_CREATEVISIBLE
+  POPUP_TOGGLE_CREATEVISIBLE,
+  SEARCH_SETSEARCHTERMS
 } from '../actionTypes'
 
 export function getCurrentTabs() {
   return {
     type: TABS_SNAP,
     payload: {}
+  }
+}
+
+export function setSearchTerms(terms) {
+  return {
+    type: SEARCH_SETSEARCHTERMS,
+    payload: {
+      searchTerms: terms,
+    }
   }
 }
 
