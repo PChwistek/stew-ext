@@ -49,6 +49,14 @@ const getInitialResults = (originalAction) => {
   }
 }
 
+const launchRecipeConfiguration = (originalAction) => {
+  return async dispatch => {
+    dispatch({ type: TABS_LAUNCHRECIPE_PENDING })
+    await manager.nukeAndReplace(originalAction.payload.recipe.config)
+    dispatch({ type: TABS_LAUNCHRECIPE_SUCCESS })
+  }
+}
+
 const createRecipeAlias = (originalAction) => {
   console.log('creating recipe')
   return async (dispatch, getState) => {
@@ -75,31 +83,15 @@ const createRecipeAlias = (originalAction) => {
         config: reducedSession,
       }
       await manager.addRecipeToStore(theRecipe)
-      dispatch(createRecipeSuccess())
+      dispatch({ type: TABS_CREATERECIPE_SUCCESS })
       dispatch({ 
         type: TABS_CLEARFIELDS,
       })
 
     } catch(err) {
       console.log(err)
-      dispatch(createRecipeFailed(err))
-    }
-    
-  }
-
-}
-
-const createRecipeSuccess = () => {
-  return {
-    type: TABS_CREATERECIPE_SUCCESS,
-    payload: {}
-  }
-}
-
-const createRecipeFailed = () => {
-  return {
-    type: TABS_CREATERECIPE_FAILED,
-    payload: {}
+      dispatch({ type: TABS_CREATERECIPE_FAILED })
+    } 
   }
 }
 
@@ -182,4 +174,5 @@ export default {
   [TABS_CREATERECIPE]: createRecipeAlias,
   [SEARCH_SETSEARCHTERMS_POPUP]: searchRecipes,
   [SEARCH_GET_INITIAL_RESULTS]: getInitialResults,
+  [TABS_LAUNCHRECIPE]: launchRecipeConfiguration,
 }

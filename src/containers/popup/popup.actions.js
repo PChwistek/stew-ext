@@ -6,7 +6,8 @@ import {
   TABS_SETRECIPEPUBLIC, 
   TABS_SETRECIPETAG, 
   TABS_ADDRECIPETAG, 
-  TABS_REMOVERECIPETAG, 
+  TABS_REMOVERECIPETAG,
+  TABS_LAUNCHRECIPE,
   TABS_CLEARFIELDS,
   SEARCH_NEXTROW,
   SEARCH_PREVIOUSROW,
@@ -31,6 +32,15 @@ export function getFirstResults() {
   return {
     type: SEARCH_GET_INITIAL_RESULTS,
     payload: {}
+  }
+}
+
+export function launchRecipe(recipe) {
+  return {
+    type: TABS_LAUNCHRECIPE,
+    payload: {
+      recipe,
+    }
   }
 }
 

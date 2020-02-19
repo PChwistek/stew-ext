@@ -6,7 +6,7 @@ import { getSrc } from '../utils'
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 export default function Table(props) {
-  const { onRowSelect, selectRow } = props
+  const { onRowSelect, selectRow, launchRecipe } = props
   const { selectedRow = 0, results = [], searchTerms } = props.search
 
   return (
@@ -48,7 +48,7 @@ export default function Table(props) {
                 }
                 </div>
                 <div className={ 'table__row__launch' }>
-                  <Button text={ 'Launch' } type={ 'secondary' } />
+                  <Button text={ 'Launch' } type={ 'secondary' } onClick={ () => launchRecipe(row)} />
                 </div>
               </div>
             ))
