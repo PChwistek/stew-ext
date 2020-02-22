@@ -34,7 +34,7 @@ export default class Manager {
 
   nukeAndReplace(desiredTabs) {
     desiredTabs.map( (recipeWindow, index) => {
-      browser.windows.create({ url: recipeWindow.map(tab => tab.url )})
+      browser.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
     })
   }
 

@@ -14,6 +14,10 @@
     animation: slidein-anim 0.2s ease-in-out;
   }
 
+  &--preexisting {
+    right: 0%;
+  }
+
   &--hide {
     right: -100%;
     -webkit-animation: slideout-anim 0.3s ease-in-out; /* Safari 4.0 - 8.0 */

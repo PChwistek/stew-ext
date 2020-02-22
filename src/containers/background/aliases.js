@@ -66,12 +66,21 @@ const createRecipeAlias = (originalAction) => {
       const tabsState = getState().tabs
       const authState = getState().auth
 
-      const reducedSession = tabsState.session.map(win => win.tabs.map(tab => ({
-        favIconUrl: tab.favIconUrl, 
-        url: tab.url,
-        title: tab.title,
-        index: tab.index
-      })))
+      const newConfig = []
+
+      for (let index = 0; index < tabsState.session.length; index++) {
+        const win = tabsState.session[index]
+        newConfig.push(
+          {
+          tabs: win.tabs.map(tab => ({
+            favIconUrl: tab.favIconUrl, 
+            url: tab.url,
+            title: tab.title,
+            index: tab.index
+          }))
+        })
+      }
+      console.log('created session', newConfig)
 
       const theRecipe = {
         uId: Math.floor(Math.random() * 101),    // returns a random integer from 0 to 100
@@ -80,7 +89,7 @@ const createRecipeAlias = (originalAction) => {
         tags: tabsState.recipeForm.recipeTags,
         attributes: ['Popular', 'Favorite'],
         isPublic: tabsState.recipeForm.isPublic,
-        config: reducedSession,
+        config: newConfig,
       }
       await manager.addRecipeToStore(theRecipe)
       dispatch({ type: TABS_CREATERECIPE_SUCCESS })

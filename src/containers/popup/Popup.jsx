@@ -8,10 +8,10 @@ import DetailTab from './DetailTab'
 import Login from './Login'
 import './popup.scss'
 
-
 export default function Popup(props) {
   
   const [closing, setClosing] = useState(false)
+  const [closingDetail, setClosingDetail] = useState(false)
   const { createVisible, detailVisible } = props
 
   function handleToggleCreateTab() {
@@ -27,6 +27,11 @@ export default function Popup(props) {
 
   function handleToggleRowDetailTab(row) {
     const { toggleDetailView } = props
+    if(!detailVisible) {
+      setClosingDetail(false)
+    } else {
+      setClosingDetail(true)
+    }
     toggleDetailView(!detailVisible, true, row)
   }
 
@@ -36,6 +41,7 @@ export default function Popup(props) {
   }
   
   const { loggedIn, selectedRow, getFirstResults, terms } = props
+  console.log('props in popup', props)
   if(terms == '') {
     getFirstResults()
   }
@@ -49,9 +55,8 @@ export default function Popup(props) {
             <CreateTab onCloseClick={ handleToggleCreateTab } wasOpened={ closing } />
             <DetailTab 
               visible= { detailVisible } 
-              wasOpened={ detailVisible }
-              onCloseClick={ handleToggleRowDetailTab } 
-              toView={ selectedRow } 
+              wasOpened={ closingDetail }
+              onCloseClick={ handleToggleRowDetailTab }
             />
             <Search onPlusClick={ handleToggleCreateTab } setSearchTerms={ handleSearchTerms }/>
             <Table onRowSelect={ handleToggleRowDetailTab } />
