@@ -147,11 +147,11 @@ export function previousRow() {
   }
 }
 
-export function login(username, password) {
+export function login(email, password) {
   return {
     type: AUTH_LOGIN,
     payload: {
-      username,
+      username: email, //this has to be username because of passport
       password,
     }
   }

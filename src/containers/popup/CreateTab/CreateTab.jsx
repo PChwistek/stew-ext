@@ -9,11 +9,11 @@ export default function CreateTab(props) {
 
   const { 
     tabs, removeTabFromSnap, getCurrentTabs, removeWindowFromSnap, 
-    setRecipeName, setRecipePublic, setRecipeTag, addRecipeTag, 
+    setRecipeName, setRecipeTag, addRecipeTag, 
     removeRecipeTag, clearFields, createRecipe, onCloseClick
    } = props
   const session = tabs.session
-  const { recipeForm: { recipeName, isPublic, recipeTags, recipeTag } } = tabs
+  const { recipeForm: { recipeName, recipeTags, recipeTag } } = tabs
 
   function handleSave() {
     onCloseClick()
@@ -45,9 +45,9 @@ export default function CreateTab(props) {
             })
           }
           </div>   
-          <div className={ 'createtab__form-row'}>
-              <Checkbox label={ 'Make public?' } checked={ isPublic } setValue={ () => setRecipePublic(!isPublic) }/>
-            </div>
+          {/* <div className={ 'createtab__form-row'}>
+            <Checkbox label={ 'Make public?' } checked={ isPublic } setValue={ () => setRecipePublic(!isPublic) }/>
+          </div> */}
           <div className={'createtab__bottom-row'}>
             <div className={ 'createtab__form-row--submit'}>
               <Button text={ 'Save' } type={ 'primary' } onClick={ handleSave } />

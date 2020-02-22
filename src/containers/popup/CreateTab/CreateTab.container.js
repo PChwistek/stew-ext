@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import CreateTab from './CreateTab'
 import { 
   removeTabFromSnap, getCurrentTabs, 
-  removeWindowFromSnap, setRecipeName, setRecipePublic,
+  removeWindowFromSnap, setRecipeName,
   setRecipeTag, addRecipeTag, removeRecipeTag,
   clearFields, createRecipe
 } from '../popup.actions'
@@ -17,7 +17,6 @@ const dispatchToProps = {
   getCurrentTabs,
   removeWindowFromSnap,
   setRecipeName,
-  setRecipePublic,
   setRecipeTag,
   addRecipeTag,
   removeRecipeTag,

@@ -1,5 +1,7 @@
 import axios from 'axios'
+import getServerHostname from '../getServerHostName'
 import TabManager from './TabManager'
+
 import { 
   TABS_SNAP, 
   TABS_SETSNAP, 
@@ -67,9 +69,12 @@ const createRecipeAlias = (originalAction) => {
       const authState = getState().auth
 
       const newConfig = []
-
+      let titlesForSearch = []
       for (let index = 0; index < tabsState.session.length; index++) {
         const win = tabsState.session[index]
+
+        titlesForSearch = titlesForSearch.concat(win.tabs.map(tab => tab.title))
+
         newConfig.push(
           {
           tabs: win.tabs.map(tab => ({
@@ -80,17 +85,17 @@ const createRecipeAlias = (originalAction) => {
           }))
         })
       }
-      console.log('created session', newConfig)
-
+      console.log('titles', titlesForSearch)
       const theRecipe = {
         uId: Math.floor(Math.random() * 101),    // returns a random integer from 0 to 100
         name: tabsState.recipeForm.recipeName,
         author: authState.loggedInAs,
         tags: tabsState.recipeForm.recipeTags,
+        titles: titlesForSearch,
         attributes: ['Popular', 'Favorite'],
-        isPublic: tabsState.recipeForm.isPublic,
         config: newConfig,
       }
+      console.log('created recipe', theRecipe)
       await manager.addRecipeToStore(theRecipe)
       dispatch({ type: TABS_CREATERECIPE_SUCCESS })
       dispatch({ 
@@ -160,10 +165,11 @@ const setSearchTerms = (originalAction) => {
 
 const login = (originalAction) => {
   console.log('logging in')
+  const serverUrl = getServerHostname()
   return dispatch => {
     dispatch(loginPending())
     axios
-      .post(`http://localhost:3009/auth/login`, {
+      .post(`${serverUrl}/auth/login`, {
         ...originalAction.payload
       })
       .then(res => {

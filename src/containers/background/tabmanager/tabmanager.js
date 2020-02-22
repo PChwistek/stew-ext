@@ -48,6 +48,8 @@ export default class Manager {
       recipes
     } 
 
+    console.log('new recipe', newStew)
+
     browser.storage.local.set({ stew: newStew })
 
     return recipes
@@ -65,6 +67,7 @@ export default class Manager {
     search.addIndex('name')
     search.addIndex('author')
     search.addIndex('tags')
+    search.addIndex('titles')
 
     search.addDocuments(allRecipes)
     const results = search.search(searchTerm)

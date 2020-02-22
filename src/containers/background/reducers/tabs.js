@@ -9,8 +9,7 @@ const initialState = {
   recipeForm: {
     recipeName: '',
     recipeTag: '',
-    recipeTags: [],
-    isPublic: false,
+    recipeTags: []
   }
 }
 

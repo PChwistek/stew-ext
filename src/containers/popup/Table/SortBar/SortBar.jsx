@@ -31,7 +31,7 @@ export default function SortBar(props) {
   return(
     <div className='table__sort-bar'>
       <div className='table__sort-bar-title'>
-        { `${props.numResults} results for '${ props.terms }'` }
+        { `${props.numResults} ${props.numResults == 1 ? 'result' : 'results' } for '${ props.terms }'` }
       </div>
       <div className='table__sort-bar-dropdown-container'>
         <Dropdown

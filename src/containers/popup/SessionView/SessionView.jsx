@@ -29,10 +29,12 @@ export default function SessionView(props) {
                   </div>
                 )
               }
-              <div className='tab__body'>
-                <img src={ tab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
-                <p className='tab__title'> { tab.title } </p>
-              </div>
+              <a href={ tab.url } target="blank">
+                <div className='tab__body'>
+                  <img src={ tab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
+                  <p className='tab__title'> { tab.title } </p>
+                </div>
+              </a>
           </div>
         ))
       }

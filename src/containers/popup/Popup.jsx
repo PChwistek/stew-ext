@@ -58,7 +58,7 @@ export default function Popup(props) {
               wasOpened={ closingDetail }
               onCloseClick={ handleToggleRowDetailTab }
             />
-            <Search onPlusClick={ handleToggleCreateTab } setSearchTerms={ handleSearchTerms }/>
+            <Search onPlusClick={ handleToggleCreateTab } setSearchTerms={ handleSearchTerms } terms={ terms }/>
             <Table onRowSelect={ handleToggleRowDetailTab } />
           </div>
         </div>

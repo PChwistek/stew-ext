@@ -48,7 +48,7 @@ export default function Table(props) {
                 }
                 </div>
                 <div className={ 'table__row__launch' }>
-                  <Button text={ 'Launch' } type={ 'secondary' } onClick={ () => launchRecipe(row)} />
+                  <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(row)} />
                 </div>
               </div>
             ))
