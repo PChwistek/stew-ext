@@ -8,7 +8,7 @@ class SearchTextField extends Component {
 
     this.state = {
       active: (props.locked && props.active) || false,
-      value: props.value || '',
+      value: '',
       error: props.error || '',
       label: props.label || 'Label'
     }
@@ -16,17 +16,17 @@ class SearchTextField extends Component {
 
   changeValue(event) {
     const value = event.target.value
-    const { validate } = this.props
+    const { validate, setValue } = this.props
 
     if(validate) {
       const { isValid, error } = validate(value)
       if(isValid) {
         this.setState({ value, error })
-        // setValue(value)
+        setValue(value)
       }
 
     } else {
-      // setValue(value)
+      setValue(value)
       this.setState({ value, error: '' })
     }
     

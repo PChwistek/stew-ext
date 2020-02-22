@@ -1,8 +1,33 @@
 import axios from 'axios'
 import TabManager from './TabManager'
-import { TABS_SNAP, TABS_SETSNAP, AUTH_LOGIN, AUTH_LOGIN_PENDING, AUTH_LOGIN_FAILED, AUTH_LOGIN_SUCCESS } from '../actionTypes'
+import { 
+  TABS_SNAP, 
+  TABS_SETSNAP, 
+  AUTH_LOGIN, 
+  AUTH_LOGIN_PENDING, 
+  AUTH_LOGIN_FAILED, 
+  AUTH_LOGIN_SUCCESS,
+  TABS_CREATERECIPE,
+  TABS_CLEARFIELDS,
+  TABS_CREATERECIPE_FAILED,
+  TABS_CREATERECIPE_PENDING,
+  TABS_CREATERECIPE_SUCCESS,
+  TABS_LAUNCHRECIPE,
+  TABS_LAUNCHRECIPE_FAILED,
+  TABS_LAUNCHRECIPE_PENDING,
+  TABS_LAUNCHRECIPE_SUCCESS,
+  SEARCH_SETRESULTS_FAILED,
+  SEARCH_SETRESULTS_PENDING,
+  SEARCH_SETRESULTS_SUCCESS,
+  SEARCH_SETSEARCHTERMS,
+  SEARCH_GET_INITIAL_RESULTS,
+  SEARCH_SETSEARCHTERMS_POPUP,
+  SEARCH_SETSEARCHTERMS_ALIAS,
+ } from '../actionTypes'
+import { toggleCreateView } from '../popup/popup.actions'
 
 const manager = new TabManager()
+chrome.storage.local.clear()
 
 const getCurrentSession = (originalAction) => {
   console.log('original action', originalAction)
@@ -14,6 +39,75 @@ const getCurrentSession = (originalAction) => {
         session
       }
     })
+  }
+}
+
+const getInitialResults = (originalAction) => {
+  return async dispatch => {
+    const recipes = await manager.fetchAllRecipes()
+    dispatch(searchSuccess(recipes))
+  }
+}
+
+const launchRecipeConfiguration = (originalAction) => {
+  return async dispatch => {
+    dispatch({ type: TABS_LAUNCHRECIPE_PENDING })
+    await manager.nukeAndReplace(originalAction.payload.recipe.config)
+    dispatch({ type: TABS_LAUNCHRECIPE_SUCCESS })
+  }
+}
+
+const createRecipeAlias = (originalAction) => {
+  console.log('creating recipe')
+  return async (dispatch, getState) => {
+
+    try {
+      dispatch(createRecipePending())
+      const tabsState = getState().tabs
+      const authState = getState().auth
+
+      const newConfig = []
+
+      for (let index = 0; index < tabsState.session.length; index++) {
+        const win = tabsState.session[index]
+        newConfig.push(
+          {
+          tabs: win.tabs.map(tab => ({
+            favIconUrl: tab.favIconUrl, 
+            url: tab.url,
+            title: tab.title,
+            index: tab.index
+          }))
+        })
+      }
+      console.log('created session', newConfig)
+
+      const theRecipe = {
+        uId: Math.floor(Math.random() * 101),    // returns a random integer from 0 to 100
+        name: tabsState.recipeForm.recipeName,
+        author: authState.loggedInAs,
+        tags: tabsState.recipeForm.recipeTags,
+        attributes: ['Popular', 'Favorite'],
+        isPublic: tabsState.recipeForm.isPublic,
+        config: newConfig,
+      }
+      await manager.addRecipeToStore(theRecipe)
+      dispatch({ type: TABS_CREATERECIPE_SUCCESS })
+      dispatch({ 
+        type: TABS_CLEARFIELDS,
+      })
+
+    } catch(err) {
+      console.log(err)
+      dispatch({ type: TABS_CREATERECIPE_FAILED })
+    } 
+  }
+}
+
+const createRecipePending = () => {
+  return {
+    type: TABS_CREATERECIPE_PENDING,
+    payload: {}
   }
 }
 
@@ -35,6 +129,32 @@ const loginFailure = () => {
   return {
     type: AUTH_LOGIN_FAILED,
     payload: {}
+  }
+}
+
+const searchSuccess = (results) => {
+  return {
+    type: SEARCH_SETRESULTS_SUCCESS,
+    payload: {
+      results
+    }
+  }
+}
+
+const searchRecipes = (originalAction) => {
+  return async dispatch => {
+    dispatch(setSearchTerms(originalAction))
+    const recipes = await manager.searchRecipes(originalAction.payload.searchTerms)
+    dispatch(searchSuccess(recipes))
+  }
+}
+
+const setSearchTerms = (originalAction) => {
+  return {
+    type: SEARCH_SETSEARCHTERMS_ALIAS,
+    payload: {
+      searchTerms: originalAction.payload.searchTerms
+    }
   }
 }
 
@@ -60,32 +180,8 @@ const login = (originalAction) => {
 export default {
   [TABS_SNAP]: getCurrentSession,
   [AUTH_LOGIN]: login,
+  [TABS_CREATERECIPE]: createRecipeAlias,
+  [SEARCH_SETSEARCHTERMS_POPUP]: searchRecipes,
+  [SEARCH_GET_INITIAL_RESULTS]: getInitialResults,
+  [TABS_LAUNCHRECIPE]: launchRecipeConfiguration,
 }
-
-/*
-export const login = async ({ email, password }) => {
-  // Router.push('/account')
-  const url = 'http://localhost:3009/auth/login'
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: email, password })
-    })
-
-    if (response.status >= 200 && response.status < 300) {
-      const { access_token } = await response.json()
-      cookie.set('access_token', access_token, { expires: 1 })
-      Router.push('/account')
-    } else {
-      // https://github.com/developit/unfetch#caveats
-      let error = new Error(response.statusText)
-      error.response = response
-      throw error
-    }
-  } catch (error) {
-    const { response } = error
-    return response
-  }
-}
-*/

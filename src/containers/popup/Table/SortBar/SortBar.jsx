@@ -31,7 +31,7 @@ export default function SortBar(props) {
   return(
     <div className='table__sort-bar'>
       <div className='table__sort-bar-title'>
-        0 results for 'xyz'
+        { `${props.numResults} results for '${ props.terms }'` }
       </div>
       <div className='table__sort-bar-dropdown-container'>
         <Dropdown
@@ -46,5 +46,7 @@ export default function SortBar(props) {
 }
 
 SortBar.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  terms: PropTypes.string.isRequired,
+  numResults: PropTypes.string.isRequired
 }

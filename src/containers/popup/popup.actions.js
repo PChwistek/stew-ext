@@ -6,18 +6,50 @@ import {
   TABS_SETRECIPEPUBLIC, 
   TABS_SETRECIPETAG, 
   TABS_ADDRECIPETAG, 
-  TABS_REMOVERECIPETAG, 
+  TABS_REMOVERECIPETAG,
+  TABS_LAUNCHRECIPE,
   TABS_CLEARFIELDS,
   SEARCH_NEXTROW,
   SEARCH_PREVIOUSROW,
   AUTH_LOGIN,
-  SEARCH_SETROW
+  SEARCH_SETROW,
+  TABS_CREATERECIPE,
+  POPUP_SELECTROW,
+  POPUP_TOGGLE_DETAILVISIBLE,
+  POPUP_TOGGLE_CREATEVISIBLE,
+  SEARCH_GET_INITIAL_RESULTS,
+  SEARCH_SETSEARCHTERMS_POPUP
 } from '../actionTypes'
 
 export function getCurrentTabs() {
   return {
     type: TABS_SNAP,
     payload: {}
+  }
+}
+
+export function getFirstResults() {
+  return {
+    type: SEARCH_GET_INITIAL_RESULTS,
+    payload: {}
+  }
+}
+
+export function launchRecipe(recipe) {
+  return {
+    type: TABS_LAUNCHRECIPE,
+    payload: {
+      recipe,
+    }
+  }
+}
+
+export function setSearchTerms(terms) {
+  return {
+    type: SEARCH_SETSEARCHTERMS_POPUP,
+    payload: {
+      searchTerms: terms,
+    }
   }
 }
 
@@ -121,6 +153,41 @@ export function login(username, password) {
     payload: {
       username,
       password,
+    }
+  }
+}
+
+export function createRecipe() {
+  return {
+    type: TABS_CREATERECIPE,
+    payload: {}
+  }
+}
+
+export function popupSelectRow(row) {
+  return {
+    type: POPUP_SELECTROW,
+    payload: {
+      selectedRow: row,
+    }
+  }
+}
+
+export function toggleCreateView(visible) {
+  return {
+    type: POPUP_TOGGLE_CREATEVISIBLE,
+    payload: {
+      createVisible: visible,
+    }
+  }
+}
+
+export function toggleDetailView(visible, row) {
+  return {
+    type: POPUP_TOGGLE_DETAILVISIBLE,
+    payload: {
+      detailVisible: visible,
+      selectedRow: row,
     }
   }
 }

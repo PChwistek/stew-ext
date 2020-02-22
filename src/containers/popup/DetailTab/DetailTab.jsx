@@ -1,30 +1,48 @@
 import React from 'react'
 import SlideIn from '../SlideIn'
 import SessionView from '../SessionView'
+import Button from '../../common-ui/Button'
 import { getSrc } from '../utils'
 
 export default function DetailTab(props) {
-  const { toView } = props
-  console.log('row', toView)
+  const { toView, launchRecipe } = props
   return(
-    <SlideIn { ...props }>
-      <div className={ 'detailtab' }>
+    <SlideIn { ...props }> 
+    {
+      toView && <div className={ 'detailtab' }>
         <div className={ 'detailtab__details'}>
-          <div>
-            { toView.name }
+          <div className={ 'detailtab__details__title'}>
+            { toView && toView.name }
           </div>
           <div>
-            {/* {
-               toView.attributes.map(attrib => {
-              <img src={ getSrc(attrib) } />
-            })} */}
+            Published by: { toView && toView.author }
+            <div>
+            {
+              toView.attributes.map(attrib => {
+                <img key={ attrib } src={ getSrc(attrib) } />
+              })
+            } 
+            </div>
           </div>
           <div>
-            { toView.author }
+            <div className={ 'table__row__tags'}>
+                {
+                  toView && toView.tags.map(tag => (
+                    <div key={ tag } className={ 'tag-result' }>
+                      { tag }
+                    </div>
+                  ))
+                }
+                </div>
+          </div>
+          <div className={ 'detailtab__launch' }>
+            <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(toView || {}) } />
           </div>
         </div>
-        <SessionView />
+        <SessionView session={ toView ? toView.config : [] } canEdit={ false } />
       </div>
+    }
+      
     </SlideIn>
   )
 

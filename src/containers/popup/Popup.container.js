@@ -1,17 +1,21 @@
 import { connect } from 'react-redux'
-import { Popup } from './Popup'
-import { getCurrentTabs, nextRow, previousRow } from './popup.actions'
+import Popup from './Popup'
+import { getCurrentTabs, toggleCreateView, toggleDetailView, setSearchTerms, getFirstResults } from './popup.actions'
+import search from '../background/reducers/search'
 
-const stateToProps = ({ auth, user, popup }) => ({
+const stateToProps = ({ auth, user, popup, search }) => ({
   loggedIn: auth.loggedIn,
   user,
-  popup,
+  ...popup,
+  terms: search.searchTerms,
 })
 
 const dispatchToProps = {
   getCurrentTabs,
-  nextRow,
-  previousRow
+  toggleCreateView,
+  toggleDetailView,
+  setSearchTerms,
+  getFirstResults
 }
 
 export default connect(stateToProps, dispatchToProps)(Popup)

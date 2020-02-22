@@ -4,11 +4,12 @@ import {
   removeTabFromSnap, getCurrentTabs, 
   removeWindowFromSnap, setRecipeName, setRecipePublic,
   setRecipeTag, addRecipeTag, removeRecipeTag,
-  clearFields
+  clearFields, createRecipe
 } from '../popup.actions'
 
-const stateToProps = ({ tabs }) => ({
+const stateToProps = ({ tabs, popup }) => ({
   tabs,
+  visible: popup.createVisible
 })
 
 const dispatchToProps = {
@@ -20,7 +21,8 @@ const dispatchToProps = {
   setRecipeTag,
   addRecipeTag,
   removeRecipeTag,
-  clearFields
+  clearFields,
+  createRecipe
 }
 
 export default connect(stateToProps, dispatchToProps)(CreateTab)
