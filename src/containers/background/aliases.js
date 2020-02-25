@@ -30,6 +30,7 @@ import { toggleCreateView } from '../popup/popup.actions'
 
 const manager = new TabManager()
 chrome.storage.local.clear()
+const serverUrl = getServerHostname()
 
 const getCurrentSession = (originalAction) => {
   console.log('original action', originalAction)
@@ -85,9 +86,7 @@ const createRecipeAlias = (originalAction) => {
           }))
         })
       }
-      console.log('titles', titlesForSearch)
       const theRecipe = {
-        uId: Math.floor(Math.random() * 101),    // returns a random integer from 0 to 100
         name: tabsState.recipeForm.recipeName,
         author: authState.loggedInAs,
         tags: tabsState.recipeForm.recipeTags,
@@ -95,8 +94,16 @@ const createRecipeAlias = (originalAction) => {
         attributes: ['Popular', 'Favorite'],
         config: newConfig,
       }
-      console.log('created recipe', theRecipe)
-      await manager.addRecipeToStore(theRecipe)
+
+      const { jwt } = authState
+      const config = {
+        headers: { Authorization: `Bearer ${jwt}` }
+      };
+      const { data: recipeFromServer } = await axios.post(`${serverUrl}/recipe/create`, {...theRecipe }, config)
+
+      console.log('created recipe', recipeFromServer)
+      await manager.addRecipeToStore(recipeFromServer)
+      dispatch(getInitialResults())
       dispatch({ type: TABS_CREATERECIPE_SUCCESS })
       dispatch({ 
         type: TABS_CLEARFIELDS,
@@ -116,10 +123,14 @@ const createRecipePending = () => {
   }
 }
 
-const loginSuccess = () => {
+const loginSuccess = (payload) => {
+  const { access_token, username } = payload
   return {
     type: AUTH_LOGIN_SUCCESS,
-    payload: {}
+    payload: {
+      access_token,
+      username
+    }
   }
 }
 
@@ -165,7 +176,6 @@ const setSearchTerms = (originalAction) => {
 
 const login = (originalAction) => {
   console.log('logging in')
-  const serverUrl = getServerHostname()
   return dispatch => {
     dispatch(loginPending())
     axios

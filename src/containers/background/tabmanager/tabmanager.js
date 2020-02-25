@@ -63,7 +63,7 @@ export default class Manager {
   async searchRecipes(searchTerm) {
     const allRecipes = await this.fetchAllRecipes()
     console.log('all recipes in search', allRecipes)
-    var search = new JsSearch.Search('uId')
+    var search = new JsSearch.Search('_id')
     search.addIndex('name')
     search.addIndex('author')
     search.addIndex('tags')

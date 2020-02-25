@@ -21,7 +21,7 @@ export default function Login(props) {
           <img src={ '../../../assets/stew-logo.png' } className={ 'login__image '} />
         </div>
         <div className={ 'login__form-row'}>
-          <TextField type={ 'text' } label={ 'Username' } autoFocus setValue={ setUsername } value={ username } />
+          <TextField type={ 'text' } label={ 'Email' } autoFocus setValue={ setUsername } value={ username } />
         </div>
         <div className={ 'login__form-row'}>
           <TextField type={ 'password' } label={ 'Password' } setValue={ setPassword } value={ password }/>

@@ -151,7 +151,7 @@ export function login(email, password) {
   return {
     type: AUTH_LOGIN,
     payload: {
-      username: email, //this has to be username because of passport
+      email, //this has to be username because of passport
       password,
     }
   }

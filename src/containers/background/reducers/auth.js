@@ -3,7 +3,7 @@ import { AUTH_LOGIN_SUCCESS, AUTH_LOGIN_PENDING, AUTH_LOGIN_FAILED } from '../..
 const initialState = {
   loggedIn: false,
   isPending: false,
-  loggedInAs: 'Phil',
+  username: '',
   jwt: '',
   updatedOn: ''
 }
@@ -17,7 +17,9 @@ export default (state = initialState, action) => {
     case AUTH_LOGIN_SUCCESS:
       return Object.assign({}, state, {
         loggedIn: true,
-        isPending: false
+        isPending: false,
+        jwt: action.payload.access_token,
+        username: action.payload.username
       })
     case AUTH_LOGIN_FAILED:
       return Object.assign({}, state, {
