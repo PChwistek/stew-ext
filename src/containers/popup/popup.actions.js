@@ -17,8 +17,11 @@ import {
   POPUP_SELECTROW,
   POPUP_TOGGLE_DETAILVISIBLE,
   POPUP_TOGGLE_CREATEVISIBLE,
+  POPUP_SYNCRECIPES,
   SEARCH_GET_INITIAL_RESULTS,
-  SEARCH_SETSEARCHTERMS_POPUP
+  SEARCH_SETSEARCHTERMS_POPUP,
+  POPUP_OPENED,
+  POPUP_TOGGLE_SLIDE
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -124,26 +127,12 @@ export function clearFields() {
   }
 }
 
-export function nextRow() {
-  return {
-    type: SEARCH_NEXTROW,
-    payload: {}
-  }
-}
-
 export function selectRow(row) {
   return {
     type: SEARCH_SETROW,
     payload: {
       row
     }
-  }
-}
-
-export function previousRow() {
-  return {
-    type: SEARCH_PREVIOUSROW,
-    payload: {}
   }
 }
 
@@ -164,30 +153,26 @@ export function createRecipe() {
   }
 }
 
-export function popupSelectRow(row) {
+export function toggleSlide(visible, isEditing) {
   return {
-    type: POPUP_SELECTROW,
+    type: POPUP_TOGGLE_SLIDE,
     payload: {
-      selectedRow: row,
+      slideOutVisible: visible,
+      isEditing: isEditing,
     }
   }
 }
 
-export function toggleCreateView(visible) {
+export function syncRecipes() {
   return {
-    type: POPUP_TOGGLE_CREATEVISIBLE,
-    payload: {
-      createVisible: visible,
-    }
+    type: POPUP_SYNCRECIPES,
+    payload: {}
   }
 }
 
-export function toggleDetailView(visible, row) {
+export function popupOpened() {
   return {
-    type: POPUP_TOGGLE_DETAILVISIBLE,
-    payload: {
-      detailVisible: visible,
-      selectedRow: row,
-    }
+    type: POPUP_OPENED,
+    payload: {}
   }
 }

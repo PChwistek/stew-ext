@@ -20,6 +20,23 @@
 
   }
 
+  &__icons {
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 20px;
+    padding-right: 10px;
+    position: relative;
+    top: 325px;
+
+    &__edit {
+      width: 24px;
+      cursor: pointer;
+      &:hover {
+        margin-top: -2px;
+      }
+    }
+  }
+
   &__launch {
     text-align: center;
     margin-top: 30px;

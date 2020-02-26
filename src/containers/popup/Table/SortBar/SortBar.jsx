@@ -21,7 +21,7 @@ const options = [
   },
   {
     text: 'Created by others',
-    src: '../../../../assets/monster.png'
+    src: '../../../../assets/alien-1.png'
   }
 ]
 

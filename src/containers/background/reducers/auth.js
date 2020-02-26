@@ -5,7 +5,7 @@ const initialState = {
   isPending: false,
   username: '',
   jwt: '',
-  updatedOn: ''
+  lastUpdated: ''
 }
 
 export default (state = initialState, action) => {
@@ -19,7 +19,8 @@ export default (state = initialState, action) => {
         loggedIn: true,
         isPending: false,
         jwt: action.payload.access_token,
-        username: action.payload.username
+        username: action.payload.username,
+        lastUpdated: action.payload.lastUpdated
       })
     case AUTH_LOGIN_FAILED:
       return Object.assign({}, state, {

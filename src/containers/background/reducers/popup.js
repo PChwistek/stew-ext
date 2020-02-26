@@ -1,21 +1,17 @@
-import { POPUP_TOGGLE_DETAILVISIBLE, POPUP_SELECTROW, POPUP_TOGGLE_CREATEVISIBLE } from '../../actionTypes'
+import { POPUP_TOGGLE_SLIDE, POPUP_SELECTROW } from '../../actionTypes'
 
 const initialState = {
-  createVisible: false,
-  detailVisible: false,
+  slideOutVisible: false,
+  isEditing: true,
   selectedRow: {}
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case POPUP_TOGGLE_CREATEVISIBLE:
+    case POPUP_TOGGLE_SLIDE:
       return Object.assign({}, state, {
-        createVisible: action.payload.createVisible,
-      })
-    case POPUP_TOGGLE_DETAILVISIBLE:
-      return Object.assign({}, state, {
-        detailVisible: action.payload.detailVisible,
-        selectedRow: action.payload.selectedRow
+        slideOutVisible: action.payload.slideOutVisible,
+        isEditing: action.payload.isEditing,
       })
     case POPUP_SELECTROW:
       return Object.assign({}, state, {

@@ -55,6 +55,13 @@ export default class Manager {
     return recipes
   }
 
+  async updateRecipesFromServer(newRecipes) {
+    browser.storage.local.set({ stew: { recipes: newRecipes } })
+      .then(() => {
+        console.log('updated from server')
+    })
+  }
+
   async fetchAllRecipes() {
     const theResult = await browser.storage.local.get('stew')
     return theResult.stew.recipes 

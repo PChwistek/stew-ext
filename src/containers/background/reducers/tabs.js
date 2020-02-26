@@ -79,7 +79,6 @@ export default (state = initialState, action) => {
           recipeName: '',
           recipeTag: '',
           recipeTags: [],
-          isPublic: false,
         }
       })
     default:

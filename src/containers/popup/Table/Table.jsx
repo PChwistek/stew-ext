@@ -6,7 +6,7 @@ import { getSrc } from '../utils'
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 export default function Table(props) {
-  const { onRowSelect, selectRow, launchRecipe } = props
+  const { onRecipeNameClicked, selectRow, launchRecipe } = props
   const { selectedRow = 0, results = [], searchTerms } = props.search
 
   return (
@@ -21,7 +21,7 @@ export default function Table(props) {
             : results.map( (row, index) => (
               <div key={ 'row' + index } onClick={ () => selectRow(index) } className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
                 <div className={ 'table__row__top'}>
-                  <div className={ 'table__row__title '} onClick={ () => onRowSelect(row) }>
+                  <div className={ 'table__row__title '} onClick={ () => onRecipeNameClicked(row) }>
                     { row.name }
                   </div>
                   <div className={ 'table__row__attributes '}>

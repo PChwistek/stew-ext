@@ -1,70 +1,84 @@
-import React, { useState } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import Search from './Search'
 import Table from './Table'
-import CreateTab from './CreateTab'
 import DetailTab from './DetailTab'
 import Login from './Login'
 import './popup.scss'
 
-export default function Popup(props) {
-  
-  const [closing, setClosing] = useState(false)
-  const [closingDetail, setClosingDetail] = useState(false)
-  const { createVisible, detailVisible } = props
+export default class Popup extends Component {
 
-  function handleToggleCreateTab() {
-    const { getCurrentTabs, toggleCreateView } = props
-    if(!createVisible) {
+  constructor(props) {
+    super(props)
+    this.state = {
+      slideOutOpened: false,
+    }
+  }
+
+  componentDidMount() {
+    const { loggedIn, syncRecipes } = this.props
+    if(loggedIn) {
+      syncRecipes()
+    }
+  }
+    
+  handleToggleCreateTab = () => {
+    const { getCurrentTabs, toggleSlide, slideOutVisible } = this.props
+
+    if(!slideOutVisible) {
       getCurrentTabs()
-      setClosing(false)
+      this.setState({ slideOutOpened: false })
     } else {
-      setClosing(true)
+      this.setState({ slideOutOpened: true })
     }
-    toggleCreateView(!createVisible)
+    toggleSlide(!slideOutVisible, true)
   }
 
-  function handleToggleRowDetailTab(row) {
-    const { toggleDetailView } = props
-    if(!detailVisible) {
-      setClosingDetail(false)
+  handleToggleRowDetailTab = (row) => {
+    const { toggleSlide, slideOutVisible, selectRow } = this.props
+    if(!slideOutVisible) {
+      this.setState({ slideOutOpened: false })
+      selectRow(row)
     } else {
-      setClosingDetail(true)
+      this.setState({ slideOutOpened: true })
     }
-    toggleDetailView(!detailVisible, true, row)
+    toggleSlide(!slideOutVisible, false)
   }
 
-  function handleSearchTerms(terms) {
-    const { setSearchTerms } = props
+  handleSearchTerms = (terms) => {
+    const { setSearchTerms } = this.props
     setSearchTerms(terms)
   }
   
-  const { loggedIn, selectedRow, getFirstResults, terms } = props
-  console.log('props in popup', props)
-  if(terms == '') {
-    getFirstResults()
-  }
-  return (
-    <div className="popup" >
-    {
-      !loggedIn ? <Login /> 
-        : <div>
-          <Header />
-          <div className="popup__body">
-            <CreateTab onCloseClick={ handleToggleCreateTab } wasOpened={ closing } />
-            <DetailTab 
-              visible= { detailVisible } 
-              wasOpened={ closingDetail }
-              onCloseClick={ handleToggleRowDetailTab }
-            />
-            <Search onPlusClick={ handleToggleCreateTab } setSearchTerms={ handleSearchTerms } terms={ terms }/>
-            <Table onRowSelect={ handleToggleRowDetailTab } />
-          </div>
-        </div>
+  render() {
+    const { loggedIn, getFirstResults, terms, slideOutVisible, isEditing } = this.props
+    const { slideOutOpened } = this.state
+    console.log('props in popup', this.props)
+    if(terms == '') {
+      getFirstResults()
     }
-    </div>
-  )
+    return (
+      <div className="popup" >
+      {
+        !loggedIn ? <Login /> 
+          : <div>
+            <Header />
+            <div className="popup__body">
+              <DetailTab 
+                visible={ slideOutVisible } 
+                wasOpened={ slideOutOpened } 
+                onCloseClick={ isEditing ? this.handleToggleCreateTab: this.handleToggleRowDetailTab } 
+                editing={ isEditing }
+              />
+              <Search onPlusClick={ this.handleToggleCreateTab } setSearchTerms={ this.handleSearchTerms } terms={ terms }/>
+              <Table onRecipeNameClicked={ this.handleToggleRowDetailTab } />
+            </div>
+          </div>
+      }
+      </div>
+    ) 
+  }
 }
 
     // document.onkeydown = checkKey;

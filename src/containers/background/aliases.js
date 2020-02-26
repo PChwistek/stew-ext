@@ -25,8 +25,12 @@ import {
   SEARCH_GET_INITIAL_RESULTS,
   SEARCH_SETSEARCHTERMS_POPUP,
   SEARCH_SETSEARCHTERMS_ALIAS,
+  POPUP_SYNCRECIPES_FAILED,
+  POPUP_SYNCRECIPES,
+  POPUP_SYNCRECIPES_PENDING,
+  POPUP_SYNCRECIPES_SUCCESS
  } from '../actionTypes'
-import { toggleCreateView } from '../popup/popup.actions'
+import { toggleCreateView, syncRecipes } from '../popup/popup.actions'
 
 const manager = new TabManager()
 chrome.storage.local.clear()
@@ -61,7 +65,6 @@ const launchRecipeConfiguration = (originalAction) => {
 }
 
 const createRecipeAlias = (originalAction) => {
-  console.log('creating recipe')
   return async (dispatch, getState) => {
 
     try {
@@ -98,7 +101,7 @@ const createRecipeAlias = (originalAction) => {
       const { jwt } = authState
       const config = {
         headers: { Authorization: `Bearer ${jwt}` }
-      };
+      }
       const { data: recipeFromServer } = await axios.post(`${serverUrl}/recipe/create`, {...theRecipe }, config)
 
       console.log('created recipe', recipeFromServer)
@@ -124,12 +127,13 @@ const createRecipePending = () => {
 }
 
 const loginSuccess = (payload) => {
-  const { access_token, username } = payload
+  const { access_token, username, lastUpdated } = payload
   return {
     type: AUTH_LOGIN_SUCCESS,
     payload: {
       access_token,
-      username
+      username,
+      lastUpdated
     }
   }
 }
@@ -184,13 +188,43 @@ const login = (originalAction) => {
       })
       .then(res => {
         console.log('success')
-        dispatch(loginSuccess(res.data));
+        dispatch(loginSuccess(res.data))
+        dispatch(syncRecipesWithCloud())
       })
       .catch(err => {
         console.log('failure')
-        dispatch(loginFailure(err.message));
+        dispatch(loginFailure(err.message))
       })
   }
+}
+
+const syncRecipesWithCloud = (originalAction) => {
+
+  return (dispatch, getState) => {
+    const authState = getState().auth
+    const { jwt } = authState
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` }
+    }
+
+    dispatch({ type: POPUP_SYNCRECIPES_PENDING})
+    axios
+      .get(`${serverUrl}/recipe/byAuthor`, config)
+      .then(res => {
+        console.log('res', res)
+        manager.updateRecipesFromServer(res.data)
+        dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
+        dispatch(getInitialResults())
+      })
+      .catch(err => {
+        console.log('failure', err)
+        dispatch({ type: POPUP_SYNCRECIPES_FAILED })
+      })
+  }
+}
+
+const popupSync = () => {
+  
 }
 
 export default {
@@ -200,4 +234,5 @@ export default {
   [SEARCH_SETSEARCHTERMS_POPUP]: searchRecipes,
   [SEARCH_GET_INITIAL_RESULTS]: getInitialResults,
   [TABS_LAUNCHRECIPE]: launchRecipeConfiguration,
+  [POPUP_SYNCRECIPES]: syncRecipesWithCloud
 }
