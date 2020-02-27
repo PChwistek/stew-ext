@@ -17,17 +17,16 @@ export default class Popup extends Component {
   }
 
   componentDidMount() {
-    const { loggedIn, syncRecipes } = this.props
-    if(loggedIn) {
-      syncRecipes()
-    }
+    const { popupOpened } = this.props
+    popupOpened()
   }
     
   handleToggleCreateTab = () => {
-    const { getCurrentTabs, toggleSlide, slideOutVisible } = this.props
+    const { getCurrentTabs, toggleSlide, slideOutVisible, setRecipeForm } = this.props
 
     if(!slideOutVisible) {
       getCurrentTabs()
+      setRecipeForm('', [], true)
       this.setState({ slideOutOpened: false })
     } else {
       this.setState({ slideOutOpened: true })
@@ -36,10 +35,12 @@ export default class Popup extends Component {
   }
 
   handleToggleRowDetailTab = (row) => {
-    const { toggleSlide, slideOutVisible, selectRow } = this.props
+    const { toggleSlide, slideOutVisible, selectRow, setRecipeSession, setRecipeForm } = this.props
     if(!slideOutVisible) {
       this.setState({ slideOutOpened: false })
       selectRow(row)
+      setRecipeSession(row.config)
+      setRecipeForm(row.name, row.tags, false)
     } else {
       this.setState({ slideOutOpened: true })
     }
@@ -54,7 +55,6 @@ export default class Popup extends Component {
   render() {
     const { loggedIn, getFirstResults, terms, slideOutVisible, isEditing } = this.props
     const { slideOutOpened } = this.state
-    console.log('props in popup', this.props)
     if(terms == '') {
       getFirstResults()
     }
@@ -69,7 +69,7 @@ export default class Popup extends Component {
                 visible={ slideOutVisible } 
                 wasOpened={ slideOutOpened } 
                 onCloseClick={ isEditing ? this.handleToggleCreateTab: this.handleToggleRowDetailTab } 
-                editing={ isEditing }
+                isEditing={ isEditing }
               />
               <Search onPlusClick={ this.handleToggleCreateTab } setSearchTerms={ this.handleSearchTerms } terms={ terms }/>
               <Table onRecipeNameClicked={ this.handleToggleRowDetailTab } />

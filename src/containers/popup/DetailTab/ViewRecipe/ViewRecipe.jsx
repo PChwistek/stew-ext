@@ -36,7 +36,7 @@ const ViewRecipe = (props) => {
           <div className={ 'detailtab__launch' }>
             <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(selectedRecipe || {}) } />
           </div>
-          <IconRow />
+          <IconRow handleEditingClicked={ props.handleEditingClicked } />
         </div>
       }
     </div>

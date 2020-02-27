@@ -1,5 +1,5 @@
 import { 
-  SEARCH_NEXTROW, SEARCH_PREVIOUSROW, SEARCH_SETROW, SEARCH_SETSEARCHTERMS_ALIAS, SEARCH_SETRESULTS_SUCCESS
+  SEARCH_NEXTROW, SEARCH_PREVIOUSROW, SEARCH_SETROW, SEARCH_SETSEARCHTERMS_ALIAS, SEARCH_SETRESULTS_SUCCESS, SEARCH_SELECTRECIPE
 } from '../../actionTypes'
 
 const initialState = {
@@ -7,7 +7,8 @@ const initialState = {
   results: [],
   isDropdownOpen: false,
   selectedRow: -1,
-  sortedBy: ''
+  sortedBy: '',
+  selectedRecipe: {}
 }
 
 export default (state = initialState, action) => {
@@ -40,6 +41,10 @@ export default (state = initialState, action) => {
     case SEARCH_SETRESULTS_SUCCESS:
       return Object.assign({}, state, {
         results: action.payload.results
+      })
+    case SEARCH_SELECTRECIPE:
+      return Object.assign({}, state, {
+        selectedRecipe: action.payload.selectedRecipe
       })
     default:
       return state

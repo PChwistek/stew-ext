@@ -13,6 +13,7 @@ import {
   SEARCH_PREVIOUSROW,
   AUTH_LOGIN,
   SEARCH_SETROW,
+  SEARCH_SETRECIPE,
   TABS_CREATERECIPE,
   POPUP_SELECTROW,
   POPUP_TOGGLE_DETAILVISIBLE,
@@ -21,7 +22,10 @@ import {
   SEARCH_GET_INITIAL_RESULTS,
   SEARCH_SETSEARCHTERMS_POPUP,
   POPUP_OPENED,
-  POPUP_TOGGLE_SLIDE
+  POPUP_TOGGLE_SLIDE,
+  POPUP_TOGGLEEDITING,
+  TABS_SETRECIPEFORM,
+  TABS_SETSNAP
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -174,5 +178,33 @@ export function popupOpened() {
   return {
     type: POPUP_OPENED,
     payload: {}
+  }
+}
+
+export function toggleEditing() {
+  return {
+    type: POPUP_TOGGLEEDITING,
+    payload: {}
+  }
+}
+
+export function setRecipeSession(recipeConfig) {
+  return {
+    type: TABS_SETSNAP,
+    payload: {
+      session: recipeConfig
+    }
+  }
+}
+
+export function setRecipeForm(recipeName, recipeTags, isNew) {
+  return {
+    type: TABS_SETRECIPEFORM,
+    payload: {
+      recipeName,
+      recipeTags,
+      tag: '',
+      isNew,
+    }
   }
 }

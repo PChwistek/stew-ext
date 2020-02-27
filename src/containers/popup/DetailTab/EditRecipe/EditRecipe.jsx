@@ -6,12 +6,11 @@ import Button from '../../../common-ui/Button'
 export default function EditRecipe(props) {
 
   const { tabs, setRecipeName, setRecipeTag, addRecipeTag, 
-    removeRecipeTag, clearFields, createRecipe, onCloseClick } = props
+    removeRecipeTag, clearFields, createRecipe, toggleEditing } = props
 
   const { recipeForm: { recipeName, recipeTags, recipeTag } } = tabs
 
   function handleSave() {
-    onCloseClick()
     createRecipe()
   }
   

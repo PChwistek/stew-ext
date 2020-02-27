@@ -7,7 +7,11 @@ import { getCurrentTabs,
   getFirstResults, 
   syncRecipes, 
   toggleSlide, 
-  selectRow } from './popup.actions'
+  selectRow, 
+  popupOpened,
+  setRecipeForm,
+  setRecipeSession
+ } from './popup.actions'
 
 const stateToProps = ({ auth, user, popup, search }) => ({
   loggedIn: auth.loggedIn,
@@ -24,7 +28,10 @@ const dispatchToProps = {
   getFirstResults,
   syncRecipes,
   toggleSlide,
-  selectRow
+  selectRow,
+  popupOpened,
+  setRecipeForm,
+  setRecipeSession
 }
 
 export default connect(stateToProps, dispatchToProps)(Popup)

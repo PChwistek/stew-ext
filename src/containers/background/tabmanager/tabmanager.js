@@ -23,7 +23,7 @@ export default class Manager {
       const index = i
       const windowTabs = await browser.tabs.query({ windowId: windows[index].id})
       const win = {
-        id: windows[index].id,
+        index: index,
         tabs: windowTabs
       }
       session.push(win)

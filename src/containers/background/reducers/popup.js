@@ -1,4 +1,4 @@
-import { POPUP_TOGGLE_SLIDE, POPUP_SELECTROW } from '../../actionTypes'
+import { POPUP_TOGGLE_SLIDE, POPUP_SELECTROW, POPUP_TOGGLEEDITING } from '../../actionTypes'
 
 const initialState = {
   slideOutVisible: false,
@@ -16,6 +16,11 @@ export default (state = initialState, action) => {
     case POPUP_SELECTROW:
       return Object.assign({}, state, {
         selectedRow: action.payload.selectedRow
+      })
+    case POPUP_TOGGLEEDITING:
+      const invertedEditing = !state.isEditing
+      return Object.assign({}, state, {
+        isEditing: invertedEditing
       })
     default:
       return state

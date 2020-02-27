@@ -5,14 +5,24 @@ import EditRecipe from './EditRecipe'
 import SessionView from '../SessionView'
 
 export default function DetailTab(props) {
+ 
+  function handleToggleEdit() {
+    const { toggleEditing, setRecipeSession, selectedRecipe } = props
+    toggleEditing()
+    console.log('selectedRecipe', selectedRecipe)
+    setRecipeSession(selectedRecipe.config)
+  }
+  
   const { 
-    editing, 
-    session, 
+    isEditing, 
     removeTabFromSnap, 
     removeWindowFromSnap, 
     getCurrentTabs, 
     selectedRecipe,
-    launchRecipe } = props
+    launchRecipe, 
+    session
+  } = props
+
   return(
     <SlideIn 
       wasOpened={ props.wasOpened }
@@ -21,18 +31,22 @@ export default function DetailTab(props) {
     >
         <div className={ 'detailtab' }>
           {
-            editing 
+            isEditing 
             ? <EditRecipe 
               { ...props }
             /> 
-            : <ViewRecipe selectedRecipe={ selectedRecipe } launchRecipe={ launchRecipe } />
+            : <ViewRecipe 
+                selectedRecipe={ selectedRecipe } 
+                launchRecipe={ launchRecipe } 
+                handleEditingClicked={ handleToggleEdit }
+              />
           }
           <SessionView 
-            session={ editing ? session : (selectedRecipe && selectedRecipe.config || [])} 
+            session={ session } 
             removeTabFromSnap={ removeTabFromSnap } 
             removeWindowFromSnap={ removeWindowFromSnap } 
             getCurrentTabs={ getCurrentTabs }
-            canEdit={ editing }
+            canEdit={ isEditing }
           />
         </div>
     </SlideIn>

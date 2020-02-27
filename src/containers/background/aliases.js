@@ -21,6 +21,8 @@ import {
   SEARCH_SETRESULTS_FAILED,
   SEARCH_SETRESULTS_PENDING,
   SEARCH_SETRESULTS_SUCCESS,
+  SEARCH_SETROW,
+  SEARCH_SELECTRECIPE,
   SEARCH_SETSEARCHTERMS,
   SEARCH_GET_INITIAL_RESULTS,
   SEARCH_SETSEARCHTERMS_POPUP,
@@ -28,9 +30,10 @@ import {
   POPUP_SYNCRECIPES_FAILED,
   POPUP_SYNCRECIPES,
   POPUP_SYNCRECIPES_PENDING,
-  POPUP_SYNCRECIPES_SUCCESS
+  POPUP_SYNCRECIPES_SUCCESS,
+  POPUP_OPENED
  } from '../actionTypes'
-import { toggleCreateView, syncRecipes } from '../popup/popup.actions'
+import { toggleEditing } from '../popup/popup.actions'
 
 const manager = new TabManager()
 chrome.storage.local.clear()
@@ -64,9 +67,8 @@ const launchRecipeConfiguration = (originalAction) => {
   }
 }
 
-const createRecipeAlias = (originalAction) => {
+const createRecipeAlias = () => {
   return async (dispatch, getState) => {
-
     try {
       dispatch(createRecipePending())
       const tabsState = getState().tabs
@@ -104,18 +106,34 @@ const createRecipeAlias = (originalAction) => {
       }
       const { data: recipeFromServer } = await axios.post(`${serverUrl}/recipe/create`, {...theRecipe }, config)
 
-      console.log('created recipe', recipeFromServer)
+      dispatch(selectRecipe(recipeFromServer))
+      dispatch(toggleEditing())
       await manager.addRecipeToStore(recipeFromServer)
       dispatch(getInitialResults())
       dispatch({ type: TABS_CREATERECIPE_SUCCESS })
-      dispatch({ 
-        type: TABS_CLEARFIELDS,
-      })
 
     } catch(err) {
       console.log(err)
       dispatch({ type: TABS_CREATERECIPE_FAILED })
     } 
+  }
+}
+
+const selectRecipe = (selectedRecipe) => {
+  return {
+    type: SEARCH_SELECTRECIPE,
+    payload: {
+      selectedRecipe,
+    }
+  }
+}
+
+const selectRecipeFromRow = (originalAction) => {
+  const { row } = originalAction.payload
+  return (dispatch, getState) => {
+    const { results } = getState().search
+    const selectedRecipe = results[row]
+    dispatch(selectRecipe(selectedRecipe))
   }
 }
 
@@ -198,7 +216,7 @@ const login = (originalAction) => {
   }
 }
 
-const syncRecipesWithCloud = (originalAction) => {
+const syncRecipesWithCloud = () => {
 
   return (dispatch, getState) => {
     const authState = getState().auth
@@ -224,7 +242,12 @@ const syncRecipesWithCloud = (originalAction) => {
 }
 
 const popupSync = () => {
-  
+  return (dispatch, getState) => {
+    const loggedIn = getState().auth.loggedIn
+    if(loggedIn) {
+      dispatch(syncRecipesWithCloud())
+    }
+  }
 }
 
 export default {
@@ -234,5 +257,6 @@ export default {
   [SEARCH_SETSEARCHTERMS_POPUP]: searchRecipes,
   [SEARCH_GET_INITIAL_RESULTS]: getInitialResults,
   [TABS_LAUNCHRECIPE]: launchRecipeConfiguration,
-  [POPUP_SYNCRECIPES]: syncRecipesWithCloud
+  [POPUP_OPENED]: popupSync,
+  [SEARCH_SETROW]: selectRecipeFromRow,
 }

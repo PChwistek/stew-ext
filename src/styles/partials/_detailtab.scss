@@ -23,10 +23,9 @@
   &__icons {
     display: flex;
     justify-content: space-evenly;
-    padding-left: 20px;
-    padding-right: 10px;
-    position: relative;
-    top: 325px;
+    width: 50%;
+    position: absolute;
+    bottom: 30px;
 
     &__edit {
       width: 24px;
