@@ -14,7 +14,7 @@ import {
   AUTH_LOGIN,
   SEARCH_SETROW,
   SEARCH_SETRECIPE,
-  TABS_CREATERECIPE,
+  TABS_SAVERECIPE,
   POPUP_SELECTROW,
   POPUP_TOGGLE_DETAILVISIBLE,
   POPUP_TOGGLE_CREATEVISIBLE,
@@ -150,9 +150,9 @@ export function login(email, password) {
   }
 }
 
-export function createRecipe() {
+export function saveRecipe() {
   return {
-    type: TABS_CREATERECIPE,
+    type: TABS_SAVERECIPE,
     payload: {}
   }
 }

@@ -11,7 +11,7 @@ import {
   addRecipeTag, 
   removeRecipeTag,
   clearFields, 
-  createRecipe,
+  saveRecipe,
   toggleEditing,
   setRecipeForm,
   setRecipeSession
@@ -34,7 +34,7 @@ const dispatchToProps = {
   addRecipeTag,
   removeRecipeTag,
   clearFields,
-  createRecipe,
+  saveRecipe,
   toggleEditing,
   setRecipeForm,
   setRecipeSession

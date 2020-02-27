@@ -15,9 +15,9 @@ const IconRow = (props) => (
         onClick={ props.handleEditingClicked } 
       />
     </div>
-    <div>
+    {/* <div>
       <img src={ '../../../assets/share.png'} className={ 'detailtab__icons__edit' } />
-    </div>
+    </div> */}
     <div>
       <img src={ '../../../assets/trash.png'} className={ 'detailtab__icons__edit' } />
     </div>

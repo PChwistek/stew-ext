@@ -31,7 +31,6 @@ export default (state = initialState, action) => {
       theWindow.tabs = newTabs
 
       if(theWindow.tabs.length == 0) {
-        console.log('here!')
         state.session.splice(windowIndex, 1)
       }
       return Object.assign({}, state, {})

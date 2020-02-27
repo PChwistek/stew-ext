@@ -1,4 +1,4 @@
-import { AUTH_LOGIN_SUCCESS, AUTH_LOGIN_PENDING, AUTH_LOGIN_FAILED } from '../../actionTypes'
+import { AUTH_LOGIN_SUCCESS, AUTH_LOGIN_PENDING, AUTH_LOGIN_FAILED, AUTH_INVALID } from '../../actionTypes'
 
 const initialState = {
   loggedIn: false,
@@ -26,6 +26,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         loggedIn: false,
         isPending: false
+      })
+    case AUTH_INVALID:
+      return Object.assign({}, state, {
+        ...initialState
       })
     default:
       return state

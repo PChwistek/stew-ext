@@ -40,25 +40,26 @@ export default class Manager {
 
   async addRecipeToStore(recipe) {
     let recipes = await this.fetchAllRecipes()
-    console.log('before adding', recipes)
     recipes = recipes || []
     recipes.push(recipe)
 
-    const newStew = {
-      recipes
-    } 
+    browser.storage.local.set({ stew: { recipes } })
 
-    console.log('new recipe', newStew)
+    return recipes
+  }
 
-    browser.storage.local.set({ stew: newStew })
-
+  async updateRecipeInStore(recipe) {
+    let recipes = await this.fetchAllRecipes()
+    const theIndex = recipes.findIndex(existingRecipe => existingRecipe._id === recipe._id)
+    recipes[theIndex] = recipe
+    await browser.storage.local.set({ stew: { recipes } })
     return recipes
   }
 
   async updateRecipesFromServer(newRecipes) {
     browser.storage.local.set({ stew: { recipes: newRecipes } })
       .then(() => {
-        console.log('updated from server')
+        // console.log('updated from server')
     })
   }
 
@@ -69,7 +70,6 @@ export default class Manager {
 
   async searchRecipes(searchTerm) {
     const allRecipes = await this.fetchAllRecipes()
-    console.log('all recipes in search', allRecipes)
     var search = new JsSearch.Search('_id')
     search.addIndex('name')
     search.addIndex('author')
@@ -78,7 +78,6 @@ export default class Manager {
 
     search.addDocuments(allRecipes)
     const results = search.search(searchTerm)
-    console.log(`results for ${searchTerm}`, results)
 
     return results
   }

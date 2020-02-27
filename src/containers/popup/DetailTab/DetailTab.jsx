@@ -9,7 +9,6 @@ export default function DetailTab(props) {
   function handleToggleEdit() {
     const { toggleEditing, setRecipeSession, selectedRecipe } = props
     toggleEditing()
-    console.log('selectedRecipe', selectedRecipe)
     setRecipeSession(selectedRecipe.config)
   }
   

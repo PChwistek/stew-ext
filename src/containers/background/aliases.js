@@ -9,11 +9,12 @@ import {
   AUTH_LOGIN_PENDING, 
   AUTH_LOGIN_FAILED, 
   AUTH_LOGIN_SUCCESS,
-  TABS_CREATERECIPE,
+  AUTH_INVALID,
+  TABS_SAVERECIPE,
   TABS_CLEARFIELDS,
-  TABS_CREATERECIPE_FAILED,
-  TABS_CREATERECIPE_PENDING,
-  TABS_CREATERECIPE_SUCCESS,
+  TABS_SAVERECIPE_FAILED,
+  TABS_SAVERECIPE_PENDING,
+  TABS_SAVERECIPE_SUCCESS,
   TABS_LAUNCHRECIPE,
   TABS_LAUNCHRECIPE_FAILED,
   TABS_LAUNCHRECIPE_PENDING,
@@ -39,8 +40,15 @@ const manager = new TabManager()
 chrome.storage.local.clear()
 const serverUrl = getServerHostname()
 
+const handle401 = (error) => {
+  if(error.response.status === 401) {
+    return dispatch => { 
+      dispatch({ type: AUTH_INVALID })
+    }
+  }
+}
+
 const getCurrentSession = (originalAction) => {
-  console.log('original action', originalAction)
   return async (dispatch) => {
     const session = await manager.getSession()
     dispatch({
@@ -67,12 +75,19 @@ const launchRecipeConfiguration = (originalAction) => {
   }
 }
 
-const createRecipeAlias = () => {
+const saveRecipeAlias = () => {
   return async (dispatch, getState) => {
     try {
-      dispatch(createRecipePending())
+      dispatch({ type: TABS_SAVERECIPE_PENDING })
       const tabsState = getState().tabs
       const authState = getState().auth
+      const searchState = getState().search
+
+      const { recipeForm: { isNew } } = tabsState
+      const { jwt } = authState
+      const config = {
+        headers: { Authorization: `Bearer ${jwt}` }
+      }
 
       const newConfig = []
       let titlesForSearch = []
@@ -91,30 +106,34 @@ const createRecipeAlias = () => {
           }))
         })
       }
+
       const theRecipe = {
         name: tabsState.recipeForm.recipeName,
         author: authState.loggedInAs,
         tags: tabsState.recipeForm.recipeTags,
         titles: titlesForSearch,
-        attributes: ['Popular', 'Favorite'],
+        attributes: [],
         config: newConfig,
       }
 
-      const { jwt } = authState
-      const config = {
-        headers: { Authorization: `Bearer ${jwt}` }
+      if(!isNew) {
+        const { selectedRecipe } = searchState
+        theRecipe._id = selectedRecipe._id
+        const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
+        dispatch(selectRecipe(recipeFromServer))
+        await manager.updateRecipeInStore(recipeFromServer)
+      } else {
+        const { data: recipeFromServer } = await axios.post(`${serverUrl}/recipe/create`, {...theRecipe }, config)
+        dispatch(selectRecipe(recipeFromServer))
+        await manager.addRecipeToStore(recipeFromServer)
       }
-      const { data: recipeFromServer } = await axios.post(`${serverUrl}/recipe/create`, {...theRecipe }, config)
-
-      dispatch(selectRecipe(recipeFromServer))
       dispatch(toggleEditing())
-      await manager.addRecipeToStore(recipeFromServer)
       dispatch(getInitialResults())
-      dispatch({ type: TABS_CREATERECIPE_SUCCESS })
-
+      dispatch({ type: TABS_SAVERECIPE_SUCCESS })
+     
     } catch(err) {
-      console.log(err)
-      dispatch({ type: TABS_CREATERECIPE_FAILED })
+      handle401(err)
+      dispatch({ type: TABS_SAVERECIPE_FAILED })
     } 
   }
 }
@@ -134,13 +153,6 @@ const selectRecipeFromRow = (originalAction) => {
     const { results } = getState().search
     const selectedRecipe = results[row]
     dispatch(selectRecipe(selectedRecipe))
-  }
-}
-
-const createRecipePending = () => {
-  return {
-    type: TABS_CREATERECIPE_PENDING,
-    payload: {}
   }
 }
 
@@ -197,7 +209,6 @@ const setSearchTerms = (originalAction) => {
 }
 
 const login = (originalAction) => {
-  console.log('logging in')
   return dispatch => {
     dispatch(loginPending())
     axios
@@ -205,12 +216,10 @@ const login = (originalAction) => {
         ...originalAction.payload
       })
       .then(res => {
-        console.log('success')
         dispatch(loginSuccess(res.data))
         dispatch(syncRecipesWithCloud())
       })
       .catch(err => {
-        console.log('failure')
         dispatch(loginFailure(err.message))
       })
   }
@@ -229,13 +238,12 @@ const syncRecipesWithCloud = () => {
     axios
       .get(`${serverUrl}/recipe/byAuthor`, config)
       .then(res => {
-        console.log('res', res)
         manager.updateRecipesFromServer(res.data)
         dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
         dispatch(getInitialResults())
       })
       .catch(err => {
-        console.log('failure', err)
+        handle401(err)
         dispatch({ type: POPUP_SYNCRECIPES_FAILED })
       })
   }
@@ -253,7 +261,7 @@ const popupSync = () => {
 export default {
   [TABS_SNAP]: getCurrentSession,
   [AUTH_LOGIN]: login,
-  [TABS_CREATERECIPE]: createRecipeAlias,
+  [TABS_SAVERECIPE]: saveRecipeAlias,
   [SEARCH_SETSEARCHTERMS_POPUP]: searchRecipes,
   [SEARCH_GET_INITIAL_RESULTS]: getInitialResults,
   [TABS_LAUNCHRECIPE]: launchRecipeConfiguration,

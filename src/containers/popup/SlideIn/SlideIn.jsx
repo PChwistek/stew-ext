@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function SlideIn(props) {
-  const { visible, onCloseClick } = props
-  console.log('Create tab props', props)
 
   function getAnimation() {
     const { visible, wasOpened } = props
@@ -14,6 +12,7 @@ export default function SlideIn(props) {
     }
     return 'slide-in'
   }
+  const { onCloseClick } = props
 
   return (
     <div className={ getAnimation() }>
