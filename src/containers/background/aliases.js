@@ -1,6 +1,7 @@
 import axios from 'axios'
 import getServerHostname from '../getServerHostName'
 import TabManager from './TabManager'
+import { compareObjects } from '../utils'
 
 import { 
   TABS_SNAP, 
@@ -12,6 +13,10 @@ import {
   AUTH_INVALID,
   TABS_SAVERECIPE,
   TABS_CLEARFIELDS,
+  TABS_DELETERECIPE,
+  TABS_DELETERECIPE_PENDING,
+  TABS_DELETERECIPE_FAILED,
+  TABS_DELETERECIPE_SUCCESS,
   TABS_SAVERECIPE_FAILED,
   TABS_SAVERECIPE_PENDING,
   TABS_SAVERECIPE_SUCCESS,
@@ -24,6 +29,7 @@ import {
   SEARCH_SETRESULTS_SUCCESS,
   SEARCH_SETROW,
   SEARCH_SELECTRECIPE,
+  SEARCH_CLEARSELECTEDRECIPE,
   SEARCH_SETSEARCHTERMS,
   SEARCH_GET_INITIAL_RESULTS,
   SEARCH_SETSEARCHTERMS_POPUP,
@@ -32,9 +38,10 @@ import {
   POPUP_SYNCRECIPES,
   POPUP_SYNCRECIPES_PENDING,
   POPUP_SYNCRECIPES_SUCCESS,
-  POPUP_OPENED
+  POPUP_OPENED,
+  POPUP_TOGGLE_SLIDE
  } from '../actionTypes'
-import { toggleEditing } from '../popup/popup.actions'
+import { toggleEditing, toggleSlide } from '../popup/popup.actions'
 
 const manager = new TabManager()
 chrome.storage.local.clear()
@@ -83,7 +90,7 @@ const saveRecipeAlias = () => {
       const authState = getState().auth
       const searchState = getState().search
 
-      const { recipeForm: { isNew } } = tabsState
+      const { isNew } = tabsState
       const { jwt } = authState
       const config = {
         headers: { Authorization: `Bearer ${jwt}` }
@@ -116,12 +123,26 @@ const saveRecipeAlias = () => {
         config: newConfig,
       }
 
+      console.log('is new', isNew)
+
       if(!isNew) {
         const { selectedRecipe } = searchState
+        console.log('selectedRecipe', selectedRecipe)
+        console.log('the recipe', theRecipe)
         theRecipe._id = selectedRecipe._id
-        const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
-        dispatch(selectRecipe(recipeFromServer))
-        await manager.updateRecipeInStore(recipeFromServer)
+
+        const areSame = compareObjects(
+          { name: theRecipe.name, tags: theRecipe.tags, config: theRecipe.config}, 
+          { name: selectedRecipe.name, tags: selectedRecipe.tags, config: selectedRecipe.config}
+        )
+
+        console.log('no changes', areSame)
+        if(!areSame) {
+          const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
+          dispatch(selectRecipe(recipeFromServer))
+          await manager.updateRecipeInStore(recipeFromServer)
+        }
+        
       } else {
         const { data: recipeFromServer } = await axios.post(`${serverUrl}/recipe/create`, {...theRecipe }, config)
         dispatch(selectRecipe(recipeFromServer))
@@ -132,7 +153,10 @@ const saveRecipeAlias = () => {
       dispatch({ type: TABS_SAVERECIPE_SUCCESS })
      
     } catch(err) {
-      handle401(err)
+      console.log(err)
+      if(err && err.status) {
+        handle401(err)
+      }
       dispatch({ type: TABS_SAVERECIPE_FAILED })
     } 
   }
@@ -222,6 +246,7 @@ const login = (originalAction) => {
       .catch(err => {
         dispatch(loginFailure(err.message))
       })
+    dispatch(getInitialResults())
   }
 }
 
@@ -258,6 +283,33 @@ const popupSync = () => {
   }
 }
 
+const removeRecipe = () => {
+  return async (dispatch, getState) => {
+    const { selectedRecipe } = getState().search
+    const authState = getState().auth
+    const { jwt } = authState
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` }
+    }
+    dispatch({ type: TABS_DELETERECIPE_PENDING })
+    await manager.removeRecipeFromStore(selectedRecipe)
+    axios
+      .post(`${serverUrl}/recipe/delete`, {
+        _id: selectedRecipe._id
+      }, config)
+      .then(res => {
+        dispatch(toggleSlide(false))
+        dispatch({ type: TABS_DELETERECIPE_SUCCESS })
+      })
+      .catch(err => {
+        dispatch({ type: TABS_DELETERECIPE_FAILED })
+        if(err && err.status) {
+          handle401(err)
+        }
+      })
+  }
+}
+
 export default {
   [TABS_SNAP]: getCurrentSession,
   [AUTH_LOGIN]: login,
@@ -267,4 +319,5 @@ export default {
   [TABS_LAUNCHRECIPE]: launchRecipeConfiguration,
   [POPUP_OPENED]: popupSync,
   [SEARCH_SETROW]: selectRecipeFromRow,
+  [TABS_DELETERECIPE]: removeRecipe
 }

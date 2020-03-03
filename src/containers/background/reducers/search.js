@@ -1,5 +1,11 @@
 import { 
-  SEARCH_NEXTROW, SEARCH_PREVIOUSROW, SEARCH_SETROW, SEARCH_SETSEARCHTERMS_ALIAS, SEARCH_SETRESULTS_SUCCESS, SEARCH_SELECTRECIPE
+  SEARCH_NEXTROW, 
+  SEARCH_PREVIOUSROW, 
+  SEARCH_SETROW, 
+  SEARCH_SETSEARCHTERMS_ALIAS, 
+  SEARCH_SETRESULTS_SUCCESS, 
+  SEARCH_SELECTRECIPE, 
+  SEARCH_CLEARSELECTEDRECIPE
 } from '../../actionTypes'
 
 const initialState = {
@@ -45,6 +51,10 @@ export default (state = initialState, action) => {
     case SEARCH_SELECTRECIPE:
       return Object.assign({}, state, {
         selectedRecipe: action.payload.selectedRecipe
+      })
+    case SEARCH_CLEARSELECTEDRECIPE:
+      return Object.assign({}, state, {
+        selectedRecipe: {}
       })
     default:
       return state

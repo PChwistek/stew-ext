@@ -25,6 +25,7 @@ import {
   POPUP_TOGGLE_SLIDE,
   POPUP_TOGGLEEDITING,
   TABS_SETRECIPEFORM,
+  TABS_DELETERECIPE,
   TABS_SETSNAP
 } from '../actionTypes'
 
@@ -164,6 +165,13 @@ export function toggleSlide(visible, isEditing) {
       slideOutVisible: visible,
       isEditing: isEditing,
     }
+  }
+}
+
+export function deleteRecipe() {
+  return {
+    type: TABS_DELETERECIPE,
+    payload: {}
   }
 }
 

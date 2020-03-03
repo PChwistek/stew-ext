@@ -56,6 +56,14 @@ export default class Manager {
     return recipes
   }
 
+  async removeRecipeFromStore(recipe) {
+    let recipes = await this.fetchAllRecipes()
+    const theIndex = recipes.findIndex(existingRecipe => existingRecipe._id === recipe._id)
+    recipes.splice(theIndex, 1)
+    await browser.storage.local.set({ stew: { recipes } })
+    return recipes  
+  }
+
   async updateRecipesFromServer(newRecipes) {
     browser.storage.local.set({ stew: { recipes: newRecipes } })
       .then(() => {

@@ -14,7 +14,8 @@ import {
   saveRecipe,
   toggleEditing,
   setRecipeForm,
-  setRecipeSession
+  setRecipeSession,
+  deleteRecipe
 } from '../popup.actions'
 
 
@@ -37,7 +38,8 @@ const dispatchToProps = {
   saveRecipe,
   toggleEditing,
   setRecipeForm,
-  setRecipeSession
+  setRecipeSession,
+  deleteRecipe
 }
 
 export default connect(stateToProps, dispatchToProps)(DetailTab)

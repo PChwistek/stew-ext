@@ -19,7 +19,10 @@ const IconRow = (props) => (
       <img src={ '../../../assets/share.png'} className={ 'detailtab__icons__edit' } />
     </div> */}
     <div>
-      <img src={ '../../../assets/trash.png'} className={ 'detailtab__icons__edit' } />
+      <img 
+        src={ '../../../assets/trash.png'} className={ 'detailtab__icons__edit' } 
+        onClick={ props.handleDeleteClicked } 
+      />
     </div>
   </div>
 )

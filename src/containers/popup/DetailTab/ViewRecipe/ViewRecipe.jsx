@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import IconRow from './IconRow'
 import { getSrc } from '../../utils'
 import Button from '../../../common-ui/Button'
+import ConfirmModal from '../../Modal/ConfirmModal'
 
 const ViewRecipe = (props) => {
-  const { selectedRecipe, launchRecipe } = props
+  const { selectedRecipe, launchRecipe, deleteRecipe } = props
+  const [modalVisible, setModalVisible] = useState(false)
+
+  function handleDeleteClicked() {
+    setModalVisible(true)
+  }
+
   return ( 
       <div className={ 'detailtab__details'}>
       {
@@ -36,7 +43,17 @@ const ViewRecipe = (props) => {
           <div className={ 'detailtab__launch' }>
             <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(selectedRecipe || {}) } />
           </div>
-          <IconRow handleEditingClicked={ props.handleEditingClicked } />
+          <ConfirmModal 
+            show={ modalVisible } 
+            closeModal={ () => setModalVisible(false) } 
+            title={ `Are you sure you want to delete '${props.selectedRecipe.name}'?` }
+            onNoClick={ () => setModalVisible(false) }
+            onYesClick={ deleteRecipe }
+          />
+          <IconRow
+            handleEditingClicked={ props.handleEditingClicked } 
+            handleDeleteClicked={ handleDeleteClicked } 
+          />
         </div>
       }
     </div>
