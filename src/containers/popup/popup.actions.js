@@ -145,7 +145,7 @@ export function login(email, password) {
   return {
     type: AUTH_LOGIN,
     payload: {
-      email, //this has to be username because of passport
+      email: email.toLowerCase(),
       password,
     }
   }
