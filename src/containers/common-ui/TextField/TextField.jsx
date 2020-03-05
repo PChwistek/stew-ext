@@ -42,7 +42,7 @@ class TextField extends Component {
 
   render() {
     const { active, error, label } = this.state
-    const { predicted, locked, type, value, autoFocus } = this.props
+    const { predicted, locked, type, value, autoFocus, innerRef } = this.props
     const fieldClassName = `field ${(locked ? active : active || value) &&
       "active"} ${locked && !active && "locked"} && ${error && 'error'}`
 
@@ -53,15 +53,16 @@ class TextField extends Component {
           predicted &&
           predicted.includes(value) && <p className="predicted">{predicted}</p>}
         <input
-          id={1}
+          id={ this.props.id }
           type={ type }
           value={value}
           autoFocus={ autoFocus }
           placeholder={label}
           onChange={this.changeValue.bind(this)}
-          onKeyPress={this.handleKeyPress.bind(this)}
+          onKeyUp={this.props.handleKeyUp || this.handleKeyPress.bind(this)}
           onFocus={() => !locked && this.setState({ active: true })}
           onBlur={() => !locked && this.setState({ active: false })}
+          ref={ innerRef }
           autoComplete="off"       
         />
         <label htmlFor={1} className={error && "error"}>

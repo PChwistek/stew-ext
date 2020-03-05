@@ -1,19 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, createRef } from 'react'
 import TextField from '../../common-ui/TextField'
 import Button from '../../common-ui/Button'
-import Checkbox from '../../common-ui/Checkbox'
 
 export default function Login(props) {
 
   const { login, isPending } = props
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [remember, setRemember] = useState(false)
+
+  let usernameField = createRef()
+  let passwordField = createRef()
 
   function handleLogin() {
     login(username, password)
   }
-  
+
+  // When Enter is pressed, set the focused state to the next element ID provided in each input
+  function handleKeyUp(e) {
+    // e.persist()
+    e.which = e.which || e.keyCode
+    // If the key press is Enter
+    if (e.which == 13) {
+      switch (e.target.id) {
+        case "usernameField":
+          passwordField.current.focus()
+          return
+        case "passwordField":
+          console.log('here!!')
+          handleLogin()
+          return
+      }
+    }
+  }
+
   return (
     <div>
       <div className={ 'login' }>
@@ -21,13 +40,27 @@ export default function Login(props) {
           <img src={ '../../../assets/stew-logo.png' } className={ 'login__image '} />
         </div>
         <div className={ 'login__form-row'}>
-          <TextField type={ 'text' } label={ 'Email' } autoFocus setValue={ setUsername } value={ username } />
+          <TextField
+            id={"usernameField"} 
+            type={ 'text' } 
+            label={ 'Email' }
+            handleKeyUp={ handleKeyUp }
+            setValue={ setUsername } 
+            value={ username }
+            autoFocus 
+            innerRef={ usernameField }
+        />
         </div>
         <div className={ 'login__form-row'}>
-          <TextField type={ 'password' } label={ 'Password' } setValue={ setPassword } value={ password }/>
-        </div>
-        <div className={ 'login__form-row login__form-row--center'}>
-          <Checkbox label={ 'Remember Me?' } checked={ remember } setValue={ setRemember } />
+          <TextField
+            type={ 'password' } 
+            label={ 'Password' } 
+            setValue={ setPassword } 
+            value={ password }
+            id={ 'passwordField' }
+            innerRef={ passwordField }
+            handleKeyUp={ handleKeyUp }
+          />
         </div>
         <div className={ 'login__form-row--submit'}>
         {

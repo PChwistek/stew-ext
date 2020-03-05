@@ -44,7 +44,7 @@ import {
 import { toggleEditing, toggleSlide } from '../popup/popup.actions'
 
 const manager = new TabManager()
-chrome.storage.local.clear()
+chrome.storage.sync.clear()
 const serverUrl = getServerHostname()
 
 const handle401 = (error) => {

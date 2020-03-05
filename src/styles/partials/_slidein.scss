@@ -3,25 +3,24 @@
   width: 100%;
   height: 565px;
   position: absolute;
-  right: -100%;
   display: flex;
 
-
-
-  &--visible {
-    right: 0%;
-    -webkit-animation: slidein-anim 0.2s ease-in-out; /* Safari 4.0 - 8.0 */
-    animation: slidein-anim 0.2s ease-in-out;
+  &-enter {
+    transform: translateX(100%);
   }
 
-  &--preexisting {
-    right: 0%;
+  &-enter-active {
+    transform: translateX(0%);
+    transition: transform 200ms;
   }
 
-  &--hide {
-    right: -100%;
-    -webkit-animation: slideout-anim 0.3s ease-in-out; /* Safari 4.0 - 8.0 */
-    animation: slideout-anim 0.3s ease-in-out;
+  &-exit {
+    transform: translateX(0%);
+  }
+
+  &-exit-active{ 
+    transform: translateX(100%);
+    transition: transform 200ms;
   }
 
 }
@@ -36,26 +35,12 @@
   cursor: pointer;
 }
 
-@keyframes slidein-anim {
-  0%   {right: -100%;}
-  100% {right: 0%;}
-}
-
-@keyframes slideout-anim {
-  0%   {right: 0%;}
-  40% { right: 2%;}
-  100% {right: -100%;}
-}
-
-
 .slide-in-filler {
   opacity: 0.7;
   background: $modal-background;
   height: 100%;
   width: 10%;
 }
-
- 
 
 .slide-in-content {
   opacity: 1;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import TextField from '../../../common-ui/TextField'
 import Button from '../../../common-ui/Button'
@@ -10,18 +10,38 @@ export default function EditRecipe(props) {
 
   const { recipeForm: { recipeName, recipeTags, recipeTag } } = tabs
 
+  let recipeNameField = createRef()
+  let tagsField = createRef()
+
   function handleSave() {
     saveRecipe()
   }
-  
+
+  function handleKeyUp(e) {
+    // e.persist()
+    e.which = e.which || e.keyCode
+    // If the key press is Enter
+    if (e.which == 13) {
+      switch (e.target.id) {
+        case 'recipeNameField':
+          tagsField.current.focus()
+          return
+      }
+    }
+  }
+
   return (
     <div className={ 'createtab__form'}>
       <div className={ 'createtab__form-row'}>
         <TextField 
+          tabIndex={ 1 }
           type={ 'text' } 
+          id={ 'recipeNameField' }
           label={ 'Recipe Name' } 
           setValue={ setRecipeName } 
-          value={ recipeName } 
+          value={ recipeName }
+          innerRef={ recipeNameField }
+          handleKeyUp={ handleKeyUp }
         /> 
       </div>
       <div className={ 'createtab__form-row'}>
@@ -32,6 +52,7 @@ export default function EditRecipe(props) {
           clearOnEnter={ true } 
           onEnter={ addRecipeTag } 
           value={ recipeTag } 
+          innerRef={ tagsField }
         /> 
       </div>
       <div className={ 'tag-container' } >

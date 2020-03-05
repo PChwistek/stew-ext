@@ -11,9 +11,6 @@ export default class Popup extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      slideOutOpened: false,
-    }
   }
 
   componentDidMount() {
@@ -27,9 +24,7 @@ export default class Popup extends Component {
     if(!slideOutVisible) {
       getCurrentTabs()
       setRecipeForm('', [], true)
-      this.setState({ slideOutOpened: false })
     } else {
-      this.setState({ slideOutOpened: true })
     }
     toggleSlide(!slideOutVisible, true)
   }
@@ -54,7 +49,6 @@ export default class Popup extends Component {
   
   render() {
     const { loggedIn, getFirstResults, terms, slideOutVisible, isEditing } = this.props
-    const { slideOutOpened } = this.state
     if(terms == '') {
       getFirstResults()
     }
@@ -67,7 +61,6 @@ export default class Popup extends Component {
             <div className="popup__body">
               <DetailTab 
                 visible={ slideOutVisible } 
-                wasOpened={ slideOutOpened } 
                 onCloseClick={ isEditing ? this.handleToggleCreateTab: this.handleToggleRowDetailTab } 
                 isEditing={ isEditing }
               />

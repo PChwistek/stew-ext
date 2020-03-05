@@ -1,7 +1,7 @@
 
 .modal {
-  position: fixed;
-  height: 100vh;
+  position: absolute;
+  height: 100%;
   width: 100%;
   margin-left: -10px;
   top: 0;
@@ -9,6 +9,24 @@
   background: $modal-background;
   overflow: hidden;
   color: $text-color;
+
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active{ 
+    opacity: 0;
+    transition: opacity 200ms;
+  }
   
   &__container {
     position: relative;
@@ -20,7 +38,6 @@
     top: 20%;
     padding: 30px;
     border-radius: 15px;
-
   }
 
   &__exit {

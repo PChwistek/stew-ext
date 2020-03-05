@@ -4,8 +4,8 @@ import * as JsSearch from 'js-search'
 export default class Manager {
 
   constructor() {
-    browser.storage.local.clear().then(() => {
-      browser.storage.local.set({ stew: { recipes: [] } })
+    browser.storage.sync.clear().then(() => {
+      browser.storage.sync.set({ stew: { recipes: [] } })
         .then(() => {
           console.log('cache redone')
         })
@@ -43,7 +43,7 @@ export default class Manager {
     recipes = recipes || []
     recipes.push(recipe)
 
-    browser.storage.local.set({ stew: { recipes } })
+    browser.storage.sync.set({ stew: { recipes } })
 
     return recipes
   }
@@ -52,7 +52,7 @@ export default class Manager {
     let recipes = await this.fetchAllRecipes()
     const theIndex = recipes.findIndex(existingRecipe => existingRecipe._id === recipe._id)
     recipes[theIndex] = recipe
-    await browser.storage.local.set({ stew: { recipes } })
+    await browser.storage.sync.set({ stew: { recipes } })
     return recipes
   }
 
@@ -60,19 +60,19 @@ export default class Manager {
     let recipes = await this.fetchAllRecipes()
     const theIndex = recipes.findIndex(existingRecipe => existingRecipe._id === recipe._id)
     recipes.splice(theIndex, 1)
-    await browser.storage.local.set({ stew: { recipes } })
+    await browser.storage.sync.set({ stew: { recipes } })
     return recipes  
   }
 
   async updateRecipesFromServer(newRecipes) {
-    browser.storage.local.set({ stew: { recipes: newRecipes } })
+    browser.storage.sync.set({ stew: { recipes: newRecipes } })
       .then(() => {
         // console.log('updated from server')
     })
   }
 
   async fetchAllRecipes() {
-    const theResult = await browser.storage.local.get('stew')
+    const theResult = await browser.storage.sync.get('stew')
     return theResult.stew.recipes 
   }
 

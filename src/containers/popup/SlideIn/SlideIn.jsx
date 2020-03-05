@@ -1,36 +1,29 @@
 import React from 'react'
+import { CSSTransition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 
 export default function SlideIn(props) {
 
-  function getAnimation() {
-    const { visible, wasOpened } = props
-    if(visible) {
-      return 'slide-in slide-in--visible'
-    } else if(!visible && wasOpened) {
-      return 'slide-in slide-in--hide'
-    }
-    return 'slide-in'
-  }
-  const { onCloseClick } = props
+  const { onCloseClick, visible } = props
 
   return (
-    <div className={ getAnimation() }>
-      <div className='slide-in-content'>
-        <div className='slide-in-content slide-in-content__body'>
-        <div>
-          <img src={ '../../../assets/close.png'} className='slide-in-button' onClick={ onCloseClick } />
+    <div>
+      <CSSTransition in={ visible } timeout={ 200 } className='slide-in' classNames={ 'slide-in' } unmountOnExit>
+        <div className='slide-in-content'>
+          <div className='slide-in-content slide-in-content__body'>
+          <div>
+            <img src={ '../../../assets/close.png'} className='slide-in-button' onClick={ onCloseClick } />
+          </div>
+            { props.children }
+          </div>
         </div>
-          { props.children }
-        </div>
-      </div>
+      </CSSTransition>
     </div>
   )
 }
 
 SlideIn.propTypes = {
   visible: PropTypes.bool.isRequired,
-  wasOpened: PropTypes.bool.isRequired,
   onCloseClick: PropTypes.func.isRequired,
   children: PropTypes.node
 }
