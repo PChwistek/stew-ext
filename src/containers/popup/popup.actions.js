@@ -9,15 +9,11 @@ import {
   TABS_REMOVERECIPETAG,
   TABS_LAUNCHRECIPE,
   TABS_CLEARFIELDS,
-  SEARCH_NEXTROW,
-  SEARCH_PREVIOUSROW,
   AUTH_LOGIN,
   SEARCH_SETROW,
-  SEARCH_SETRECIPE,
+  SEARCH_PREVIOUSROW,
+  SEARCH_NEXTROW,
   TABS_SAVERECIPE,
-  POPUP_SELECTROW,
-  POPUP_TOGGLE_DETAILVISIBLE,
-  POPUP_TOGGLE_CREATEVISIBLE,
   POPUP_SYNCRECIPES,
   SEARCH_GET_INITIAL_RESULTS,
   SEARCH_SETSEARCHTERMS_POPUP,
@@ -132,12 +128,24 @@ export function clearFields() {
   }
 }
 
-export function selectRow(row) {
+export function selectRow(rowIndex) {
   return {
     type: SEARCH_SETROW,
     payload: {
-      row
+      rowIndex
     }
+  }
+}
+
+export function selectNextRow() {
+  return {
+    type: SEARCH_NEXTROW
+  }
+}
+
+export function selectPreviousRow() {
+  return {
+    type: SEARCH_PREVIOUSROW
   }
 }
 

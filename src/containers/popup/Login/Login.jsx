@@ -30,6 +30,18 @@ export default function Login(props) {
           handleLogin()
           return
       }
+    } else if (e.which == 40) {
+      switch (e.target.id) {
+        case "usernameField":
+          passwordField.current.focus()
+          return
+      }
+    } else if (e.which == 38) {
+      switch (e.target.id) {
+        case "passwordField":
+          usernameField.current.focus()
+          return
+      }
     }
   }
 

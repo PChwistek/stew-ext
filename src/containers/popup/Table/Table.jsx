@@ -6,13 +6,28 @@ import { getSrc } from '../utils'
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 export default function Table(props) {
-  const { onRecipeNameClicked, selectRow, launchRecipe } = props
+  const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow } = props
   const { selectedRow = 0, results = [], searchTerms } = props.search
+  document.onkeydown = checkKey
+
+  function checkKey(e) {
+    e = e || window.event;
+    if (e.keyCode == '38') {
+      selectPreviousRow()
+    }
+    else if (e.keyCode == '40') {
+      selectNextRow()
+    } else if(e.ctrlKey) {
+      onRecipeNameClicked(selectedRow)
+    } else if (e.keyCode == 13) {
+      launchRecipe(results[selectedRow])
+    }
+  }
 
   return (
     <div>
       <SortBar title={ 'All' } numResults={ `${results.length}` } terms={ searchTerms } />
-      <div className={ 'table__container'}>
+      <div className={ 'table__container'} onKeyUp={ checkKey}>
         {
           results.length <= 0 
             ? <div className={ 'table__no-results' }> 
@@ -21,7 +36,7 @@ export default function Table(props) {
             : results.map( (row, index) => (
               <div key={ 'row' + index } onClick={ () => selectRow(index) } className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
                 <div className={ 'table__row__top'}>
-                  <div className={ 'table__row__title '} onClick={ () => onRecipeNameClicked(row) }>
+                  <div className={ 'table__row__title '} onClick={ () => onRecipeNameClicked(index) }>
                     { row.name }
                   </div>
                   <div className={ 'table__row__attributes '}>

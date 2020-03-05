@@ -12,7 +12,6 @@ import {
   AUTH_LOGIN_SUCCESS,
   AUTH_INVALID,
   TABS_SAVERECIPE,
-  TABS_CLEARFIELDS,
   TABS_DELETERECIPE,
   TABS_DELETERECIPE_PENDING,
   TABS_DELETERECIPE_FAILED,
@@ -21,25 +20,19 @@ import {
   TABS_SAVERECIPE_PENDING,
   TABS_SAVERECIPE_SUCCESS,
   TABS_LAUNCHRECIPE,
-  TABS_LAUNCHRECIPE_FAILED,
   TABS_LAUNCHRECIPE_PENDING,
   TABS_LAUNCHRECIPE_SUCCESS,
-  SEARCH_SETRESULTS_FAILED,
-  SEARCH_SETRESULTS_PENDING,
   SEARCH_SETRESULTS_SUCCESS,
   SEARCH_SETROW,
+  SEARCH_SETROW_ALIAS,
   SEARCH_SELECTRECIPE,
-  SEARCH_CLEARSELECTEDRECIPE,
-  SEARCH_SETSEARCHTERMS,
   SEARCH_GET_INITIAL_RESULTS,
   SEARCH_SETSEARCHTERMS_POPUP,
   SEARCH_SETSEARCHTERMS_ALIAS,
   POPUP_SYNCRECIPES_FAILED,
-  POPUP_SYNCRECIPES,
   POPUP_SYNCRECIPES_PENDING,
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_OPENED,
-  POPUP_TOGGLE_SLIDE
  } from '../actionTypes'
 import { toggleEditing, toggleSlide } from '../popup/popup.actions'
 
@@ -48,6 +41,7 @@ chrome.storage.sync.clear()
 const serverUrl = getServerHostname()
 
 const handle401 = (error) => {
+  console.log('error', error)
   if(error.response.status === 401) {
     return dispatch => { 
       dispatch({ type: AUTH_INVALID })
@@ -136,7 +130,6 @@ const saveRecipeAlias = () => {
           { name: selectedRecipe.name, tags: selectedRecipe.tags, config: selectedRecipe.config}
         )
 
-        console.log('no changes', areSame)
         if(!areSame) {
           const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
           dispatch(selectRecipe(recipeFromServer))
@@ -172,10 +165,22 @@ const selectRecipe = (selectedRecipe) => {
 }
 
 const selectRecipeFromRow = (originalAction) => {
-  const { row } = originalAction.payload
+  const { rowIndex } = originalAction.payload
   return (dispatch, getState) => {
     const { results } = getState().search
-    const selectedRecipe = results[row]
+    const selectedRecipe = results[rowIndex]
+    dispatch({
+      type: TABS_SETSNAP,
+      payload: {
+        session: selectedRecipe.config
+      }
+    })
+    dispatch({ 
+      type: SEARCH_SETROW_ALIAS, 
+      payload: {
+        selectedRow: rowIndex
+      } 
+    })
     dispatch(selectRecipe(selectedRecipe))
   }
 }
@@ -268,7 +273,7 @@ const syncRecipesWithCloud = () => {
         dispatch(getInitialResults())
       })
       .catch(err => {
-        handle401(err)
+        dispatch(handle401(err))
         dispatch({ type: POPUP_SYNCRECIPES_FAILED })
       })
   }

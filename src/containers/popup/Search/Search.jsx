@@ -5,7 +5,7 @@ import SearchTextField from './SearchTextfield'
 export default function Search(props) {
   const { onPlusClick, setSearchTerms, terms } = props
   return (
-    <div className='search'>
+    <div className='search' >
       <div className='search__content'>
         <div className="search__field">
           <SearchTextField type={ 'text' } focused={ true } label={ 'Search for recipes...' } setValue={ setSearchTerms } value={ terms } />

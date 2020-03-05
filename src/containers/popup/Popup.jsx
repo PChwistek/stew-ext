@@ -20,24 +20,17 @@ export default class Popup extends Component {
     
   handleToggleCreateTab = () => {
     const { getCurrentTabs, toggleSlide, slideOutVisible, setRecipeForm } = this.props
-
     if(!slideOutVisible) {
       getCurrentTabs()
       setRecipeForm('', [], true)
-    } else {
     }
     toggleSlide(!slideOutVisible, true)
   }
 
-  handleToggleRowDetailTab = (row) => {
-    const { toggleSlide, slideOutVisible, selectRow, setRecipeSession, setRecipeForm } = this.props
+  handleToggleRowDetailTab = (index) => {
+    const { toggleSlide, slideOutVisible, selectRow } = this.props
     if(!slideOutVisible) {
-      this.setState({ slideOutOpened: false })
-      selectRow(row)
-      setRecipeSession(row.config)
-      setRecipeForm(row.name, row.tags, false)
-    } else {
-      this.setState({ slideOutOpened: true })
+      selectRow(index)
     }
     toggleSlide(!slideOutVisible, false)
   }
@@ -73,19 +66,6 @@ export default class Popup extends Component {
     ) 
   }
 }
-
-    // document.onkeydown = checkKey;
-    // function checkKey(e) {
-    //   e = e || window.event;
-    //   if (e.keyCode == '38') {
-    //     previousRow()
-    //   }
-    //   else if (e.keyCode == '40') {
-    //     nextRow()
-    //   }
-      
-    // }
-
 
 Popup.propTypes = {
   getCurrentTabs: PropTypes.func,

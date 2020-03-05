@@ -1,7 +1,7 @@
 import { 
   SEARCH_NEXTROW, 
   SEARCH_PREVIOUSROW, 
-  SEARCH_SETROW, 
+  SEARCH_SETROW_ALIAS, 
   SEARCH_SETSEARCHTERMS_ALIAS, 
   SEARCH_SETRESULTS_SUCCESS, 
   SEARCH_SELECTRECIPE, 
@@ -12,7 +12,7 @@ const initialState = {
   searchTerms: '',
   results: [],
   isDropdownOpen: false,
-  selectedRow: -1,
+  selectedRow: 0,
   sortedBy: '',
   selectedRecipe: {}
 }
@@ -27,11 +27,6 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         selectedRow: nextRow
       })
-    case SEARCH_SETROW:
-      const { row } = action.payload
-      return Object.assign({}, state, {
-        selectedRow: row,
-      })
     case SEARCH_PREVIOUSROW:
       let prevRow = state.selectedRow - 1
       if(prevRow < 0) {
@@ -42,6 +37,7 @@ export default (state = initialState, action) => {
       })
     case SEARCH_SETSEARCHTERMS_ALIAS:
       return Object.assign({}, state, {
+        selectedRow: 0,
         searchTerms: action.payload.searchTerms
       })
     case SEARCH_SETRESULTS_SUCCESS:
@@ -50,12 +46,17 @@ export default (state = initialState, action) => {
       })
     case SEARCH_SELECTRECIPE:
       return Object.assign({}, state, {
-        selectedRecipe: action.payload.selectedRecipe
+        selectedRecipe: action.payload.selectedRecipe,
       })
     case SEARCH_CLEARSELECTEDRECIPE:
       return Object.assign({}, state, {
         selectedRecipe: {}
       })
+    case SEARCH_SETROW_ALIAS: {
+      return Object.assign({}, state, {
+        selectedRow: action.payload.selectedRow
+      })
+    }
     default:
       return state
   }

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import Popup from './Popup'
-import { getCurrentTabs, 
+import {
+  getCurrentTabs, 
   toggleCreateView, 
   toggleDetailView, 
   setSearchTerms, 

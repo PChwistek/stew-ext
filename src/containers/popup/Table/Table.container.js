@@ -2,7 +2,9 @@ import { connect } from 'react-redux'
 import Table from './Table'
 import { 
   selectRow,
-  launchRecipe
+  launchRecipe,
+  selectNextRow,
+  selectPreviousRow
 } from '../popup.actions'
 
 const stateToProps = ({ search }) => ({
@@ -11,7 +13,9 @@ const stateToProps = ({ search }) => ({
 
 const dispatchToProps = {
   selectRow,
-  launchRecipe
+  launchRecipe,
+  selectNextRow,
+  selectPreviousRow,
 }
 
 export default connect(stateToProps, dispatchToProps)(Table)

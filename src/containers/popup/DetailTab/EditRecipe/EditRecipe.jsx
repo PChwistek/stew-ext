@@ -42,6 +42,7 @@ export default function EditRecipe(props) {
           value={ recipeName }
           innerRef={ recipeNameField }
           handleKeyUp={ handleKeyUp }
+          autoFocus
         /> 
       </div>
       <div className={ 'createtab__form-row'}>
