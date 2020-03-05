@@ -3,7 +3,8 @@ import Login from './Login'
 import { login } from '../popup.actions'
 
 const stateToProps = ({ auth }) => ({
-  pending: auth.pending
+  pending: auth.pending,
+  loggedIn: auth.loggedIn
 })
 
 const dispatchToProps = {

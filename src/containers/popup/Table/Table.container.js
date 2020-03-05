@@ -7,8 +7,9 @@ import {
   selectPreviousRow
 } from '../popup.actions'
 
-const stateToProps = ({ search }) => ({
+const stateToProps = ({ search, popup }) => ({
   search,
+  ...popup,
 })
 
 const dispatchToProps = {

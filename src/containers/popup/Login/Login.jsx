@@ -4,7 +4,7 @@ import Button from '../../common-ui/Button'
 
 export default function Login(props) {
 
-  const { login, isPending } = props
+  const { login, isPending, loggedIn } = props
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -17,30 +17,30 @@ export default function Login(props) {
 
   // When Enter is pressed, set the focused state to the next element ID provided in each input
   function handleKeyUp(e) {
-    // e.persist()
     e.which = e.which || e.keyCode
     // If the key press is Enter
-    if (e.which == 13) {
-      switch (e.target.id) {
-        case "usernameField":
-          passwordField.current.focus()
-          return
-        case "passwordField":
-          console.log('here!!')
-          handleLogin()
-          return
-      }
-    } else if (e.which == 40) {
-      switch (e.target.id) {
-        case "usernameField":
-          passwordField.current.focus()
-          return
-      }
-    } else if (e.which == 38) {
-      switch (e.target.id) {
-        case "passwordField":
-          usernameField.current.focus()
-          return
+    if(!loggedIn) {
+      if (e.which == 13) {
+        switch (e.target.id) {
+          case "usernameField":
+            passwordField.current.focus()
+            return
+          case "passwordField":
+            handleLogin()
+            return
+        }
+      } else if (e.which == 40) {
+        switch (e.target.id) {
+          case "usernameField":
+            passwordField.current.focus()
+            return
+        }
+      } else if (e.which == 38) {
+        switch (e.target.id) {
+          case "passwordField":
+            usernameField.current.focus()
+            return
+        }
       }
     }
   }

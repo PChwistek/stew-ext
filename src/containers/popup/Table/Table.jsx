@@ -6,21 +6,24 @@ import { getSrc } from '../utils'
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 export default function Table(props) {
-  const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow } = props
+  const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible } = props
   const { selectedRow = 0, results = [], searchTerms } = props.search
   document.onkeydown = checkKey
 
   function checkKey(e) {
     e = e || window.event;
-    if (e.keyCode == '38') {
-      selectPreviousRow()
-    }
-    else if (e.keyCode == '40') {
-      selectNextRow()
-    } else if(e.ctrlKey) {
+    if(!slideOutVisible) {
+      if (e.keyCode == '38') {
+        selectPreviousRow()
+      } else if (e.keyCode == '40') {
+        selectNextRow()
+      } else if (e.keyCode == 13) {
+        launchRecipe(results[selectedRow])
+      }
+    } 
+    
+    if (e.ctrlKey) {
       onRecipeNameClicked(selectedRow)
-    } else if (e.keyCode == 13) {
-      launchRecipe(results[selectedRow])
     }
   }
 
