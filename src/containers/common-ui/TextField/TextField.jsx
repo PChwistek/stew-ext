@@ -22,6 +22,8 @@ class TextField extends Component {
       if(isValid) {
         this.setState({ value, error })
         setValue(value)
+      } else {
+        this.setState({ error })
       }
 
     } else {
@@ -32,11 +34,15 @@ class TextField extends Component {
   }
 
   handleKeyPress(event) {
-    const { onEnter, clearOnEnter } = this.props
+    const { onEnter, clearOnEnter, onEnterValidation } = this.props
     if (event.which === 13) {
-      onEnter && onEnter()
-      clearOnEnter && this.setState({ value: '' })
-      // this.setState({ value: this.props.predicted })
+      const { isValid, error } = onEnterValidation(this.state.value)
+      if(isValid) {
+        onEnter && onEnter()
+        clearOnEnter && this.setState({ value: '' })
+      } else {
+        this.setState({ error })
+      }     
     }
   }
 
@@ -77,6 +83,7 @@ TextField.propTypes = {
   clearOnEnter: PropTypes.bool,
   locked: PropTypes.bool,
   onEnter: PropTypes.func,
+  onEnterValidation: PropTypes.func,
   active: PropTypes.bool,
   predicted: PropTypes.any,
   value: PropTypes.string,

@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react'
+import React, { createRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import TextField from '../../../common-ui/TextField'
 import Button from '../../../common-ui/Button'
@@ -8,13 +8,51 @@ export default function EditRecipe(props) {
   const { tabs, setRecipeName, setRecipeTag, addRecipeTag, 
     removeRecipeTag, clearFields, saveRecipe } = props
 
+  const [formErrors, setFormErrors] = useState([])
+
+
   const { recipeForm: { recipeName, recipeTags, recipeTag } } = tabs
 
   let recipeNameField = createRef()
   let tagsField = createRef()
 
   function handleSave() {
-    saveRecipe()
+    const temp = []
+    if(recipeName.length < 1) {
+      temp.push('Recipe name cannot be empty.')
+    }
+
+    if(tabs.session.length < 1) {
+      temp.push('Session snapshot cannot be empty.')
+    }
+    if(temp.length === 0) {
+      saveRecipe()
+    } else {
+      setFormErrors(temp)
+    }
+  }
+
+  function validateName(name) {
+    if(name.length >= 25) {
+      return { isValid: false, error: 'Max character length of 25' }
+    }
+    return { isValid: true, error: '' }
+  }
+
+
+  function handleOnEnterValidation(entered) {
+    if(recipeTags.length >= 5) {
+      return { isValid: false, error: 'Max of 5 tags' }
+    }
+    if(entered.length < 2) {
+      return { isValid: false, error: 'Tag must be at least two characters long' }
+    } 
+    
+    if(recipeTags.find(tag => entered == tag)) {
+      return { isValid: false, error: 'Tag already exists' }
+    } 
+    
+    return { isValid: true, error: ''}
   }
 
   function handleKeyUp(e) {
@@ -37,7 +75,8 @@ export default function EditRecipe(props) {
           tabIndex={ 1 }
           type={ 'text' } 
           id={ 'recipeNameField' }
-          label={ 'Recipe Name' } 
+          label={ 'Recipe Name' }
+          validate={ validateName }
           setValue={ setRecipeName } 
           value={ recipeName }
           innerRef={ recipeNameField }
@@ -49,9 +88,10 @@ export default function EditRecipe(props) {
         <TextField 
           type={ 'text' } 
           label={ 'Add tags' } 
-          setValue={ setRecipeTag } 
+          setValue={ setRecipeTag }
           clearOnEnter={ true } 
-          onEnter={ addRecipeTag } 
+          onEnter={ addRecipeTag }
+          onEnterValidation= { handleOnEnterValidation }
           value={ recipeTag } 
           innerRef={ tagsField }
         /> 
@@ -75,6 +115,13 @@ export default function EditRecipe(props) {
         <Checkbox label={ 'Make public?' } checked={ isPublic } setValue={ () => setRecipePublic(!isPublic) }/>
       </div> */}
       <div className={'createtab__bottom-row'}>
+        {
+          formErrors && formErrors.map( (error, index) => (
+            <div key={'error'+ index} className="createtab__error">
+              { error }
+            </div>
+          ))
+        }
         <div className={ 'createtab__form-row--submit'}>
           <Button text={ 'Save' } type={ 'primary' } onClick={ handleSave } />
         </div>

@@ -11,6 +11,8 @@ import {
   AUTH_LOGIN_FAILED, 
   AUTH_LOGIN_SUCCESS,
   AUTH_INVALID,
+  AUTH_CLEAR_ERROR,
+  AUTH_UPDATEDSYNC,
   TABS_SAVERECIPE,
   TABS_DELETERECIPE,
   TABS_DELETERECIPE_PENDING,
@@ -116,8 +118,6 @@ const saveRecipeAlias = () => {
         attributes: [],
         config: newConfig,
       }
-
-      console.log('is new', isNew)
 
       if(!isNew) {
         const { selectedRecipe } = searchState
@@ -246,7 +246,7 @@ const login = (originalAction) => {
       })
       .then(res => {
         dispatch(loginSuccess(res.data))
-        dispatch(syncRecipesWithCloud())
+        dispatch(syncRecipesWithCloud(true))
       })
       .catch(err => {
         dispatch(loginFailure(err.message))
@@ -255,22 +255,28 @@ const login = (originalAction) => {
   }
 }
 
-const syncRecipesWithCloud = () => {
+const syncRecipesWithCloud = (isForced) => {
 
   return (dispatch, getState) => {
     const authState = getState().auth
-    const { jwt } = authState
+    const { jwt, lastUpdated } = authState
     const config = {
       headers: { Authorization: `Bearer ${jwt}` }
     }
 
     dispatch({ type: POPUP_SYNCRECIPES_PENDING})
     axios
-      .get(`${serverUrl}/recipe/byAuthor`, config)
+      .post(`${serverUrl}/recipe/sync`, { lastUpdated, isForced }, config)
       .then(res => {
-        manager.updateRecipesFromServer(res.data)
-        dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
-        dispatch(getInitialResults())
+        const { data } = res
+        if(!data.upToDate || isForced) {
+          manager.updateRecipesFromServer(data.recipes)
+          dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
+          dispatch({ type: AUTH_UPDATEDSYNC, payload: { lastUpdated: data.lastUpdated }})
+          dispatch(getInitialResults())
+        } else {
+          dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
+        }
       })
       .catch(err => {
         dispatch(handle401(err))
@@ -283,7 +289,9 @@ const popupSync = () => {
   return (dispatch, getState) => {
     const loggedIn = getState().auth.loggedIn
     if(loggedIn) {
-      dispatch(syncRecipesWithCloud())
+      dispatch(syncRecipesWithCloud(false))
+    } else {
+      dispatch({ type: AUTH_CLEAR_ERROR})
     }
   }
 }

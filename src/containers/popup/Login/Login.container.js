@@ -4,7 +4,8 @@ import { login } from '../popup.actions'
 
 const stateToProps = ({ auth }) => ({
   pending: auth.pending,
-  loggedIn: auth.loggedIn
+  loggedIn: auth.loggedIn,
+  error: auth.error
 })
 
 const dispatchToProps = {
