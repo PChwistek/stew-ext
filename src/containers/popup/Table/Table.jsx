@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import SortBar from './SortBar'
 import Button from '../../common-ui/Button'
 import { getSrc } from '../utils'
@@ -8,15 +8,27 @@ import { getSrc } from '../utils'
 export default function Table(props) {
   const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible } = props
   const { selectedRow = 0, results = [], searchTerms } = props.search
+
+  const refDictionary = {}
+
   document.onkeydown = checkKey
+
+  function handleRefs(index) {
+    refDictionary[index] = createRef()
+    return refDictionary[index]
+  }
 
   function checkKey(e) {
     e = e || window.event;
     if(!slideOutVisible) {
       if (e.keyCode == '38') {
         selectPreviousRow()
+        refDictionary[selectedRow].current.focus()
+        console.log('to row', selectedRow)
       } else if (e.keyCode == '40') {
         selectNextRow()
+        refDictionary[selectedRow].current.focus()
+        console.log('to row', selectedRow)
       } else if (e.keyCode == 13) {
         launchRecipe(results[selectedRow])
       }
@@ -26,18 +38,17 @@ export default function Table(props) {
       onRecipeNameClicked(selectedRow)
     }
   }
-
   return (
     <div>
       <SortBar title={ 'All' } numResults={ `${results.length}` } terms={ searchTerms } />
-      <div className={ 'table__container'} onKeyUp={ checkKey}>
+      <div className={ 'table__container'}>
         {
           results.length <= 0 
             ? <div className={ 'table__no-results' }> 
                 No results :(
               </div>
             : results.map( (row, index) => (
-              <div key={ 'row' + index } onClick={ () => selectRow(index) } className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
+              <div key={ 'row' + index } tabIndex={-1} onClick={ () => selectRow(index) } ref={ handleRefs(index) } className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>
                 <div className={ 'table__row__top'}>
                   <div className={ 'table__row__title '} onClick={ () => onRecipeNameClicked(index) }>
                     { row.name }
