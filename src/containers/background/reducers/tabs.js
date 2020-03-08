@@ -2,7 +2,7 @@ import {
   TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
   TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
-  TABS_SETRECIPEFORM
+  TABS_SETRECIPEFORM, TABS_RESET
 } from '../../actionTypes'
 
 const initialState = {
@@ -87,6 +87,8 @@ export default (state = initialState, action) => {
         },
         isNew: action.payload.isNew,
       })
+    case TABS_RESET:
+      return initialState
     default:
       return state
   }

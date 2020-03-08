@@ -39,6 +39,13 @@ export default function EditRecipe(props) {
     return { isValid: true, error: '' }
   }
 
+  function validateTag(tag) {
+    if(tag.length >= 25) {
+      return { isValid: false, error: 'Max character length of 25' }
+    }
+    return { isValid: true, error: '' }
+  }
+
 
   function handleOnEnterValidation(entered) {
     if(recipeTags.length >= 5) {
@@ -89,7 +96,8 @@ export default function EditRecipe(props) {
           type={ 'text' } 
           label={ 'Add tags' } 
           setValue={ setRecipeTag }
-          clearOnEnter={ true } 
+          clearOnEnter={ true }
+          validate={ validateTag }
           onEnter={ addRecipeTag }
           onEnterValidation= { handleOnEnterValidation }
           value={ recipeTag } 

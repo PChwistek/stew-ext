@@ -51,7 +51,7 @@ export default function Login(props) {
         <div className={ 'login__image-container'}>
           <img src={ '../../../assets/stew-logo.png' } className={ 'login__image '} />
         </div>
-        { error && <div className='login__error'> Sorry, we couldn't find an account with those details. </div> }
+        <div className='login__error'> { error } </div>
         <div className={ 'login__form-row'}>
           <TextField
             id={"usernameField"} 

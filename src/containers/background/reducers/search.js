@@ -5,7 +5,8 @@ import {
   SEARCH_SETSEARCHTERMS_ALIAS, 
   SEARCH_SETRESULTS_SUCCESS, 
   SEARCH_SELECTRECIPE, 
-  SEARCH_CLEARSELECTEDRECIPE
+  SEARCH_CLEARSELECTEDRECIPE,
+  SEARCH_RESET
 } from '../../actionTypes'
 
 const initialState = {
@@ -57,6 +58,8 @@ export default (state = initialState, action) => {
         selectedRow: action.payload.selectedRow
       })
     }
+    case SEARCH_RESET:
+      return initialState
     default:
       return state
   }

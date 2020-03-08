@@ -1,0 +1,33 @@
+.menu {
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  margin-top: -5px;
+  width: 100%;
+  z-index: 20;
+  display: flex;
+
+  &__blank-zone {
+    background: $modal-background-color;
+    flex-grow: 1;
+  }
+
+  &__body {
+    width: 300px;
+    height: 100%;
+    background: $white-background;
+
+    &__content {
+      padding: 30px;
+      text-align: center;
+      div {
+        padding-top: 15px;
+      }
+    }
+
+    &__logo {
+      width: 100px;
+    }
+  }
+
+}

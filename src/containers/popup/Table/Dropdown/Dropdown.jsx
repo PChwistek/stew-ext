@@ -6,13 +6,12 @@ const Dropdown = ({ value, options, placeholder, onChange }) => {
   const [open, setOpen] = useState(false)
 
   const handleClickOutside = e => {
-    console.log("clicking anywhere");
     if (node.current.contains(e.target)) {
       // inside click
       return
     }
     // outside click
-    setOpen(false);
+    setOpen(false)
   }
 
   const handleChange = selectedValue => {
@@ -23,14 +22,14 @@ const Dropdown = ({ value, options, placeholder, onChange }) => {
 
   useEffect(() => {
     if (open) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside)
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside)
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
   }, [open])
 
   return (

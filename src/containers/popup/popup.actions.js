@@ -22,7 +22,8 @@ import {
   POPUP_TOGGLEEDITING,
   TABS_SETRECIPEFORM,
   TABS_DELETERECIPE,
-  TABS_SETSNAP
+  TABS_SETSNAP,
+  AUTH_LOGOUT
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -156,6 +157,12 @@ export function login(email, password) {
       email: email.toLowerCase(),
       password,
     }
+  }
+}
+
+export function logout() {
+  return {
+    type: AUTH_LOGOUT
   }
 }
 

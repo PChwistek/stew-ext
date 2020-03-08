@@ -11,6 +11,8 @@ import {
   AUTH_LOGIN_FAILED, 
   AUTH_LOGIN_SUCCESS,
   AUTH_INVALID,
+  AUTH_LOGOUT,
+  AUTH_LOGOUT_ALIAS,
   AUTH_CLEAR_ERROR,
   AUTH_UPDATEDSYNC,
   TABS_SAVERECIPE,
@@ -35,6 +37,8 @@ import {
   POPUP_SYNCRECIPES_PENDING,
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_OPENED,
+  TABS_RESET,
+  SEARCH_RESET,
  } from '../actionTypes'
 import { toggleEditing, toggleSlide } from '../popup/popup.actions'
 
@@ -204,10 +208,12 @@ const loginPending = () => {
   }
 }
 
-const loginFailure = () => {
+const loginFailure = (error) => {
   return {
     type: AUTH_LOGIN_FAILED,
-    payload: {}
+    payload: {
+      error
+    }
   }
 }
 
@@ -249,7 +255,13 @@ const login = (originalAction) => {
         dispatch(syncRecipesWithCloud(true))
       })
       .catch(err => {
-        dispatch(loginFailure(err.message))
+        let errorMsg = ''
+        if(err.message == 'Network Error') {
+          errorMsg = 'Trouble connecting to server.'
+        } else {
+          errorMsg = 'Sorry, we couldn\'t find an account with those details.'
+        }
+        dispatch(loginFailure(errorMsg))
       })
     dispatch(getInitialResults())
   }
@@ -296,6 +308,14 @@ const popupSync = () => {
   }
 }
 
+const authLogoutAlias = () => {
+  return dispatch => {
+    dispatch({ type: AUTH_LOGOUT_ALIAS })
+    dispatch({ type: SEARCH_RESET })
+    dispatch({ type: TABS_RESET })
+  }
+}
+
 const removeRecipe = () => {
   return async (dispatch, getState) => {
     const { selectedRecipe } = getState().search
@@ -332,5 +352,6 @@ export default {
   [TABS_LAUNCHRECIPE]: launchRecipeConfiguration,
   [POPUP_OPENED]: popupSync,
   [SEARCH_SETROW]: selectRecipeFromRow,
-  [TABS_DELETERECIPE]: removeRecipe
+  [TABS_DELETERECIPE]: removeRecipe,
+  [AUTH_LOGOUT]: authLogoutAlias,
 }
