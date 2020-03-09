@@ -6,10 +6,11 @@ import { getSrc } from '../utils'
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 export default function Table(props) {
-  const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible } = props
-  const { selectedRow = 0, results = [], searchTerms } = props.search
+  const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy } = props
+  const { selectedRow = 0, results = [], searchTerms, sortedBy, favorites } = props.search
 
   const refDictionary = {}
+  const keyMap = {}
 
   document.onkeydown = checkKey
 
@@ -19,17 +20,16 @@ export default function Table(props) {
   }
 
   function checkKey(e) {
-    e = e || window.event;
+    e = e || window.event
+    keyMap[e.code] = e.type == 'keydown';
     if(!slideOutVisible) {
-      if (e.keyCode == '38') {
+      if (keyMap['ArrowUp']) {
         selectPreviousRow()
         refDictionary[selectedRow].current.focus()
-        console.log('to row', selectedRow)
-      } else if (e.keyCode == '40') {
+      } else if (keyMap['ArrowDown']) {
         selectNextRow()
         refDictionary[selectedRow].current.focus()
-        console.log('to row', selectedRow)
-      } else if (e.keyCode == 13) {
+      } else if (keyMap['ShiftLeft'] && keyMap['Enter']) {
         launchRecipe(results[selectedRow])
       }
     } 
@@ -40,7 +40,7 @@ export default function Table(props) {
   }
   return (
     <div>
-      <SortBar title={ 'All' } numResults={ `${results.length}` } terms={ searchTerms } />
+      <SortBar title={ 'All' } numResults={ `${results.length}` } terms={ searchTerms } setSortBy={ setSortBy } sortedBy={ sortedBy } />
       <div className={ 'table__container'}>
         {
           results.length <= 0 
@@ -55,12 +55,11 @@ export default function Table(props) {
                   </div>
                   <div className={ 'table__row__attributes '}>
                     {
-                      row.attributes.map(attrib => (
-                        <div key={ attrib} className={ 'tooltip' }>
-                          <img src={ getSrc(attrib) } className={ `table__row__attribute-icon` }/>
-                          <span className="tooltiptext"> { attrib }</span>
+                      favorites.findIndex(recipe => recipe == row._id) > -1
+                        && <div key={ 'fav' + index } className={ 'tooltip' }>
+                          <img src={ getSrc('Favorite') } className={ `table__row__attribute-icon` }/>
+                          <span className="tooltiptext"> { 'Favorite' }</span>
                         </div>
-                      ))
                     }
                   </div>
                 </div>

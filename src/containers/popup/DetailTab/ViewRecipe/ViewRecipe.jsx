@@ -5,11 +5,15 @@ import Button from '../../../common-ui/Button'
 import ConfirmModal from '../../Modal/ConfirmModal'
 
 const ViewRecipe = (props) => {
-  const { selectedRecipe, launchRecipe, deleteRecipe } = props
+  const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite } = props
   const [modalVisible, setModalVisible] = useState(false)
 
   function handleDeleteClicked() {
     setModalVisible(true)
+  }
+
+  function handleFavoriteClicked() {
+    setFavorite(selectedRecipe._id, !isFavorite)
   }
 
   return ( 
@@ -53,6 +57,8 @@ const ViewRecipe = (props) => {
           <IconRow
             handleEditingClicked={ props.handleEditingClicked } 
             handleDeleteClicked={ handleDeleteClicked } 
+            handleFavoriteClicked={ handleFavoriteClicked }
+            isFavorite={ isFavorite }
           />
         </div>
       }

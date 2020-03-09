@@ -4,8 +4,9 @@ const IconRow = (props) => (
   <div className={ 'detailtab__icons'}>
     <div>
       <img 
-        src={ '../../../assets/star1-outline.png'} 
+        src={ props.isFavorite ? '../../../../../assets/star1.png' : '../../../../../assets/star1-outline.png'} 
         className={ 'detailtab__icons__edit' } 
+        onClick={ props.handleFavoriteClicked }
     />
     </div>
     <div>
@@ -20,7 +21,8 @@ const IconRow = (props) => (
     </div> */}
     <div>
       <img 
-        src={ '../../../assets/trash.png'} className={ 'detailtab__icons__edit' } 
+        src={ '../../../assets/trash.png'} 
+        className={ 'detailtab__icons__edit' } 
         onClick={ props.handleDeleteClicked } 
       />
     </div>

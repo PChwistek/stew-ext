@@ -4,7 +4,8 @@ import {
   selectRow,
   launchRecipe,
   selectNextRow,
-  selectPreviousRow
+  selectPreviousRow,
+  setSortBy
 } from '../popup.actions'
 
 const stateToProps = ({ search, popup }) => ({
@@ -17,6 +18,7 @@ const dispatchToProps = {
   launchRecipe,
   selectNextRow,
   selectPreviousRow,
+  setSortBy
 }
 
 export default connect(stateToProps, dispatchToProps)(Table)

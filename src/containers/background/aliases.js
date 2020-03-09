@@ -36,9 +36,11 @@ import {
   POPUP_SYNCRECIPES_FAILED,
   POPUP_SYNCRECIPES_PENDING,
   POPUP_SYNCRECIPES_SUCCESS,
+  SEARCH_SETSORTBY_ALIAS,
   POPUP_OPENED,
   TABS_RESET,
   SEARCH_RESET,
+  SEARCH_SETSORTBY,
  } from '../actionTypes'
 import { toggleEditing, toggleSlide } from '../popup/popup.actions'
 
@@ -68,8 +70,13 @@ const getCurrentSession = (originalAction) => {
 }
 
 const getInitialResults = (originalAction) => {
-  return async dispatch => {
-    const recipes = await manager.fetchAllRecipes()
+  return async (dispatch, getState) => {
+    const { search: { sortedBy, favorites } } = getState()
+    let recipes = await manager.fetchAllRecipes()
+    if(sortedBy == 'favorites') {
+      console.log('recipes')
+      recipes = recipes.filter(recipe => favorites.findIndex(fav => fav == recipe._id) > -1)
+    }
     dispatch(searchSuccess(recipes))
   }
 }
@@ -227,9 +234,10 @@ const searchSuccess = (results) => {
 }
 
 const searchRecipes = (originalAction) => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const { search: { sortedBy, favorites } } = getState()
     dispatch(setSearchTerms(originalAction))
-    const recipes = await manager.searchRecipes(originalAction.payload.searchTerms)
+    const recipes = await manager.searchRecipes(originalAction.payload.searchTerms, { sortedBy, filterList: favorites })
     dispatch(searchSuccess(recipes))
   }
 }
@@ -263,7 +271,6 @@ const login = (originalAction) => {
         }
         dispatch(loginFailure(errorMsg))
       })
-    dispatch(getInitialResults())
   }
 }
 
@@ -343,6 +350,21 @@ const removeRecipe = () => {
   }
 }
 
+const sortBySearch = (originalAction) => {
+  return async (dispatch, getState) => {
+    const { searchTerms } = getState().search
+    dispatch({
+      type: SEARCH_SETSORTBY_ALIAS,
+      payload: originalAction.payload
+    })
+    if(searchTerms) {
+      dispatch(searchRecipes({ payload: { searchTerms } }))
+    } else {
+      dispatch(getInitialResults())
+    }
+  }
+}
+
 export default {
   [TABS_SNAP]: getCurrentSession,
   [AUTH_LOGIN]: login,
@@ -354,4 +376,5 @@ export default {
   [SEARCH_SETROW]: selectRecipeFromRow,
   [TABS_DELETERECIPE]: removeRecipe,
   [AUTH_LOGOUT]: authLogoutAlias,
+  [SEARCH_SETSORTBY]: sortBySearch,
 }

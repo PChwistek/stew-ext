@@ -23,7 +23,9 @@ import {
   TABS_SETRECIPEFORM,
   TABS_DELETERECIPE,
   TABS_SETSNAP,
-  AUTH_LOGOUT
+  AUTH_LOGOUT,
+  SEARCH_SETSORTBY,
+  SEARCH_SETFAVORITE
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -54,6 +56,15 @@ export function setSearchTerms(terms) {
     type: SEARCH_SETSEARCHTERMS_POPUP,
     payload: {
       searchTerms: terms,
+    }
+  }
+}
+
+export function setSortBy(selection) {
+  return {
+    type: SEARCH_SETSORTBY,
+    payload: {
+      sortedBy: selection
     }
   }
 }
@@ -228,6 +239,16 @@ export function setRecipeForm(recipeName, recipeTags, isNew) {
       recipeTags,
       tag: '',
       isNew,
+    }
+  }
+}
+
+export function setFavorite(recipeId, value) {
+  return {
+    type: SEARCH_SETFAVORITE,
+    payload: {
+      recipeId,
+      value
     }
   }
 }

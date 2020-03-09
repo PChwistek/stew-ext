@@ -21,6 +21,11 @@ const Menu = (props) => {
             <div onClick={ props.logout }>
               <a> Logout </a>
             </div>
+            <div />
+            <div />
+            <div>
+              Icons made by Freepik from <a href="www.flaticon.com"> www.flaticon.com </a>
+            </div>
           </div>
         </div>
       </div>

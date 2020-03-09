@@ -1,5 +1,6 @@
 import browser from 'webextension-polyfill'
 import * as JsSearch from 'js-search'
+import { stemmer } from 'porter-stemmer'
 
 export default class Manager {
 
@@ -76,16 +77,26 @@ export default class Manager {
     return theResult.stew.recipes 
   }
 
-  async searchRecipes(searchTerm) {
+  async searchRecipes(searchTerm, { sortedBy, filterList }) {
+    console.log(sortedBy, filterList)
     const allRecipes = await this.fetchAllRecipes()
     var search = new JsSearch.Search('_id')
+    search.tokenizer = new JsSearch.StemmingTokenizer( stemmer, new JsSearch.SimpleTokenizer());
     search.addIndex('name')
     search.addIndex('author')
     search.addIndex('tags')
     search.addIndex('titles')
 
     search.addDocuments(allRecipes)
-    const results = search.search(searchTerm)
+    let results = search.search(searchTerm)
+
+    if(sortedBy) {
+      switch(sortedBy) {
+        case 'favorites':
+          results = results.filter(recipe => filterList.findIndex(fav => fav == recipe._id) > -1)
+          break
+      }
+    }
 
     return results
   }

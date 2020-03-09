@@ -6,7 +6,9 @@ import {
   SEARCH_SETRESULTS_SUCCESS, 
   SEARCH_SELECTRECIPE, 
   SEARCH_CLEARSELECTEDRECIPE,
-  SEARCH_RESET
+  SEARCH_RESET,
+  SEARCH_SETSORTBY_ALIAS,
+  SEARCH_SETFAVORITE
 } from '../../actionTypes'
 
 const initialState = {
@@ -14,8 +16,9 @@ const initialState = {
   results: [],
   isDropdownOpen: false,
   selectedRow: 0,
-  sortedBy: '',
-  selectedRecipe: {}
+  sortedBy: 'all',
+  selectedRecipe: {},
+  favorites: []
 }
 
 export default (state = initialState, action) => {
@@ -58,8 +61,26 @@ export default (state = initialState, action) => {
         selectedRow: action.payload.selectedRow
       })
     }
+    case SEARCH_SETSORTBY_ALIAS: {
+      return Object.assign({}, state, {
+        selectedRow: 0,
+        sortedBy: action.payload.sortedBy
+      })
+    }
     case SEARCH_RESET:
       return initialState
+    case SEARCH_SETFAVORITE: {
+      const { value, recipeId } = action.payload
+      let tempFavs = state.favorites
+      if(value) {
+        tempFavs.push(recipeId)
+      } else {
+        tempFavs = tempFavs.filter(recipe => recipe == value)
+      }     
+      return Object.assign({}, state, {
+        favorites: tempFavs
+      })
+    }
     default:
       return state
   }

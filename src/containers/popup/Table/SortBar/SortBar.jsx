@@ -6,27 +6,36 @@ const options = [
   {
     text: 'All',
     src: '../../../../assets/planet.png',
+    value: 'all'
   },
-  {
-    text: 'Created by me',
-    src: '../../../../assets/astronaut.png'
-  },
+  // {
+  //   text: 'Created by me',
+  //   src: '../../../../assets/astronaut.png'
+  // },
   {
     text: 'Used Recently',
-    src: '../../../../assets/rocket.png'
+    src: '../../../../assets/rocket.png',
+    value: 'recently'
   },
   {
     text: 'Favorites',
-    src: '../../../../assets/star2.png'
+    src: '../../../../assets/star2.png',
+    value: 'favorites'
   },
-  {
-    text: 'Created by others',
-    src: '../../../../assets/alien-1.png'
-  }
+  // {
+  //   text: 'Created by others',
+  //   src: '../../../../assets/alien-1.png'
+  // }
 ]
 
 export default function SortBar(props) {
-  const [vegetagle, setVegetable] = useState(undefined);
+  const selectedIndex = options.findIndex(opt => opt.value === props.sortedBy)
+  const [dropdownText, setDropdownText] = useState( options[selectedIndex] || undefined)
+
+  function handleSet(value) {
+    props.setSortBy(value.value)
+    setDropdownText(value)
+  }
   
   return(
     <div className='table__sort-bar'>
@@ -35,9 +44,9 @@ export default function SortBar(props) {
       </div>
       <div className='table__sort-bar-dropdown-container'>
         <Dropdown
-          placeholder={ options[0] }
-          value={ vegetagle }
-          onChange={v => setVegetable(v)}
+          placeholder={ options[selectedIndex || 0] }
+          value={ dropdownText }
+          onChange={v => handleSet(v)}
           options={ options }
         />
       </div>

@@ -21,9 +21,12 @@ export default function DetailTab(props) {
     selectedRecipe,
     launchRecipe, 
     session,
-    deleteRecipe
+    deleteRecipe,
+    setFavorite,
+    favorites
   } = props
 
+  const isFavorite = favorites.findIndex(recipe => recipe === selectedRecipe._id) > -1
   return(
     <SlideIn 
       wasOpened={ props.wasOpened }
@@ -40,7 +43,9 @@ export default function DetailTab(props) {
                 selectedRecipe={ selectedRecipe } 
                 launchRecipe={ launchRecipe } 
                 handleEditingClicked={ handleToggleEdit }
+                setFavorite={ setFavorite }
                 deleteRecipe={ deleteRecipe }
+                isFavorite={ isFavorite }
               />
           }
           <SessionView 
