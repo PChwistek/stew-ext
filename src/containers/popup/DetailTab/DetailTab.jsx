@@ -1,48 +1,61 @@
 import React from 'react'
 import SlideIn from '../SlideIn'
+import ViewRecipe from './ViewRecipe'
+import EditRecipe from './EditRecipe'
 import SessionView from '../SessionView'
-import Button from '../../common-ui/Button'
-import { getSrc } from '../utils'
 
 export default function DetailTab(props) {
-  const { toView, launchRecipe } = props
+ 
+  function handleToggleEdit() {
+    const { toggleEditing, setRecipeSession, selectedRecipe, setRecipeForm } = props
+    toggleEditing()
+    setRecipeForm(selectedRecipe.name, selectedRecipe.tags, false)
+    setRecipeSession(selectedRecipe.config)
+  }
+
+  const { 
+    isEditing, 
+    removeTabFromSnap, 
+    removeWindowFromSnap, 
+    getCurrentTabs, 
+    selectedRecipe,
+    launchRecipe, 
+    session,
+    deleteRecipe,
+    setFavorite,
+    favorites
+  } = props
+
+  const isFavorite = favorites.findIndex(recipe => recipe === selectedRecipe._id) > -1
   return(
-    <SlideIn { ...props }> 
-    {
-      toView && <div className={ 'detailtab' }>
-        <div className={ 'detailtab__details'}>
-          <div className={ 'detailtab__details__title'}>
-            { toView && toView.name }
-          </div>
-          <div>
-            Published by: { toView && toView.author }
-            <div>
-            {
-              toView.attributes.map(attrib => {
-                <img key={ attrib } src={ getSrc(attrib) } />
-              })
-            } 
-            </div>
-          </div>
-          <div>
-            <div className={ 'table__row__tags'}>
-                {
-                  toView && toView.tags.map(tag => (
-                    <div key={ tag } className={ 'tag-result' }>
-                      { tag }
-                    </div>
-                  ))
-                }
-                </div>
-          </div>
-          <div className={ 'detailtab__launch' }>
-            <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(toView || {}) } />
-          </div>
+    <SlideIn 
+      wasOpened={ props.wasOpened }
+      onCloseClick={ props.onCloseClick }
+      visible={ props.visible } 
+    >
+        <div className={ 'detailtab' }>
+          {
+            isEditing 
+            ? <EditRecipe 
+              { ...props }
+            /> 
+            : <ViewRecipe 
+                selectedRecipe={ selectedRecipe } 
+                launchRecipe={ launchRecipe } 
+                handleEditingClicked={ handleToggleEdit }
+                setFavorite={ setFavorite }
+                deleteRecipe={ deleteRecipe }
+                isFavorite={ isFavorite }
+              />
+          }
+          <SessionView 
+            session={ session } 
+            removeTabFromSnap={ removeTabFromSnap } 
+            removeWindowFromSnap={ removeWindowFromSnap } 
+            getCurrentTabs={ getCurrentTabs }
+            canEdit={ isEditing }
+          />
         </div>
-        <SessionView session={ toView ? toView.config : [] } canEdit={ false } />
-      </div>
-    }
-      
     </SlideIn>
   )
 

@@ -7,8 +7,6 @@
     "212": "assets/310x310.png"
   },
   "permissions": [
-    "alarms", 
-    "notifications", 
     "storage",
     "webNavigation",
     "tabs",
@@ -36,7 +34,8 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Comma"
+        "windows": "Ctrl+Shift+Comma",
+        "mac": "Command+Shift+Comma"
       },
       "global": true
     }

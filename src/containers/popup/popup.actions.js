@@ -9,16 +9,23 @@ import {
   TABS_REMOVERECIPETAG,
   TABS_LAUNCHRECIPE,
   TABS_CLEARFIELDS,
-  SEARCH_NEXTROW,
-  SEARCH_PREVIOUSROW,
   AUTH_LOGIN,
   SEARCH_SETROW,
-  TABS_CREATERECIPE,
-  POPUP_SELECTROW,
-  POPUP_TOGGLE_DETAILVISIBLE,
-  POPUP_TOGGLE_CREATEVISIBLE,
+  SEARCH_PREVIOUSROW,
+  SEARCH_NEXTROW,
+  TABS_SAVERECIPE,
+  POPUP_SYNCRECIPES,
   SEARCH_GET_INITIAL_RESULTS,
-  SEARCH_SETSEARCHTERMS_POPUP
+  SEARCH_SETSEARCHTERMS_POPUP,
+  POPUP_OPENED,
+  POPUP_TOGGLE_SLIDE,
+  POPUP_TOGGLEEDITING,
+  TABS_SETRECIPEFORM,
+  TABS_DELETERECIPE,
+  TABS_SETSNAP,
+  AUTH_LOGOUT,
+  SEARCH_SETSORTBY,
+  SEARCH_SETFAVORITE
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -49,6 +56,15 @@ export function setSearchTerms(terms) {
     type: SEARCH_SETSEARCHTERMS_POPUP,
     payload: {
       searchTerms: terms,
+    }
+  }
+}
+
+export function setSortBy(selection) {
+  return {
+    type: SEARCH_SETSORTBY,
+    payload: {
+      sortedBy: selection
     }
   }
 }
@@ -124,70 +140,115 @@ export function clearFields() {
   }
 }
 
-export function nextRow() {
-  return {
-    type: SEARCH_NEXTROW,
-    payload: {}
-  }
-}
-
-export function selectRow(row) {
+export function selectRow(rowIndex) {
   return {
     type: SEARCH_SETROW,
     payload: {
-      row
+      rowIndex
     }
   }
 }
 
-export function previousRow() {
+export function selectNextRow() {
   return {
-    type: SEARCH_PREVIOUSROW,
-    payload: {}
+    type: SEARCH_NEXTROW
   }
 }
 
-export function login(username, password) {
+export function selectPreviousRow() {
+  return {
+    type: SEARCH_PREVIOUSROW
+  }
+}
+
+export function login(email, password) {
   return {
     type: AUTH_LOGIN,
     payload: {
-      username,
+      email: email.toLowerCase(),
       password,
     }
   }
 }
 
-export function createRecipe() {
+export function logout() {
   return {
-    type: TABS_CREATERECIPE,
+    type: AUTH_LOGOUT
+  }
+}
+
+export function saveRecipe() {
+  return {
+    type: TABS_SAVERECIPE,
     payload: {}
   }
 }
 
-export function popupSelectRow(row) {
+export function toggleSlide(visible, isEditing) {
   return {
-    type: POPUP_SELECTROW,
+    type: POPUP_TOGGLE_SLIDE,
     payload: {
-      selectedRow: row,
+      slideOutVisible: visible,
+      isEditing: isEditing,
     }
   }
 }
 
-export function toggleCreateView(visible) {
+export function deleteRecipe() {
   return {
-    type: POPUP_TOGGLE_CREATEVISIBLE,
+    type: TABS_DELETERECIPE,
+    payload: {}
+  }
+}
+
+export function syncRecipes() {
+  return {
+    type: POPUP_SYNCRECIPES,
+    payload: {}
+  }
+}
+
+export function popupOpened() {
+  return {
+    type: POPUP_OPENED,
+    payload: {}
+  }
+}
+
+export function toggleEditing() {
+  return {
+    type: POPUP_TOGGLEEDITING,
+    payload: {}
+  }
+}
+
+export function setRecipeSession(recipeConfig) {
+  return {
+    type: TABS_SETSNAP,
     payload: {
-      createVisible: visible,
+      session: recipeConfig
     }
   }
 }
 
-export function toggleDetailView(visible, row) {
+export function setRecipeForm(recipeName, recipeTags, isNew) {
   return {
-    type: POPUP_TOGGLE_DETAILVISIBLE,
+    type: TABS_SETRECIPEFORM,
     payload: {
-      detailVisible: visible,
-      selectedRow: row,
+      recipeName,
+      recipeTags,
+      tag: '',
+      isNew,
+    }
+  }
+}
+
+export function setFavorite(recipeId, value) {
+  return {
+    type: SEARCH_SETFAVORITE,
+    payload: {
+      recipeId,
+      value
     }
   }
 }

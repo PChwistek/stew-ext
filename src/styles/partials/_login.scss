@@ -22,6 +22,10 @@
     }
   }
 
+  &__error {
+    color: $error-color;
+  }
+
   &__register {
     width: 100%;
     position: absolute;

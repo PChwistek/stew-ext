@@ -21,18 +21,20 @@ export default function SessionView(props) {
         </div>
         {
           win && win.tabs.map(tab => (
-            <div className='tab__row' key={ tab.id }>
+            <div className='tab__row' key={ 'row' +tab.index }>
               {
                 canEdit && (
-                  <div className='tab__remove-container' onClick={ () => removeTabFromSnap(win, tab) }> 
+                  <div key={ 'remove' + tab.index} className='tab__remove-container' onClick={ () => removeTabFromSnap(win, tab) }> 
                     <img src={ '' } className='tab__remove' />
                   </div>
                 )
               }
-              <div className='tab__body'>
-                <img src={ tab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
-                <p className='tab__title'> { tab.title } </p>
-              </div>
+              <a href={ tab.url } target="blank">
+                <div className='tab__body'>
+                  <img src={ tab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
+                  <p className='tab__title'> { tab.title } </p>
+                </div>
+              </a>
           </div>
         ))
       }

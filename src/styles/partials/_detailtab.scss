@@ -20,6 +20,22 @@
 
   }
 
+  &__icons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    position: absolute;
+    top: 520px;
+
+    &__edit {
+      width: 24px;
+      cursor: pointer;
+      &:hover {
+        margin-top: -2px;
+      }
+    }
+  }
+
   &__launch {
     text-align: center;
     margin-top: 30px;

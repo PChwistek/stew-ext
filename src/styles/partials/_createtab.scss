@@ -12,6 +12,11 @@
     flex-grow: 1;
   }
 
+  &__error {
+    margin-top: 10px;
+    color: $error-color;
+  }
+
   &__form-row {
     padding-top: 10px;
 

@@ -1,13 +1,24 @@
 import { 
-  SEARCH_NEXTROW, SEARCH_PREVIOUSROW, SEARCH_SETROW, SEARCH_SETSEARCHTERMS_ALIAS, SEARCH_SETRESULTS_SUCCESS
+  SEARCH_NEXTROW, 
+  SEARCH_PREVIOUSROW, 
+  SEARCH_SETROW_ALIAS, 
+  SEARCH_SETSEARCHTERMS_ALIAS, 
+  SEARCH_SETRESULTS_SUCCESS, 
+  SEARCH_SELECTRECIPE, 
+  SEARCH_CLEARSELECTEDRECIPE,
+  SEARCH_RESET,
+  SEARCH_SETSORTBY_ALIAS,
+  SEARCH_SETFAVORITE
 } from '../../actionTypes'
 
 const initialState = {
   searchTerms: '',
   results: [],
   isDropdownOpen: false,
-  selectedRow: -1,
-  sortedBy: ''
+  selectedRow: 0,
+  sortedBy: 'all',
+  selectedRecipe: {},
+  favorites: []
 }
 
 export default (state = initialState, action) => {
@@ -20,11 +31,6 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         selectedRow: nextRow
       })
-    case SEARCH_SETROW:
-      const { row } = action.payload
-      return Object.assign({}, state, {
-        selectedRow: row,
-      })
     case SEARCH_PREVIOUSROW:
       let prevRow = state.selectedRow - 1
       if(prevRow < 0) {
@@ -35,12 +41,46 @@ export default (state = initialState, action) => {
       })
     case SEARCH_SETSEARCHTERMS_ALIAS:
       return Object.assign({}, state, {
+        selectedRow: 0,
         searchTerms: action.payload.searchTerms
       })
     case SEARCH_SETRESULTS_SUCCESS:
       return Object.assign({}, state, {
         results: action.payload.results
       })
+    case SEARCH_SELECTRECIPE:
+      return Object.assign({}, state, {
+        selectedRecipe: action.payload.selectedRecipe,
+      })
+    case SEARCH_CLEARSELECTEDRECIPE:
+      return Object.assign({}, state, {
+        selectedRecipe: {}
+      })
+    case SEARCH_SETROW_ALIAS: {
+      return Object.assign({}, state, {
+        selectedRow: action.payload.selectedRow
+      })
+    }
+    case SEARCH_SETSORTBY_ALIAS: {
+      return Object.assign({}, state, {
+        selectedRow: 0,
+        sortedBy: action.payload.sortedBy
+      })
+    }
+    case SEARCH_RESET:
+      return initialState
+    case SEARCH_SETFAVORITE: {
+      const { value, recipeId } = action.payload
+      let tempFavs = state.favorites
+      if(value) {
+        tempFavs.push(recipeId)
+      } else {
+        tempFavs = tempFavs.filter(recipe => recipe == value)
+      }     
+      return Object.assign({}, state, {
+        favorites: tempFavs
+      })
+    }
     default:
       return state
   }

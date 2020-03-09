@@ -1,11 +1,12 @@
 import browser from 'webextension-polyfill'
 import * as JsSearch from 'js-search'
+import { stemmer } from 'porter-stemmer'
 
 export default class Manager {
 
   constructor() {
-    browser.storage.local.clear().then(() => {
-      browser.storage.local.set({ stew: { recipes: [] } })
+    browser.storage.sync.clear().then(() => {
+      browser.storage.sync.set({ stew: { recipes: [] } })
         .then(() => {
           console.log('cache redone')
         })
@@ -23,7 +24,7 @@ export default class Manager {
       const index = i
       const windowTabs = await browser.tabs.query({ windowId: windows[index].id})
       const win = {
-        id: windows[index].id,
+        index: index,
         tabs: windowTabs
       }
       session.push(win)
@@ -40,35 +41,62 @@ export default class Manager {
 
   async addRecipeToStore(recipe) {
     let recipes = await this.fetchAllRecipes()
-    console.log('before adding', recipes)
     recipes = recipes || []
     recipes.push(recipe)
 
-    const newStew = {
-      recipes
-    } 
-
-    browser.storage.local.set({ stew: newStew })
+    browser.storage.sync.set({ stew: { recipes } })
 
     return recipes
   }
 
+  async updateRecipeInStore(recipe) {
+    let recipes = await this.fetchAllRecipes()
+    const theIndex = recipes.findIndex(existingRecipe => existingRecipe._id === recipe._id)
+    recipes[theIndex] = recipe
+    await browser.storage.sync.set({ stew: { recipes } })
+    return recipes
+  }
+
+  async removeRecipeFromStore(recipe) {
+    let recipes = await this.fetchAllRecipes()
+    const theIndex = recipes.findIndex(existingRecipe => existingRecipe._id === recipe._id)
+    recipes.splice(theIndex, 1)
+    await browser.storage.sync.set({ stew: { recipes } })
+    return recipes  
+  }
+
+  async updateRecipesFromServer(newRecipes) {
+    browser.storage.sync.set({ stew: { recipes: newRecipes } })
+      .then(() => {
+        // console.log('updated from server')
+    })
+  }
+
   async fetchAllRecipes() {
-    const theResult = await browser.storage.local.get('stew')
+    const theResult = await browser.storage.sync.get('stew')
     return theResult.stew.recipes 
   }
 
-  async searchRecipes(searchTerm) {
+  async searchRecipes(searchTerm, { sortedBy, filterList }) {
+    console.log(sortedBy, filterList)
     const allRecipes = await this.fetchAllRecipes()
-    console.log('all recipes in search', allRecipes)
-    var search = new JsSearch.Search('uId')
+    var search = new JsSearch.Search('_id')
+    search.tokenizer = new JsSearch.StemmingTokenizer( stemmer, new JsSearch.SimpleTokenizer());
     search.addIndex('name')
     search.addIndex('author')
     search.addIndex('tags')
+    search.addIndex('titles')
 
     search.addDocuments(allRecipes)
-    const results = search.search(searchTerm)
-    console.log(`results for ${searchTerm}`, results)
+    let results = search.search(searchTerm)
+
+    if(sortedBy) {
+      switch(sortedBy) {
+        case 'favorites':
+          results = results.filter(recipe => filterList.findIndex(fav => fav == recipe._id) > -1)
+          break
+      }
+    }
 
     return results
   }

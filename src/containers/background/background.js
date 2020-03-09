@@ -3,5 +3,5 @@ import browser from 'webextension-polyfill'
 
 
 browser.commands.onCommand.addListener(function(command) {
-  console.log('Command:', command)
+  // console.log('Command:', command)
 })

@@ -8,7 +8,7 @@ class SearchTextField extends Component {
 
     this.state = {
       active: (props.locked && props.active) || false,
-      value: '',
+      value: props.value || '',
       error: props.error || '',
       label: props.label || 'Label'
     }
