@@ -41,6 +41,8 @@ import {
   TABS_RESET,
   SEARCH_RESET,
   SEARCH_SETSORTBY,
+  SEARCH_SETFAVORITE,
+  SEARCH_SETFAVORITE_ALIAS
  } from '../actionTypes'
 import { toggleEditing, toggleSlide } from '../popup/popup.actions'
 
@@ -49,7 +51,6 @@ chrome.storage.sync.clear()
 const serverUrl = getServerHostname()
 
 const handle401 = (error) => {
-  console.log('error', error)
   if(error.response.status === 401) {
     return dispatch => { 
       dispatch({ type: AUTH_INVALID })
@@ -74,7 +75,6 @@ const getInitialResults = (originalAction) => {
     const { search: { sortedBy, favorites } } = getState()
     let recipes = await manager.fetchAllRecipes()
     if(sortedBy == 'favorites') {
-      console.log('recipes')
       recipes = recipes.filter(recipe => favorites.findIndex(fav => fav == recipe._id) > -1)
     }
     dispatch(searchSuccess(recipes))
@@ -132,8 +132,6 @@ const saveRecipeAlias = () => {
 
       if(!isNew) {
         const { selectedRecipe } = searchState
-        console.log('selectedRecipe', selectedRecipe)
-        console.log('the recipe', theRecipe)
         theRecipe._id = selectedRecipe._id
 
         const areSame = compareObjects(
@@ -157,7 +155,6 @@ const saveRecipeAlias = () => {
       dispatch({ type: TABS_SAVERECIPE_SUCCESS })
      
     } catch(err) {
-      console.log(err)
       if(err && err.status) {
         handle401(err)
       }
@@ -292,6 +289,7 @@ const syncRecipesWithCloud = (isForced) => {
           manager.updateRecipesFromServer(data.recipes)
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
           dispatch({ type: AUTH_UPDATEDSYNC, payload: { lastUpdated: data.lastUpdated }})
+          dispatch({ type: SEARCH_SETFAVORITE_ALIAS, payload: { favorites: data.favoriteRecipes } })
           dispatch(getInitialResults())
         } else {
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
@@ -352,6 +350,7 @@ const removeRecipe = () => {
 
 const sortBySearch = (originalAction) => {
   return async (dispatch, getState) => {
+    
     const { searchTerms } = getState().search
     dispatch({
       type: SEARCH_SETSORTBY_ALIAS,
@@ -362,6 +361,43 @@ const sortBySearch = (originalAction) => {
     } else {
       dispatch(getInitialResults())
     }
+  }
+}
+
+const setFavoriteRecipe = (originalAction) => {
+  return async (dispatch, getState) => {
+    const authState = getState().auth
+    const searchState = getState().search
+    const { jwt } = authState
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` }
+    }
+
+    let tempFavs = searchState.favorites
+
+    const { value, recipeId } = originalAction.payload 
+    console.log('value', value)
+    if(value) {
+      tempFavs.push(recipeId)
+    } else {
+      const tempIndex = tempFavs.findIndex(favId => recipeId == favId)
+      tempFavs.splice(tempIndex, 1)
+    }
+
+    dispatch({ type: SEARCH_SETFAVORITE_ALIAS, payload: { favorites: tempFavs } })
+    axios
+      .post(`${serverUrl}/recipe/favorite`, {
+        recipeId,
+        isNew: value,
+      }, config)
+      .then(res => {
+        // console.log('success favorite')
+      })
+      .catch(err => {
+        if(err && err.status) {
+          handle401(err)
+        }
+      })
   }
 }
 
@@ -377,4 +413,5 @@ export default {
   [TABS_DELETERECIPE]: removeRecipe,
   [AUTH_LOGOUT]: authLogoutAlias,
   [SEARCH_SETSORTBY]: sortBySearch,
+  [SEARCH_SETFAVORITE]: setFavoriteRecipe
 }

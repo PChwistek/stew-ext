@@ -1,13 +1,10 @@
 
 function getServerHostname () {
-
-  // const { host } = req.headers
-
-  // if (host.startsWith('localhost')) {
-  //   return `http://${host}`
-  // }
-  // return `https://${host}`
-  return 'http://www.localhost:3009'
+  if(process.env.NODE_ENV == 'development') {
+    return 'http://www.localhost:3009'
+  } else if (process.env.NODE_ENV == 'production') {
+    return 'stew-server-env.eba-qya3jp33.us-west-1.elasticbeanstalk.com'
+  }
 }
 
 export default getServerHostname

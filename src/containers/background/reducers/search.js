@@ -8,7 +8,7 @@ import {
   SEARCH_CLEARSELECTEDRECIPE,
   SEARCH_RESET,
   SEARCH_SETSORTBY_ALIAS,
-  SEARCH_SETFAVORITE
+  SEARCH_SETFAVORITE_ALIAS
 } from '../../actionTypes'
 
 const initialState = {
@@ -69,16 +69,10 @@ export default (state = initialState, action) => {
     }
     case SEARCH_RESET:
       return initialState
-    case SEARCH_SETFAVORITE: {
-      const { value, recipeId } = action.payload
-      let tempFavs = state.favorites
-      if(value) {
-        tempFavs.push(recipeId)
-      } else {
-        tempFavs = tempFavs.filter(recipe => recipe == value)
-      }     
+    case SEARCH_SETFAVORITE_ALIAS: {
+      const { favorites } = action.payload
       return Object.assign({}, state, {
-        favorites: tempFavs
+        favorites,
       })
     }
     default:

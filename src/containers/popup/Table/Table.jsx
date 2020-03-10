@@ -55,7 +55,7 @@ export default function Table(props) {
                   </div>
                   <div className={ 'table__row__attributes '}>
                     {
-                      favorites.findIndex(recipe => recipe == row._id) > -1
+                      favorites && favorites.findIndex(recipe => recipe == row._id) > -1
                         && <div key={ 'fav' + index } className={ 'tooltip' }>
                           <img src={ getSrc('Favorite') } className={ `table__row__attribute-icon` }/>
                           <span className="tooltiptext"> { 'Favorite' }</span>

@@ -23,7 +23,7 @@ export default function DetailTab(props) {
     session,
     deleteRecipe,
     setFavorite,
-    favorites
+    favorites = []
   } = props
 
   const isFavorite = favorites.findIndex(recipe => recipe === selectedRecipe._id) > -1
