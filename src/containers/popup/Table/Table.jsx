@@ -64,7 +64,7 @@ export default function Table(props) {
                   </div>
                 </div>
                 <div className={ 'table__row__author '}>
-                  { row.author } shared 3 months ago
+                  { row.author || 'Anonymous' } published 
                 </div>
                 <div className={ 'table__row__tags'}>
                 {

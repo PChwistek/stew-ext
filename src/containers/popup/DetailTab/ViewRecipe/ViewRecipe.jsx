@@ -24,7 +24,7 @@ const ViewRecipe = (props) => {
             { selectedRecipe && selectedRecipe.name }
           </div>
           <div>
-            Published by: { selectedRecipe && selectedRecipe.author }
+            Published by: { selectedRecipe && selectedRecipe.author || 'Anonymous' }
             <div>
             {
               selectedRecipe.attributes.map(attrib => {
