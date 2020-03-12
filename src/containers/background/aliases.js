@@ -45,8 +45,17 @@ import {
 import { toggleEditing, toggleSlide } from '../popup/popup.actions'
 
 const manager = new TabManager()
-chrome.storage.sync.clear()
 const serverUrl = getServerHostname()
+
+if(process.env.NODE_ENV === 'development') {
+  chrome.storage.sync.clear()
+  browser.storage.sync.clear().then(() => {
+    browser.storage.sync.set({ stew: { recipes: [] } })
+      .then(() => {
+        console.log('cache redone')
+      })
+  })
+}
 
 const handle401 = (error) => {
   console.log('error', error)

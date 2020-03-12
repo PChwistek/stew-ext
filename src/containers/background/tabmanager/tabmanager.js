@@ -5,12 +5,6 @@ import { stemmer } from 'porter-stemmer'
 export default class Manager {
 
   constructor() {
-    browser.storage.sync.clear().then(() => {
-      browser.storage.sync.set({ stew: { recipes: [] } })
-        .then(() => {
-          console.log('cache redone')
-        })
-    })
   }
 
   async getSession() {

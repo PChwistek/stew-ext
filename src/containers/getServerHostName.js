@@ -3,7 +3,7 @@ function getServerHostname () {
   if(!isProd) {
     return 'http://873053a3.ngrok.io'
   } else if (isProd) {
-    return 'http://stew-server-env.eba-qya3jp33.us-west-1.elasticbeanstalk.com'
+    return 'https://api.getstew.com'
   }
 }
 
