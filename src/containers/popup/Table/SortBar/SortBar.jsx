@@ -12,11 +12,11 @@ const options = [
   //   text: 'Created by me',
   //   src: '../../../../assets/astronaut.png'
   // },
-  {
-    text: 'Used Recently',
-    src: '../../../../assets/rocket.png',
-    value: 'recently'
-  },
+  // {
+  //   text: 'Used Recently',
+  //   src: '../../../../assets/rocket.png',
+  //   value: 'recently'
+  // },
   {
     text: 'Favorites',
     src: '../../../../assets/star2.png',
