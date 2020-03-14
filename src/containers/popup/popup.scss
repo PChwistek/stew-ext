@@ -29,8 +29,10 @@
 
 .popup {
 
+  height: 100%;
+  display: block;
+
   &__body {
-    position: relative;
   }
 
   @include respond(too-small) {
