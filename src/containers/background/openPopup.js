@@ -2,17 +2,17 @@ import browser from 'webextension-polyfill'
 
 let windowId = -1
 
-export default function openPopup() {
+export default async function openPopup() {
 
-  function popWindow(url, customOptions) {
+  async function popWindow(url, customOptions) {
 
     if (windowId < 0) {
-      browser.windows.create({ url, ...customOptions }).then((win) => {
-        windowId = win.id
-        if (navigator.userAgent.indexOf('Firefox') !== -1) {
-          browser.windows.update(win.id, { focused: true, ...customOptions })
-        }
-      })
+      const win = await browser.windows.create({ url, ...customOptions })
+      windowId = win.id
+      if (navigator.userAgent.indexOf('Firefox') !== -1) {
+        browser.windows.update(win.id, { focused: true, ...customOptions })
+      }
+      return windowId
     } else {
       customOptions.focused = true
       browser.windows.update(windowId, { focused: true })
@@ -36,5 +36,5 @@ export default function openPopup() {
 
   let url = 'popup/popup.html'
 
-  popWindow(url, params)
+  return await popWindow(url, params)
 }

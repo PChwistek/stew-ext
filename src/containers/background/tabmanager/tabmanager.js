@@ -10,14 +10,14 @@ export default class Manager {
   async getSession() {
     let windows = await browser.windows.getAll()
     windows = windows.filter(win => win.type === 'normal')
-    
+    console.log('windows', windows)
+
     let session = []
 
     var i = 0
     for (i = 0; i < windows.length; i++) {
       const index = i
       const windowTabs = await browser.tabs.query({ windowId: windows[index].id})
-      console.log('window tabs', windowTabs)
       const win = {
         index: index,
         tabs: windowTabs

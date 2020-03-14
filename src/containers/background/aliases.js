@@ -42,6 +42,7 @@ import {
   TABS_RESET,
   SEARCH_RESET,
   SEARCH_SETSORTBY,
+  POPUP_SET_WINDOWID,
  } from '../actionTypes'
 import { toggleEditing, toggleSlide } from '../popup/popup.actions'
 
@@ -313,9 +314,10 @@ const syncRecipesWithCloud = (isForced) => {
   }
 }
 
-const popupSync = () => {
+const popupSync = (originalAction) => {
   return (dispatch, getState) => {
     const loggedIn = getState().auth.loggedIn
+
     if(loggedIn) {
       dispatch(syncRecipesWithCloud(false))
     } else {

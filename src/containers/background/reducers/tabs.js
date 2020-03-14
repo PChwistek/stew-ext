@@ -2,7 +2,7 @@ import {
   TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
   TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
-  TABS_SETRECIPEFORM, TABS_RESET
+  TABS_SETRECIPEFORM, TABS_RESET, TABS_SETCURRENTTAB, TABS_SETCURRENTWINDOW
 } from '../../actionTypes'
 
 const initialState = {
@@ -13,6 +13,8 @@ const initialState = {
   },
   session: [],
   isNew: true,
+  currentWindow: {},
+  currentTab: {}
 }
 
 export default (state = initialState, action) => {
@@ -86,6 +88,14 @@ export default (state = initialState, action) => {
           recipeTag: ''
         },
         isNew: action.payload.isNew,
+      })
+    case TABS_SETCURRENTTAB:
+      return Object.assign({}, state, {
+        currentTab: action.payload.currentTab
+      })
+    case TABS_SETCURRENTWINDOW:
+      return Object.assign({}, state, {
+        currentWindow: action.payload.currentWindow
       })
     case TABS_RESET:
       return initialState
