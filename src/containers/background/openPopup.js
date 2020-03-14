@@ -27,8 +27,8 @@ export default function openPopup() {
   const height = 630 
 
   let params = { 
-    left: ( (window.screen.availWidth - width) / 2), 
-    top: ( (window.screen.availHeight - height) / 3), 
+    left: parseInt( (window.screen.availWidth - width) / 2), 
+    top: parseInt((window.screen.availHeight - height) / 3), 
     width, 
     height,
     type: 'popup'

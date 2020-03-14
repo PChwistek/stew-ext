@@ -7,18 +7,16 @@ export default function SlideIn(props) {
   const { onCloseClick, visible } = props
 
   return (
-    <div>
-      <CSSTransition in={ visible } timeout={ 200 } className='slide-in' classNames={ 'slide-in' } unmountOnExit>
-        <div className='slide-in-content'>
-          <div className='slide-in-content slide-in-content__body'>
-          <div>
-            <img src={ '../../../assets/close.png'} className='slide-in-button' onClick={ onCloseClick } />
-          </div>
-            { props.children }
-          </div>
+    <CSSTransition in={ visible } timeout={ 200 } className='slide-in' classNames={ 'slide-in' } unmountOnExit>
+      <div className='slide-in-content'>
+        <div className='slide-in-content slide-in-content__body'>
+        <div>
+          <img src={ '../../../assets/close.png'} className='slide-in-button' onClick={ onCloseClick } />
         </div>
-      </CSSTransition>
-    </div>
+          { props.children }
+        </div>
+      </div>
+    </CSSTransition>
   )
 }
 

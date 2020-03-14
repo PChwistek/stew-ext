@@ -9,6 +9,7 @@
     margin-right: 10px;
     padding-top: 50px;
     height: 100%;
+    max-width: 400px;
     flex-grow: 1;
   }
 
@@ -19,7 +20,7 @@
 
   &__form-row {
     padding-top: 10px;
-
+    max-width: 400px;
     &--submit {
       padding-top: 20px;
       text-align: center;
@@ -28,13 +29,18 @@
 
   &__session {
     position: relative;
-    padding: 10px;
+    padding: 15px;
     width: 45%;
     min-width: 45%;
     min-height: 100%;
     background: $grey-background;
     flex-grow: 0;
     overflow-y: scroll;
+    overflow-x: hidden;
+
+    @include respond(too-large) {
+      flex-grow: 1;
+    }
   }
 
   &__title {
@@ -82,28 +88,15 @@
 
   &__refresh {
     margin-right: 2px;
-    width: 12px;
+    width: 18px;
     cursor: pointer;
   }
 
   &__window-remove {
-      height: 16px;
-      width: 16px;
-      background-repeat: no-repeat;
-      background: url('../../assets/remove-gray.png');
+      width: 24px;
+      height: 24px;
       cursor: pointer;
-      background-size: 16px 16px;
-      visibility: hidden;  
-  }
-
-  &__window-remove:hover {
-    height: 16px;
-    width: 16px;
-    visibility: visible;
-    background: url('../../assets/remove-red.png');
-    background-repeat: no-repeat;
-    background-size: 16px 16px;
-    cursor: pointer;
+      visibility: hidden;
   }
 
   &__window-remove-container {
@@ -181,24 +174,12 @@
   }
 
   &__remove {
-    height: 16px;
-    width: 16px;
-    background-repeat: no-repeat;
-    background: url('../../assets/remove-gray.png');
+    height: 24px;
+    width: 24px;
     cursor: pointer;
-    background-size: 16px 16px;
     visibility: hidden;
   }
 
-  &__remove:hover {
-    height: 16px;
-    width: 16px;
-    visibility: visible;
-    background: url('../../assets/remove-red.png');
-    background-repeat: no-repeat;
-    background-size: 16px 16px;
-    cursor: pointer;
-  }
 
   &__remove-container {
     margin-right: 20px;

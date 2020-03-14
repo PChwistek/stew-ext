@@ -14,7 +14,7 @@ export default function SessionView(props) {
             {
               canEdit && (
                 <div className='createtab__window-remove-container' onClick={ () => removeWindowFromSnap(win) }> 
-                  <img src={ '' } className='createtab__window-remove' />
+                  <img src={ '../../../assets/remove-red.png' } className='createtab__window-remove' />
                 </div>    
               )
             }
@@ -25,7 +25,7 @@ export default function SessionView(props) {
               {
                 canEdit && (
                   <div key={ 'remove' + tab.index} className='tab__remove-container' onClick={ () => removeTabFromSnap(win, tab) }> 
-                    <img src={ '' } className='tab__remove' />
+                    <img src={ '../../../assets/remove-red.png' } className='tab__remove' />
                   </div>
                 )
               }
