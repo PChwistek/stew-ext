@@ -11,15 +11,17 @@
   }
 
   &__container {
-    height: 100%;
+    height: 460px;
     overflow: auto;
   }
 
   &__row {
-    height: 100px;
-    padding: 20px;
+    min-height: 160px;
+    padding: 10px 20px 10px 20px;
     color: $text-color;
     position: relative;
+    display: flex;
+    flex-direction: column;
     &:focus {
       outline: none;
     }

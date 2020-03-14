@@ -17,6 +17,7 @@ export default class Manager {
     for (i = 0; i < windows.length; i++) {
       const index = i
       const windowTabs = await browser.tabs.query({ windowId: windows[index].id})
+      console.log('window tabs', windowTabs)
       const win = {
         index: index,
         tabs: windowTabs

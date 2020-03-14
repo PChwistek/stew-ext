@@ -147,6 +147,10 @@
     background: rgb(232, 233, 233);
     padding: 3px;
     border-radius: 5px;
+    
+    &--preview {
+      width: 180px !important;
+    }
   }
 
   &__body:hover {
