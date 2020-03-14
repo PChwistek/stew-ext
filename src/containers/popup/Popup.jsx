@@ -46,22 +46,27 @@ export default class Popup extends Component {
       getFirstResults()
     }
     return (
-      <div className="popup" >
-      {
-        !loggedIn ? <Login /> 
-          : <div>
-            <Header />
-            <div className="popup__body">
-              <DetailTab 
-                visible={ slideOutVisible } 
-                onCloseClick={ isEditing ? this.handleToggleCreateTab: this.handleToggleRowDetailTab } 
-                isEditing={ isEditing }
-              />
-              <Search onPlusClick={ this.handleToggleCreateTab } setSearchTerms={ this.handleSearchTerms } terms={ terms }/>
-              <Table onRecipeNameClicked={ this.handleToggleRowDetailTab } />
-            </div>
-          </div>
-      }
+      <div className='popup-container'>
+        <div className="small-screen-warning">
+          Please re-size the window! it's too small for stew.
+        </div>
+        <div className="popup" >
+          {
+            !loggedIn ? <Login /> 
+              : <div>
+                <Header />
+                <div className="popup__body">
+                  <DetailTab 
+                    visible={ slideOutVisible } 
+                    onCloseClick={ isEditing ? this.handleToggleCreateTab: this.handleToggleRowDetailTab } 
+                    isEditing={ isEditing }
+                  />
+                  <Search onPlusClick={ this.handleToggleCreateTab } setSearchTerms={ this.handleSearchTerms } terms={ terms }/>
+                  <Table onRecipeNameClicked={ this.handleToggleRowDetailTab } />
+                </div>
+              </div>
+          }
+        </div>
       </div>
     ) 
   }

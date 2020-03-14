@@ -64,7 +64,7 @@ export default function Login(props) {
             innerRef={ usernameField }
         />
         </div>
-        <div className={ 'login__form-row'}>
+        <div className={ 'login__form-row' }>
           <TextField
             type={ 'password' } 
             label={ 'Password' } 
@@ -82,10 +82,10 @@ export default function Login(props) {
             : <Button type={ 'primary'} text={ 'Login'} onClick={ handleLogin } />
         }
         </div>
-      </div>
-      <div className={ 'login__register content' }>
-        <div className={ 'link' }>
-          Need an account? <a href="https://staging.getstew.com/sign-up" target="blank"> Register. </a>
+        <div className={ 'login__form-row--register' }>
+          <div className={ 'link' }>
+            Need an account? <a href="https://staging.getstew.com/sign-up" target="blank"> Register. </a>
+          </div>
         </div>
       </div>
     </div>

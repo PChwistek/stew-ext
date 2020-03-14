@@ -5,15 +5,38 @@
   min-height: 600px;
   height: 100vh;
 }
-.popup {
+
+.small-screen-warning {
+  display: none;
+  @include respond(too-small) {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    font-family: $base-font-family;
+    color: $error-color;
+    font-size: $font-size-large;
+    font-weight: 600;
+  }
+}
+
+.popup-container {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.popup {
 
   &__body {
     position: relative;
   }
+
+  @include respond(too-small) {
+    display: none;
+  }
+  
 }
 
 .header {

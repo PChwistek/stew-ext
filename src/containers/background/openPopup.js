@@ -7,7 +7,7 @@ export default function openPopup() {
   function popWindow(url, customOptions) {
 
     if (windowId < 0) {
-      browser.windows.create({ url, ...customOptions}).then((win) => {
+      browser.windows.create({ url, ...customOptions }).then((win) => {
         windowId = win.id
         if (navigator.userAgent.indexOf('Firefox') !== -1) {
           browser.windows.update(win.id, { focused: true, ...customOptions })
@@ -15,9 +15,8 @@ export default function openPopup() {
       })
     } else {
       customOptions.focused = true
-      browser.windows.update(windowId, customOptions)
+      browser.windows.update(windowId, { focused: true })
         .catch(error => {
-          console.log(error)
           windowId = -1
           popWindow(url, customOptions)
         })
