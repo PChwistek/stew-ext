@@ -24,7 +24,6 @@
       "100": "assets/120x120.png"
     },
     "default_title": "stew",
-    "default_popup": "popup/popup.html",
     "theme_icons": [{
       "light": "assets/310x310.png",
       "dark": "assets/310x310.png",

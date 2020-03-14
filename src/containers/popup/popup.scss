@@ -1,8 +1,9 @@
 @import '../../styles/index';
 
 #root {
-  width: 600px;
-  height: 600px;
+  min-width: 600px;
+  min-height: 600px;
+  height: 100vh;
 }
 .popup {
   width: 100%;

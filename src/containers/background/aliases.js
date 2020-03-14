@@ -1,4 +1,5 @@
 import axios from 'axios'
+import browser from 'webextension-polyfill'
 import getServerHostname from '../getServerHostName'
 import TabManager from './TabManager'
 import { compareObjects } from '../utils'
@@ -48,7 +49,6 @@ const manager = new TabManager()
 const serverUrl = getServerHostname()
 
 if(process.env.NODE_ENV === 'development') {
-  chrome.storage.sync.clear()
   browser.storage.sync.clear().then(() => {
     browser.storage.sync.set({ stew: { recipes: [] } })
       .then(() => {

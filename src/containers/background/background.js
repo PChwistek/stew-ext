@@ -1,7 +1,9 @@
 import store from './store'
 import browser from 'webextension-polyfill'
+import openPopup from './openPopup'
+import { POPUP_OPENED } from '../actionTypes'
 
-
-browser.commands.onCommand.addListener(function(command) {
-  // console.log('Command:', command)
+browser.browserAction.onClicked.addListener((tab) => {
+  store.dispatch({ type: POPUP_OPENED })
+  openPopup()
 })
