@@ -2,7 +2,8 @@ import {
   TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
   TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
-  TABS_SETRECIPEFORM, TABS_RESET, TABS_SETCURRENTTAB, TABS_SETCURRENTWINDOW
+  TABS_SETRECIPEFORM, TABS_RESET, TABS_SETCURRENTTAB, TABS_SETCURRENTWINDOW,
+  TABS_SETSNAP_EXISTING,
 } from '../../actionTypes'
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
     recipeTags: []
   },
   session: [],
+  recipeSession: [],
   isNew: true,
   currentWindow: {},
   currentTab: {}
@@ -20,22 +22,29 @@ const initialState = {
 export default (state = initialState, action) => {
   const { payload } = action
   switch (action.type) {
-    case TABS_SETSNAP: 
+    case TABS_SETSNAP:
+      if(!state.isNew) {
+        return Object.assign({}, state, {
+          session: payload.session
+        })
+      } 
       return Object.assign({}, state, {
-        session: payload.session
+        recipeSession: payload.session
       })
     case TABS_REMOVETAB: {
       const { win, tab } = payload
       
-      const theWindow = state.session.find(theWin => theWin.index === win.index)
-      const windowIndex = state.session.findIndex(theWin => theWin.index === win.index)
+      const theWindow = state.recipeSession.find(theWin => theWin.index === win.index)
+      const windowIndex = state.recipeSession.findIndex(theWin => theWin.index === win.index)
       const newTabs = theWindow.tabs.filter(windowTab => windowTab.index !== tab.index)
       theWindow.tabs = newTabs
 
       if(theWindow.tabs.length == 0) {
-        state.session.splice(windowIndex, 1)
+        state.recipeSession.splice(windowIndex, 1)
       }
-      return Object.assign({}, state, {})
+      return Object.assign({}, state, {
+
+      })
     }
     case TABS_REMOVEWINDOW: {
       const { windowToRemove } = payload
@@ -96,6 +105,10 @@ export default (state = initialState, action) => {
     case TABS_SETCURRENTWINDOW:
       return Object.assign({}, state, {
         currentWindow: action.payload.currentWindow
+      })
+    case TABS_SETSNAP_EXISTING:
+      return Object.assign({}, state, {
+        recipeSession: action.payload.session
       })
     case TABS_RESET:
       return initialState

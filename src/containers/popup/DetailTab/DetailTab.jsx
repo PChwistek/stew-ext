@@ -18,6 +18,18 @@ export default function DetailTab(props) {
     saveRecipe()
     toggleEditing(false)
   }
+
+  function handleGetCurrentTabs() {
+    const { getCurrentTabs, setRecipeSession, selectedRecipe, tabs } = props
+
+    if(tabs.isNew) {
+      getCurrentTabs()
+    } else {
+      setRecipeSession(selectedRecipe.config)
+    }
+
+  }
+
   const { 
     isEditing, 
     removeTabFromSnap, 
@@ -58,7 +70,7 @@ export default function DetailTab(props) {
             session={ session } 
             removeTabFromSnap={ removeTabFromSnap } 
             removeWindowFromSnap={ removeWindowFromSnap } 
-            getCurrentTabs={ getCurrentTabs }
+            getCurrentTabs={ handleGetCurrentTabs }
             canEdit={ isEditing }
           />
         </div>

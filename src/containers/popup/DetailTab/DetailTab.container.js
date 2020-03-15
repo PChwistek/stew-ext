@@ -23,7 +23,7 @@ import {
 const stateToProps = ({ search, tabs, popup }) => ({
   favorites: search.favorites,
   selectedRecipe: search.selectedRecipe,
-  session: tabs.session,
+  session: tabs.recipeSession,
   tabs,
   isEditing: popup.isEditing
 })

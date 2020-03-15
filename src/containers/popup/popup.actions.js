@@ -22,10 +22,10 @@ import {
   POPUP_TOGGLEEDITING,
   TABS_SETRECIPEFORM,
   TABS_DELETERECIPE,
-  TABS_SETSNAP,
   AUTH_LOGOUT,
   SEARCH_SETSORTBY,
-  SEARCH_SETFAVORITE
+  SEARCH_SETFAVORITE,
+  TABS_SETSNAP_EXISTING
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -226,7 +226,7 @@ export function toggleEditing(forced) {
 
 export function setRecipeSession(recipeConfig) {
   return {
-    type: TABS_SETSNAP,
+    type: TABS_SETSNAP_EXISTING,
     payload: {
       session: recipeConfig
     }
