@@ -7,11 +7,15 @@ export default class Manager {
   constructor() {
   }
 
-  async getSession() {
+  async getSession(idOfLastActiveWindow) {
     let windows = await browser.windows.getAll()
     windows = windows.filter(win => win.type === 'normal')
+    const indexOfwindow = windows.findIndex(win => win.id === idOfLastActiveWindow)
+    
     console.log('windows', windows)
-
+    console.log('index of active window', indexOfwindow)
+    windows.unshift(windows.splice(indexOfwindow, 1)[0])
+    
     let session = []
 
     var i = 0

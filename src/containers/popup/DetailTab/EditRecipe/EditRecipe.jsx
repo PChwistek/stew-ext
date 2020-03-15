@@ -6,7 +6,7 @@ import Button from '../../../common-ui/Button'
 export default function EditRecipe(props) {
 
   const { tabs, setRecipeName, setRecipeTag, addRecipeTag, 
-    removeRecipeTag, clearFields, saveRecipe } = props
+    removeRecipeTag, clearFields, handleSaveRecipe } = props
 
   const [formErrors, setFormErrors] = useState([])
 
@@ -26,7 +26,7 @@ export default function EditRecipe(props) {
       temp.push('Session snapshot cannot be empty.')
     }
     if(temp.length === 0) {
-      saveRecipe()
+      handleSaveRecipe()
     } else {
       setFormErrors(temp)
     }

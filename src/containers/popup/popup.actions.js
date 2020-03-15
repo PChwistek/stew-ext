@@ -215,10 +215,12 @@ export function popupOpened() {
   }
 }
 
-export function toggleEditing() {
+export function toggleEditing(forced) {
   return {
     type: POPUP_TOGGLEEDITING,
-    payload: {}
+    payload: {
+      forced,
+    }
   }
 }
 

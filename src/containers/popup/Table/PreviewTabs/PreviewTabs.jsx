@@ -33,8 +33,8 @@ export default function PreviewTabs(props) {
         <div className='preview-text'> Preview ({ selectedTabs.length } of { numTabs }) </div>
         <div className={ 'preview-tabs' }>
         {
-          selectedTabs.map(tab => (
-            <a href={ tab.url } target="blank" key={ 'preview' + tab.url } >
+          selectedTabs.map( (tab, index) => (
+            <a href={ tab.url } target="blank" key={ 'preview' + tab.url + index } >
               <div className='tab__body tab__body--preview'>
                   <img src={ tab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
                   <p className='tab__title'> { tab.title } </p>

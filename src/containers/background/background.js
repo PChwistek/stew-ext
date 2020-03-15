@@ -1,7 +1,7 @@
 import store from './store'
 import browser from 'webextension-polyfill'
 import openPopup from './openPopup'
-import { POPUP_OPENED, POPUP_SET_WINDOWID, TABS_SETCURRENTWINDOW, TABS_SETCURRENTTAB } from '../actionTypes'
+import { POPUP_OPENED, POPUP_SET_WINDOWID, TABS_SETCURRENTWINDOW, TABS_SETCURRENTTAB, TABS_SNAP } from '../actionTypes'
 
 let windowId = -1
 
@@ -17,7 +17,6 @@ browser.browserAction.onClicked.addListener(async () => {
         }
       })
     }
-
     const currentTabs = await browser.tabs.query({ windowId: theWindow.id, active: true })
     store.dispatch({
       type: TABS_SETCURRENTTAB,
@@ -25,9 +24,7 @@ browser.browserAction.onClicked.addListener(async () => {
         currentTab: currentTabs.length > 0 ? currentTabs[0] : {},
       }
     })
-
     store.dispatch({ type: POPUP_OPENED })
-
     windowId = await openPopup()
     store.dispatch({ 
       type: POPUP_SET_WINDOWID, 
@@ -35,14 +32,28 @@ browser.browserAction.onClicked.addListener(async () => {
         windowId
       } 
     })
-
-
   } catch(error) {
     console.log(error)
   }
 })
 
-browser.windows.onFocusChanged.addListener(async (currentWindowId) => {
+
+
+function updateSnapshot() {
+  store.dispatch({ type: TABS_SNAP })
+}
+
+async function updateTab(objectInfo) {
+
+  const theTab = await browser.tabs.get(objectInfo.tabId)
+  store.dispatch({
+    type: TABS_SETCURRENTTAB,
+    payload: {
+      currentTab: theTab,
+    }
+  })
+}
+async function updateWindow(currentWindowId) {
   try {
     const theWindow = await browser.windows.get(currentWindowId)
     if(currentWindowId != windowId && currentWindowId > 0 && theWindow.type === 'normal') {
@@ -52,20 +63,28 @@ browser.windows.onFocusChanged.addListener(async (currentWindowId) => {
           currentWindow: theWindow,
         }
       })
+
+      store.dispatch({ type: TABS_SNAP })
     }
   } catch (error) {
     console.log(error)
   }
-})
+}
 
-browser.tabs.onActivated.addListener(async (objectInfo) => {
-  console.log('object info', objectInfo)
+browser.tabs.onActivated.addListener(updateTab)
+browser.windows.onFocusChanged.addListener(updateWindow)
 
-  const theTab = await browser.tabs.get(objectInfo.tabId)
-  store.dispatch({
-    type: TABS_SETCURRENTTAB,
-    payload: {
-      currentTab: theTab,
-    }
-  })
-})
+export function addListeners() {
+  console.log('here')
+  browser.tabs.onUpdated.addListener(updateSnapshot)
+  browser.tabs.onRemoved.addListener(updateSnapshot)
+  browser.tabs.onMoved.addListener(updateSnapshot)
+}
+
+export function removeListeners() {
+  console.log('here!')
+  browser.windows.onFocusChanged.removeListener(updateWindow)
+  browser.tabs.onUpdated.removeListener(updateSnapshot)
+  browser.tabs.onRemoved.removeListener(updateSnapshot)
+  browser.tabs.onMoved.removeListener(updateSnapshot)
+}

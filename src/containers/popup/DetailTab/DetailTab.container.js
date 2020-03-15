@@ -20,11 +20,12 @@ import {
 } from '../popup.actions'
 
 
-const stateToProps = ({ search, tabs }) => ({
+const stateToProps = ({ search, tabs, popup }) => ({
   favorites: search.favorites,
   selectedRecipe: search.selectedRecipe,
   session: tabs.session,
   tabs,
+  isEditing: popup.isEditing
 })
 
 const dispatchToProps = {

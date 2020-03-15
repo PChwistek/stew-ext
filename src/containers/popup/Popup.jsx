@@ -6,6 +6,7 @@ import Table from './Table'
 import DetailTab from './DetailTab'
 import Login from './Login'
 import './popup.scss'
+import { toggleEditing } from './popup.actions'
 
 export default class Popup extends Component {
 
@@ -19,9 +20,10 @@ export default class Popup extends Component {
   }
     
   handleToggleCreateTab = () => {
-    const { getCurrentTabs, toggleSlide, slideOutVisible, setRecipeForm } = this.props
+    const { getCurrentTabs, toggleEditing, toggleSlide, slideOutVisible, setRecipeForm } = this.props
     if(!slideOutVisible) {
       getCurrentTabs()
+      toggleEditing(true)
       setRecipeForm('', [], true)
     }
     toggleSlide(!slideOutVisible, true)
@@ -29,6 +31,7 @@ export default class Popup extends Component {
 
   handleToggleRowDetailTab = (index) => {
     const { toggleSlide, slideOutVisible, selectRow } = this.props
+    toggleEditing(false)
     if(!slideOutVisible) {
       selectRow(index)
     }

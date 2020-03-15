@@ -7,12 +7,17 @@ import SessionView from '../SessionView'
 export default function DetailTab(props) {
  
   function handleToggleEdit() {
-    const { toggleEditing, setRecipeSession, selectedRecipe, setRecipeForm } = props
-    toggleEditing()
+    const { toggleEditing, setRecipeSession, selectedRecipe, setRecipeForm, isEditing } = props
+    toggleEditing(!isEditing)
     setRecipeForm(selectedRecipe.name, selectedRecipe.tags, false)
     setRecipeSession(selectedRecipe.config)
   }
 
+  function handleSaveRecipe() {
+    const { saveRecipe, toggleEditing } = props
+    saveRecipe()
+    toggleEditing(false)
+  }
   const { 
     isEditing, 
     removeTabFromSnap, 
@@ -38,6 +43,7 @@ export default function DetailTab(props) {
             isEditing 
             ? <EditRecipe 
               { ...props }
+              handleSaveRecipe={ handleSaveRecipe }
             /> 
             : <ViewRecipe 
                 selectedRecipe={ selectedRecipe } 

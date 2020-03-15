@@ -3,6 +3,7 @@ import browser from 'webextension-polyfill'
 import getServerHostname from '../getServerHostName'
 import TabManager from './TabManager'
 import { compareObjects } from '../utils'
+import { addListeners, removeListeners } from './background'
 
 import { 
   TABS_SNAP, 
@@ -42,9 +43,10 @@ import {
   TABS_RESET,
   SEARCH_RESET,
   SEARCH_SETSORTBY,
-  POPUP_SET_WINDOWID,
+  POPUP_TOGGLEEDITING,
+  POPUP_TOGGLEEDITING_ALIAS
  } from '../actionTypes'
-import { toggleEditing, toggleSlide } from '../popup/popup.actions'
+import { toggleSlide } from '../popup/popup.actions'
 
 const manager = new TabManager()
 const serverUrl = getServerHostname()
@@ -68,13 +70,33 @@ const handle401 = (error) => {
 }
 
 const getCurrentSession = (originalAction) => {
-  return async (dispatch) => {
-    const session = await manager.getSession()
+  return async (dispatch, getState) => {
+    const { tabs } = getState()
+    const session = await manager.getSession(tabs.currentWindow.id)
     dispatch({
       type: TABS_SETSNAP,
       payload: {
         session
       }
+    })
+  }
+}
+
+const toggleEditAlias = (originalAction) => {
+  const { forced } = originalAction.payload
+  return async (dispatch) => {
+    
+    if(forced) {
+      addListeners()
+    } else {
+      removeListeners()
+    }
+
+    dispatch({ 
+      type: POPUP_TOGGLEEDITING_ALIAS, 
+      payload: { 
+        ...originalAction.payload
+      } 
     })
   }
 }
@@ -162,7 +184,7 @@ const saveRecipeAlias = () => {
         dispatch(selectRecipe(recipeFromServer))
         await manager.addRecipeToStore(recipeFromServer)
       }
-      dispatch(toggleEditing())
+      dispatch(toggleEditAlias())
       dispatch(getInitialResults())
       dispatch({ type: TABS_SAVERECIPE_SUCCESS })
      
@@ -388,4 +410,5 @@ export default {
   [TABS_DELETERECIPE]: removeRecipe,
   [AUTH_LOGOUT]: authLogoutAlias,
   [SEARCH_SETSORTBY]: sortBySearch,
+  [POPUP_TOGGLEEDITING]: toggleEditAlias,
 }
