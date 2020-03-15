@@ -3,7 +3,7 @@ import browser from 'webextension-polyfill'
 import getServerHostname from '../getServerHostName'
 import TabManager from './TabManager'
 import { compareObjects } from '../utils'
-import { addListeners, removeListeners } from './background'
+import { addEditListeners, removeEditListeners } from './background'
 
 import { 
   TABS_SNAP, 
@@ -87,9 +87,9 @@ const toggleEditAlias = (originalAction) => {
   return async (dispatch) => {
     
     if(forced) {
-      addListeners()
+      addEditListeners()
     } else {
-      removeListeners()
+      removeEditListeners()
     }
 
     dispatch({ 
