@@ -72,9 +72,9 @@ async function updateWindow(currentWindowId) {
 }
 
 browser.tabs.onActivated.addListener(updateTab)
-browser.windows.onFocusChanged.addListener(updateWindow)
 
 export function addEditListeners() {
+  browser.windows.onFocusChanged.addListener(updateWindow)
   browser.tabs.onUpdated.addListener(updateSnapshot)
   browser.tabs.onRemoved.addListener(updateSnapshot)
   browser.tabs.onMoved.addListener(updateSnapshot)
@@ -87,4 +87,6 @@ export function removeEditListeners() {
   browser.tabs.onUpdated.removeListener(updateSnapshot)
   browser.tabs.onRemoved.removeListener(updateSnapshot)
   browser.tabs.onMoved.removeListener(updateSnapshot)
+  browser.tabs.onDetached.removeListener(updateSnapshot)
+  browser.tabs.onAttached.removeListener(updateSnapshot)
 }

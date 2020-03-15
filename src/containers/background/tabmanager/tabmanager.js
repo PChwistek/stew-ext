@@ -15,13 +15,13 @@ export default class Manager {
     console.log('windows', windows)
     console.log('index of active window', indexOfwindow)
     windows.unshift(windows.splice(indexOfwindow, 1)[0])
-    
+
     let session = []
 
     var i = 0
     for (i = 0; i < windows.length; i++) {
       const index = i
-      const windowTabs = await browser.tabs.query({ windowId: windows[index].id})
+      const windowTabs = await browser.tabs.query({ windowId: windows[i].id})
       const win = {
         index: index,
         tabs: windowTabs

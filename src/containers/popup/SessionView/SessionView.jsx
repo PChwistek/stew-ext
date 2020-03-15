@@ -20,7 +20,7 @@ export default function SessionView(props) {
             }
         </div>
         {
-          win && win.tabs.map(tab => (
+          (win && win.tabs.length > 0) && win.tabs.map(tab => (
             <div className='tab__row' key={ 'row' +tab.index }>
               {
                 canEdit && (
