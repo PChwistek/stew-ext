@@ -4,8 +4,7 @@ import { stemmer } from 'porter-stemmer'
 
 class Manager {
 
-  constructor() {
-  }
+  constructor() {}
 
   async getSession(idOfLastActiveWindow) {
     let windows = await browser.windows.getAll()

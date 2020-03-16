@@ -1,6 +1,11 @@
-import { compareObjects } from '../../utils'
 import axios from 'axios'
+import { compareObjects } from '../../utils'
 import manager from '../TabManager'
+import getServerHostname from '../../getServerHostName'
+import { toggleSlide } from '../../popup/popup.actions'
+import { handle401 } from './authAliases'
+import { selectRecipe, setSearchRowAlias, getInitialResults } from './searchAliases'
+import { toggleEditAlias } from './popupAliases'
 
 import { 
   TABS_SETSNAP, 
@@ -13,13 +18,8 @@ import {
   TABS_LAUNCHRECIPE_PENDING,
   TABS_LAUNCHRECIPE_SUCCESS,
   TABS_SETSNAP_EXISTING,
+  TABS_QUICKADD_ALIAS,
 } from '../../actionTypes'
-
-import getServerHostname from '../../getServerHostName'
-import { toggleSlide } from '../../popup/popup.actions'
-import { handle401 } from './authAliases'
-import { selectRecipe, setSearchRowAlias } from './searchAliases'
-import { toggleEditAlias } from './popupAliases'
 
 const serverUrl = getServerHostname()
 
@@ -60,18 +60,18 @@ export const saveRecipeAlias = () => {
 
       const newConfig = []
       let titlesForSearch = []
-      for (let index = 0; index < tabsState.session.length; index++) {
-        const win = tabsState.session[index]
+      for (let index = 0; index < tabsState.recipeSession.length; index++) {
+        const win = tabsState.recipeSession[index]
 
         titlesForSearch = titlesForSearch.concat(win.tabs.map(tab => tab.title))
 
         newConfig.push(
           {
-          tabs: win.tabs.map(tab => ({
+          tabs: win.tabs.map((tab, index) => ({
             favIconUrl: tab.favIconUrl, 
             url: tab.url,
             title: tab.title,
-            index: tab.index
+            index: index
           }))
         })
       }
@@ -84,21 +84,20 @@ export const saveRecipeAlias = () => {
         attributes: [],
         config: newConfig,
       }
-
+     
       if(!isNew) {
         const { selectedRecipe } = searchState
-        console.log('selectedRecipe', selectedRecipe)
-        console.log('the recipe', theRecipe)
         theRecipe._id = selectedRecipe._id
-
+  
         const areSame = compareObjects(
           { name: theRecipe.name, tags: theRecipe.tags, config: theRecipe.config}, 
           { name: selectedRecipe.name, tags: selectedRecipe.tags, config: selectedRecipe.config}
         )
-
+        
         if(!areSame) {
           const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
           dispatch(selectRecipe(recipeFromServer))
+          console.log('recipe from server', recipeFromServer)
           await manager.updateRecipeInStore(recipeFromServer)
         }
         
@@ -107,10 +106,10 @@ export const saveRecipeAlias = () => {
         dispatch(selectRecipe(recipeFromServer))
         await manager.addRecipeToStore(recipeFromServer)
       }
-      dispatch(toggleEditAlias())
-      dispatch(getInitialResults())
+      dispatch(toggleEditAlias({ payload: { forced: false }}))
       dispatch({ type: TABS_SAVERECIPE_SUCCESS })
-     
+      dispatch(getInitialResults())
+
     } catch(err) {
       console.log(err)
       if(err && err.status) {
@@ -162,5 +161,28 @@ export const removeRecipe = () => {
           handle401(err)
         }
       })
+  }
+}
+
+export const quickAddAlias = () => {
+  return async (dispatch, getState) => {
+    const { currentTab, recipeSession } = getState().tabs
+    const { selectedRecipe } = getState().search
+
+    if(recipeSession.length > 0) {
+      recipeSession[0].tabs.unshift({ ...currentTab })
+    } else {
+      recipeSession.push({ tabs: [ { ...currentTab } ]})
+    }
+    dispatch({
+      type: TABS_QUICKADD_ALIAS,
+      payload: {
+        recipeName: selectedRecipe.name,
+        recipeTags: selectedRecipe.tags,
+        session: recipeSession
+      }
+    })
+
+    dispatch(saveRecipeAlias())
   }
 }

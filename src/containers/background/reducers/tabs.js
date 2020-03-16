@@ -1,9 +1,10 @@
+import { cloneDeep } from 'lodash'
 import { 
   TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
   TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
   TABS_SETRECIPEFORM, TABS_RESET, TABS_SETCURRENTTAB, TABS_SETCURRENTWINDOW,
-  TABS_SETSNAP_EXISTING,
+  TABS_SETSNAP_EXISTING, TABS_QUICKADD_ALIAS
 } from '../../actionTypes'
 
 const initialState = {
@@ -35,24 +36,25 @@ export default (state = initialState, action) => {
     case TABS_REMOVETAB: {
       const { win, tab } = payload
       
-      const theWindow = state.recipeSession.find(theWin => theWin.index === win.index)
-      const windowIndex = state.recipeSession.findIndex(theWin => theWin.index === win.index)
-      const newTabs = theWindow.tabs.filter(windowTab => windowTab.index !== tab.index)
-      theWindow.tabs = newTabs
+      const recipeSessionCopy = [...state.recipeSession]
+      const theWindow = recipeSessionCopy.find(theWin => theWin.index === win.index)
+      const windowIndex = recipeSessionCopy.findIndex(theWin => theWin.index === win.index)
+      theWindow.tabs = theWindow.tabs.filter(windowTab => windowTab.index !== tab.index)
 
       if(theWindow.tabs.length == 0) {
-        state.recipeSession.splice(windowIndex, 1)
+        recipeSessionCopy.splice(windowIndex, 1)
       }
-      return Object.assign({}, state, {
 
+      return Object.assign({}, state, {
+        recipeSession: recipeSessionCopy,
       })
     }
     case TABS_REMOVEWINDOW: {
       const { windowToRemove } = payload
 
-      const windowIndex = state.session.findIndex(theWin => theWin.index === windowToRemove.index)
+      const windowIndex = state.recipeSession.findIndex(theWin => theWin.index === windowToRemove.index)
       if(windowIndex > -1) {
-        state.session.splice(windowIndex, 1)
+        state.recipeSession.splice(windowIndex, 1)
       }
       return Object.assign({}, state, {})
     }
@@ -109,7 +111,17 @@ export default (state = initialState, action) => {
       })
     case TABS_SETSNAP_EXISTING:
       return Object.assign({}, state, {
-        recipeSession: action.payload.session
+        recipeSession:  cloneDeep(action.payload.session)
+      })
+    case TABS_QUICKADD_ALIAS:
+      return Object.assign({}, state, {
+        recipeForm: {
+          recipeName: action.payload.recipeName,
+          recipeTags: action.payload.recipeTags,
+          recipeTag: ''
+        },
+        recipeSession: action.payload.session,
+        isNew: false
       })
     case TABS_RESET:
       return initialState

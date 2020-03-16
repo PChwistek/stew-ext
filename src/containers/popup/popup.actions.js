@@ -141,6 +141,15 @@ export function clearFields() {
   }
 }
 
+export function setIsNew(isNew) {
+  return {
+    type: TABS_SET_ISNEW,
+    payload: {
+      isNew
+    }
+  }
+}
+
 export function selectRow(rowIndex) {
   return {
     type: SEARCH_SETROW,
@@ -205,13 +214,6 @@ export function deleteRecipe() {
 export function syncRecipes() {
   return {
     type: POPUP_SYNCRECIPES,
-    payload: {}
-  }
-}
-
-export function popupOpened() {
-  return {
-    type: POPUP_OPENED,
     payload: {}
   }
 }

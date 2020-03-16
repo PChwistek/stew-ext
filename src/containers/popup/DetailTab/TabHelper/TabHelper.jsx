@@ -11,7 +11,7 @@ export default function TabHelper(props) {
         <div className='tabhelper__container'>
           <div className='tabhelper__title'>
             Quick Add
-            <div style={ {'margin-left': 'auto' } } className={ 'tooltip' }>
+            <div style={ {'marginLeft': 'auto' } } className={ 'tooltip' }>
               <img src={ '../../../../assets/question.png' } className={'tabhelper__help-icon'} />
               <span className="tooltiptext tooltiptext--left"> { 'Allows you to add the currently active tab.' } </span>
             </div>

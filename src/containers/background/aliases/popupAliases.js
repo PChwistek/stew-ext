@@ -30,7 +30,6 @@ export const syncRecipesWithCloud = (isForced) => {
       .post(`${serverUrl}/recipe/sync`, { lastUpdated, isForced }, config)
       .then(res => {
         const { data } = res
-        console.log('data from server', data)
         if(!data.upToDate || isForced) {
           console.log('data', data)
           manager.updateRecipesFromServer(data.recipes)
@@ -53,9 +52,13 @@ export const syncRecipesWithCloud = (isForced) => {
 export const popupSync = (originalAction) => {
   return (dispatch, getState) => {
     const loggedIn = getState().auth.loggedIn
+    const terms = getState().search.terms
 
     if(loggedIn) {
       dispatch(syncRecipesWithCloud(false))
+      if(terms == '') {
+        getInitialResults()
+      }
     } else {
       dispatch({ type: AUTH_CLEAR_ERROR})
     }
