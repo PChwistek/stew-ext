@@ -14,7 +14,7 @@ const initialState = {
   },
   session: [],
   recipeSession: [],
-  isNew: true,
+  isNew: false,
   currentWindow: {},
   currentTab: {}
 }
@@ -23,14 +23,15 @@ export default (state = initialState, action) => {
   const { payload } = action
   switch (action.type) {
     case TABS_SETSNAP:
-      if(!state.isNew) {
+      if(state.isNew) {
         return Object.assign({}, state, {
-          session: payload.session
+          session: payload.session,
+          recipeSession: payload.session
         })
       } 
       return Object.assign({}, state, {
-        recipeSession: payload.session
-      })
+        session: payload.session,
+      }) 
     case TABS_REMOVETAB: {
       const { win, tab } = payload
       

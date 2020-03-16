@@ -7,12 +7,10 @@ export default function PreviewTabs(props) {
   const selectedTabs = []
   let numTabs = 0
 
-  console.log('config', config)
   function getTabs() {
     let windowIndex = 0
     while (windowIndex < config.length) {
       const theWindow = config[windowIndex]
-      console.log('theWindow', theWindow)
       for (let tabIndex = 0; tabIndex < theWindow.tabs.length; tabIndex++) {
         const element = theWindow.tabs[tabIndex]
 

@@ -1,16 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SlideIn from '../SlideIn'
 import ViewRecipe from './ViewRecipe'
 import EditRecipe from './EditRecipe'
-import SessionView from '../SessionView'
+import SessionView from './SessionView'
+import TabHelper from './TabHelper'
 
 export default function DetailTab(props) {
+
+  const [showHelper, setShowHelper] = useState(false)
+
+  function checkTabPopup() {
+    const { tabs , session, isEditing } = props
+    if(tabs.isNew || isEditing ) {
+      setShowHelper(false) 
+      return
+    }
+    const { currentTab } = tabs
+    for (let index = 0; index < session.length; index++) {
+      for (let tabIndex = 0; tabIndex < session[index].tabs.length; tabIndex++) {
+        const tab = session[index].tabs[tabIndex]
+        console.log(tab)
+        console.log('current', currentTab)
+        if(tab.url === currentTab.url) {
+          setShowHelper(false)
+          return
+        }
+      }
+    }
+    setShowHelper(true)
+  }
+
+  useEffect(() => {
+    if(props.visible) {
+      const timer = setTimeout(() => {
+        checkTabPopup()
+      }, 500)
+      return () => clearTimeout(timer)
+    } else {
+      setShowHelper(false)
+    }
+  }, [props.visible, props.currentTab])
  
   function handleToggleEdit() {
-    const { toggleEditing, setRecipeSession, selectedRecipe, setRecipeForm, isEditing } = props
+    const { toggleEditing, selectedRecipe, setRecipeForm, isEditing } = props
     toggleEditing(!isEditing)
     setRecipeForm(selectedRecipe.name, selectedRecipe.tags, false)
-    setRecipeSession(selectedRecipe.config)
   }
 
   function handleSaveRecipe() {
@@ -27,14 +61,12 @@ export default function DetailTab(props) {
     } else {
       setRecipeSession(selectedRecipe.config)
     }
-
   }
 
   const { 
     isEditing, 
     removeTabFromSnap, 
     removeWindowFromSnap, 
-    getCurrentTabs, 
     selectedRecipe,
     launchRecipe, 
     session,
@@ -73,6 +105,7 @@ export default function DetailTab(props) {
             getCurrentTabs={ handleGetCurrentTabs }
             canEdit={ isEditing }
           />
+          <TabHelper in={ showHelper } currentTab={ props.currentTab } onNoClick={ () => setShowHelper(false) }/>
         </div>
     </SlideIn>
   )

@@ -28,6 +28,8 @@
   }
 
   &__session {
+    display: flex;
+    flex-direction: column;
     position: relative;
     padding: 15px;
     width: 45%;

@@ -4,6 +4,7 @@ import openPopup from './openPopup'
 import { POPUP_OPENED, POPUP_SET_WINDOWID, TABS_SETCURRENTWINDOW, TABS_SETCURRENTTAB, TABS_SNAP } from '../actionTypes'
 
 let windowId = -1
+let currentTabId = -1
 
 browser.browserAction.onClicked.addListener(async () => {
   try {
@@ -17,15 +18,24 @@ browser.browserAction.onClicked.addListener(async () => {
         }
       })
     }
-    const currentTabs = await browser.tabs.query({ windowId: theWindow.id, active: true })
-    store.dispatch({
-      type: TABS_SETCURRENTTAB,
-      payload: {
-        currentTab: currentTabs.length > 0 ? currentTabs[0] : {},
-      }
-    })
+
     store.dispatch({ type: POPUP_OPENED })
-    windowId = await openPopup()
+    const { isNewWindow, windowId } = await openPopup()
+    console.log('is new window', isNewWindow)
+    if(isNewWindow) {
+      const currentTabs = await browser.tabs.query({ windowId: theWindow.id, active: true })
+      const newTabId = currentTabs.length > 0 ? currentTabs[0].id : -1
+      if(currentTabId !== newTabId) {
+        currentTabId = newTabId
+        store.dispatch({
+          type: TABS_SETCURRENTTAB,
+          payload: {
+            currentTab: currentTabs.length > 0 ? currentTabs[0] : {},
+          }
+        })
+      }
+    }
+
     store.dispatch({ 
       type: POPUP_SET_WINDOWID, 
       payload: {
@@ -37,8 +47,6 @@ browser.browserAction.onClicked.addListener(async () => {
   }
 })
 
-
-
 function updateSnapshot() {
   store.dispatch({ type: TABS_SNAP })
 }
@@ -46,13 +54,19 @@ function updateSnapshot() {
 async function updateTab(objectInfo) {
 
   const theTab = await browser.tabs.get(objectInfo.tabId)
-  store.dispatch({
-    type: TABS_SETCURRENTTAB,
-    payload: {
-      currentTab: theTab,
-    }
-  })
+  if(theTab.id !== currentTabId) {
+    console.log('theTab', theTab)
+
+    currentTabId = theTab.id
+    store.dispatch({
+      type: TABS_SETCURRENTTAB,
+      payload: {
+        currentTab: theTab,
+      }
+    })
+  }
 }
+
 async function updateWindow(currentWindowId) {
   try {
     const theWindow = await browser.windows.get(currentWindowId)
@@ -63,8 +77,6 @@ async function updateWindow(currentWindowId) {
           currentWindow: theWindow,
         }
       })
-
-      store.dispatch({ type: TABS_SNAP })
     }
   } catch (error) {
     console.log(error)

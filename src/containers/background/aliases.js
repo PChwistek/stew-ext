@@ -44,7 +44,8 @@ import {
   SEARCH_RESET,
   SEARCH_SETSORTBY,
   POPUP_TOGGLEEDITING,
-  POPUP_TOGGLEEDITING_ALIAS
+  POPUP_TOGGLEEDITING_ALIAS,
+  TABS_SETSNAP_EXISTING
  } from '../actionTypes'
 import { toggleSlide } from '../popup/popup.actions'
 
@@ -213,9 +214,9 @@ const selectRecipeFromRow = (originalAction) => {
     const { results } = getState().search
     const selectedRecipe = results[rowIndex]
     dispatch({
-      type: TABS_SETSNAP,
+      type: TABS_SETSNAP_EXISTING,
       payload: {
-        session: selectedRecipe.config
+        session: selectedRecipe.config,
       }
     })
     dispatch({ 

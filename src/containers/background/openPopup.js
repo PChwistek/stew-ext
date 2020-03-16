@@ -12,15 +12,15 @@ export default async function openPopup() {
       if (navigator.userAgent.indexOf('Firefox') !== -1) {
         browser.windows.update(win.id, { focused: true, ...customOptions })
       }
-      return windowId
-    } else {
-      customOptions.focused = true
-      browser.windows.update(windowId, { focused: true })
-        .catch(error => {
-          windowId = -1
-          popWindow(url, customOptions)
-        })
+      return { isNewWindow: true, windowId }
     }
+    customOptions.focused = true
+    browser.windows.update(windowId, { focused: true })
+      .catch(error => {
+        windowId = -1
+        popWindow(url, customOptions)
+      })
+    return { isNewWindow: false, windowId }
   }
 
   const width = 610

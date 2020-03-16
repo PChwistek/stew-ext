@@ -22,17 +22,18 @@ export default class Popup extends Component {
   handleToggleCreateTab = () => {
     const { getCurrentTabs, toggleEditing, toggleSlide, slideOutVisible, setRecipeForm } = this.props
     if(!slideOutVisible) {
+      setRecipeForm('', [], true)
       getCurrentTabs()
       toggleEditing(true)
-      setRecipeForm('', [], true)
     }
     toggleSlide(!slideOutVisible, true)
   }
 
   handleToggleRowDetailTab = (index) => {
-    const { toggleSlide, slideOutVisible, selectRow } = this.props
+    const { toggleSlide, slideOutVisible, selectRow, setRecipeForm } = this.props
     toggleEditing(false)
     if(!slideOutVisible) {
+      setRecipeForm('', [], false)
       selectRow(index)
     }
     toggleSlide(!slideOutVisible, false)

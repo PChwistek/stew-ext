@@ -12,8 +12,6 @@ export default class Manager {
     windows = windows.filter(win => win.type === 'normal')
     const indexOfwindow = windows.findIndex(win => win.id === idOfLastActiveWindow)
     
-    console.log('windows', windows)
-    console.log('index of active window', indexOfwindow)
     windows.unshift(windows.splice(indexOfwindow, 1)[0])
 
     let session = []

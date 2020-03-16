@@ -15,7 +15,6 @@ const Dropdown = ({ value, options, placeholder, onChange }) => {
   }
 
   const handleChange = selectedValue => {
-    console.log(selectedValue)
     onChange(selectedValue)
     setOpen(false)
   }

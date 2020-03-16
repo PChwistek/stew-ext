@@ -11,7 +11,6 @@ import {
   selectRow, 
   popupOpened,
   setRecipeForm,
-  setRecipeSession,
   toggleEditing
  } from './popup.actions'
 
@@ -33,7 +32,6 @@ const dispatchToProps = {
   selectRow,
   popupOpened,
   setRecipeForm,
-  setRecipeSession,
   toggleEditing
 }
 
