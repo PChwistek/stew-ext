@@ -25,7 +25,8 @@ import {
   AUTH_LOGOUT,
   SEARCH_SETSORTBY,
   SEARCH_SETFAVORITE,
-  TABS_SETSNAP_EXISTING
+  TABS_SETSNAP_EXISTING,
+  TABS_QUICKADD
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -242,6 +243,12 @@ export function setRecipeForm(recipeName, recipeTags, isNew) {
       tag: '',
       isNew,
     }
+  }
+}
+
+export function quickAdd() {
+  return {
+    type: TABS_QUICKADD
   }
 }
 

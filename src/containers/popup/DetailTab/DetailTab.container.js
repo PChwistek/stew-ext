@@ -16,7 +16,8 @@ import {
   setRecipeForm,
   setRecipeSession,
   deleteRecipe,
-  setFavorite
+  setFavorite,
+  quickAdd
 } from '../popup.actions'
 
 
@@ -44,7 +45,8 @@ const dispatchToProps = {
   setRecipeForm,
   setRecipeSession,
   deleteRecipe,
-  setFavorite
+  setFavorite,
+  quickAdd
 }
 
 export default connect(stateToProps, dispatchToProps)(DetailTab)

@@ -55,7 +55,6 @@ async function updateTab(objectInfo) {
 
   const theTab = await browser.tabs.get(objectInfo.tabId)
   if(theTab.id !== currentTabId) {
-    console.log('theTab', theTab)
 
     currentTabId = theTab.id
     store.dispatch({

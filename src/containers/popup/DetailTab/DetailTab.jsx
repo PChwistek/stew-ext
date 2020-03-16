@@ -53,6 +53,12 @@ export default function DetailTab(props) {
     toggleEditing(false)
   }
 
+  function handleQuickAdd() {
+    const { quickAdd } = props
+    quickAdd()
+    setShowHelper(false)
+  }
+
   function handleGetCurrentTabs() {
     const { getCurrentTabs, setRecipeSession, selectedRecipe, tabs } = props
 
@@ -105,7 +111,12 @@ export default function DetailTab(props) {
             getCurrentTabs={ handleGetCurrentTabs }
             canEdit={ isEditing }
           />
-          <TabHelper in={ showHelper } currentTab={ props.currentTab } onNoClick={ () => setShowHelper(false) }/>
+          <TabHelper 
+            in={ showHelper } 
+            currentTab={ props.currentTab } 
+            onNoClick={ () => setShowHelper(false) }
+            onYesClick={ handleQuickAdd }
+          />
         </div>
     </SlideIn>
   )

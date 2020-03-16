@@ -22,7 +22,7 @@ export default function EditRecipe(props) {
       temp.push('Recipe name cannot be empty.')
     }
 
-    if(tabs.session.length < 1) {
+    if(tabs.recipeSession.length < 1) {
       temp.push('Session snapshot cannot be empty.')
     }
     if(temp.length === 0) {

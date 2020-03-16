@@ -25,7 +25,7 @@ export default function TabHelper(props) {
             </a>
           </div>
           <div className='tabhelper__buttons'>
-            <div className='tabhelper__button tabhelper__button--yes'>
+            <div className='tabhelper__button tabhelper__button--yes' onClick={ props.onYesClick }>
               Yes!
             </div>
             <div className='tabhelper__button tabhelper__button--no' onClick={ props.onNoClick } >
@@ -39,5 +39,6 @@ export default function TabHelper(props) {
 }
 
 TabHelper.propTypes = {
-
+  onYesClick: PropTypes.func,
+  onNoClick: PropTypes.func,
 }
