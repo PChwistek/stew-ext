@@ -86,7 +86,7 @@ export const saveRecipeAlias = () => {
         tags: tabsState.recipeForm.recipeTags,
         titles: titlesForSearch,
         attributes: [],
-        config: recipeSession,
+        config: tabsState.recipeSession,
       }
      
       if(!isNew) {
