@@ -20,8 +20,8 @@ export default function SessionView(props) {
             }
         </div>
         {
-          (win && win.tabs.length > 0) && win.tabs.map(tab => (
-            <div className='tab__row' key={ 'row' +tab.index }>
+          (win && win.tabs.length > 0) && win.tabs.map( (tab,index) => (
+            <div className='tab__row' key={ 'row' + index }>
               {
                 canEdit && (
                   <div key={ 'remove' + tab.index} className='tab__remove-container' onClick={ () => removeTabFromSnap(win, tab) }> 

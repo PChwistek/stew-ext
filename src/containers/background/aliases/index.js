@@ -13,7 +13,8 @@ import {
   POPUP_OPENED,
   SEARCH_SETSORTBY,
   POPUP_TOGGLEEDITING,
-  TABS_QUICKADD
+  TABS_QUICKADD,
+  SEARCH_SETFAVORITE
 } from '../../actionTypes'
 
 import { 
@@ -27,7 +28,7 @@ import {
 
 import { popupSync, toggleEditAlias, } from './popupAliases'
 import { login, authLogoutAlias } from './authAliases.js'
-import { getInitialResults, searchRecipes, sortBySearch } from './searchAliases'
+import { getInitialResults, searchRecipes, sortBySearch, setFavoriteAlias } from './searchAliases'
 
 if(process.env.NODE_ENV === 'development') {
   browser.storage.local.clear().then(() => {
@@ -52,4 +53,5 @@ export default {
   [SEARCH_SETSORTBY]: sortBySearch,
   [POPUP_TOGGLEEDITING]: toggleEditAlias,
   [TABS_QUICKADD]: quickAddAlias,
+  [SEARCH_SETFAVORITE]: setFavoriteAlias, 
 }

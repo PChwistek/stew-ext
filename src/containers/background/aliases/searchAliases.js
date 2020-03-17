@@ -1,12 +1,20 @@
+import axios from 'axios'
+import getServerHostname from '../../getServerHostName'
+
 import { 
   SEARCH_SETRESULTS_SUCCESS,
   SEARCH_SETROW_ALIAS,
   SEARCH_SELECTRECIPE,
   SEARCH_SETSEARCHTERMS_ALIAS,
   SEARCH_SETSORTBY_ALIAS,
+  SEARCH_SETFAVORITE_SYNC_SUCCESS,
+  SEARCH_SETFAVORITE_ALIAS,
+  SEARCH_SETRESULTS_SYNC_FAILED,
 } from '../../actionTypes'
 
 import manager from '../TabManager'
+
+const serverUrl = getServerHostname()
 
 export const getInitialResults = (originalAction) => {
   return async (dispatch, getState) => {
@@ -77,4 +85,44 @@ export const selectRecipe = (selectedRecipe) => {
       selectedRecipe,
     }
   }
+}
+
+export const setFavoriteAlias = (originalAction) => {
+  return (dispatch, getState) => {
+    const { value, recipeId } = originalAction.payload
+    let tempFavs = getState().search.favorites
+    if(value) {
+      tempFavs.push(recipeId)
+    } else {
+      tempFavs = tempFavs.filter(recipe => recipe == value)
+    }
+    dispatch({
+      type: SEARCH_SETFAVORITE_ALIAS,
+      payload: {
+        favs: tempFavs
+      }
+    })
+
+    // to server
+    const authState = getState().auth
+    const { jwt } = authState
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` }
+    }
+
+    axios
+    .post(`${serverUrl}/recipe/favorite`, { recipeId, isNew: value }, config)
+    .then(() => {
+      dispatch({ type: SEARCH_SETFAVORITE_SYNC_SUCCESS})
+    })
+    .catch(err => {
+      dispatch(handle401(err))
+      dispatch({ type: SEARCH_SETFAVORITE_SYNC_FAILED })
+    })
+
+    
+
+
+  }
+ 
 }
