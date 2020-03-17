@@ -14,7 +14,8 @@ import {
   SEARCH_SETSORTBY,
   POPUP_TOGGLEEDITING,
   TABS_QUICKADD,
-  SEARCH_SETFAVORITE
+  SEARCH_SETFAVORITE,
+  TABS_MERGE_SESSION
 } from '../../actionTypes'
 
 import { 
@@ -23,7 +24,8 @@ import {
   saveRecipeAlias, 
   selectRecipeFromRow, 
   removeRecipe, 
-  quickAddAlias 
+  quickAddAlias, 
+  mergeSessionAlias
 } from './tabAliases'
 
 import { popupSync, toggleEditAlias, } from './popupAliases'
@@ -53,5 +55,6 @@ export default {
   [SEARCH_SETSORTBY]: sortBySearch,
   [POPUP_TOGGLEEDITING]: toggleEditAlias,
   [TABS_QUICKADD]: quickAddAlias,
-  [SEARCH_SETFAVORITE]: setFavoriteAlias, 
+  [SEARCH_SETFAVORITE]: setFavoriteAlias,
+  [TABS_MERGE_SESSION]: mergeSessionAlias,
 }

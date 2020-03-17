@@ -51,6 +51,11 @@ function updateSnapshot() {
   store.dispatch({ type: TABS_SNAP })
 }
 
+function updateSnapshotorCurrentTab() {
+  updateSnapshot()
+  updateTab()
+}
+
 async function updateTab(objectInfo) {
 
   const theTab = await browser.tabs.get(objectInfo.tabId)
@@ -87,7 +92,7 @@ browser.tabs.onActivated.addListener(updateTab)
 export function addEditListeners() {
   browser.windows.onFocusChanged.addListener(updateWindow)
   browser.windows.onRemoved.addListener(updateSnapshot)
-  browser.tabs.onUpdated.addListener(updateSnapshot)
+  browser.tabs.onUpdated.addListener(updateSnapshotorCurrentTab)
   browser.tabs.onRemoved.addListener(updateSnapshot)
   browser.tabs.onMoved.addListener(updateSnapshot)
   browser.tabs.onDetached.addListener(updateSnapshot)
@@ -97,7 +102,7 @@ export function addEditListeners() {
 export function removeEditListeners() {
   browser.windows.onFocusChanged.removeListener(updateWindow)
   browser.windows.onRemoved.removeListener(updateSnapshot)
-  browser.tabs.onUpdated.removeListener(updateSnapshot)
+  browser.tabs.onUpdated.removeListener(updateSnapshotorCurrentTab)
   browser.tabs.onRemoved.removeListener(updateSnapshot)
   browser.tabs.onMoved.removeListener(updateSnapshot)
   browser.tabs.onDetached.removeListener(updateSnapshot)

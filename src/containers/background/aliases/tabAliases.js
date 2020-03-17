@@ -19,6 +19,7 @@ import {
   TABS_LAUNCHRECIPE_SUCCESS,
   TABS_SETSNAP_EXISTING,
   TABS_QUICKADD_ALIAS,
+  TABS_MERGE_SESSION_ALIAS
 } from '../../actionTypes'
 
 const serverUrl = getServerHostname()
@@ -27,10 +28,25 @@ export const getCurrentSession = (originalAction) => {
   return async (dispatch, getState) => {
     const { tabs } = getState()
     const session = await manager.getSession(tabs.currentWindow.id)
+    
+    const newConfig = []
+    for (let index = 0; index < session.length; index++) {
+      const win = session[index]
+      newConfig.push(
+        {
+        tabs: win.tabs.map((tab, index) => ({
+          favIconUrl: tab.favIconUrl, 
+          url: tab.url,
+          title: tab.title,
+          index: index
+        }))
+      })
+    }
+
     dispatch({
       type: TABS_SETSNAP,
       payload: {
-        session
+        session: newConfig
       }
     })
   }
@@ -58,22 +74,10 @@ export const saveRecipeAlias = () => {
         headers: { Authorization: `Bearer ${jwt}` }
       }
 
-      const newConfig = []
       let titlesForSearch = []
       for (let index = 0; index < tabsState.recipeSession.length; index++) {
         const win = tabsState.recipeSession[index]
-
         titlesForSearch = titlesForSearch.concat(win.tabs.map(tab => tab.title))
-
-        newConfig.push(
-          {
-          tabs: win.tabs.map((tab, index) => ({
-            favIconUrl: tab.favIconUrl, 
-            url: tab.url,
-            title: tab.title,
-            index: index
-          }))
-        })
       }
 
       const theRecipe = {
@@ -82,7 +86,7 @@ export const saveRecipeAlias = () => {
         tags: tabsState.recipeForm.recipeTags,
         titles: titlesForSearch,
         attributes: [],
-        config: newConfig,
+        config: recipeSession,
       }
      
       if(!isNew) {
@@ -165,7 +169,7 @@ export const removeRecipe = () => {
 }
 
 export const quickAddAlias = () => {
-  return async (dispatch, getState) => {
+  return (dispatch, getState) => {
     const { currentTab, recipeSession } = getState().tabs
     const { selectedRecipe } = getState().search
 
@@ -184,5 +188,43 @@ export const quickAddAlias = () => {
     })
 
     dispatch(saveRecipeAlias())
+  }
+}
+
+export const mergeSessionAlias = () => {
+  return (dispatch, getState) => {
+    const { session, recipeSession } = getState().tabs
+
+    let newSession = []
+
+    let windowCount = 0
+    while(windowCount < session.length && windowCount < recipeSession.length) {
+      const sessionWindow = session[windowCount]
+      const recipeWindow = recipeSession[windowCount]
+      let tabsNotInRecipe = sessionWindow.tabs.filter(tab => recipeWindow.tabs.findIndex(recipeTab => recipeTab.url === tab.url) === -1)
+      console.log('not in recipe window', tabsNotInRecipe)
+      sessionWindow.tabs.concat(tabsNotInRecipe)
+      newSession.push(sessionWindow)
+      windowCount += 1
+    }
+    
+    if(windowCount === session.length) {
+      for (let index = windowCount; index < recipeSession.length; index++) {
+        const nextWindow = recipeSession[index]
+        newSession.push(nextWindow)
+      }
+    } else if (windowCount === recipeSession.length) {
+      for (let index = windowCount; index < session.length; index++) {
+        const nextWindow = session[index]
+        newSession.push(nextWindow)
+      }
+    }
+
+    dispatch({
+      type: TABS_MERGE_SESSION_ALIAS,
+      payload: {
+        session: newSession
+      }
+    })
   }
 }

@@ -26,7 +26,8 @@ import {
   SEARCH_SETSORTBY,
   SEARCH_SETFAVORITE,
   TABS_SETSNAP_EXISTING,
-  TABS_QUICKADD
+  TABS_QUICKADD,
+  TABS_MERGE_SESSION
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -261,5 +262,11 @@ export function setFavorite(recipeId, value) {
       recipeId,
       value
     }
+  }
+}
+
+export function mergeSession() {
+  return {
+    type: TABS_MERGE_SESSION
   }
 }

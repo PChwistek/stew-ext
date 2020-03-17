@@ -4,45 +4,75 @@ import ViewRecipe from './ViewRecipe'
 import EditRecipe from './EditRecipe'
 import SessionView from './SessionView'
 import TabHelper from './TabHelper'
+import { compareObjects } from '../../utils'
 
 export default function DetailTab(props) {
 
-  const [showHelper, setShowHelper] = useState(false)
+  const [showTabHelper, setShowTabHelper] = useState(false)
+  const [showMergeHelper, setShowMergeHelper] = useState(false)
 
   function checkTabPopup() {
     const { tabs , session, isEditing } = props
     if(tabs.isNew || isEditing ) {
-      setShowHelper(false) 
+      setShowTabHelper(false) 
       return
     }
     const { currentTab } = tabs
     for (let index = 0; index < session.length; index++) {
       for (let tabIndex = 0; tabIndex < session[index].tabs.length; tabIndex++) {
         const tab = session[index].tabs[tabIndex]
-        console.log(tab)
-        console.log('current', currentTab)
         if(tab.url === currentTab.url) {
-          setShowHelper(false)
+          setShowTabHelper(false)
           return
         }
       }
     }
-    setShowHelper(true)
+    setShowTabHelper(true)
+  }
+
+  function checkMergePopup() {
+    const { session, windowSession } = props
+    const noDiff = compareObjects(session, windowSession)
+    if(noDiff) {
+      setShowMergeHelper(false)
+    } else {
+      setShowMergeHelper(true)
+    }
   }
 
   useEffect(() => {
+    if(!isEditing || props.tabs.isNew) {
+      setShowMergeHelper(false)
+      return
+    }
+    if(props.visible) {
+      const timer = setTimeout(() => {
+        checkMergePopup()
+      }, 500)
+      return () => clearTimeout(timer)
+    } else {
+      setShowMergeHelper(false)
+    }
+  }, [props.isEditing, props.session, props.windowSession])
+
+  useEffect(() => {
+    if(isEditing) {
+      setShowTabHelper(false)
+      return
+    }
     if(props.visible) {
       const timer = setTimeout(() => {
         checkTabPopup()
       }, 500)
       return () => clearTimeout(timer)
     } else {
-      setShowHelper(false)
+      setShowTabHelper(false)
     }
-  }, [props.visible, props.currentTab])
+  }, [props.visible, props.currentTab, props.isEditing])
  
   function handleToggleEdit() {
-    const { toggleEditing, selectedRecipe, setRecipeForm, isEditing } = props
+    const { toggleEditing, selectedRecipe, setRecipeForm, isEditing, getCurrentTabs } = props
+    getCurrentTabs()
     toggleEditing(!isEditing)
     setRecipeForm(selectedRecipe.name, selectedRecipe.tags, false)
   }
@@ -56,12 +86,17 @@ export default function DetailTab(props) {
   function handleQuickAdd() {
     const { quickAdd } = props
     quickAdd()
-    setShowHelper(false)
+    setShowTabHelper(false)
+  }
+
+  function handleMergeSession() {
+    const { mergeSession } = props
+    mergeSession()
+    setShowMergeHelper(false)
   }
 
   function handleGetCurrentTabs() {
     const { getCurrentTabs, setRecipeSession, selectedRecipe, tabs } = props
-
     if(tabs.isNew) {
       getCurrentTabs()
     } else {
@@ -112,10 +147,27 @@ export default function DetailTab(props) {
             canEdit={ isEditing }
           />
           <TabHelper 
-            in={ showHelper } 
-            currentTab={ props.currentTab } 
-            onNoClick={ () => setShowHelper(false) }
+            in={ showTabHelper } 
+            onNoClick={ () => setShowTabHelper(false) }
             onYesClick={ handleQuickAdd }
+            title={ 'Quick Add' }
+            tooltipText={ 'Allows you to add the currently active tab.' }
+          >
+            <div>
+              <a href={ props.currentTab.url } target="blank">
+                <div className='tab__body'>
+                  <img src={ props.currentTab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
+                  <p className='tab__title'> { props.currentTab.title } </p>
+                </div>
+              </a>
+            </div>
+          </TabHelper>
+          <TabHelper 
+            in={ showMergeHelper } 
+            onNoClick={ () => setShowMergeHelper(false) }
+            onYesClick={ handleMergeSession }
+            title={ 'Merge current session?' }
+            tooltipText={ 'Would you like to merge your current session with this recipe?' }
           />
         </div>
     </SlideIn>

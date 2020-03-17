@@ -17,7 +17,8 @@ import {
   setRecipeSession,
   deleteRecipe,
   setFavorite,
-  quickAdd
+  quickAdd,
+  mergeSession
 } from '../popup.actions'
 
 
@@ -26,6 +27,7 @@ const stateToProps = ({ search, tabs, popup }) => ({
   selectedRecipe: search.selectedRecipe,
   session: tabs.recipeSession,
   tabs,
+  windowSession: tabs.session,
   currentTab: tabs.currentTab,
   isEditing: popup.isEditing
 })
@@ -46,7 +48,8 @@ const dispatchToProps = {
   setRecipeSession,
   deleteRecipe,
   setFavorite,
-  quickAdd
+  quickAdd,
+  mergeSession
 }
 
 export default connect(stateToProps, dispatchToProps)(DetailTab)
