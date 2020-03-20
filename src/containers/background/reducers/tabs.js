@@ -4,7 +4,7 @@ import {
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
   TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
   TABS_SETRECIPEFORM, TABS_RESET, TABS_SETCURRENTTAB, TABS_SETCURRENTWINDOW,
-  TABS_SETSNAP_EXISTING, TABS_QUICKADD_ALIAS, TABS_MERGE_SESSION_ALIAS
+  TABS_SETSNAP_EXISTING, TABS_QUICKADD_ALIAS, TABS_MERGE_SESSION_ALIAS, TABS_MERGE_POPUP_CLOSED
 } from '../../actionTypes'
 
 const initialState = {
@@ -16,6 +16,8 @@ const initialState = {
   session: [],
   recipeSession: [],
   isNew: false,
+  wasMerged: false,
+  mergePopupClosed: false,
   currentWindow: {},
   currentTab: {}
 }
@@ -35,11 +37,14 @@ export default (state = initialState, action) => {
       }) 
     case TABS_REMOVETAB: {
       const { win, tab } = payload
-      
+      console.log('win', win)
       const recipeSessionCopy = [...state.recipeSession]
-      const theWindow = recipeSessionCopy.find(theWin => theWin.index === win.index)
-      const windowIndex = recipeSessionCopy.findIndex(theWin => theWin.index === win.index)
+      console.log(recipeSessionCopy)
+      const theWindow = recipeSessionCopy[win]
+      console.log('the window', theWindow)
       theWindow.tabs = theWindow.tabs.filter(windowTab => windowTab.index !== tab.index)
+      // reset indexes
+      theWindow.tabs = theWindow.tabs.map((theTab, index) => ({ index, ...theTab}))
 
       if(theWindow.tabs.length == 0) {
         recipeSessionCopy.splice(windowIndex, 1)
@@ -111,7 +116,9 @@ export default (state = initialState, action) => {
       })
     case TABS_SETSNAP_EXISTING:
       return Object.assign({}, state, {
-        recipeSession:  cloneDeep(action.payload.session)
+        recipeSession:  cloneDeep(action.payload.session),
+        wasMerged: false,
+        mergePopupClosed: false,
       })
     case TABS_QUICKADD_ALIAS:
       return Object.assign({}, state, {
@@ -126,6 +133,11 @@ export default (state = initialState, action) => {
     case TABS_MERGE_SESSION_ALIAS:
       return Object.assign({}, state, {
         recipeSession: action.payload.session,
+        wasMerged: true
+      })
+    case TABS_MERGE_POPUP_CLOSED:
+      return Object.assign({}, state, {
+        mergePopupClosed: true
       })
     case TABS_RESET:
       return initialState

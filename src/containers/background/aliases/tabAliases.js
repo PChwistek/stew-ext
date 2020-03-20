@@ -195,7 +195,7 @@ export const mergeSessionAlias = () => {
   return (dispatch, getState) => {
     const { session, recipeSession } = getState().tabs
 
-    let newSession = []
+    let newSession = [...recipeSession]
 
     let windowCount = 0
     while(windowCount < session.length && windowCount < recipeSession.length) {
@@ -208,12 +208,7 @@ export const mergeSessionAlias = () => {
       windowCount += 1
     }
     
-    if(windowCount === session.length) {
-      for (let index = windowCount; index < recipeSession.length; index++) {
-        const nextWindow = recipeSession[index]
-        newSession.push(nextWindow)
-      }
-    } else if (windowCount === recipeSession.length) {
+    if (windowCount === recipeSession.length) {
       for (let index = windowCount; index < session.length; index++) {
         const nextWindow = session[index]
         newSession.push(nextWindow)

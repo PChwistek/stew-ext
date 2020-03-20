@@ -41,7 +41,7 @@ export default function DetailTab(props) {
   }
 
   useEffect(() => {
-    if(!isEditing || props.tabs.isNew) {
+    if(!isEditing || props.tabs.isNew || props.tabs.wasMerged || props.tabs.mergePopupClosed) {
       setShowMergeHelper(false)
       return
     }
@@ -164,7 +164,10 @@ export default function DetailTab(props) {
           </TabHelper>
           <TabHelper 
             in={ showMergeHelper } 
-            onNoClick={ () => setShowMergeHelper(false) }
+            onNoClick={ () => { 
+              setShowMergeHelper(false), 
+              mergePopupClosed() } 
+            }
             onYesClick={ handleMergeSession }
             title={ 'Merge current session?' }
             tooltipText={ 'Would you like to merge your current session with this recipe?' }

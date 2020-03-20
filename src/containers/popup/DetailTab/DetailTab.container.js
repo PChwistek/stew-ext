@@ -18,7 +18,8 @@ import {
   deleteRecipe,
   setFavorite,
   quickAdd,
-  mergeSession
+  mergeSession,
+  mergePopupClosed
 } from '../popup.actions'
 
 
@@ -49,7 +50,8 @@ const dispatchToProps = {
   deleteRecipe,
   setFavorite,
   quickAdd,
-  mergeSession
+  mergeSession,
+  mergePopupClosed
 }
 
 export default connect(stateToProps, dispatchToProps)(DetailTab)

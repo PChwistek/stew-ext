@@ -1,22 +1,24 @@
 import React from 'react'
 
 export default function Tab(props) {
-  const { tab, canEdit, index, win } = props
+  const { tab, canEdit, index, winIndex, removeTabFromSnap } = props
   return (
     <div className='tab__row' key={ 'row' + index }>
       {
         canEdit && (
-          <div key={ 'remove' + index} className='tab__remove-container' onClick={ () => removeTabFromSnap(win, tab) }> 
+          <div key={ 'remove' + index} className='tab__remove-container' onClick={ () => removeTabFromSnap(winIndex, tab) }> 
             <img src={ '../../../assets/remove-red.png' } className='tab__remove' />
           </div>
         )
       }
-      <a href={ tab.url } target="blank">
         <div className='tab__body'>
           <img src={ tab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
-          <p className='tab__title'> { tab.title } </p>
+            <p className='tab__title'>
+              <a href={ tab.url } className={ 'tab__title' } target="blank">
+                { tab.title }          
+              </a>
+            </p>
         </div>
-      </a>
-  </div>
+    </div>
   )
 }

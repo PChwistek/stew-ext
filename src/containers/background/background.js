@@ -59,8 +59,7 @@ function updateSnapshotorCurrentTab() {
 async function updateTab(objectInfo) {
 
   const theTab = await browser.tabs.get(objectInfo.tabId)
-  if(theTab.id !== currentTabId) {
-
+  if(theTab.id !== currentTabId && theTab.windowId !== windowId) {
     currentTabId = theTab.id
     store.dispatch({
       type: TABS_SETCURRENTTAB,

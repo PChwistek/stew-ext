@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Tab from './Tab'
 
 export default function SessionView(props) {
 
   const { removeWindowFromSnap, removeTabFromSnap, canEdit, session, getCurrentTabs } = props
 
   function windowTabs(win, index) {
+    const winIndex= index
     return (
       <div key={ index }>
         <div className='createtab__window-row'>     
@@ -13,19 +15,21 @@ export default function SessionView(props) {
             <img src={ '../../../assets/window-sketch.png' } className='createtab__window-icon' />
             {
               canEdit && (
-                <div className='createtab__window-remove-container' onClick={ () => removeWindowFromSnap(win) }> 
+                <div className='createtab__window-remove-container' onClick={ () => removeWindowFromSnap(index) }> 
                   <img src={ '../../../assets/remove-red.png' } className='createtab__window-remove' />
                 </div>    
               )
             }
         </div>
         {
-          (win && win.tabs.length > 0) && win.tabs.map( (tab,index) => ( 
-            <Tab 
+          (win && win.tabs.length > 0) && win.tabs.map( (tab, tabIndex) => ( 
+            <Tab
+              key={ tab.url + tabIndex}
               canEdit={ canEdit} 
               tab={ tab } 
-              win={ win } 
-              index={ index }
+              winIndex={ winIndex } 
+              index={ tabIndex }
+              removeTabFromSnap= { removeTabFromSnap }
             />
           ))
       }

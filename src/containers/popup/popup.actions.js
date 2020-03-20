@@ -27,7 +27,8 @@ import {
   SEARCH_SETFAVORITE,
   TABS_SETSNAP_EXISTING,
   TABS_QUICKADD,
-  TABS_MERGE_SESSION
+  TABS_MERGE_SESSION,
+  MERGE_POPUP_CLOSED
 } from '../actionTypes'
 
 export function getCurrentTabs() {
@@ -52,6 +53,13 @@ export function launchRecipe(recipe) {
     }
   }
 }
+
+export function mergePopupClosed() {
+  return {
+    type: MERGE_POPUP_CLOSED
+  }
+}
+
 
 export function setSearchTerms(terms) {
   return {

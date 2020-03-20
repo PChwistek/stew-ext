@@ -128,7 +128,6 @@
     background: transparent;
     border: 1px solid $brand-color;
     margin-bottom: -2px;
-    cursor: pointer;
   }
 
   &__col {
@@ -159,7 +158,6 @@
     background: transparent;
     border: 1px solid $brand-color;
     margin-bottom: -2px;
-    cursor: pointer;
   }
 
   &__title {
@@ -167,10 +165,12 @@
     width: 100%;
     padding-right: 7px;
     font-size: $font-size-regular;
-    color: $text-color;
+    color: $text-color !important;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    cursor: pointer;
+    width: fit-content;
   }
 
   &__fav {
