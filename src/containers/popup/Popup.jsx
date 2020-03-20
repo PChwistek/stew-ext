@@ -6,7 +6,7 @@ import Table from './Table'
 import DetailTab from './DetailTab'
 import Login from './Login'
 import './popup.scss'
-import { toggleEditing } from './popup.actions'
+import { removeDocumentListeners } from './utils'
 
 const Popup = (props) => {
 
@@ -39,6 +39,12 @@ const Popup = (props) => {
       props.getFirstResults()
     }
   }, [props.terms])
+
+  useEffect(() => {
+    if(!props.loggedIn) {
+      removeDocumentListeners()
+    }
+  }, [props.loggedIn])
 
   const { loggedIn, terms, slideOutVisible, isEditing } = props
   return (

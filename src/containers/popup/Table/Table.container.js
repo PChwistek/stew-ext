@@ -8,7 +8,8 @@ import {
   setSortBy
 } from '../popup.actions'
 
-const stateToProps = ({ search, popup }) => ({
+const stateToProps = ({ auth, search, popup }) => ({
+  loggedIn: auth.loggedIn,
   search,
   ...popup,
 })

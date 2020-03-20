@@ -31,6 +31,8 @@ import {
   MERGE_POPUP_CLOSED
 } from '../actionTypes'
 
+import { removeDocumentListeners } from './utils'
+
 export function getCurrentTabs() {
   return {
     type: TABS_SNAP,
@@ -191,6 +193,7 @@ export function login(email, password) {
 }
 
 export function logout() {
+  removeDocumentListeners()
   return {
     type: AUTH_LOGOUT
   }

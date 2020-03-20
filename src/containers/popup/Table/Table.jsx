@@ -9,13 +9,11 @@ import NoTags from './NoTags'
 // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 export default function Table(props) {
-  const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy } = props
+  const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy, loggedIn } = props
   const { selectedRow = 0, results = [], searchTerms, sortedBy, favorites } = props.search
 
   const refDictionary = {}
   const keyMap = {}
-
-  document.onkeydown = checkKey
 
   function handleRefs(index) {
     refDictionary[index] = createRef()
@@ -25,7 +23,7 @@ export default function Table(props) {
   function checkKey(e) {
     e = e || window.event
     keyMap[e.code] = e.type == 'keydown';
-    if(!slideOutVisible) {
+    if(!slideOutVisible && loggedIn) {
       if (keyMap['ArrowUp']) {
         selectPreviousRow()
         refDictionary[selectedRow].current.focus()

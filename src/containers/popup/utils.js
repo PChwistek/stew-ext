@@ -6,3 +6,7 @@ export function getSrc(attribute) {
       return '../../../assets/star1.png'
   }
 }
+
+export function removeDocumentListeners() {
+  document.onkeydown = null
+}
