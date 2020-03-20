@@ -4,6 +4,7 @@
 
   &__no-results {
     @include absCenter();
+    text-align: center;
     font-family: $base-font-family;
     font-size: $font-size-larger;
     font-weight: 700;

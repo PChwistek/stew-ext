@@ -151,6 +151,7 @@ export const removeRecipe = () => {
     }
     dispatch({ type: TABS_DELETERECIPE_PENDING })
     await manager.removeRecipeFromStore(selectedRecipe)
+    dispatch(getInitialResults())
     axios
       .post(`${serverUrl}/recipe/delete`, {
         _id: selectedRecipe._id

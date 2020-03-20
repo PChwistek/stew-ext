@@ -10,7 +10,6 @@ export default function EditRecipe(props) {
 
   const [formErrors, setFormErrors] = useState([])
 
-
   const { recipeForm: { recipeName, recipeTags, recipeTag } } = tabs
 
   let recipeNameField = createRef()
@@ -19,12 +18,14 @@ export default function EditRecipe(props) {
   function handleSave() {
     const temp = []
     if(recipeName.length < 1) {
+      recipeNameField.current.focus()
       temp.push('Recipe name cannot be empty.')
     }
 
     if(tabs.recipeSession.length < 1) {
       temp.push('Session snapshot cannot be empty.')
     }
+
     if(temp.length === 0) {
       handleSaveRecipe()
     } else {
@@ -33,6 +34,9 @@ export default function EditRecipe(props) {
   }
 
   function validateName(name) {
+    if(name.length < 1) {
+      return { isValid: true, error: 'Recipe name cannot be empty.'}
+    }
     if(name.length >= 25) {
       return { isValid: false, error: 'Max character length of 25' }
     }

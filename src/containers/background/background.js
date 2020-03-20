@@ -6,52 +6,19 @@ import { POPUP_OPENED, POPUP_SET_WINDOWID, TABS_SETCURRENTWINDOW, TABS_SETCURREN
 let popupWindowId = -1
 let currentTabId = -1
 
-browser.browserAction.onClicked.addListener(async () => {
-  try {
-    const theWindow = await browser.windows.getCurrent()
-
-    if(theWindow.id != popupWindowId && theWindow.id > 0 && theWindow.type === 'normal') {
-      store.dispatch({
-        type: TABS_SETCURRENTWINDOW,
-        payload: {
-          currentWindow: theWindow,
-        }
-      })
-    }
-
-    store.dispatch({ type: POPUP_OPENED })
-    const { isNewWindow, windowId } = await openPopup()
-    if(isNewWindow) {
-      const currentTabs = await browser.tabs.query({ windowId: theWindow.id, active: true })
-      const newTabId = currentTabs.length > 0 ? currentTabs[0].id : -1
-      if(popupWindowId !== newTabId) {
-        popupWindowId = newTabId
-        store.dispatch({
-          type: TABS_SETCURRENTTAB,
-          payload: {
-            currentTab: currentTabs.length > 0 ? currentTabs[0] : {},
-          }
-        })
-      }
-    }
-
-    store.dispatch({ 
-      type: POPUP_SET_WINDOWID, 
-      payload: {
-        windowId
-      } 
-    })
-  } catch(error) {
-    console.log(error)
+function handleWindowClosed(windowId) {
+  if(windowId === popupWindowId) {
+    removeInAppListeners()
+    removeEditListeners()
+    browser.windows.onRemoved.removeListener(handleWindowClosed)
   }
-})
+}
 
 function updateSnapshot() {
   store.dispatch({ type: TABS_SNAP })
 }
 
 function updateSnapshotorCurrentTab(tabId) {
-  console.log('on updated...')
   updateSnapshot()
   updateTab(tabId)
 }
@@ -86,8 +53,6 @@ async function updateWindow(currentWindowId) {
 }
 
 function onTabFocusChanged( { tabId, windowId }) {
-  console.log('tab id', tabId)
-  console.log('window id', windowId)
   if(windowId !== popupWindowId) {
     currentTabId = tabId
     updateWindow(windowId)
@@ -95,14 +60,14 @@ function onTabFocusChanged( { tabId, windowId }) {
   }
 }
 
-browser.tabs.onActivated.addListener(onTabFocusChanged)
-browser.tabs.onUpdated.addListener(updateSnapshotorCurrentTab)
 
 export function addInAppListeners() {
+  browser.tabs.onActivated.addListener(onTabFocusChanged)
   browser.tabs.onUpdated.addListener(updateSnapshotorCurrentTab)
 }
 
 export function removeInAppListeners() {
+  browser.tabs.onActivated.removeListener(onTabFocusChanged)
   browser.tabs.onUpdated.removeListener(updateSnapshotorCurrentTab)
 }
 
@@ -121,3 +86,46 @@ export function removeEditListeners() {
   browser.tabs.onDetached.removeListener(updateSnapshot)
   browser.tabs.onAttached.removeListener(updateSnapshot)
 }
+
+browser.browserAction.onClicked.addListener(async () => {
+  try {
+    const theWindow = await browser.windows.getCurrent()
+
+    if(theWindow.id != popupWindowId && theWindow.id > 0 && theWindow.type === 'normal') {
+      store.dispatch({
+        type: TABS_SETCURRENTWINDOW,
+        payload: {
+          currentWindow: theWindow,
+        }
+      })
+    }
+
+    store.dispatch({ type: POPUP_OPENED })
+    const { isNewWindow, windowId } = await openPopup()
+    if(isNewWindow) {
+      popupWindowId = windowId
+      const currentTabs = await browser.tabs.query({ windowId: theWindow.id, active: true })
+      const newTabId = currentTabs.length > 0 ? currentTabs[0].id : -1
+      if(popupWindowId !== newTabId) {
+        currentTabId = newTabId
+        store.dispatch({
+          type: TABS_SETCURRENTTAB,
+          payload: {
+            currentTab: currentTabs.length > 0 ? currentTabs[0] : {},
+          }
+        })
+      }
+      addInAppListeners()
+      browser.windows.onRemoved.addListener(handleWindowClosed)
+    }
+
+    store.dispatch({ 
+      type: POPUP_SET_WINDOWID, 
+      payload: {
+        windowId
+      } 
+    })
+  } catch(error) {
+    console.log(error)
+  }
+})

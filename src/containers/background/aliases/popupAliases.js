@@ -1,7 +1,7 @@
 import axios from 'axios'
 import manager from '../TabManager'
 import { getInitialResults } from './searchAliases'
-import { addEditListeners, removeEditListeners } from '../background'
+import { addEditListeners, removeEditListeners, addInAppListeners, removeInAppListeners } from '../background'
 import { handle401 }from './authAliases'
 import getServerHostname from '../../getServerHostName'
 
