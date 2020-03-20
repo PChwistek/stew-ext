@@ -195,16 +195,15 @@ export const mergeSessionAlias = () => {
   return (dispatch, getState) => {
     const { session, recipeSession } = getState().tabs
 
-    let newSession = [...recipeSession]
+    let newSession = []
 
     let windowCount = 0
     while(windowCount < session.length && windowCount < recipeSession.length) {
       const sessionWindow = session[windowCount]
       const recipeWindow = recipeSession[windowCount]
       let tabsNotInRecipe = sessionWindow.tabs.filter(tab => recipeWindow.tabs.findIndex(recipeTab => recipeTab.url === tab.url) === -1)
-      console.log('not in recipe window', tabsNotInRecipe)
-      sessionWindow.tabs.concat(tabsNotInRecipe)
-      newSession.push(sessionWindow)
+      recipeWindow.tabs = [...recipeWindow.tabs, ...tabsNotInRecipe]
+      newSession.push(recipeWindow)
       windowCount += 1
     }
     

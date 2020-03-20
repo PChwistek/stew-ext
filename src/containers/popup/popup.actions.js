@@ -95,7 +95,7 @@ export function removeWindowFromSnap(win) {
   return {
     type: TABS_REMOVEWINDOW,
     payload: {
-      windowToRemove: win
+      windowIndex: win
     }
   }
 }

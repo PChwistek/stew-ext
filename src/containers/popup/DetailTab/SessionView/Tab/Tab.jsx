@@ -6,7 +6,7 @@ export default function Tab(props) {
     <div className='tab__row' key={ 'row' + index }>
       {
         canEdit && (
-          <div key={ 'remove' + index} className='tab__remove-container' onClick={ () => removeTabFromSnap(winIndex, tab) }> 
+          <div key={ 'remove' + index} className='tab__remove-container' onClick={ () => removeTabFromSnap(winIndex, index) }> 
             <img src={ '../../../assets/remove-red.png' } className='tab__remove' />
           </div>
         )

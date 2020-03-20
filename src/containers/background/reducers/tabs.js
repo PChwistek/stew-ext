@@ -37,31 +37,27 @@ export default (state = initialState, action) => {
       }) 
     case TABS_REMOVETAB: {
       const { win, tab } = payload
-      console.log('win', win)
-      const recipeSessionCopy = [...state.recipeSession]
-      console.log(recipeSessionCopy)
+      let recipeSessionCopy = cloneDeep([...state.recipeSession])
       const theWindow = recipeSessionCopy[win]
-      console.log('the window', theWindow)
-      theWindow.tabs = theWindow.tabs.filter(windowTab => windowTab.index !== tab.index)
-      // reset indexes
-      theWindow.tabs = theWindow.tabs.map((theTab, index) => ({ index, ...theTab}))
+      theWindow.tabs.splice(tab, 1)
 
-      if(theWindow.tabs.length == 0) {
-        recipeSessionCopy.splice(windowIndex, 1)
-      }
+      recipeSessionCopy[win] = theWindow
+      recipeSessionCopy = recipeSessionCopy.filter(theWindow => theWindow.tabs.length > 0)
 
       return Object.assign({}, state, {
         recipeSession: recipeSessionCopy,
       })
     }
     case TABS_REMOVEWINDOW: {
-      const { windowToRemove } = payload
+      const { windowIndex } = payload
+      let recipeSessionCopy = cloneDeep([...state.recipeSession])
 
-      const windowIndex = state.recipeSession.findIndex(theWin => theWin.index === windowToRemove.index)
       if(windowIndex > -1) {
-        state.recipeSession.splice(windowIndex, 1)
+        recipeSessionCopy.splice(windowIndex, 1)
       }
-      return Object.assign({}, state, {})
+      return Object.assign({}, state, {
+        recipeSession: recipeSessionCopy,
+      })
     }
     case TABS_SETRECIPENAME:
       const { recipeName } = payload

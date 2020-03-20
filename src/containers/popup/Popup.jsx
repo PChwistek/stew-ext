@@ -21,7 +21,7 @@ const Popup = (props) => {
   }
 
   function handleToggleRowDetailTab(index) {
-    const { toggleSlide, slideOutVisible, selectRow } = props
+    const { toggleSlide, slideOutVisible, selectRow, toggleEditing } = props
     toggleEditing(false)
     if(!slideOutVisible) {
       selectRow(index)
