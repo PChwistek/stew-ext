@@ -17,7 +17,6 @@ import {
   POPUP_SYNCRECIPES,
   SEARCH_GET_INITIAL_RESULTS,
   SEARCH_SETSEARCHTERMS_POPUP,
-  POPUP_OPENED,
   POPUP_TOGGLE_SLIDE,
   POPUP_TOGGLEEDITING,
   TABS_SETRECIPEFORM,
@@ -28,7 +27,7 @@ import {
   TABS_SETSNAP_EXISTING,
   TABS_QUICKADD,
   TABS_MERGE_SESSION,
-  MERGE_POPUP_CLOSED
+  TABS_MERGE_POPUP_CLOSED
 } from '../actionTypes'
 
 import { removeDocumentListeners } from './utils'
@@ -58,7 +57,8 @@ export function launchRecipe(recipe) {
 
 export function mergePopupClosed() {
   return {
-    type: MERGE_POPUP_CLOSED
+    type: TABS_MERGE_POPUP_CLOSED,
+    payload: {}
   }
 }
 

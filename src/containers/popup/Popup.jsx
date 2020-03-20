@@ -11,10 +11,11 @@ import { removeDocumentListeners } from './utils'
 const Popup = (props) => {
 
  function handleToggleCreateTab() {
-    const { getCurrentTabs, toggleEditing, toggleSlide, slideOutVisible, setRecipeForm } = props
+    const { getCurrentTabs, toggleEditing, toggleSlide, slideOutVisible, setRecipeForm, liveSession, setRecipeSession } = props
     if(!slideOutVisible) {
       setRecipeForm('', [], true)
       getCurrentTabs()
+      setRecipeSession(liveSession)
       toggleEditing(true)
     }
     toggleSlide(!slideOutVisible, true)

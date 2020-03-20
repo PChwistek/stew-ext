@@ -15,6 +15,7 @@ const initialState = {
   },
   session: [],
   recipeSession: [],
+  initialLiveSession: [],
   isNew: false,
   wasMerged: false,
   mergePopupClosed: false,
@@ -26,14 +27,9 @@ export default (state = initialState, action) => {
   const { payload } = action
   switch (action.type) {
     case TABS_SETSNAP:
-      if(state.isNew) {
-        return Object.assign({}, state, {
-          session: payload.session,
-          recipeSession: payload.session
-        })
-      } 
       return Object.assign({}, state, {
         session: payload.session,
+        mergePopupClosed: false,
       }) 
     case TABS_REMOVETAB: {
       const { win, tab } = payload
@@ -113,6 +109,7 @@ export default (state = initialState, action) => {
     case TABS_SETSNAP_EXISTING:
       return Object.assign({}, state, {
         recipeSession:  cloneDeep(action.payload.session),
+        initialLiveSession: action.payload.session,
         wasMerged: false,
         mergePopupClosed: false,
       })
@@ -129,7 +126,8 @@ export default (state = initialState, action) => {
     case TABS_MERGE_SESSION_ALIAS:
       return Object.assign({}, state, {
         recipeSession: action.payload.session,
-        wasMerged: true
+        wasMerged: true,
+        mergePopupClosed: true,
       })
     case TABS_MERGE_POPUP_CLOSED:
       return Object.assign({}, state, {

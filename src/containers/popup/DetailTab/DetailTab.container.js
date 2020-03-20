@@ -28,7 +28,7 @@ const stateToProps = ({ search, tabs, popup }) => ({
   selectedRecipe: search.selectedRecipe,
   session: tabs.recipeSession,
   tabs,
-  windowSession: tabs.session,
+  liveSession: tabs.session,
   currentTab: tabs.currentTab,
   isEditing: popup.isEditing
 })

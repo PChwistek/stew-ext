@@ -46,7 +46,7 @@ export default function Table(props) {
       {
         results.length <= 0 
           ? <div className={ 'table__no-results' }> 
-              { (searchTerms === '') ? 'Click on the plus icon in the top-right to create your first recipe.': 'No results :(' }
+              { (searchTerms === '' && sortedBy === 'all') ? 'Click on the plus icon in the top-right to create your first recipe.': 'No results :(' }
             </div>
           : results.map( (row, index) => (
               <div key={ 'row' + index } tabIndex={-1} onClick={ () => selectRow(index) } ref={ handleRefs(index) } className={ index == selectedRow ? 'table__row table__row--selected' : 'table__row'}>

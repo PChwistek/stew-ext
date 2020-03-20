@@ -31,8 +31,8 @@ export default function DetailTab(props) {
   }
 
   function checkMergePopup() {
-    const { session, windowSession } = props
-    const noDiff = compareObjects(session, windowSession)
+    const { session, liveSession } = props
+    const noDiff = compareObjects(props.tabs.initialLiveSession, liveSession)
     if(noDiff) {
       setShowMergeHelper(false)
     } else {
@@ -41,7 +41,7 @@ export default function DetailTab(props) {
   }
 
   useEffect(() => {
-    if(!isEditing || props.tabs.isNew || props.tabs.wasMerged || props.tabs.mergePopupClosed) {
+    if(!isEditing || props.tabs.wasMerged || props.tabs.mergePopupClosed) {
       setShowMergeHelper(false)
       return
     }
@@ -96,9 +96,10 @@ export default function DetailTab(props) {
   }
 
   function handleGetCurrentTabs() {
-    const { getCurrentTabs, setRecipeSession, selectedRecipe, tabs } = props
+    const { getCurrentTabs, setRecipeSession, selectedRecipe, tabs, liveSession } = props
     if(tabs.isNew) {
       getCurrentTabs()
+      setRecipeSession(liveSession)
     } else {
       setRecipeSession(selectedRecipe.config)
     }
@@ -171,7 +172,10 @@ export default function DetailTab(props) {
             }
             onYesClick={ handleMergeSession }
             title={ 'Merge current session?' }
-            tooltipText={ 'Would you like to merge your current session with this recipe?' }
+            tooltipText={ props.tabs.isNew 
+              ? 'Your session has changed since this snapshot. Would you like to merge the current session?' 
+              : 'This recipe is different than your current session. Would you like to merge?' 
+            }
           />
         </div>
     </SlideIn>

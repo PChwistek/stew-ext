@@ -194,26 +194,30 @@ export const quickAddAlias = () => {
 
 export const mergeSessionAlias = () => {
   return (dispatch, getState) => {
-    const { session, recipeSession } = getState().tabs
-
+    const { session, recipeSession, isNew } = getState().tabs
     let newSession = []
 
-    let windowCount = 0
-    while(windowCount < session.length && windowCount < recipeSession.length) {
-      const sessionWindow = session[windowCount]
-      const recipeWindow = recipeSession[windowCount]
-      let tabsNotInRecipe = sessionWindow.tabs.filter(tab => recipeWindow.tabs.findIndex(recipeTab => recipeTab.url === tab.url) === -1)
-      recipeWindow.tabs = [...recipeWindow.tabs, ...tabsNotInRecipe]
-      newSession.push(recipeWindow)
-      windowCount += 1
-    }
-    
-    if (windowCount === recipeSession.length) {
-      for (let index = windowCount; index < session.length; index++) {
-        const nextWindow = session[index]
-        newSession.push(nextWindow)
+    if(!isNew) {
+      let windowCount = 0
+      while(windowCount < session.length && windowCount < recipeSession.length) {
+        const sessionWindow = session[windowCount]
+        const recipeWindow = recipeSession[windowCount]
+        let tabsNotInRecipe = sessionWindow.tabs.filter(tab => recipeWindow.tabs.findIndex(recipeTab => recipeTab.url === tab.url) === -1)
+        recipeWindow.tabs = [...recipeWindow.tabs, ...tabsNotInRecipe]
+        newSession.push(recipeWindow)
+        windowCount += 1
       }
+      
+      if (windowCount === recipeSession.length) {
+        for (let index = windowCount; index < session.length; index++) {
+          const nextWindow = session[index]
+          newSession.push(nextWindow)
+        }
+      }
+    } else {
+      newSession = session
     }
+  
 
     dispatch({
       type: TABS_MERGE_SESSION_ALIAS,
