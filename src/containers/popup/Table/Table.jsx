@@ -1,12 +1,11 @@
 import React, { createRef } from 'react'
-import { CSSTransition } from "react-transition-group"
 import SortBar from './SortBar'
 import Button from '../../common-ui/Button'
 import { getSrc } from '../utils'
 import PreviewTabs from './PreviewTabs'
 import NoTags from './NoTags'
+import { getDaysFrom } from '../utils'
 
-// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 export default function Table(props) {
   const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy, loggedIn } = props
@@ -65,7 +64,7 @@ export default function Table(props) {
                   </div>
                 </div>
                 <div className={ 'table__row__author '}>
-                  { row.author } shared 3 months ago
+                  { row.author } shared { getDaysFrom(row.dateCreated) }
                 </div>
                 <div className={ 'table__row__tags'}>
                   {
