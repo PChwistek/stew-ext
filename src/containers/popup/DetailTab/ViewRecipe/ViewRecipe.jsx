@@ -19,7 +19,7 @@ const ViewRecipe = (props) => {
   return ( 
       <div className='detailtab__details__container'>
       {
-        selectedRecipe && 
+        selectedRecipe &&
           <Fragment> 
           <div className='detailtab__details'>
             <div className={ 'detailtab__details__title'}>

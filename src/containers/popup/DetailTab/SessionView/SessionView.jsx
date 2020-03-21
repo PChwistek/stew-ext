@@ -1,5 +1,4 @@
-import React from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import SessionViewDraggable from './SessionViewDraggable'
 import SessionViewNormal from './SessionViewNormal'
@@ -8,9 +7,16 @@ export default function SessionView(props) {
 
   const { removeWindowFromSnap, removeTabFromSnap, canEdit, session, getCurrentTabs } = props
 
+  const [isDragging, setDragging] = useState(false)
+
   function onDragEnd(result) {
     const { source, destination } = result
     props.moveTab(source, destination)
+    setDragging(false)
+  }
+
+  function beforeDragStart() {
+    setDragging(true)
   }
 
   return (
@@ -36,6 +42,8 @@ export default function SessionView(props) {
               removeWindowFromSnap={ removeWindowFromSnap } 
               removeTabFromSnap={ removeTabFromSnap} 
               onDragEnd={ onDragEnd }
+              isDragging={ isDragging }
+              beforeDragStart={ beforeDragStart }
             />
             : <SessionViewNormal 
               session={ session } 

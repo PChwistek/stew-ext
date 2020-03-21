@@ -4,11 +4,25 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 export default function(props) {
 
   return (
-    <DragDropContext onDragEnd={ props.onDragEnd }>
+    <DragDropContext onDragEnd={ props.onDragEnd } onBeforeDragStart={ props.beforeDragStart }>
+      <Droppable droppableId={ 'new' }>
+        {(provided) => (
+          <div  ref={ provided.innerRef}>
+              <div className='createtab__new-window'>     
+                <div className='createtab__window-title'>New window </div>
+                <img src={ '../../../../../assets/window-sketch.png' } className='createtab__window-icon' />
+              </div>
+              <div className='tab__row'>
+                <div className='createtab__new-window-target' />
+              </div>
+              { provided.placeholder }
+          </div>
+        )}
+      </Droppable>
     {
       props.session && props.session.map((win, winIndex) => (
-        <Droppable droppableId={ `${winIndex}`}>
-          {(provided, snapshot) => (
+        <Droppable droppableId={ `${winIndex}`} key={ 'window' + winIndex}>
+          {(provided) => (
             <div key={ winIndex }  ref={provided.innerRef}>
               <div className='createtab__window-row'>     
                 <div className='createtab__window-title'>Window { winIndex + 1 } </div>
@@ -28,8 +42,9 @@ export default function(props) {
                     draggableId={`${tab.url}-${tabIndex}-${winIndex}`}
                     index={ tabIndex }
                   >
-                  {(provided, snapshot) => (
-                     <div 
+                  {(provided) => (
+                     <div
+                        key={ winIndex + 'tabIndex' + tabIndex }
                         className='tab__row' 
                         ref={provided.innerRef}
                         {...provided.draggableProps}

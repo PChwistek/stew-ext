@@ -261,11 +261,33 @@ export function moveTabAlias(originalAction) {
   } = originalAction.payload
 
   return (dispatch, getState) => {
-    const sourceDropId = parseInt(source.droppableId)
-    const destDropId = parseInt(destination.droppableId)
     let recipeSession = [...cloneDeep(getState().tabs.recipeSession)]
 
-    if (sourceDropId === destDropId) {
+    if(!destination) return 
+    if(destination.droppableId === 'new') {
+      recipeSession.push({ tabs: [] })
+      const sourceDropId = parseInt(source.droppableId)
+      const destDropId = recipeSession.length - 1
+
+      const result = move(
+        recipeSession[sourceDropId].tabs,
+        recipeSession[destDropId].tabs,
+        source,
+        { droppableId: recipeSession.length - 1 }
+      )
+
+      recipeSession[sourceDropId].tabs = result[sourceDropId]
+      recipeSession[destDropId].tabs = result[destDropId]
+
+      const temp = recipeSession[0]
+      recipeSession[0] = recipeSession[recipeSession.length - 1]
+      recipeSession[recipeSession.length - 1] = temp
+
+    } else {
+      const sourceDropId = parseInt(source.droppableId)
+      const destDropId = parseInt(destination.droppableId)
+  
+      if (sourceDropId === destDropId) {
         const items = reorder(
             recipeSession[sourceDropId].tabs,
             source.index,
@@ -274,16 +296,18 @@ export function moveTabAlias(originalAction) {
         recipeSession[sourceDropId].tabs = items
 
       } else {
-          const result = move(
-              recipeSession[sourceDropId].tabs,
-              recipeSession[destDropId].tabs,
-              source,
-              destination
-          )
-          recipeSession[sourceDropId].tabs = result[sourceDropId]
-          recipeSession[destDropId].tabs = result[destDropId]
-
+        const result = move(
+            recipeSession[sourceDropId].tabs,
+            recipeSession[destDropId].tabs,
+            source,
+            destination
+        )
+        recipeSession[sourceDropId].tabs = result[sourceDropId]
+        recipeSession[destDropId].tabs = result[destDropId]
       }
+    }
+
+    recipeSession = recipeSession.filter(win => win.tabs.length > 0)
 
     dispatch({
       type: TABS_MOVE_TAB_ALIAS,

@@ -28,7 +28,8 @@ import {
   TABS_QUICKADD,
   TABS_MERGE_SESSION,
   TABS_MERGE_POPUP_CLOSED,
-  TABS_MOVE_TAB
+  TABS_MOVE_TAB,
+  TABS_UPDATE_MOVE_TAB
 } from '../actionTypes'
 
 import { removeDocumentListeners } from './utils'

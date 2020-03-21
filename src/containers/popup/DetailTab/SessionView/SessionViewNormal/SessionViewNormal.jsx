@@ -19,7 +19,7 @@ export default function(props) {
             </div>
           {
             (win && win.tabs.length > 0) && win.tabs.map( (tab, tabIndex) => (
-              <div className='tab__row'>
+              <div className='tab__row' key={ winIndex + 'tabIndex' + tabIndex }>
                 {
                   props.canEdit && (
                     <div key={ 'remove' + tabIndex} className='tab__remove-container' onClick={ () => props.removeTabFromSnap(winIndex, tabIndex) }> 
