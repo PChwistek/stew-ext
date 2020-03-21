@@ -33,6 +33,12 @@ export default function(props) {
                       { tab.title }          
                     </p>
                 </div>
+                <div>
+                  <a href={ tab.url} target="_blank"> 
+                    <img src={ '../../../../../assets/out.png'} className='tab__out' />
+                  </a>
+                </div>
+
               </div>
             ))
           }

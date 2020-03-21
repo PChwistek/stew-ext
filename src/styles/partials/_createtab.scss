@@ -145,6 +145,10 @@
     visibility: visible;
   }
 
+  &__row:hover &__out {
+    visibility: visible;
+  }
+
   &__row:hover &__body {
     background: transparent;
     border: 1px solid $brand-color;
@@ -207,6 +211,15 @@
     width: 24px;
     cursor: pointer;
     visibility: hidden;
+  }
+  
+  &__out {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    visibility: hidden;
+    margin-left: 10px;
+    margin-top: 10px;
   }
 
 

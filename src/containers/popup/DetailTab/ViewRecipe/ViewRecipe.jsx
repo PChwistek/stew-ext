@@ -29,7 +29,7 @@ const ViewRecipe = (props) => {
                 Published by: { selectedRecipe.author }
                 <div>
                 {
-                  selectedRecipe.attributes.map(attrib => {
+                  selectedRecipe.attributes && selectedRecipe.attributes.map(attrib => {
                     <img key={ attrib } src={ getSrc(attrib) } />
                   })
                 } 
@@ -38,7 +38,7 @@ const ViewRecipe = (props) => {
               <div>
                 <div className={ 'table__row__tags'}>
                     {
-                      selectedRecipe.tags.map(tag => (
+                      selectedRecipe.tags && selectedRecipe.tags.map(tag => (
                         <div key={ tag } className={ 'tag-result' }>
                           { tag }
                         </div>
