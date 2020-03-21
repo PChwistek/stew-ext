@@ -6,6 +6,8 @@ import { toggleSlide } from '../../popup/popup.actions'
 import { handle401 } from './authAliases'
 import { selectRecipe, setSearchRowAlias, getInitialResults } from './searchAliases'
 import { toggleEditAlias } from './popupAliases'
+import { cloneDeep } from 'lodash'
+
 
 import { 
   TABS_SETSNAP, 
@@ -19,7 +21,8 @@ import {
   TABS_LAUNCHRECIPE_SUCCESS,
   TABS_SETSNAP_EXISTING,
   TABS_QUICKADD_ALIAS,
-  TABS_MERGE_SESSION_ALIAS
+  TABS_MERGE_SESSION_ALIAS,
+  TABS_MOVE_TAB_ALIAS
 } from '../../actionTypes'
 
 const serverUrl = getServerHostname()
@@ -223,6 +226,69 @@ export const mergeSessionAlias = () => {
       type: TABS_MERGE_SESSION_ALIAS,
       payload: {
         session: newSession
+      }
+    })
+  }
+}
+
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
+
+  return result
+}
+
+const move = (source, destination, droppableSource, droppableDestination) => {
+  const sourceClone = Array.from(source)
+  const destClone = Array.from(destination)
+  const [removed] = sourceClone.splice(droppableSource.index, 1)
+
+  destClone.splice(droppableDestination.index, 0, removed)
+
+  const result = {}
+  result[droppableSource.droppableId] = sourceClone
+  result[droppableDestination.droppableId] = destClone
+
+  return result
+}
+
+export function moveTabAlias(originalAction) {
+  const {
+    source,
+    destination
+  } = originalAction.payload
+
+  return (dispatch, getState) => {
+    const sourceDropId = parseInt(source.droppableId)
+    const destDropId = parseInt(destination.droppableId)
+    let recipeSession = [...cloneDeep(getState().tabs.recipeSession)]
+
+    if (sourceDropId === destDropId) {
+        const items = reorder(
+            recipeSession[sourceDropId].tabs,
+            source.index,
+            destination.index
+        )
+        recipeSession[sourceDropId].tabs = items
+
+      } else {
+          const result = move(
+              recipeSession[sourceDropId].tabs,
+              recipeSession[destDropId].tabs,
+              source,
+              destination
+          )
+          recipeSession[sourceDropId].tabs = result[sourceDropId]
+          recipeSession[destDropId].tabs = result[destDropId]
+
+      }
+
+    dispatch({
+      type: TABS_MOVE_TAB_ALIAS,
+      payload: {
+        recipeSession,
       }
     })
   }

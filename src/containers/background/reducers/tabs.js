@@ -4,7 +4,8 @@ import {
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
   TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
   TABS_SETRECIPEFORM, TABS_RESET, TABS_SETCURRENTTAB, TABS_SETCURRENTWINDOW,
-  TABS_SETSNAP_EXISTING, TABS_QUICKADD_ALIAS, TABS_MERGE_SESSION_ALIAS, TABS_MERGE_POPUP_CLOSED
+  TABS_SETSNAP_EXISTING, TABS_QUICKADD_ALIAS, TABS_MERGE_SESSION_ALIAS, TABS_MERGE_POPUP_CLOSED,
+  TABS_MOVE_TAB_ALIAS
 } from '../../actionTypes'
 
 const initialState = {
@@ -132,6 +133,10 @@ export default (state = initialState, action) => {
     case TABS_MERGE_POPUP_CLOSED:
       return Object.assign({}, state, {
         mergePopupClosed: true
+      })
+    case TABS_MOVE_TAB_ALIAS:
+      return Object.assign({}, state, {
+        recipeSession: action.payload.recipeSession,
       })
     case TABS_RESET:
       return initialState

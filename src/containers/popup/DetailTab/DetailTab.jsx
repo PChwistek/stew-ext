@@ -115,7 +115,8 @@ export default function DetailTab(props) {
     deleteRecipe,
     setFavorite,
     favorites,
-    mergePopupClosed
+    mergePopupClosed,
+    moveTab
   } = props
 
   const isFavorite = favorites.findIndex(recipe => recipe === selectedRecipe._id) > -1
@@ -147,6 +148,7 @@ export default function DetailTab(props) {
             removeWindowFromSnap={ removeWindowFromSnap } 
             getCurrentTabs={ handleGetCurrentTabs }
             canEdit={ isEditing }
+            moveTab={ moveTab }
           />
           <TabHelper 
             in={ showTabHelper } 

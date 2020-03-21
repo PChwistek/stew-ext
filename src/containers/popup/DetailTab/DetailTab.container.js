@@ -19,7 +19,8 @@ import {
   setFavorite,
   quickAdd,
   mergeSession,
-  mergePopupClosed
+  mergePopupClosed,
+  moveTab,
 } from '../popup.actions'
 
 
@@ -51,7 +52,8 @@ const dispatchToProps = {
   setFavorite,
   quickAdd,
   mergeSession,
-  mergePopupClosed
+  mergePopupClosed,
+  moveTab,
 }
 
 export default connect(stateToProps, dispatchToProps)(DetailTab)

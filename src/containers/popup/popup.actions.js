@@ -27,7 +27,8 @@ import {
   TABS_SETSNAP_EXISTING,
   TABS_QUICKADD,
   TABS_MERGE_SESSION,
-  TABS_MERGE_POPUP_CLOSED
+  TABS_MERGE_POPUP_CLOSED,
+  TABS_MOVE_TAB
 } from '../actionTypes'
 
 import { removeDocumentListeners } from './utils'
@@ -279,5 +280,15 @@ export function setFavorite(recipeId, value) {
 export function mergeSession() {
   return {
     type: TABS_MERGE_SESSION
+  }
+}
+
+export function moveTab(source, destination) {
+  return {
+    type: TABS_MOVE_TAB,
+    payload: {
+      source,
+      destination,
+    }
   }
 }

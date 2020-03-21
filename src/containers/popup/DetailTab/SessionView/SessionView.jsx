@@ -1,40 +1,16 @@
 import React from 'react'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import PropTypes from 'prop-types'
-import Tab from './Tab'
+import SessionViewDraggable from './SessionViewDraggable'
+import SessionViewNormal from './SessionViewNormal'
 
 export default function SessionView(props) {
 
   const { removeWindowFromSnap, removeTabFromSnap, canEdit, session, getCurrentTabs } = props
 
-  function windowTabs(win, index) {
-    const winIndex= index
-    return (
-      <div key={ index }>
-        <div className='createtab__window-row'>     
-          <div className='createtab__window-title'>Window { index + 1 } </div>
-            <img src={ '../../../assets/window-sketch.png' } className='createtab__window-icon' />
-            {
-              canEdit && (
-                <div className='createtab__window-remove-container' onClick={ () => removeWindowFromSnap(index) }> 
-                  <img src={ '../../../assets/remove-red.png' } className='createtab__window-remove' />
-                </div>    
-              )
-            }
-        </div>
-        {
-          (win && win.tabs.length > 0) && win.tabs.map( (tab, tabIndex) => ( 
-            <Tab
-              key={ tab.url + tabIndex}
-              canEdit={ canEdit} 
-              tab={ tab } 
-              winIndex={ winIndex } 
-              index={ tabIndex }
-              removeTabFromSnap= { removeTabFromSnap }
-            />
-          ))
-      }
-      </div>
-    )
+  function onDragEnd(result) {
+    const { source, destination } = result
+    props.moveTab(source, destination)
   }
 
   return (
@@ -50,12 +26,23 @@ export default function SessionView(props) {
             </div>
           )
         }
-      </div>
-      <div className='tab__col'>
+        </div>
+        <div className={ canEdit ? 'tab__col' : 'tab__col tab__col--normal' }>
         {
-          session && session.map((win, index) => {
-            return windowTabs(win, index)
-          })
+          canEdit 
+            ? <SessionViewDraggable 
+              session={ session }
+              canEdit={ canEdit }
+              removeWindowFromSnap={ removeWindowFromSnap } 
+              removeTabFromSnap={ removeTabFromSnap} 
+              onDragEnd={ onDragEnd }
+            />
+            : <SessionViewNormal 
+              session={ session } 
+              canEdit={ canEdit }
+              removeWindowFromSnap={ removeWindowFromSnap } 
+              removeTabFromSnap={ removeTabFromSnap} 
+            />
         }
       </div>
     </div>

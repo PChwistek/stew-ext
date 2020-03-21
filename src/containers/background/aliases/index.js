@@ -15,7 +15,8 @@ import {
   POPUP_TOGGLEEDITING,
   TABS_QUICKADD,
   SEARCH_SETFAVORITE,
-  TABS_MERGE_SESSION
+  TABS_MERGE_SESSION,
+  TABS_MOVE_TAB
 } from '../../actionTypes'
 
 import { 
@@ -25,7 +26,8 @@ import {
   selectRecipeFromRow, 
   removeRecipe, 
   quickAddAlias, 
-  mergeSessionAlias
+  mergeSessionAlias,
+  moveTabAlias
 } from './tabAliases'
 
 import { popupSync, toggleEditAlias, } from './popupAliases'
@@ -57,4 +59,5 @@ export default {
   [TABS_QUICKADD]: quickAddAlias,
   [SEARCH_SETFAVORITE]: setFavoriteAlias,
   [TABS_MERGE_SESSION]: mergeSessionAlias,
+  [TABS_MOVE_TAB]: moveTabAlias,
 }

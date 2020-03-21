@@ -9,7 +9,7 @@
     margin-right: 10px;
     padding-top: 50px;
     height: 100%;
-    max-width: 400px;
+    max-width: 350px;
     flex-grow: 1;
   }
 
@@ -135,9 +135,11 @@
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
     padding-bottom: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
+    &--normal {
+      overflow-y: scroll;
+    }
   }
 
   &__body {
@@ -170,7 +172,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    cursor: pointer;
     width: fit-content;
   }
 
