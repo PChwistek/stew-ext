@@ -34,10 +34,12 @@ import {
 
 import { removeDocumentListeners } from './utils'
 
-export function getCurrentTabs() {
+export function getCurrentTabs(forced) {
   return {
     type: TABS_SNAP,
-    payload: {}
+    payload: {
+      forced,
+    }
   }
 }
 

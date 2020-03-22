@@ -49,7 +49,8 @@ export const getCurrentSession = (originalAction) => {
     dispatch({
       type: TABS_SETSNAP,
       payload: {
-        session: newConfig
+        session: newConfig,
+        forced: originalAction.payload ? originalAction.payload.forced : false
       }
     })
   }

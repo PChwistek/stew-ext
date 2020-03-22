@@ -13,8 +13,8 @@ const Popup = (props) => {
  function handleToggleCreateTab() {
     const { getCurrentTabs, toggleEditing, toggleSlide, slideOutVisible, setRecipeForm } = props
     if(!slideOutVisible) {
+      getCurrentTabs(true)
       setRecipeForm('', [], true)
-      getCurrentTabs()
       toggleEditing(true)
     }
     toggleSlide(!slideOutVisible, true)

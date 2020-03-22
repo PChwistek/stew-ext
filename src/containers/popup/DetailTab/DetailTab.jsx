@@ -30,30 +30,22 @@ export default function DetailTab(props) {
     setShowTabHelper(true)
   }
 
-  function checkMergePopup() {
-    const { session, liveSession } = props
-    const noDiff = compareObjects(props.tabs.initialLiveSession, liveSession)
-    if(noDiff) {
-      setShowMergeHelper(false)
-    } else {
-      setShowMergeHelper(true)
-    }
-  }
 
   useEffect(() => {
-    if(!isEditing || props.tabs.wasMerged) {
+    const noDiff = compareObjects(props.tabs.initialLiveSession, props.liveSession)
+    if(!isEditing || noDiff || props.tabs.wasMerged) {
       setShowMergeHelper(false)
       return
     }
     if(props.visible) {
       const timer = setTimeout(() => {
-        checkMergePopup()
+        setShowMergeHelper(true)
       }, 500)
       return () => clearTimeout(timer)
     } else {
       setShowMergeHelper(false)
     }
-  }, [props.isEditing, props.session, props.windowSession])
+  }, [props.isEditing, props.session, props.liveSession])
 
   useEffect(() => {
     if(isEditing) {

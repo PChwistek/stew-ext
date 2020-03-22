@@ -27,8 +27,16 @@ export default (state = initialState, action) => {
   const { payload } = action
   switch (action.type) {
     case TABS_SETSNAP:
+      if(payload.forced) {
+        return Object.assign({}, state, {
+          session: payload.session,
+          initialLiveSession: payload.session,
+          recipeSession: payload.session,
+        }) 
+      }
       return Object.assign({}, state, {
         session: payload.session,
+        wasMerged: false,
       }) 
     case TABS_REMOVETAB: {
       const { win, tab } = payload

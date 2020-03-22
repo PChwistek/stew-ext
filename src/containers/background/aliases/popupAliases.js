@@ -77,7 +77,6 @@ export const popupSync = (originalAction) => {
     if(loggedIn) {
       dispatch(syncRecipesWithCloud(false))
       if(terms == '') {
-        addInAppListeners()
         getInitialResults()
       }
     } else {
@@ -91,6 +90,7 @@ export const toggleEditAlias = (originalAction) => {
   return async (dispatch) => {
     
     if(forced) {
+      console.log('adding edit listeners')
       addEditListeners()
     } else {
       removeEditListeners()
