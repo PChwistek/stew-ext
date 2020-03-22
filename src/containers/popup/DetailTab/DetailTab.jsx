@@ -60,7 +60,7 @@ export default function DetailTab(props) {
       setShowTabHelper(false)
       return
     }
-    if(props.visible) {
+    if(props.visible && !props.tabs.tabPopupClosed) {
       const timer = setTimeout(() => {
         checkTabPopup()
       }, 500)

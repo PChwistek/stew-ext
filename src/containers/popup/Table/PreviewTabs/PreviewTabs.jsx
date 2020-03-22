@@ -25,8 +25,7 @@ export default function PreviewTabs(props) {
 
   getTabs()
   return (
-    <CSSTransition in={ props.open } timeout={ 200 } 
-      classNames={ 'preview-anim' } unmountOnExit>
+    <div>
       <div className={ 'preview-tabs-container' } >
         <div className='preview-text'> Preview ({ selectedTabs.length } of { numTabs }) </div>
         <div className={ 'preview-tabs' }>
@@ -42,7 +41,7 @@ export default function PreviewTabs(props) {
         }
         </div>
       </div>
-    </CSSTransition>
+    </div>
   )
 }
 

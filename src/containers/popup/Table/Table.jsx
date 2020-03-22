@@ -74,7 +74,7 @@ export default function Table(props) {
                       </div>
                     ))
                   }
-                  <NoTags open={ index == selectedRow && row.tags.length <= 0 } text={ 'No tags' } />
+                  { (row.tags && row.tags.length <= 0) && <NoTags text={ 'No tags' } /> } 
                 </div>
                 <PreviewTabs key={ 'preview' + index }
                   open={ index == selectedRow } 

@@ -20,6 +20,7 @@ const initialState = {
   isNew: false,
   wasMerged: false,
   mergePopupClosed: false,
+  tabPopupClosed: false,
   currentWindow: {},
   currentTab: {}
 }
@@ -113,6 +114,7 @@ export default (state = initialState, action) => {
         initialLiveSession: action.payload.session,
         wasMerged: false,
         mergePopupClosed: false,
+        tabPopupClosed: false
       })
     case TABS_QUICKADD_ALIAS:
       return Object.assign({}, state, {
@@ -129,10 +131,12 @@ export default (state = initialState, action) => {
         recipeSession: action.payload.session,
         wasMerged: true,
         mergePopupClosed: true,
+        tabPopupClosed: true
       })
     case TABS_MERGE_POPUP_CLOSED:
       return Object.assign({}, state, {
-        mergePopupClosed: true
+        mergePopupClosed: true,
+        tabPopupClosed: true
       })
     case TABS_MOVE_TAB_ALIAS:
       return Object.assign({}, state, {

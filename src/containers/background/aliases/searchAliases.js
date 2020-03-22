@@ -120,9 +120,6 @@ export const setFavoriteAlias = (originalAction) => {
       dispatch({ type: SEARCH_SETFAVORITE_SYNC_FAILED })
     })
 
-    
-
-
   }
  
 }
