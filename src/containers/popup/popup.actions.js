@@ -57,12 +57,12 @@ export function launchRecipe(recipe) {
   }
 }
 
-export function mergePopupClosed() {
-  return {
-    type: TABS_MERGE_POPUP_CLOSED,
-    payload: {}
-  }
-}
+// export function mergePopupClosed() {
+//   return {
+//     type: TABS_MERGE_POPUP_CLOSED,
+//     payload: {}
+//   }
+// }
 
 
 export function setSearchTerms(terms) {

@@ -6,6 +6,19 @@ class Manager {
 
   constructor() {}
 
+  async getAuth() {
+    const saved = await browser.storage.local.get('stew_auth')
+    console.log('saved', saved)
+    return saved.stew_auth || { jwt: null, username: null, lastUpdated: null }
+  }
+
+  async setAuth({ jwt, username, lastUpdated}) {
+    const stew_auth =  { jwt, username, lastUpdated }
+    console.log('stew_auth set', stew_auth)
+    await browser.storage.local.set({ stew_auth })
+    this.getAuth()
+  }
+
   async getSession(idOfLastActiveWindow) {
     let windows = await browser.windows.getAll()
     windows = windows.filter(win => win.type === 'normal')
@@ -70,7 +83,10 @@ class Manager {
 
   async fetchAllRecipes() {
     const theResult = await browser.storage.local.get('stew')
-    return theResult.stew.recipes 
+    if(theResult.stew) {
+      return theResult.stew.recipes 
+    }
+    return []
   }
 
   async searchRecipes(searchTerm, { sortedBy, filterList }) {

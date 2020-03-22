@@ -34,14 +34,14 @@ import { popupSync, toggleEditAlias, } from './popupAliases'
 import { login, authLogoutAlias } from './authAliases.js'
 import { getInitialResults, searchRecipes, sortBySearch, setFavoriteAlias } from './searchAliases'
 
-if(process.env.NODE_ENV === 'development') {
-  browser.storage.local.clear().then(() => {
-    browser.storage.local.set({ stew: { recipes: [] } })
-      .then(() => {
-        console.log('cache redone')
-      })
-  })
-}
+// if(process.env.NODE_ENV === 'development') {
+//   browser.storage.local.clear().then(() => {
+//     browser.storage.local.set({ stew: { recipes: [] } })
+//       .then(() => {
+//         console.log('cache redone')
+//       })
+//   })
+// }
 
 export default {
   [TABS_SNAP]: getCurrentSession,

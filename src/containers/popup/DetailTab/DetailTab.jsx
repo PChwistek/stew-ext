@@ -41,7 +41,7 @@ export default function DetailTab(props) {
   }
 
   useEffect(() => {
-    if(!isEditing || props.tabs.wasMerged || props.tabs.mergePopupClosed) {
+    if(!isEditing || props.tabs.wasMerged) {
       setShowMergeHelper(false)
       return
     }
@@ -60,7 +60,7 @@ export default function DetailTab(props) {
       setShowTabHelper(false)
       return
     }
-    if(props.visible && !props.tabs.tabPopupClosed) {
+    if(props.visible) {
       const timer = setTimeout(() => {
         checkTabPopup()
       }, 500)
@@ -115,7 +115,6 @@ export default function DetailTab(props) {
     deleteRecipe,
     setFavorite,
     favorites,
-    mergePopupClosed,
     moveTab
   } = props
 
@@ -169,8 +168,7 @@ export default function DetailTab(props) {
           <TabHelper 
             in={ showMergeHelper } 
             onNoClick={ () => { 
-              setShowMergeHelper(false), 
-              mergePopupClosed() } 
+              setShowMergeHelper(false) } 
             }
             onYesClick={ handleMergeSession }
             title={ 'Merge current session?' }

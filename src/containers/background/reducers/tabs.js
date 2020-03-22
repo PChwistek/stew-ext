@@ -19,8 +19,6 @@ const initialState = {
   initialLiveSession: [],
   isNew: false,
   wasMerged: false,
-  mergePopupClosed: false,
-  tabPopupClosed: false,
   currentWindow: {},
   currentTab: {}
 }
@@ -31,7 +29,6 @@ export default (state = initialState, action) => {
     case TABS_SETSNAP:
       return Object.assign({}, state, {
         session: payload.session,
-        mergePopupClosed: false,
       }) 
     case TABS_REMOVETAB: {
       const { win, tab } = payload
@@ -113,8 +110,6 @@ export default (state = initialState, action) => {
         recipeSession:  cloneDeep(action.payload.session),
         initialLiveSession: action.payload.session,
         wasMerged: false,
-        mergePopupClosed: false,
-        tabPopupClosed: false
       })
     case TABS_QUICKADD_ALIAS:
       return Object.assign({}, state, {
@@ -130,13 +125,6 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         recipeSession: action.payload.session,
         wasMerged: true,
-        mergePopupClosed: true,
-        tabPopupClosed: true
-      })
-    case TABS_MERGE_POPUP_CLOSED:
-      return Object.assign({}, state, {
-        mergePopupClosed: true,
-        tabPopupClosed: true
       })
     case TABS_MOVE_TAB_ALIAS:
       return Object.assign({}, state, {

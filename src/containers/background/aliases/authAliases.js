@@ -8,7 +8,7 @@ import {
   TABS_RESET,
   SEARCH_RESET,
 } from '../../actionTypes'
-
+import manager from '../TabManager'
 import getServerHostname from '../../getServerHostName'
 import { syncRecipesWithCloud } from './popupAliases'
 
@@ -25,6 +25,7 @@ export const handle401 = (error) => {
 
 export const loginSuccess = (payload) => {
   const { access_token, username, lastUpdated } = payload
+  manager.setAuth({ jwt: access_token, username, lastUpdated })
   return {
     type: AUTH_LOGIN_SUCCESS,
     payload: {
@@ -80,5 +81,6 @@ export const authLogoutAlias = () => {
     dispatch({ type: AUTH_LOGOUT_ALIAS })
     dispatch({ type: SEARCH_RESET })
     dispatch({ type: TABS_RESET })
+    manager.setAuth({ jwt: null, username: null, lastUpdated: null})
   }
 }

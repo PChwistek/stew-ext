@@ -115,7 +115,6 @@ browser.browserAction.onClicked.addListener(async () => {
           }
         })
       }
-      addInAppListeners()
       browser.windows.onRemoved.addListener(handleWindowClosed)
     }
 

@@ -12,6 +12,7 @@ import {
   POPUP_SYNCRECIPES_PENDING,
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_TOGGLEEDITING_ALIAS,
+  AUTH_SET_FROM_STORE
 } from '../../actionTypes'
 
 const serverUrl = getServerHostname()
@@ -50,13 +51,33 @@ export const syncRecipesWithCloud = (isForced) => {
 
 
 export const popupSync = (originalAction) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
+
+    const auth = getState().auth
+
+    if(!auth || !auth.jwt) {
+      console.log('from store')
+      const { jwt, username, lastUpdated} = await manager.getAuth()
+      console.log('jwt', jwt)
+      if(jwt !== null) {
+        dispatch({
+          type: AUTH_SET_FROM_STORE,
+          payload: {
+            jwt,
+            username,
+            lastUpdated
+          }
+        })
+      }
+    }
+
     const loggedIn = getState().auth.loggedIn
     const terms = getState().search.terms
 
     if(loggedIn) {
       dispatch(syncRecipesWithCloud(false))
       if(terms == '') {
+        addInAppListeners()
         getInitialResults()
       }
     } else {

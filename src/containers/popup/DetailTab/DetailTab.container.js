@@ -19,7 +19,6 @@ import {
   setFavorite,
   quickAdd,
   mergeSession,
-  mergePopupClosed,
   moveTab,
 } from '../popup.actions'
 
@@ -52,7 +51,6 @@ const dispatchToProps = {
   setFavorite,
   quickAdd,
   mergeSession,
-  mergePopupClosed,
   moveTab,
 }
 
