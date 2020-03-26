@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import Search from './Search'
@@ -6,67 +6,75 @@ import Table from './Table'
 import DetailTab from './DetailTab'
 import Login from './Login'
 import './popup.scss'
+import { removeDocumentListeners } from './utils'
 
-export default class Popup extends Component {
+const Popup = (props) => {
 
-  constructor(props) {
-    super(props)
-  }
-
-  componentDidMount() {
-    const { popupOpened } = this.props
-    popupOpened()
-  }
-    
-  handleToggleCreateTab = () => {
-    const { getCurrentTabs, toggleSlide, slideOutVisible, setRecipeForm } = this.props
+ function handleToggleCreateTab() {
+    const { getCurrentTabs, toggleEditing, toggleSlide, slideOutVisible, setRecipeForm } = props
     if(!slideOutVisible) {
-      getCurrentTabs()
+      getCurrentTabs(true)
       setRecipeForm('', [], true)
+      toggleEditing(true)
     }
     toggleSlide(!slideOutVisible, true)
   }
 
-  handleToggleRowDetailTab = (index) => {
-    const { toggleSlide, slideOutVisible, selectRow } = this.props
+  function handleToggleRowDetailTab(index) {
+    const { toggleSlide, slideOutVisible, selectRow, toggleEditing } = props
+    toggleEditing(false)
     if(!slideOutVisible) {
       selectRow(index)
     }
     toggleSlide(!slideOutVisible, false)
   }
 
-  handleSearchTerms = (terms) => {
-    const { setSearchTerms } = this.props
+  function handleSearchTerms (terms){
+    const { setSearchTerms } = props
     setSearchTerms(terms)
   }
-  
-  render() {
-    const { loggedIn, getFirstResults, terms, slideOutVisible, isEditing } = this.props
-    if(terms == '') {
-      getFirstResults()
+
+  useEffect(() => {
+    if(props.terms === '') {
+      props.getFirstResults()
     }
-    return (
-      <div className="popup" >
-      {
-        !loggedIn ? <Login /> 
-          : <div>
-            <Header />
-            <div className="popup__body">
-              <DetailTab 
-                visible={ slideOutVisible } 
-                onCloseClick={ isEditing ? this.handleToggleCreateTab: this.handleToggleRowDetailTab } 
-                isEditing={ isEditing }
-              />
-              <Search onPlusClick={ this.handleToggleCreateTab } setSearchTerms={ this.handleSearchTerms } terms={ terms }/>
-              <Table onRecipeNameClicked={ this.handleToggleRowDetailTab } />
-            </div>
-          </div>
-      }
+  }, [props.terms])
+
+  useEffect(() => {
+    if(!props.loggedIn) {
+      removeDocumentListeners()
+    }
+  }, [props.loggedIn])
+
+  const { loggedIn, terms, slideOutVisible, isEditing } = props
+  return (
+    <div className='popup-container'>
+      <div className="small-screen-warning">
+        Please re-size the window! it's too small for stew.
       </div>
-    ) 
-  }
+      <div className="popup" >
+        {
+          !loggedIn ? <Login /> 
+            : <div>
+              <Header />
+              <div className="popup__body">
+                <DetailTab 
+                  visible={ slideOutVisible } 
+                  onCloseClick={ isEditing ? handleToggleCreateTab: handleToggleRowDetailTab } 
+                  isEditing={ isEditing }
+                />
+                <Search onPlusClick={ handleToggleCreateTab } setSearchTerms={ handleSearchTerms } terms={ terms }/>
+                <Table onRecipeNameClicked={ handleToggleRowDetailTab } />
+              </div>
+            </div>
+        }
+      </div>
+    </div>
+  ) 
 }
 
 Popup.propTypes = {
   getCurrentTabs: PropTypes.func,
 }
+
+export default Popup

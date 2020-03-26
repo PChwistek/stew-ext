@@ -1,4 +1,14 @@
-import { AUTH_LOGIN_SUCCESS, AUTH_LOGIN_PENDING, AUTH_LOGIN_FAILED, AUTH_INVALID, AUTH_UPDATEDSYNC, AUTH_CLEAR_ERROR, AUTH_LOGOUT_ALIAS } from '../../actionTypes'
+import { 
+  AUTH_LOGIN_SUCCESS, 
+  AUTH_LOGIN_PENDING, 
+  AUTH_LOGIN_FAILED, 
+  AUTH_INVALID, 
+  AUTH_UPDATEDSYNC, 
+  AUTH_CLEAR_ERROR, 
+  AUTH_LOGOUT_ALIAS,
+  AUTH_SET_FROM_STORE
+
+} from '../../actionTypes'
 
 const initialState = {
   loggedIn: false,
@@ -41,6 +51,15 @@ export default (state = initialState, action) => {
     case AUTH_UPDATEDSYNC:
       return Object.assign({}, state, {
         lastUpdated: action.payload.lastUpdated
+      })
+    case AUTH_SET_FROM_STORE:
+      return Object.assign({}, state, {
+        loggedIn: true,
+        isPending: false,
+        jwt: action.payload.jwt,
+        username: action.payload.username,
+        lastUpdated: action.payload.lastUpdated,
+        error: ''
       })
     case AUTH_LOGOUT_ALIAS:
       return initialState

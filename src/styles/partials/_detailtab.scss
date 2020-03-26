@@ -5,11 +5,10 @@
   &__details {
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-top: 50px;
+    width: 100%;
+    margin-top: 40px;
+    padding: 15px;
     height: 100%;
-    flex-grow: 1;
     font-family: $base-font-family;
     color: $text-color;
 
@@ -18,20 +17,25 @@
       font-weight: 700;
     }
 
+    &__container {
+      display: flex;
+      flex-grow: 1;
+    }
+
   }
 
   &__icons {
     display: flex;
     justify-content: space-evenly;
-    width: 50%;
-    position: absolute;
-    top: 520px;
+    flex-grow: 1;
+    align-items: flex-end;
+    margin-bottom: 100px;
 
     &__edit {
-      width: 24px;
+      width: 32px;
       cursor: pointer;
       &:hover {
-        margin-top: -2px;
+        padding-bottom: 3px;
       }
     }
   }

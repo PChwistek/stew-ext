@@ -17,21 +17,29 @@ import {
   POPUP_SYNCRECIPES,
   SEARCH_GET_INITIAL_RESULTS,
   SEARCH_SETSEARCHTERMS_POPUP,
-  POPUP_OPENED,
   POPUP_TOGGLE_SLIDE,
   POPUP_TOGGLEEDITING,
   TABS_SETRECIPEFORM,
   TABS_DELETERECIPE,
-  TABS_SETSNAP,
   AUTH_LOGOUT,
   SEARCH_SETSORTBY,
-  SEARCH_SETFAVORITE
+  SEARCH_SETFAVORITE,
+  TABS_SETSNAP_EXISTING,
+  TABS_QUICKADD,
+  TABS_MERGE_SESSION,
+  TABS_MERGE_POPUP_CLOSED,
+  TABS_MOVE_TAB,
+  TABS_UPDATE_MOVE_TAB
 } from '../actionTypes'
 
-export function getCurrentTabs() {
+import { removeDocumentListeners } from './utils'
+
+export function getCurrentTabs(forced) {
   return {
     type: TABS_SNAP,
-    payload: {}
+    payload: {
+      forced,
+    }
   }
 }
 
@@ -50,6 +58,14 @@ export function launchRecipe(recipe) {
     }
   }
 }
+
+// export function mergePopupClosed() {
+//   return {
+//     type: TABS_MERGE_POPUP_CLOSED,
+//     payload: {}
+//   }
+// }
+
 
 export function setSearchTerms(terms) {
   return {
@@ -83,7 +99,7 @@ export function removeWindowFromSnap(win) {
   return {
     type: TABS_REMOVEWINDOW,
     payload: {
-      windowToRemove: win
+      windowIndex: win
     }
   }
 }
@@ -140,6 +156,15 @@ export function clearFields() {
   }
 }
 
+export function setIsNew(isNew) {
+  return {
+    type: TABS_SET_ISNEW,
+    payload: {
+      isNew
+    }
+  }
+}
+
 export function selectRow(rowIndex) {
   return {
     type: SEARCH_SETROW,
@@ -172,6 +197,7 @@ export function login(email, password) {
 }
 
 export function logout() {
+  removeDocumentListeners()
   return {
     type: AUTH_LOGOUT
   }
@@ -208,23 +234,18 @@ export function syncRecipes() {
   }
 }
 
-export function popupOpened() {
-  return {
-    type: POPUP_OPENED,
-    payload: {}
-  }
-}
-
-export function toggleEditing() {
+export function toggleEditing(forced) {
   return {
     type: POPUP_TOGGLEEDITING,
-    payload: {}
+    payload: {
+      forced,
+    }
   }
 }
 
 export function setRecipeSession(recipeConfig) {
   return {
-    type: TABS_SETSNAP,
+    type: TABS_SETSNAP_EXISTING,
     payload: {
       session: recipeConfig
     }
@@ -243,12 +264,34 @@ export function setRecipeForm(recipeName, recipeTags, isNew) {
   }
 }
 
+export function quickAdd() {
+  return {
+    type: TABS_QUICKADD
+  }
+}
+
 export function setFavorite(recipeId, value) {
   return {
     type: SEARCH_SETFAVORITE,
     payload: {
       recipeId,
       value
+    }
+  }
+}
+
+export function mergeSession() {
+  return {
+    type: TABS_MERGE_SESSION
+  }
+}
+
+export function moveTab(source, destination) {
+  return {
+    type: TABS_MOVE_TAB,
+    payload: {
+      source,
+      destination,
     }
   }
 }

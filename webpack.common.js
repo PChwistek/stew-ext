@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     filename: '[name]/[name].js',
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(__dirname, 'stew_dist/'),
     publicPath: '/'
   },
   plugins: [
@@ -33,6 +33,12 @@ module.exports = {
       '*',
       '.js',
       '.jsx'
-    ]
+    ],
+    alias: {
+      Assets: path.resolve(__dirname, './src/assets'),
+      Background: path.resolve(__dirname, './src/containers/background'),
+      Common: path.resolve(__dirname, './src/containers/common-ui'),
+      Popup: path.resolve(__dirname, './src/containers/popup')
+    }
   }
 }

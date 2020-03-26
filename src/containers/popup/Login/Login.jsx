@@ -1,6 +1,7 @@
 import React, { useState, createRef } from 'react'
-import TextField from '../../common-ui/TextField'
-import Button from '../../common-ui/Button'
+import TextField from 'Common/TextField'
+import Button from 'Common/Button'
+import stewLogo from 'Assets/stew-logo.png'
 
 export default function Login(props) {
 
@@ -49,7 +50,7 @@ export default function Login(props) {
     <div>
       <div className={ 'login' }>
         <div className={ 'login__image-container'}>
-          <img src={ '../../../assets/stew-logo.png' } className={ 'login__image '} />
+          <img src={ stewLogo } className={ 'login__image '} />
         </div>
         <div className='login__error'> { error } </div>
         <div className={ 'login__form-row'}>
@@ -64,7 +65,7 @@ export default function Login(props) {
             innerRef={ usernameField }
         />
         </div>
-        <div className={ 'login__form-row'}>
+        <div className={ 'login__form-row' }>
           <TextField
             type={ 'password' } 
             label={ 'Password' } 
@@ -82,10 +83,10 @@ export default function Login(props) {
             : <Button type={ 'primary'} text={ 'Login'} onClick={ handleLogin } />
         }
         </div>
-      </div>
-      <div className={ 'login__register content' }>
-        <div className={ 'link' }>
-          Need an account? <a href="https://staging.getstew.com/sign-up" target="blank"> Register. </a>
+        <div className={ 'login__form-row--register' }>
+          <div className={ 'link' }>
+            Need an account? <a href="https://staging.getstew.com/sign-up" target="blank"> Register. </a>
+          </div>
         </div>
       </div>
     </div>

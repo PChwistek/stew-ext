@@ -1,8 +1,11 @@
+import { cloneDeep } from 'lodash'
 import { 
   TABS_SETSNAP, TABS_REMOVETAB, TABS_REMOVEWINDOW, 
   TABS_SETRECIPEPUBLIC, TABS_SETRECIPENAME,
   TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
-  TABS_SETRECIPEFORM, TABS_RESET
+  TABS_SETRECIPEFORM, TABS_RESET, TABS_SETCURRENTTAB, TABS_SETCURRENTWINDOW,
+  TABS_SETSNAP_EXISTING, TABS_QUICKADD_ALIAS, TABS_MERGE_SESSION_ALIAS, TABS_MERGE_POPUP_CLOSED,
+  TABS_MOVE_TAB_ALIAS
 } from '../../actionTypes'
 
 const initialState = {
@@ -12,37 +15,52 @@ const initialState = {
     recipeTags: []
   },
   session: [],
-  isNew: true,
+  recipeSession: [],
+  initialLiveSession: [],
+  isNew: false,
+  wasMerged: false,
+  currentWindow: {},
+  currentTab: {}
 }
 
 export default (state = initialState, action) => {
   const { payload } = action
   switch (action.type) {
-    case TABS_SETSNAP: 
+    case TABS_SETSNAP:
+      if(payload.forced) {
+        return Object.assign({}, state, {
+          session: payload.session,
+          initialLiveSession: payload.session,
+          recipeSession: payload.session,
+        }) 
+      }
       return Object.assign({}, state, {
-        session: payload.session
-      })
+        session: payload.session,
+        wasMerged: false,
+      }) 
     case TABS_REMOVETAB: {
       const { win, tab } = payload
-      
-      const theWindow = state.session.find(theWin => theWin.index === win.index)
-      const windowIndex = state.session.findIndex(theWin => theWin.index === win.index)
-      const newTabs = theWindow.tabs.filter(windowTab => windowTab.index !== tab.index)
-      theWindow.tabs = newTabs
+      let recipeSessionCopy = cloneDeep([...state.recipeSession])
+      const theWindow = recipeSessionCopy[win]
+      theWindow.tabs.splice(tab, 1)
 
-      if(theWindow.tabs.length == 0) {
-        state.session.splice(windowIndex, 1)
-      }
-      return Object.assign({}, state, {})
+      recipeSessionCopy[win] = theWindow
+      recipeSessionCopy = recipeSessionCopy.filter(theWindow => theWindow.tabs.length > 0)
+
+      return Object.assign({}, state, {
+        recipeSession: recipeSessionCopy,
+      })
     }
     case TABS_REMOVEWINDOW: {
-      const { windowToRemove } = payload
+      const { windowIndex } = payload
+      let recipeSessionCopy = cloneDeep([...state.recipeSession])
 
-      const windowIndex = state.session.findIndex(theWin => theWin.index === windowToRemove.index)
       if(windowIndex > -1) {
-        state.session.splice(windowIndex, 1)
+        recipeSessionCopy.splice(windowIndex, 1)
       }
-      return Object.assign({}, state, {})
+      return Object.assign({}, state, {
+        recipeSession: recipeSessionCopy,
+      })
     }
     case TABS_SETRECIPENAME:
       const { recipeName } = payload
@@ -86,6 +104,39 @@ export default (state = initialState, action) => {
           recipeTag: ''
         },
         isNew: action.payload.isNew,
+      })
+    case TABS_SETCURRENTTAB:
+      return Object.assign({}, state, {
+        currentTab: action.payload.currentTab
+      })
+    case TABS_SETCURRENTWINDOW:
+      return Object.assign({}, state, {
+        currentWindow: action.payload.currentWindow
+      })
+    case TABS_SETSNAP_EXISTING:
+      return Object.assign({}, state, {
+        recipeSession:  cloneDeep(action.payload.session),
+        initialLiveSession: action.payload.session,
+        wasMerged: false,
+      })
+    case TABS_QUICKADD_ALIAS:
+      return Object.assign({}, state, {
+        recipeForm: {
+          recipeName: action.payload.recipeName,
+          recipeTags: action.payload.recipeTags,
+          recipeTag: ''
+        },
+        recipeSession: action.payload.session,
+        isNew: false
+      })
+    case TABS_MERGE_SESSION_ALIAS:
+      return Object.assign({}, state, {
+        recipeSession: action.payload.session,
+        wasMerged: true,
+      })
+    case TABS_MOVE_TAB_ALIAS:
+      return Object.assign({}, state, {
+        recipeSession: action.payload.recipeSession,
       })
     case TABS_RESET:
       return initialState

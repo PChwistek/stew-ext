@@ -1,0 +1,92 @@
+.tabhelper {
+
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 12;
+  bottom: 0px;
+  left: 50%;
+  width: 50%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 210px;
+    height: 100%;
+    background: $white;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: $brand-color;
+    margin-bottom: 20px;
+
+  }
+
+  &__title {
+    display: flex;
+    font-family: $base-font-family;
+    font-size: $font-size-regular;
+    color: $text-color;
+    width: 100%;
+    font-weight: 600;
+  }
+
+  &__buttons {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__help-icon {
+    margin: none;
+    width: 18px;
+  }
+
+  &__button {
+    font-family: $base-font-family;
+    font-size: $font-size-regular;
+    color: $white;
+    border-radius: 2px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    height: 15px;
+    width: 100px;
+    font-weight: 600;
+    text-align: center;
+
+    &--yes {
+      background: $brand-color;
+    }
+
+    &--no {
+      background: $error-color;
+    }
+
+    &:hover {
+      margin-top: 1px;
+    }
+  }
+
+}
+
+.tabhelper-anim {
+  &-enter {
+    bottom: -100px;
+  }
+
+  &-enter-active {
+    bottom: 0px;
+    transition: bottom 200ms;
+  }
+
+  &-exit {
+    bottom: 10px;
+  }
+
+  &-exit-active{ 
+    bottom: -300px;
+    transition: bottom 300ms;
+  }
+}

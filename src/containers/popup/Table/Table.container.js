@@ -6,9 +6,10 @@ import {
   selectNextRow,
   selectPreviousRow,
   setSortBy
-} from '../popup.actions'
+} from 'Popup/popup.actions'
 
-const stateToProps = ({ search, popup }) => ({
+const stateToProps = ({ auth, search, popup }) => ({
+  loggedIn: auth.loggedIn,
   search,
   ...popup,
 })

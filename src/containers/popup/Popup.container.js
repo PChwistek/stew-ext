@@ -11,13 +11,15 @@ import {
   selectRow, 
   popupOpened,
   setRecipeForm,
-  setRecipeSession
+  toggleEditing,
+  setRecipeSession,
  } from './popup.actions'
 
-const stateToProps = ({ auth, user, popup, search }) => ({
+const stateToProps = ({ auth, user, popup, tabs, search }) => ({
   loggedIn: auth.loggedIn,
   user,
   ...popup,
+  liveSession: tabs.session,
   terms: search.searchTerms,
 })
 
@@ -32,7 +34,8 @@ const dispatchToProps = {
   selectRow,
   popupOpened,
   setRecipeForm,
-  setRecipeSession
+  setRecipeSession,
+  toggleEditing
 }
 
 export default connect(stateToProps, dispatchToProps)(Popup)

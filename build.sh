@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-cp README.md dist/
+cp README.md stew_dist/
 
-rm tomato-clock.zip
-(cd dist/ && zip -r hermitly *)
-mv dist/hermitly.zip .
+rm stew_dist.zip
+(cd stew_dist/ && zip -r stew_dist *)
+mv stew_dist/stew_dist.zip .

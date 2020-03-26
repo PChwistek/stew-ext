@@ -36,6 +36,8 @@ $text-color-lighter:       rgba(76, 91, 92, 0.486) !default;
 $link-color: #067bc2;
 $row-highlight: rgba(242, 244, 243, 0.884);
 $brand-color:      #BCDB71 !default;
+// $brand-color: #88498F !default; //good one
+
 $error-color: #E26D5A !default;
 $grey-color: rgba(242, 244, 243, 0.43);
 $white: #fdfdfd;
@@ -60,8 +62,6 @@ a:hover {
     text-decoration: underline;
 }
 
-
-
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
         @media only screen and (max-width: 37.5em) { @content };    //600px
@@ -69,7 +69,13 @@ a:hover {
     @if $breakpoint == tablet {
         @media only screen and (max-width: 67.25em) { @content };     //900px
     }
-  
+    @if $breakpoint == too-small {
+        @media only screen and (max-width: 600px) { @content }; 
+        @media only screen and (max-height: 600px) { @content };  
+    }
+    @if $breakpoint == too-large {
+        @media only screen and (min-width: 800px) { @content }; 
+    }
 }
 
 @mixin absCenter {
@@ -97,3 +103,5 @@ a:hover {
 @import "partials/detailtab";
 @import "partials/login";
 @import "partials/menu";
+@import "partials/previewtabs";
+@import "partials/tabhelper";

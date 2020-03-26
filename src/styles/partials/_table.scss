@@ -4,6 +4,7 @@
 
   &__no-results {
     @include absCenter();
+    text-align: center;
     font-family: $base-font-family;
     font-size: $font-size-larger;
     font-weight: 700;
@@ -11,15 +12,17 @@
   }
 
   &__container {
-    height: 456px;
+    height: calc(100vh - 140px);
     overflow: auto;
   }
 
   &__row {
-    height: 100px;
-    padding: 20px;
+    min-height: 160px;
+    padding: 10px 20px 10px 20px;
     color: $text-color;
     position: relative;
+    display: flex;
+    flex-direction: column;
     &:focus {
       outline: none;
     }
@@ -53,6 +56,7 @@
     &__attributes {
       margin-left: 5px;
       display: flex;
+      align-items: center;
     }
 
     &__attribute-icon {

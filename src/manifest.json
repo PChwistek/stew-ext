@@ -8,23 +8,19 @@
   },
   "permissions": [
     "storage",
-    "webNavigation",
-    "tabs",
-    "https://*/*",
-    "http://*/*"
+    "tabs"
   ],
   "background": {
     "scripts": [
       "background/background.js"
     ],
-    "persistent": true
+    "persistent": false
   },
   "browser_action": {
     "default_icon": {
       "100": "assets/120x120.png"
     },
     "default_title": "stew",
-    "default_popup": "popup/popup.html",
     "theme_icons": [{
       "light": "assets/310x310.png",
       "dark": "assets/310x310.png",

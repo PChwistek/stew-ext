@@ -6,10 +6,9 @@ import Button from '../../../common-ui/Button'
 export default function EditRecipe(props) {
 
   const { tabs, setRecipeName, setRecipeTag, addRecipeTag, 
-    removeRecipeTag, clearFields, saveRecipe } = props
+    removeRecipeTag, clearFields, handleSaveRecipe } = props
 
   const [formErrors, setFormErrors] = useState([])
-
 
   const { recipeForm: { recipeName, recipeTags, recipeTag } } = tabs
 
@@ -19,20 +18,25 @@ export default function EditRecipe(props) {
   function handleSave() {
     const temp = []
     if(recipeName.length < 1) {
+      recipeNameField.current.focus()
       temp.push('Recipe name cannot be empty.')
     }
 
-    if(tabs.session.length < 1) {
+    if(tabs.recipeSession.length < 1) {
       temp.push('Session snapshot cannot be empty.')
     }
+
     if(temp.length === 0) {
-      saveRecipe()
+      handleSaveRecipe()
     } else {
       setFormErrors(temp)
     }
   }
 
   function validateName(name) {
+    if(name.length < 1) {
+      return { isValid: true, error: 'Recipe name cannot be empty.'}
+    }
     if(name.length >= 25) {
       return { isValid: false, error: 'Max character length of 25' }
     }

@@ -1,29 +1,113 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SlideIn from '../SlideIn'
 import ViewRecipe from './ViewRecipe'
 import EditRecipe from './EditRecipe'
-import SessionView from '../SessionView'
+import SessionView from './SessionView'
+import TabHelper from './TabHelper'
+import { compareObjects } from '../../utils'
 
 export default function DetailTab(props) {
+
+  const [showTabHelper, setShowTabHelper] = useState(false)
+  const [showMergeHelper, setShowMergeHelper] = useState(false)
+
+  function checkTabPopup() {
+    const { tabs , session, isEditing } = props
+    if(tabs.isNew || isEditing ) {
+      setShowTabHelper(false) 
+      return
+    }
+    const { currentTab } = tabs
+    for (let index = 0; index < session.length; index++) {
+      for (let tabIndex = 0; tabIndex < session[index].tabs.length; tabIndex++) {
+        const tab = session[index].tabs[tabIndex]
+        if(tab.url === currentTab.url) {
+          setShowTabHelper(false)
+          return
+        }
+      }
+    }
+    setShowTabHelper(true)
+  }
+
+
+  useEffect(() => {
+    const noDiff = compareObjects(props.tabs.initialLiveSession, props.liveSession)
+    if(!isEditing || noDiff || props.tabs.wasMerged) {
+      setShowMergeHelper(false)
+      return
+    }
+    if(props.visible) {
+      const timer = setTimeout(() => {
+        setShowMergeHelper(true)
+      }, 500)
+      return () => clearTimeout(timer)
+    } else {
+      setShowMergeHelper(false)
+    }
+  }, [props.isEditing, props.session, props.liveSession])
+
+  useEffect(() => {
+    if(isEditing) {
+      setShowTabHelper(false)
+      return
+    }
+    if(props.visible) {
+      const timer = setTimeout(() => {
+        checkTabPopup()
+      }, 500)
+      return () => clearTimeout(timer)
+    } else {
+      setShowTabHelper(false)
+    }
+  }, [props.visible, props.currentTab, props.isEditing])
  
   function handleToggleEdit() {
-    const { toggleEditing, setRecipeSession, selectedRecipe, setRecipeForm } = props
-    toggleEditing()
+    const { toggleEditing, selectedRecipe, setRecipeForm, isEditing, getCurrentTabs } = props
+    getCurrentTabs()
+    toggleEditing(!isEditing)
     setRecipeForm(selectedRecipe.name, selectedRecipe.tags, false)
-    setRecipeSession(selectedRecipe.config)
+  }
+
+  function handleSaveRecipe() {
+    const { saveRecipe, toggleEditing } = props
+    saveRecipe()
+    toggleEditing(false)
+  }
+
+  function handleQuickAdd() {
+    const { quickAdd } = props
+    quickAdd()
+    setShowTabHelper(false)
+  }
+
+  function handleMergeSession() {
+    const { mergeSession } = props
+    mergeSession()
+    setShowMergeHelper(false)
+  }
+
+  function handleGetCurrentTabs() {
+    const { getCurrentTabs, setRecipeSession, selectedRecipe, tabs, liveSession } = props
+    if(tabs.isNew) {
+      getCurrentTabs()
+      setRecipeSession(liveSession)
+    } else {
+      setRecipeSession(selectedRecipe.config)
+    }
   }
 
   const { 
     isEditing, 
     removeTabFromSnap, 
     removeWindowFromSnap, 
-    getCurrentTabs, 
     selectedRecipe,
     launchRecipe, 
     session,
     deleteRecipe,
     setFavorite,
-    favorites
+    favorites,
+    moveTab
   } = props
 
   const isFavorite = favorites.findIndex(recipe => recipe === selectedRecipe._id) > -1
@@ -38,6 +122,7 @@ export default function DetailTab(props) {
             isEditing 
             ? <EditRecipe 
               { ...props }
+              handleSaveRecipe={ handleSaveRecipe }
             /> 
             : <ViewRecipe 
                 selectedRecipe={ selectedRecipe } 
@@ -52,8 +137,37 @@ export default function DetailTab(props) {
             session={ session } 
             removeTabFromSnap={ removeTabFromSnap } 
             removeWindowFromSnap={ removeWindowFromSnap } 
-            getCurrentTabs={ getCurrentTabs }
+            getCurrentTabs={ handleGetCurrentTabs }
             canEdit={ isEditing }
+            moveTab={ moveTab }
+          />
+          <TabHelper 
+            in={ showTabHelper } 
+            onNoClick={ () => setShowTabHelper(false) }
+            onYesClick={ handleQuickAdd }
+            title={ 'Quick Add' }
+            tooltipText={ 'Allows you to add the currently active tab.' }
+          >
+            <div>
+              <a href={ props.currentTab.url } target="blank">
+                <div className='tab__body'>
+                  <img src={ props.currentTab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
+                  <p className='tab__title'> { props.currentTab.title } </p>
+                </div>
+              </a>
+            </div>
+          </TabHelper>
+          <TabHelper 
+            in={ showMergeHelper } 
+            onNoClick={ () => { 
+              setShowMergeHelper(false) } 
+            }
+            onYesClick={ handleMergeSession }
+            title={ 'Merge current session?' }
+            tooltipText={ props.tabs.isNew 
+              ? 'Your session has changed since this snapshot. Would you like to merge the current session?' 
+              : 'This recipe is different than your current session. Would you like to merge?' 
+            }
           />
         </div>
     </SlideIn>

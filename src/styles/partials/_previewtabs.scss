@@ -1,0 +1,58 @@
+.preview-tabs-container {
+  padding-top: 10px;
+}
+
+.preview-anim {
+
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active { 
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+}
+
+.preview-tags {
+  display: flex;
+  font-family: $base-font-family;
+  font-size: $font-size-regular;
+  padding-top: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.preview-tabs {
+  display: flex;
+  overflow: hidden;
+  align-items: flex-end;
+  padding-bottom: 2px;
+  height: 100%;
+  margin-left: -5px;
+  margin-right: -5px;
+  div {
+    margin-right: 10px;
+  }
+}
+
+.preview-text { 
+  font-family: $base-font-family;
+  font-size: $font-size-regular;
+  color: $text-color-lighter;
+  width: 100%;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  margin-bottom: -5px;
+}

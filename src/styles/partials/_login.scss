@@ -1,6 +1,9 @@
 .login {
   display: flex;
   flex-direction: column;
+  font-family: $base-font-family;
+  font-size: $font-size-regular;
+
   @include absCenter;
 
   &__image-container {
@@ -20,16 +23,16 @@
       padding-top: 15px;
       text-align: center;
     }
+
+    &--register {
+      width: 100%;
+      padding-top: 30px;
+      text-align: center;
+    }
   }
 
   &__error {
     color: $error-color;
   }
 
-  &__register {
-    width: 100%;
-    position: absolute;
-    bottom: 20px;
-    text-align: center;
-  }
 }

@@ -16,15 +16,21 @@ import {
   setRecipeForm,
   setRecipeSession,
   deleteRecipe,
-  setFavorite
+  setFavorite,
+  quickAdd,
+  mergeSession,
+  moveTab,
 } from '../popup.actions'
 
 
-const stateToProps = ({ search, tabs }) => ({
+const stateToProps = ({ search, tabs, popup }) => ({
   favorites: search.favorites,
   selectedRecipe: search.selectedRecipe,
-  session: tabs.session,
+  session: tabs.recipeSession,
   tabs,
+  liveSession: tabs.session,
+  currentTab: tabs.currentTab,
+  isEditing: popup.isEditing
 })
 
 const dispatchToProps = {
@@ -42,7 +48,10 @@ const dispatchToProps = {
   setRecipeForm,
   setRecipeSession,
   deleteRecipe,
-  setFavorite
+  setFavorite,
+  quickAdd,
+  mergeSession,
+  moveTab,
 }
 
 export default connect(stateToProps, dispatchToProps)(DetailTab)
