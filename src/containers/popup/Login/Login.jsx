@@ -1,6 +1,7 @@
 import React, { useState, createRef } from 'react'
-import TextField from '../../common-ui/TextField'
-import Button from '../../common-ui/Button'
+import TextField from 'Common/TextField'
+import Button from 'Common/Button'
+import stewLogo from 'Assets/stew-logo.png'
 
 export default function Login(props) {
 
@@ -49,7 +50,7 @@ export default function Login(props) {
     <div>
       <div className={ 'login' }>
         <div className={ 'login__image-container'}>
-          <img src={ '../../../assets/stew-logo.png' } className={ 'login__image '} />
+          <img src={ stewLogo } className={ 'login__image '} />
         </div>
         <div className='login__error'> { error } </div>
         <div className={ 'login__form-row'}>

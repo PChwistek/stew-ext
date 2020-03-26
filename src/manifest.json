@@ -8,10 +8,7 @@
   },
   "permissions": [
     "storage",
-    "webNavigation",
-    "tabs",
-    "https://*/*",
-    "http://*/*"
+    "tabs"
   ],
   "background": {
     "scripts": [
