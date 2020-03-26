@@ -1,6 +1,9 @@
 .login {
   display: flex;
   flex-direction: column;
+  font-family: $base-font-family;
+  font-size: $font-size-regular;
+
   @include absCenter;
 
   &__image-container {

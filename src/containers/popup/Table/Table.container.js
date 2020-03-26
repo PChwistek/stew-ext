@@ -6,7 +6,7 @@ import {
   selectNextRow,
   selectPreviousRow,
   setSortBy
-} from '../popup.actions'
+} from 'Popup/popup.actions'
 
 const stateToProps = ({ auth, search, popup }) => ({
   loggedIn: auth.loggedIn,

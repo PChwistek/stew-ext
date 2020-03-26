@@ -1,6 +1,7 @@
 const path = require('path')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 var remotedev = require('remotedev-server')
 remotedev({ hostname: 'localhost', port: 7888 })
@@ -19,7 +20,7 @@ module.exports = merge(common, {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
@@ -34,7 +35,15 @@ module.exports = merge(common, {
             },
           },
         ],
-      }
+      },
     ]
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    })
+  ]
 })
