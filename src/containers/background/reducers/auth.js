@@ -8,7 +8,7 @@ import {
   AUTH_LOGOUT_ALIAS,
   AUTH_SET_FROM_STORE
 
-} from '../../actionTypes'
+} from 'Containers/actionTypes'
 
 const initialState = {
   loggedIn: false,

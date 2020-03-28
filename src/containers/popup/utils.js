@@ -3,9 +3,9 @@ import date from 'date-and-time'
 export function getSrc(attribute) {
   switch(attribute){
     case 'Popular': 
-      return '../../../assets/fire.png'
+      return 'Assets/fire.png'
     case 'Favorite':
-      return '../../../assets/star1.png'
+      return 'Assets/star1.png'
   }
 }
 

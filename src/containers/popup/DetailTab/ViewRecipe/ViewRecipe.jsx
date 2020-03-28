@@ -1,8 +1,8 @@
 import React, { useState, Fragment } from 'react'
 import IconRow from './IconRow'
-import { getSrc } from '../../utils'
-import Button from '../../../common-ui/Button'
-import ConfirmModal from '../../Modal/ConfirmModal'
+import { getSrc } from 'Containers/utils'
+import Button from 'Common/Button'
+import ConfirmModal from 'Popup/Modal/ConfirmModal'
 
 const ViewRecipe = (props) => {
   const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite } = props

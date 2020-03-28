@@ -3,7 +3,7 @@ import manager from '../TabManager'
 import { getInitialResults } from './searchAliases'
 import { addEditListeners, removeEditListeners, addInAppListeners, removeInAppListeners } from '../background'
 import { handle401 }from './authAliases'
-import getServerHostname from '../../getServerHostName'
+import getServerHostname from 'Containers/getServerHostName'
 
 import { 
   AUTH_CLEAR_ERROR,
@@ -13,7 +13,7 @@ import {
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_TOGGLEEDITING_ALIAS,
   AUTH_SET_FROM_STORE
-} from '../../actionTypes'
+} from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
 

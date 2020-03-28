@@ -4,7 +4,9 @@ import ViewRecipe from './ViewRecipe'
 import EditRecipe from './EditRecipe'
 import SessionView from './SessionView'
 import TabHelper from './TabHelper'
-import { compareObjects } from '../../utils'
+import { compareObjects } from 'Containers/utils'
+
+import chrome from 'Assets/chrome.png'
 
 export default function DetailTab(props) {
 
@@ -151,7 +153,7 @@ export default function DetailTab(props) {
             <div>
               <a href={ props.currentTab.url } target="blank">
                 <div className='tab__body'>
-                  <img src={ props.currentTab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
+                  <img src={ props.currentTab.favIconUrl || chrome } className='tab__fav' />
                   <p className='tab__title'> { props.currentTab.title } </p>
                 </div>
               </a>

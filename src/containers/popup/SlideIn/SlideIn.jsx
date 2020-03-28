@@ -2,6 +2,8 @@ import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import PropTypes from 'prop-types'
 
+import close from 'Assets/close.png'
+
 export default function SlideIn(props) {
 
   const { onCloseClick, visible } = props
@@ -11,7 +13,7 @@ export default function SlideIn(props) {
       <div className='slide-in-content'>
         <div className='slide-in-content slide-in-content__body'>
         <div>
-          <img src={ '../../../assets/close.png'} className='slide-in-button' onClick={ onCloseClick } />
+          <img src={ close } className='slide-in-button' onClick={ onCloseClick } />
         </div>
           { props.children }
         </div>

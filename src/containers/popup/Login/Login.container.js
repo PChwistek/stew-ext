@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Login from './Login'
-import { login } from '../popup.actions'
+import { login } from 'Popup/popup.actions'
 
 const stateToProps = ({ auth }) => ({
   pending: auth.pending,

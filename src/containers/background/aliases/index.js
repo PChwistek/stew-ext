@@ -17,7 +17,7 @@ import {
   SEARCH_SETFAVORITE,
   TABS_MERGE_SESSION,
   TABS_MOVE_TAB
-} from '../../actionTypes'
+} from 'Containers/actionTypes'
 
 import { 
   getCurrentSession, 

@@ -2,6 +2,8 @@ import React from 'react'
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import search from 'Assets/search.png'
+
 class SearchTextField extends Component {
   constructor(props) {
     super(props)
@@ -51,7 +53,7 @@ class SearchTextField extends Component {
           predicted &&
           predicted.includes(value) && <p className="predicted">{predicted}</p>}
         <div className={ 'search-field__image-container'}>
-          <img src={ '../../../../assets/search.png' } className='search-field__image' />
+          <img src={ search } className='search-field__image' />
         </div>
         <input
           id={1}

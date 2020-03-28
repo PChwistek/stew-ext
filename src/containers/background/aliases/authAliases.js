@@ -7,9 +7,9 @@ import {
   AUTH_LOGOUT_ALIAS,
   TABS_RESET,
   SEARCH_RESET,
-} from '../../actionTypes'
+} from 'Containers/actionTypes'
 import manager from '../TabManager'
-import getServerHostname from '../../getServerHostName'
+import getServerHostname from 'Containers/getServerHostName'
 import { syncRecipesWithCloud } from './popupAliases'
 
 const serverUrl = getServerHostname()

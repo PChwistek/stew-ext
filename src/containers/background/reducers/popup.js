@@ -1,4 +1,4 @@
-import { POPUP_TOGGLE_SLIDE, POPUP_TOGGLEEDITING_ALIAS, POPUP_SET_WINDOWID } from '../../actionTypes'
+import { POPUP_TOGGLE_SLIDE, POPUP_TOGGLEEDITING_ALIAS, POPUP_SET_WINDOWID } from 'Containers/actionTypes'
 
 const initialState = {
   slideOutVisible: false,

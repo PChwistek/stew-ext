@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from '../../../common-ui/Button'
+import Button from 'Common/Button'
 import ModalBase from '../ModalBase'
 
 export const ConfirmModal = (props) => {

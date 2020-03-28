@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react"
 import PropTypes from 'prop-types'
 
+import sort from 'Assets/sort.png'
+
 const Dropdown = ({ value, options, placeholder, onChange }) => {
   const node = useRef()
   const [open, setOpen] = useState(false)
@@ -41,7 +43,7 @@ const Dropdown = ({ value, options, placeholder, onChange }) => {
           { (value && value.text) || placeholder.text }
         </div>
         <div>
-          <img src={ '../../../../assets/sort.png' } className='dropdown-toggler__icon' />
+          <img src={ sort } className='dropdown-toggler__icon' />
         </div>
       </div>
       {open && (

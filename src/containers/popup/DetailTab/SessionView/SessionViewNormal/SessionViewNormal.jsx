@@ -1,5 +1,10 @@
 import React from 'react'
 
+import windowSketch from 'Assets/window-sketch.png'
+import removeRed from 'Assets/remove-red.png'
+import chrome from 'Assets/chrome.png'
+import out from 'Assets/out.png'
+
 export default function(props) {
   
   return (
@@ -8,11 +13,11 @@ export default function(props) {
         <div key={ winIndex }>
           <div className='createtab__window-row'>     
             <div className='createtab__window-title'>Window { winIndex + 1 } </div>
-              <img src={ '../../../../../assets/window-sketch.png' } className='createtab__window-icon' />
+              <img src={ windowSketch } className='createtab__window-icon' />
               {
                 props.canEdit && (
                   <div className='createtab__window-remove-container' onClick={ () => props.removeWindowFromSnap(winIndex) }> 
-                    <img src={ '../../../../../assets/remove-red.png' } className='createtab__window-remove' />
+                    <img src={ removeRed } className='createtab__window-remove' />
                   </div>    
                 )
               }
@@ -23,19 +28,19 @@ export default function(props) {
                 {
                   props.canEdit && (
                     <div key={ 'remove' + tabIndex} className='tab__remove-container' onClick={ () => props.removeTabFromSnap(winIndex, tabIndex) }> 
-                      <img src={ '../../../../../assets/remove-red.png' } className='tab__remove' />
+                      <img src={ removeRed } className='tab__remove' />
                     </div>
                   )
                 }
                 <div className='tab__body'>
-                  <img src={ tab.favIconUrl || '../../../../../assets/chrome.png' } className='tab__fav' />
+                  <img src={ tab.favIconUrl || chrome } className='tab__fav' />
                     <p className='tab__title'>
                       { tab.title }          
                     </p>
                 </div>
                 <div>
                   <a href={ tab.url} target="_blank"> 
-                    <img src={ '../../../../../assets/out.png'} className='tab__out' />
+                    <img src={ out } className='tab__out' />
                   </a>
                 </div>
 

@@ -29,6 +29,7 @@
     "@storybook/react": "^5.1.8",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^4.0.0",
     "babel-polyfill": "^6.26.0",
     "chai": "^4.2.0",
     "chrome-webstore-upload-cli": "^1.2.0",

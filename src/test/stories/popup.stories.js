@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Popup from '../../containers/popup/Popup'
+import Popup from 'Popup/popup'
 import TestProvider from './TestProvider'
 
 import store from '../store.test'

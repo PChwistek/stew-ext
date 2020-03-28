@@ -1,17 +1,22 @@
 import React from 'react'
 
+import star from 'Assets/star1.png'
+import starOutline from 'Assets/star1-outline.png'
+import edit from 'Assets/edit.png'
+import trash from 'Assets/trash.png'
+
 const IconRow = (props) => (
   <div className={ 'detailtab__icons'}>
     <div>
       <img 
-        src={ props.isFavorite ? '../../../../../assets/star1.png' : '../../../../../assets/star1-outline.png'} 
+        src={ props.isFavorite ? star : starOutline } 
         className={ 'detailtab__icons__edit' } 
         onClick={ props.handleFavoriteClicked }
     />
     </div>
     <div>
       <img 
-        src={ '../../../assets/edit.png'} 
+        src={ edit } 
         className={ 'detailtab__icons__edit' } 
         onClick={ props.handleEditingClicked } 
       />
@@ -21,7 +26,7 @@ const IconRow = (props) => (
     </div> */}
     <div>
       <img 
-        src={ '../../../assets/trash.png'} 
+        src={ trash } 
         className={ 'detailtab__icons__edit' } 
         onClick={ props.handleDeleteClicked } 
       />

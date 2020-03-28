@@ -20,7 +20,7 @@ import {
   quickAdd,
   mergeSession,
   moveTab,
-} from '../popup.actions'
+} from 'Popup/popup.actions'
 
 
 const stateToProps = ({ search, tabs, popup }) => ({
