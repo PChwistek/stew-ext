@@ -87,11 +87,12 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.js && ./build.sh",
+    "build-firefox": "NODE_ENV=development web-ext build --source-dir ./stew_dist",
     "lint": "./node_modules/.bin/eslint  --ext .jsx --ext .js ./",
     "lint:fix": "yarn run lint --fix",
     "storybook": "start-storybook -p 2000 -s ./src/styles",
     "test": "jest",
     "watch": "NODE_ENV=development webpack --config ./webpack.config.dev.js --watch",
-    "watch-firefox": "web-ext run --source-dir ./dist"
+    "watch-firefox": "web-ext run --source-dir ./stew_dist"
   }
 }

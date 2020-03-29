@@ -7,7 +7,6 @@ import PreviewTabs from './PreviewTabs'
 import NoTags from './NoTags'
 import { getDaysFrom } from '../utils'
 
-
 export default function Table(props) {
   const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy, loggedIn } = props
   const { selectedRow = 0, results = [], searchTerms, sortedBy, favorites } = props.search
@@ -39,6 +38,9 @@ export default function Table(props) {
       onRecipeNameClicked(selectedRow)
     }
   }
+
+  // document.onkeydown = checkKey
+
   return (
     <div>
       <SortBar title={ 'All' } numResults={ `${results.length}` } terms={ searchTerms } setSortBy={ setSortBy } sortedBy={ sortedBy } />

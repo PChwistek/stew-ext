@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Menu from '../Menu'
+import Menu from 'Popup/Menu'
 
 import logo from 'Assets/144x144.png'
 import more from 'Assets/more.png'
