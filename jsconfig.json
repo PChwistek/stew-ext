@@ -2,8 +2,8 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "baseUrl": "./",
     "paths": {
+      "<rootDir>": ["./src"],
       "Assets/*": ["./src/assets/*"],
       "Background/*": ["./src/containers/background/*"],
       "Common/*": ["./src/containers/common-ui/*"],
@@ -11,6 +11,5 @@
       "Containers/*": ["./src/containers/*"]
     }
   },
-  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

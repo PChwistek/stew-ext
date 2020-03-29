@@ -1,162 +1,494 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button with emoji 1`] = `
-<button
-  onClick={[Function]}
-  style={
-    Object {
-      "backgroundColor": "#FFFFFF",
-      "border": "1px solid #eee",
-      "borderRadius": 3,
-      "cursor": "pointer",
-      "fontSize": 15,
-      "margin": 10,
-      "padding": "3px 10px",
-    }
-  }
-  type="button"
->
-  <span
-    aria-label="so cool"
-    role="img"
-  >
-    😀 😎 👍 💯
-  </span>
-</button>
-`;
-
-exports[`Storyshots Button with text 1`] = `
-<button
-  onClick={[Function]}
-  style={
-    Object {
-      "backgroundColor": "#FFFFFF",
-      "border": "1px solid #eee",
-      "borderRadius": 3,
-      "cursor": "pointer",
-      "fontSize": 15,
-      "margin": 10,
-      "padding": "3px 10px",
-    }
-  }
-  type="button"
->
-  Hello Button
-</button>
-`;
-
-exports[`Storyshots Popup with text 1`] = `
+exports[`Storyshots Button normal 1`] = `
 <div
-  className="popup"
+  style={
+    Object {
+      "padding": "40px",
+    }
+  }
 >
   <div
-    className="header"
+    className="button button--primary"
+    onClick={[Function]}
+  >
+    <p
+      className="button__text"
+    >
+       
+      Test
+       
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Button tertiary 1`] = `
+<div
+  style={
+    Object {
+      "padding": "40px",
+    }
+  }
+>
+  <div
+    className="button button--secondary"
+    onClick={[Function]}
+  >
+    <p
+      className="button__text"
+    >
+       
+      Test
+       
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Checkbox checked 1`] = `
+<div
+  style={
+    Object {
+      "padding": "40px",
+    }
+  }
+>
+  <label
+    className="checkbox-container"
   >
     <div
-      className="header header__content"
+      className="checkbox__small-text"
     >
-      <div>
-        <img
-          className="header__logo"
-          src="../../../assets/144x144.png"
+      Test
+    </div>
+    <input
+      checked={true}
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="checkmark"
+    />
+  </label>
+</div>
+`;
+
+exports[`Storyshots Checkbox unchecked 1`] = `
+<div
+  style={
+    Object {
+      "padding": "40px",
+    }
+  }
+>
+  <label
+    className="checkbox-container"
+  >
+    <div
+      className="checkbox__small-text"
+    >
+      Test
+    </div>
+    <input
+      checked={false}
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="checkmark"
+    />
+  </label>
+</div>
+`;
+
+exports[`Storyshots Login initial 1`] = `
+<div>
+  <div
+    className="login"
+  >
+    <div
+      className="login__image-container"
+    >
+      <img
+        className="login__image "
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="login__error"
+    >
+       
+      
+       
+    </div>
+    <div
+      className="login__form-row"
+    >
+      <div
+        className="field  undefined && "
+      >
+        <input
+          autoComplete="off"
+          autoFocus={true}
+          id="usernameField"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          placeholder="Email"
+          type="text"
+          value=""
         />
-      </div>
-      <div>
-        <img
-          className="header__more"
-          src="../../../assets/more.png"
-        />
+        <label
+          className=""
+          htmlFor={1}
+        >
+          Email
+        </label>
       </div>
     </div>
-    <hr
-      className="divider"
-    />
-  </div>
-  <div
-    className="createtab"
-  >
-    hey there!!!
-  </div>
-  <div
-    className="search"
-  >
     <div
-      className="search__content"
+      className="login__form-row"
     >
       <div
-        className="search__field"
+        className="field  undefined && "
       >
-        <div
-          className="search-field  undefined && "
+        <input
+          autoComplete="off"
+          id="passwordField"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+        <label
+          className=""
+          htmlFor={1}
         >
-          <div
-            className="search-field__image-container"
-          >
-            <img
-              className="search-field__image"
-              src="../../../../assets/search.png"
-            />
-          </div>
-          <input
-            autoComplete="off"
-            id={1}
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            placeholder="Search for recipes..."
-            type="text"
-            value=""
-          />
-          <label
-            className=""
-            htmlFor={1}
-          >
-            
-          </label>
-        </div>
+          Password
+        </label>
       </div>
+    </div>
+    <div
+      className="login__form-row--submit"
+    >
       <div
-        className="search__plus"
+        className="button button--primary"
         onClick={[Function]}
       >
-        <img
-          className="search__image"
-          src="../../../assets/plus-green.png"
-        />
+        <p
+          className="button__text"
+        >
+           
+          Login
+           
+        </p>
       </div>
     </div>
-    <hr
-      className="divider--heavy"
-    />
-  </div>
-  <div>
     <div
-      className="table__sort-bar"
+      className="login__form-row--register"
     >
       <div
-        className="table__sort-bar-title"
+        className="link"
       >
-        All
+        Need an account? 
+        <a
+          href="https://staging.getstew.com/sign-up"
+          target="blank"
+        >
+           Register. 
+        </a>
       </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Login with username 1`] = `
+<div>
+  <div
+    className="login"
+  >
+    <div
+      className="login__image-container"
+    >
+      <img
+        className="login__image "
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="login__error"
+    >
+       
+      
+       
+    </div>
+    <div
+      className="login__form-row"
+    >
       <div
-        className="table__sort-bar-icons"
+        className="field  undefined && "
       >
-        <div>
+        <input
+          autoComplete="off"
+          autoFocus={true}
+          id="usernameField"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          placeholder="Email"
+          type="text"
+          value=""
+        />
+        <label
+          className=""
+          htmlFor={1}
+        >
+          Email
+        </label>
+      </div>
+    </div>
+    <div
+      className="login__form-row"
+    >
+      <div
+        className="field  undefined && "
+      >
+        <input
+          autoComplete="off"
+          id="passwordField"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyUp={[Function]}
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+        <label
+          className=""
+          htmlFor={1}
+        >
+          Password
+        </label>
+      </div>
+    </div>
+    <div
+      className="login__form-row--submit"
+    >
+      <div
+        className="button button--primary"
+        onClick={[Function]}
+      >
+        <p
+          className="button__text"
+        >
+           
+          Login
+           
+        </p>
+      </div>
+    </div>
+    <div
+      className="login__form-row--register"
+    >
+      <div
+        className="link"
+      >
+        Need an account? 
+        <a
+          href="https://staging.getstew.com/sign-up"
+          target="blank"
+        >
+           Register. 
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Popup initial 1`] = `
+<div
+  className="popup-container"
+>
+  <div
+    className="small-screen-warning"
+  >
+    Please re-size the window! it's too small for stew.
+  </div>
+  <div
+    className="popup"
+  >
+    <div>
+      <div
+        className="login"
+      >
+        <div
+          className="login__image-container"
+        >
           <img
-            className="table__sort-bar-icon"
-            src="../../../../assets/creativity.png"
+            className="login__image "
+            src={Object {}}
           />
         </div>
-        <div>
-          <img
-            className="table__sort-bar-sort"
-            src="../../../../assets/sort.png"
-          />
+        <div
+          className="login__error"
+        >
+           
+          
+           
+        </div>
+        <div
+          className="login__form-row"
+        >
+          <div
+            className="field  undefined && "
+          >
+            <input
+              autoComplete="off"
+              autoFocus={true}
+              id="usernameField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Email"
+              type="text"
+              value=""
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Email
+            </label>
+          </div>
+        </div>
+        <div
+          className="login__form-row"
+        >
+          <div
+            className="field  undefined && "
+          >
+            <input
+              autoComplete="off"
+              id="passwordField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Password"
+              type="password"
+              value=""
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Password
+            </label>
+          </div>
+        </div>
+        <div
+          className="login__form-row--submit"
+        >
+          <div
+            className="button button--primary"
+            onClick={[Function]}
+          >
+            <p
+              className="button__text"
+            >
+               
+              Login
+               
+            </p>
+          </div>
+        </div>
+        <div
+          className="login__form-row--register"
+        >
+          <div
+            className="link"
+          >
+            Need an account? 
+            <a
+              href="https://staging.getstew.com/sign-up"
+              target="blank"
+            >
+               Register. 
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    This is the table
+  </div>
+</div>
+`;
+
+exports[`Storyshots Textfield empty 1`] = `
+<div
+  style={
+    Object {
+      "padding": "40px",
+    }
+  }
+>
+  <div
+    className="field  undefined && "
+  >
+    <input
+      autoComplete="off"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyUp={[Function]}
+      placeholder="Label"
+      value=""
+    />
+    <label
+      className=""
+      htmlFor={1}
+    >
+      Label
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Textfield some value 1`] = `
+<div
+  style={
+    Object {
+      "padding": "40px",
+    }
+  }
+>
+  <div
+    className="field active undefined && "
+  >
+    <input
+      autoComplete="off"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyUp={[Function]}
+      placeholder="Label"
+      value="test"
+    />
+    <label
+      className=""
+      htmlFor={1}
+    >
+      Label
+    </label>
   </div>
 </div>
 `;

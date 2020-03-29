@@ -15,7 +15,17 @@ module.exports = async ({ config, mode }) => {
     test: /\.scss$/,
     use: ['style-loader', 'css-loader', 'sass-loader'],
     include: path.resolve(__dirname, '../'),
+    
   })
+
+  config.externals = {
+      ...config.externals,
+      'jsdom': 'window',
+      'cheerio': 'window',
+      'react/lib/ExecutionEnvironment': true,
+      'react/lib/ReactContext': 'window',
+      'react/addons': true,
+  }
 
   config.resolve = {
     ...config.resolve,
@@ -25,7 +35,7 @@ module.exports = async ({ config, mode }) => {
       Background: path.resolve(__dirname, '../src/containers/background'),
       Common: path.resolve(__dirname, '../src/containers/common-ui'),
       Popup: path.resolve(__dirname, '../src/containers/popup'),
-      Containers: path.resolve(__dirname, './src/containers')
+      Containers: path.resolve(__dirname, '../src/containers')
     }
   }
 

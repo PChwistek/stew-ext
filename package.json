@@ -10,7 +10,12 @@
   "jest": {
     "moduleNameMapper": {
       "^.+\\.(css|less|scss)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/mocks"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/mocks",
+      "^Containers(.*)$": "<rootDir>/src/containers$1",
+      "^Background(.*)$": "<rootDir>/src/containers/background$1",
+      "^Common(.*)$": "<rootDir>/src/containers/common-ui$1",
+      "^Popup(.*)$": "<rootDir>/src/containers/popup$1",
+      "^Assets(.*)$": "<rootDir>/src/assets$1"
     },
     "setupFilesAfterEnv": [
       "<rootDir>/src/test/enzyme-setup.js"
@@ -52,6 +57,7 @@
     "remotedev-server": "^0.3.1",
     "sass-loader": "^7.1.0",
     "sinon": "^7.3.2",
+    "storybook-addon-specifications": "^2.1.5",
     "style-loader": "^0.23.1",
     "web-ext": "^3.2.0",
     "webextension-polyfill": "^0.4.0",
