@@ -32,7 +32,7 @@ export default function TabHelper(props) {
 }
 
 TabHelper.propTypes = {
-  onYesClick: PropTypes.func,
-  onNoClick: PropTypes.func,
-  tooltipText: PropTypes.string,
+  onYesClick: PropTypes.func.isRequired,
+  onNoClick: PropTypes.func.isRequired,
+  tooltipText: PropTypes.string.isRequired
 }

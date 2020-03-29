@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import IconRow from './IconRow'
 import { getSrc } from 'Containers/utils'
 import Button from 'Common/Button'
@@ -67,6 +68,14 @@ const ViewRecipe = (props) => {
       }
     </div>
   )
+}
+
+ViewRecipe.propTypes = { 
+  handleEditingClicked: PropTypes.func.isRequired,
+  launchRecipe: PropTypes.func.isRequired,
+  deleteRecipe: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  setFavorite: PropTypes.func.isRequired
 }
 
 export default ViewRecipe

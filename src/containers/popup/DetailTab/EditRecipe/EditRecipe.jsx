@@ -151,11 +151,10 @@ export default function EditRecipe(props) {
 
 EditRecipe.propTypes = {
   tabs: PropTypes.object,
-  setRecipeName: PropTypes.func,
-  setRecipeTag: PropTypes.func,
-  addRecipeTag: PropTypes.func,
-  removeRecipeTag: PropTypes.func, 
-  clearFields: PropTypes.func,
-  createRecipe: PropTypes.func, 
-  onCloseClick: PropTypes.func,
+  setRecipeName: PropTypes.func.isRequired,
+  setRecipeTag: PropTypes.func.isRequired,
+  addRecipeTag: PropTypes.func.isRequired,
+  removeRecipeTag: PropTypes.func.isRequired, 
+  clearFields: PropTypes.func.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
 }

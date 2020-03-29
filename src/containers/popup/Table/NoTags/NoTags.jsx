@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function NoTags(props) {
   return (
@@ -6,4 +7,8 @@ export default function NoTags(props) {
         { props.text }
       </div>
   )
+}
+
+NoTags.propTypes = {
+  text: PropTypes.string.isRequired,
 }

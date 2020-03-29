@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import star from 'Assets/star1.png'
 import starOutline from 'Assets/star1-outline.png'
 import edit from 'Assets/edit.png'
@@ -33,5 +33,12 @@ const IconRow = (props) => (
     </div>
   </div>
 )
+
+IconRow.propTypes = {
+  isFavorite: PropTypes.bool.isRequired,
+  handleEditingClicked: PropTypes.func.isRequired,
+  handleFavoriteClicked: PropTypes.func.isRequired,
+  handleDeleteClicked: PropTypes.func.isRequired
+}
 
 export default IconRow

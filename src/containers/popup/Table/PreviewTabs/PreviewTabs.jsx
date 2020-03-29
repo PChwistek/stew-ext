@@ -1,5 +1,4 @@
 import React from 'react'
-import { CSSTransition } from "react-transition-group"
 import PropTypes from 'prop-types'
 
 export default function PreviewTabs(props) {
@@ -46,5 +45,9 @@ export default function PreviewTabs(props) {
 }
 
 PreviewTabs.propTypes = {
-  // config: Array,
+  config: PropTypes.arrayOf(PropTypes.shape({ 
+    url: PropTypes.string, 
+    title: PropTypes.string, 
+    favIconUrl: PropTypes.string 
+  })).isRequired
 }

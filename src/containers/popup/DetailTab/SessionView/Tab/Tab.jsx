@@ -1,16 +1,16 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import removeRed from 'Assets/remove-red.png'
 import chrome from 'Assets/chrome.png'
 
-export default function Tab(props) {
+function Tab(props) {
   const { tab, canEdit, index, winIndex, removeTabFromSnap } = props
   return (
     <div className='tab__row' key={ 'row' + index }>
       {
         canEdit && (
-          <div key={ 'remove' + index} className='tab__remove-container' onClick={ () => removeTabFromSnap(winIndex, index) }> 
-            <img src={ removeRed} className='tab__remove' />
+          <div key={ 'remove' + index } className='tab__remove-container' onClick={ () => removeTabFromSnap(winIndex, index) }> 
+            <img src={ removeRed } className='tab__remove' />
           </div>
         )
       }
@@ -25,3 +25,17 @@ export default function Tab(props) {
     </div>
   )
 }
+
+Tab.propTypes = {
+  tab: PropTypes.shape({ 
+    url: PropTypes.string.isRequired, 
+    title: PropTypes.string.isRequired, 
+    favIconUrl: PropTypes.string.isRequired
+  }).isRequired,
+  canEdit: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
+  winIndex: PropTypes.number.isRequired,
+  removeTabFromSnap: PropTypes.func,
+}
+
+export default Tab

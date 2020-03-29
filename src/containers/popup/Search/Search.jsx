@@ -22,5 +22,7 @@ export default function Search(props) {
 }
 
 Search.propTypes = {
-  onPlusClick: PropTypes.func,
+  onPlusClick: PropTypes.func.isRequired,
+  setSearchTerms: PropTypes.func.isRequired,
+  terms: PropTypes.string.isRequired
 }

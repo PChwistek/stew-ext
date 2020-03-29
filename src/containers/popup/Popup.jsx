@@ -74,7 +74,16 @@ const Popup = (props) => {
 }
 
 Popup.propTypes = {
-  getCurrentTabs: PropTypes.func,
+  loggedIn: PropTypes.bool.isRequired,
+  getCurrentTabs: PropTypes.func.isRequired,
+  setSearchTerms: PropTypes.func.isRequired,
+  getFirstResults: PropTypes.func.isRequired,
+  syncRecipes: PropTypes.func.isRequired,
+  toggleSlide: PropTypes.func.isRequired,
+  selectRow: PropTypes.func.isRequired,
+  setRecipeForm: PropTypes.func.isRequired,
+  setRecipeSession: PropTypes.func.isRequired,
+  toggleEditing: PropTypes.func.isRequired,
 }
 
 export default Popup

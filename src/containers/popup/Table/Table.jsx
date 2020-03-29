@@ -1,4 +1,5 @@
 import React, { createRef } from 'react'
+import PropTypes from 'prop-types'
 import SortBar from './SortBar'
 import Button from '../../common-ui/Button'
 import { getSrc } from '../utils'
@@ -90,4 +91,13 @@ export default function Table(props) {
       </div>
     </div>
   )
+}
+
+Table.propTypes = {
+  slideOutVisible: PropTypes.bool.isRequired,
+  selectRow: PropTypes.func.isRequired,
+  launchRecipe: PropTypes.func.isRequired,
+  selectNextRow: PropTypes.func.isRequired,
+  selectPreviousRow: PropTypes.func.isRequired,
+  setSortBy: PropTypes.func.isRequired
 }

@@ -64,4 +64,17 @@ const Dropdown = ({ value, options, placeholder, onChange }) => {
   )
 }
 
+const optionShape = PropTypes.shape({
+  text: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
+})
+
+Dropdown.propTypes = {
+  value: optionShape,
+  options: PropTypes.arrayOf(optionShape).isRequired,
+  placeholder: optionShape, 
+  onChange: PropTypes.func.isRequired
+}
+
 export default Dropdown

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import SlideIn from '../SlideIn'
 import ViewRecipe from './ViewRecipe'
 import EditRecipe from './EditRecipe'
@@ -174,5 +175,26 @@ export default function DetailTab(props) {
         </div>
     </SlideIn>
   )
+}
 
+DetailTab.propTypes = {
+  isEditing: PropTypes.bool.isRequired,
+  launchRecipe: PropTypes.func.isRequired,
+  removeTabFromSnap: PropTypes.func.isRequired,
+  getCurrentTabs: PropTypes.func.isRequired,
+  removeWindowFromSnap: PropTypes.func.isRequired,
+  setRecipeName: PropTypes.func.isRequired,
+  setRecipeTag: PropTypes.func.isRequired,
+  addRecipeTag: PropTypes.func.isRequired,
+  removeRecipeTag: PropTypes.func.isRequired,
+  clearFields: PropTypes.func.isRequired,
+  saveRecipe: PropTypes.func.isRequired,
+  toggleEditing: PropTypes.func.isRequired,
+  setRecipeForm: PropTypes.func.isRequired,
+  setRecipeSession: PropTypes.func.isRequired,
+  deleteRecipe: PropTypes.func.isRequired,
+  setFavorite: PropTypes.func.isRequired,
+  quickAdd: PropTypes.func.isRequired,
+  mergeSession: PropTypes.func.isRequired,
+  moveTab: PropTypes.func.isRequired
 }

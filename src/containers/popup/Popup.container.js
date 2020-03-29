@@ -2,14 +2,11 @@ import { connect } from 'react-redux'
 import Popup from './Popup'
 import {
   getCurrentTabs, 
-  toggleCreateView, 
-  toggleDetailView, 
   setSearchTerms, 
   getFirstResults, 
   syncRecipes, 
   toggleSlide, 
   selectRow, 
-  popupOpened,
   setRecipeForm,
   toggleEditing,
   setRecipeSession,
@@ -25,14 +22,11 @@ const stateToProps = ({ auth, user, popup, tabs, search }) => ({
 
 const dispatchToProps = {
   getCurrentTabs,
-  toggleCreateView,
-  toggleDetailView,
   setSearchTerms,
   getFirstResults,
   syncRecipes,
   toggleSlide,
   selectRow,
-  popupOpened,
   setRecipeForm,
   setRecipeSession,
   toggleEditing
