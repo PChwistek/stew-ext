@@ -105,7 +105,6 @@ export const saveRecipeAlias = () => {
         if(!areSame) {
           const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
           dispatch(selectRecipe(recipeFromServer))
-          console.log('recipe from server', recipeFromServer)
           await manager.updateRecipeInStore(recipeFromServer)
         }
         

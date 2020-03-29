@@ -160,6 +160,4946 @@ exports[`Storyshots Confirm Modal showing 1`] = `
 </div>
 `;
 
+exports[`Storyshots DetailTab Edit name 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="createtab__form"
+      >
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field active undefined && "
+          >
+            <input
+              autoComplete="off"
+              autoFocus={true}
+              id="recipeNameField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Recipe Name"
+              type="text"
+              value="Edited Name"
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Recipe Name
+            </label>
+          </div>
+        </div>
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field  undefined && "
+          >
+            <input
+              autoComplete="off"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Add tags"
+              type="text"
+              value=""
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Add tags
+            </label>
+          </div>
+        </div>
+        <div
+          className="tag-container"
+        />
+        <div
+          className="createtab__bottom-row"
+        >
+          <div
+            className="createtab__form-row--submit"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Save
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="createtab__clear content"
+          >
+            <div
+              className="link"
+              onClick={[Function]}
+            >
+              Clear Fields
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+          <div
+            onClick={[Function]}
+          >
+            <img
+              className="createtab__refresh"
+              src={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="tab__col"
+        >
+          <div>
+            <div
+              className="createtab__new-window"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                 New window 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+            </div>
+            <div
+              className="tab__row"
+            >
+              <div
+                className="createtab__new-window-target"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                1
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-1-hidden-text-12"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="1"
+              data-rbd-drag-handle-draggable-id="https://www.facebook.com/-0-0"
+              data-rbd-draggable-context-id="1"
+              data-rbd-draggable-id="https://www.facebook.com/-0-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.facebook.com/"
+                      target="blank"
+                    >
+                      Facebook - Log In or Sign Up
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-1-hidden-text-12"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="1"
+              data-rbd-drag-handle-draggable-id="chrome://extensions/-1-0"
+              data-rbd-draggable-context-id="1"
+              data-rbd-draggable-id="chrome://extensions/-1-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src={Object {}}
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="chrome://extensions/"
+                      target="blank"
+                    >
+                      Extensions
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                2
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-1-hidden-text-12"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="1"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/-0-1"
+              data-rbd-draggable-context-id="1"
+              data-rbd-draggable-id="https://www.google.com/-0-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-1-hidden-text-12"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="1"
+              data-rbd-drag-handle-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-1"
+              data-rbd-draggable-context-id="1"
+              data-rbd-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-1-hidden-text-12"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="1"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-1"
+              data-rbd-draggable-context-id="1"
+              data-rbd-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-1-hidden-text-12"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="1"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-1"
+              data-rbd-draggable-context-id="1"
+              data-rbd-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-1-hidden-text-12"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="1"
+              data-rbd-drag-handle-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-1"
+              data-rbd-draggable-context-id="1"
+              data-rbd-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-1-hidden-text-12"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="1"
+              data-rbd-drag-handle-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-1"
+              data-rbd-draggable-context-id="1"
+              data-rbd-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab Favorite the recipe 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="detailtab__details__container"
+      >
+        <div
+          className="detailtab__details"
+        >
+          <div
+            className="detailtab__details__title"
+          >
+            sadfsdf
+          </div>
+          <div>
+            Published by: 
+            JubJubtumTum
+            <div />
+          </div>
+          <div>
+            <div
+              className="table__row__tags"
+            />
+          </div>
+          <div
+            className="detailtab__launch"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Launch
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="detailtab__icons"
+          >
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+        </div>
+        <div
+          className="tab__col tab__col--normal"
+        >
+          <div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  1
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src={Object {}}
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="chrome://extensions/"
+                      target="blank"
+                    >
+                      Extensions
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  2
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab Is editing 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="createtab__form"
+      >
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field active undefined && "
+          >
+            <input
+              autoComplete="off"
+              autoFocus={true}
+              id="recipeNameField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Recipe Name"
+              type="text"
+              value="sadfsdf"
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Recipe Name
+            </label>
+          </div>
+        </div>
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field  undefined && "
+          >
+            <input
+              autoComplete="off"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Add tags"
+              type="text"
+              value=""
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Add tags
+            </label>
+          </div>
+        </div>
+        <div
+          className="tag-container"
+        />
+        <div
+          className="createtab__bottom-row"
+        >
+          <div
+            className="createtab__form-row--submit"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Save
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="createtab__clear content"
+          >
+            <div
+              className="link"
+              onClick={[Function]}
+            >
+              Clear Fields
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+          <div
+            onClick={[Function]}
+          >
+            <img
+              className="createtab__refresh"
+              src={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="tab__col"
+        >
+          <div>
+            <div
+              className="createtab__new-window"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                 New window 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+            </div>
+            <div
+              className="tab__row"
+            >
+              <div
+                className="createtab__new-window-target"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                1
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="https://www.facebook.com/-0-0"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="https://www.facebook.com/-0-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.facebook.com/"
+                      target="blank"
+                    >
+                      Facebook - Log In or Sign Up
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="chrome://extensions/-1-0"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="chrome://extensions/-1-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src={Object {}}
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="chrome://extensions/"
+                      target="blank"
+                    >
+                      Extensions
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                2
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/-0-1"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="https://www.google.com/-0-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-1"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-1"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-1"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-1"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-1"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab New current tab 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="detailtab__details__container"
+      >
+        <div
+          className="detailtab__details"
+        >
+          <div
+            className="detailtab__details__title"
+          >
+            sadfsdf
+          </div>
+          <div>
+            Published by: 
+            JubJubtumTum
+            <div />
+          </div>
+          <div>
+            <div
+              className="table__row__tags"
+            />
+          </div>
+          <div
+            className="detailtab__launch"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Launch
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="detailtab__icons"
+          >
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+        </div>
+        <div
+          className="tab__col tab__col--normal"
+        >
+          <div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  1
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src={Object {}}
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="chrome://extensions/"
+                      target="blank"
+                    >
+                      Extensions
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  2
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab Quick add to the recipe 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="detailtab__details__container"
+      >
+        <div
+          className="detailtab__details"
+        >
+          <div
+            className="detailtab__details__title"
+          >
+            sadfsdf
+          </div>
+          <div>
+            Published by: 
+            JubJubtumTum
+            <div />
+          </div>
+          <div>
+            <div
+              className="table__row__tags"
+            />
+          </div>
+          <div
+            className="detailtab__launch"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Launch
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="detailtab__icons"
+          >
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+        </div>
+        <div
+          className="tab__col tab__col--normal"
+        >
+          <div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  1
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.facebook.com/"
+                      target="blank"
+                    >
+                      Facebook - Log In or Sign Up
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src={Object {}}
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="chrome://extensions/"
+                      target="blank"
+                    >
+                      Extensions
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  2
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab Remove first window 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="createtab__form"
+      >
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field active undefined && "
+          >
+            <input
+              autoComplete="off"
+              autoFocus={true}
+              id="recipeNameField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Recipe Name"
+              type="text"
+              value="Edited Name"
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Recipe Name
+            </label>
+          </div>
+        </div>
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field  undefined && "
+          >
+            <input
+              autoComplete="off"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Add tags"
+              type="text"
+              value=""
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Add tags
+            </label>
+          </div>
+        </div>
+        <div
+          className="tag-container"
+        >
+          <div
+            className="tag"
+          >
+            some tag
+            <div
+              className="tag__remove"
+              onClick={[Function]}
+            >
+              <img
+                src={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="createtab__bottom-row"
+        >
+          <div
+            className="createtab__form-row--submit"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Save
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="createtab__clear content"
+          >
+            <div
+              className="link"
+              onClick={[Function]}
+            >
+              Clear Fields
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+          <div
+            onClick={[Function]}
+          >
+            <img
+              className="createtab__refresh"
+              src={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="tab__col"
+        >
+          <div>
+            <div
+              className="createtab__new-window"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                 New window 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+            </div>
+            <div
+              className="tab__row"
+            >
+              <div
+                className="createtab__new-window-target"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                1
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-4-hidden-text-48"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="4"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/-0-0"
+              data-rbd-draggable-context-id="4"
+              data-rbd-draggable-id="https://www.google.com/-0-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-4-hidden-text-48"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="4"
+              data-rbd-drag-handle-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-0"
+              data-rbd-draggable-context-id="4"
+              data-rbd-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-4-hidden-text-48"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="4"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-0"
+              data-rbd-draggable-context-id="4"
+              data-rbd-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-4-hidden-text-48"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="4"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-0"
+              data-rbd-draggable-context-id="4"
+              data-rbd-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-4-hidden-text-48"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="4"
+              data-rbd-drag-handle-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-0"
+              data-rbd-draggable-context-id="4"
+              data-rbd-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-4-hidden-text-48"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="4"
+              data-rbd-drag-handle-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-0"
+              data-rbd-draggable-context-id="4"
+              data-rbd-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab Remove second tab 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="createtab__form"
+      >
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field active undefined && "
+          >
+            <input
+              autoComplete="off"
+              autoFocus={true}
+              id="recipeNameField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Recipe Name"
+              type="text"
+              value="Edited Name"
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Recipe Name
+            </label>
+          </div>
+        </div>
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field  undefined && "
+          >
+            <input
+              autoComplete="off"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Add tags"
+              type="text"
+              value=""
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Add tags
+            </label>
+          </div>
+        </div>
+        <div
+          className="tag-container"
+        >
+          <div
+            className="tag"
+          >
+            some tag
+            <div
+              className="tag__remove"
+              onClick={[Function]}
+            >
+              <img
+                src={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="createtab__bottom-row"
+        >
+          <div
+            className="createtab__form-row--submit"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Save
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="createtab__clear content"
+          >
+            <div
+              className="link"
+              onClick={[Function]}
+            >
+              Clear Fields
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+          <div
+            onClick={[Function]}
+          >
+            <img
+              className="createtab__refresh"
+              src={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="tab__col"
+        >
+          <div>
+            <div
+              className="createtab__new-window"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                 New window 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+            </div>
+            <div
+              className="tab__row"
+            >
+              <div
+                className="createtab__new-window-target"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                1
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-5-hidden-text-57"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="5"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/-0-0"
+              data-rbd-draggable-context-id="5"
+              data-rbd-draggable-id="https://www.google.com/-0-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-5-hidden-text-57"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="5"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-1-0"
+              data-rbd-draggable-context-id="5"
+              data-rbd-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-1-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-5-hidden-text-57"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="5"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-2-0"
+              data-rbd-draggable-context-id="5"
+              data-rbd-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-2-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-5-hidden-text-57"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="5"
+              data-rbd-drag-handle-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-3-0"
+              data-rbd-draggable-context-id="5"
+              data-rbd-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-3-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-5-hidden-text-57"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="5"
+              data-rbd-drag-handle-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-4-0"
+              data-rbd-draggable-context-id="5"
+              data-rbd-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-4-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab Save new version 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="detailtab__details__container"
+      >
+        <div
+          className="detailtab__details"
+        >
+          <div
+            className="detailtab__details__title"
+          >
+            sadfsdf
+          </div>
+          <div>
+            Published by: 
+            JubJubtumTum
+            <div />
+          </div>
+          <div>
+            <div
+              className="table__row__tags"
+            >
+              <div
+                className="tag-result"
+              >
+                some tag
+              </div>
+            </div>
+          </div>
+          <div
+            className="detailtab__launch"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Launch
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="detailtab__icons"
+          >
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+        </div>
+        <div
+          className="tab__col tab__col--normal"
+        >
+          <div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  1
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab Write a tag 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="createtab__form"
+      >
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field active undefined && "
+          >
+            <input
+              autoComplete="off"
+              autoFocus={true}
+              id="recipeNameField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Recipe Name"
+              type="text"
+              value="Edited Name"
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Recipe Name
+            </label>
+          </div>
+        </div>
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field active undefined && "
+          >
+            <input
+              autoComplete="off"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Add tags"
+              type="text"
+              value="some tag"
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Add tags
+            </label>
+          </div>
+        </div>
+        <div
+          className="tag-container"
+        />
+        <div
+          className="createtab__bottom-row"
+        >
+          <div
+            className="createtab__form-row--submit"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Save
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="createtab__clear content"
+          >
+            <div
+              className="link"
+              onClick={[Function]}
+            >
+              Clear Fields
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+          <div
+            onClick={[Function]}
+          >
+            <img
+              className="createtab__refresh"
+              src={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="tab__col"
+        >
+          <div>
+            <div
+              className="createtab__new-window"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                 New window 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+            </div>
+            <div
+              className="tab__row"
+            >
+              <div
+                className="createtab__new-window-target"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                1
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-2-hidden-text-24"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="2"
+              data-rbd-drag-handle-draggable-id="https://www.facebook.com/-0-0"
+              data-rbd-draggable-context-id="2"
+              data-rbd-draggable-id="https://www.facebook.com/-0-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.facebook.com/"
+                      target="blank"
+                    >
+                      Facebook - Log In or Sign Up
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-2-hidden-text-24"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="2"
+              data-rbd-drag-handle-draggable-id="chrome://extensions/-1-0"
+              data-rbd-draggable-context-id="2"
+              data-rbd-draggable-id="chrome://extensions/-1-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src={Object {}}
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="chrome://extensions/"
+                      target="blank"
+                    >
+                      Extensions
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                2
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-2-hidden-text-24"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="2"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/-0-1"
+              data-rbd-draggable-context-id="2"
+              data-rbd-draggable-id="https://www.google.com/-0-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-2-hidden-text-24"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="2"
+              data-rbd-drag-handle-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-1"
+              data-rbd-draggable-context-id="2"
+              data-rbd-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-2-hidden-text-24"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="2"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-1"
+              data-rbd-draggable-context-id="2"
+              data-rbd-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-2-hidden-text-24"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="2"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-1"
+              data-rbd-draggable-context-id="2"
+              data-rbd-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-2-hidden-text-24"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="2"
+              data-rbd-drag-handle-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-1"
+              data-rbd-draggable-context-id="2"
+              data-rbd-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-2-hidden-text-24"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="2"
+              data-rbd-drag-handle-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-1"
+              data-rbd-draggable-context-id="2"
+              data-rbd-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab initial 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="detailtab__details__container"
+      >
+        <div
+          className="detailtab__details"
+        >
+          <div
+            className="detailtab__details__title"
+          >
+            sadfsdf
+          </div>
+          <div>
+            Published by: 
+            JubJubtumTum
+            <div />
+          </div>
+          <div>
+            <div
+              className="table__row__tags"
+            />
+          </div>
+          <div
+            className="detailtab__launch"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Launch
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="detailtab__icons"
+          >
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
+                src={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+        </div>
+        <div
+          className="tab__col tab__col--normal"
+        >
+          <div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  1
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src={Object {}}
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="chrome://extensions/"
+                      target="blank"
+                    >
+                      Extensions
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div
+                className="createtab__window-row"
+              >
+                <div
+                  className="createtab__window-title"
+                >
+                  Window 
+                  2
+                   
+                </div>
+                <img
+                  className="createtab__window-icon"
+                  src={Object {}}
+                />
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots DetailTab save a tag 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      className="detailtab"
+    >
+      <div
+        className="createtab__form"
+      >
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field active undefined && "
+          >
+            <input
+              autoComplete="off"
+              autoFocus={true}
+              id="recipeNameField"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Recipe Name"
+              type="text"
+              value="Edited Name"
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Recipe Name
+            </label>
+          </div>
+        </div>
+        <div
+          className="createtab__form-row"
+        >
+          <div
+            className="field  undefined && "
+          >
+            <input
+              autoComplete="off"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Add tags"
+              type="text"
+              value=""
+            />
+            <label
+              className=""
+              htmlFor={1}
+            >
+              Add tags
+            </label>
+          </div>
+        </div>
+        <div
+          className="tag-container"
+        >
+          <div
+            className="tag"
+          >
+            some tag
+            <div
+              className="tag__remove"
+              onClick={[Function]}
+            >
+              <img
+                src={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="createtab__bottom-row"
+        >
+          <div
+            className="createtab__form-row--submit"
+          >
+            <div
+              className="button button--primary"
+              onClick={[Function]}
+            >
+              <p
+                className="button__text"
+              >
+                 
+                Save
+                 
+              </p>
+            </div>
+          </div>
+          <div
+            className="createtab__clear content"
+          >
+            <div
+              className="link"
+              onClick={[Function]}
+            >
+              Clear Fields
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="createtab__session"
+      >
+        <div
+          className="createtab__title-row"
+        >
+          <div
+            className="createtab__title"
+          >
+            Session Snapshot
+          </div>
+          <div
+            onClick={[Function]}
+          >
+            <img
+              className="createtab__refresh"
+              src={Object {}}
+            />
+          </div>
+        </div>
+        <div
+          className="tab__col"
+        >
+          <div>
+            <div
+              className="createtab__new-window"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                 New window 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+            </div>
+            <div
+              className="tab__row"
+            >
+              <div
+                className="createtab__new-window-target"
+              />
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                1
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-3-hidden-text-36"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="3"
+              data-rbd-drag-handle-draggable-id="https://www.facebook.com/-0-0"
+              data-rbd-draggable-context-id="3"
+              data-rbd-draggable-id="https://www.facebook.com/-0-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://static.xx.fbcdn.net/rsrc.php/yo/r/iRmz9lCMBD2.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.facebook.com/"
+                      target="blank"
+                    >
+                      Facebook - Log In or Sign Up
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-3-hidden-text-36"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="3"
+              data-rbd-drag-handle-draggable-id="chrome://extensions/-1-0"
+              data-rbd-draggable-context-id="3"
+              data-rbd-draggable-id="chrome://extensions/-1-0"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src={Object {}}
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="chrome://extensions/"
+                      target="blank"
+                    >
+                      Extensions
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              className="createtab__window-row"
+            >
+              <div
+                className="createtab__window-title"
+              >
+                Window 
+                2
+                 
+              </div>
+              <img
+                className="createtab__window-icon"
+                src={Object {}}
+              />
+              <div
+                className="createtab__window-remove-container"
+                onClick={[Function]}
+              >
+                <img
+                  className="createtab__window-remove"
+                  src={Object {}}
+                />
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-3-hidden-text-36"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="3"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/-0-1"
+              data-rbd-draggable-context-id="3"
+              data-rbd-draggable-id="https://www.google.com/-0-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/"
+                      target="blank"
+                    >
+                      Google
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-3-hidden-text-36"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="3"
+              data-rbd-drag-handle-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-1"
+              data-rbd-draggable-context-id="3"
+              data-rbd-draggable-id="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list-1-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+                      target="blank"
+                    >
+                      Accessibility - single list ⋅ Storybook
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-3-hidden-text-36"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="3"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-1"
+              data-rbd-draggable-context-id="3"
+              data-rbd-draggable-id="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8-2-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?q=react+beautiful+dnd+show+droppable+only+on+drag&rlz=1C5CHFA_enUS825US825&oq=react+beautiful+dnd+show+droppable+only+on+drag&aqs=chrome..69i57.8562j0j4&sourceid=chrome&ie=UTF-8"
+                      target="blank"
+                    >
+                      react beautiful dnd show droppable only on drag - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-3-hidden-text-36"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="3"
+              data-rbd-drag-handle-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-1"
+              data-rbd-draggable-context-id="3"
+              data-rbd-draggable-id="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug-3-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.google.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.google.com/search?rlz=1C5CHFA_enUS825US825&sxsrf=ALeKk01XyUz8ReQZGKNIc2geksYNnliZzg%3A1584760672553&ei=YId1Xp2kIdetytMPn9GkwAQ&q=display+none+to+display+flex+animation&oq=display+none+to+dis&gs_l=psy-ab.3.1.0l4j0i22i30l6.2858.4161..6570...1.2..0.301.1731.0j3j4j1......0....1..gws-wiz.......0i71j0i67j33i22i29i30.ClXu2dfg0ug"
+                      target="blank"
+                    >
+                      display none to display flex animation - Google Search
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-3-hidden-text-36"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="3"
+              data-rbd-drag-handle-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-1"
+              data-rbd-draggable-context-id="3"
+              data-rbd-draggable-id="https://www.halleonard.com/mylibrary/product/redeem-4-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://www.halleonard.com/favicon.ico"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://www.halleonard.com/mylibrary/product/redeem"
+                      target="blank"
+                    >
+                      https://www.halleonard.com/mylibrary/product/redeem
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-describedby="rbd-hidden-text-3-hidden-text-36"
+              className="tab__row"
+              data-rbd-drag-handle-context-id="3"
+              data-rbd-drag-handle-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-1"
+              data-rbd-draggable-context-id="3"
+              data-rbd-draggable-id="https://dragonruby.itch.io/dragonruby-gtk-5-1"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "transform": null,
+                  "transition": null,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="tab__row"
+              >
+                <div
+                  className="tab__remove-container"
+                  onClick={[Function]}
+                >
+                  <img
+                    className="tab__remove"
+                    src={Object {}}
+                  />
+                </div>
+                <div
+                  className="tab__body"
+                >
+                  <img
+                    className="tab__fav"
+                    src="https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png"
+                  />
+                  <p
+                    className="tab__title"
+                  >
+                    <a
+                      className="tab__title"
+                      href="https://dragonruby.itch.io/dragonruby-gtk"
+                      target="blank"
+                    >
+                      DragonRuby Game Toolkit by DragonRuby
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Header initial 1`] = `
 <div
   className="header"

@@ -2,9 +2,6 @@ const path = require('path');
 
 // Export a function. Accept the base config as the only param.
 
-var remotedev = require('remotedev-server')
-remotedev({ hostname: 'localhost', port: 6888 })
-
 module.exports = async ({ config, mode }) => {
   // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
   // You can change the configuration based on that.

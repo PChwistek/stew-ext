@@ -8,13 +8,11 @@ class Manager {
 
   async getAuth() {
     const saved = await browser.storage.local.get('stew_auth')
-    console.log('saved', saved)
     return saved.stew_auth || { jwt: null, username: null, lastUpdated: null }
   }
 
   async setAuth({ jwt, username, lastUpdated}) {
     const stew_auth =  { jwt, username, lastUpdated }
-    console.log('stew_auth set', stew_auth)
     await browser.storage.local.set({ stew_auth })
     this.getAuth()
   }
@@ -77,7 +75,6 @@ class Manager {
   async updateRecipesFromServer(newRecipes) {
     browser.storage.local.set({ stew: { recipes: newRecipes } })
       .then(() => {
-        // console.log('updated from server')
     })
   }
 
@@ -90,7 +87,6 @@ class Manager {
   }
 
   async searchRecipes(searchTerm, { sortedBy, filterList }) {
-    console.log(sortedBy, filterList)
     const allRecipes = await this.fetchAllRecipes()
     var search = new JsSearch.Search('_id')
     search.tokenizer = new JsSearch.StemmingTokenizer( stemmer, new JsSearch.SimpleTokenizer());
