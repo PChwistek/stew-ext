@@ -13,8 +13,8 @@ const withProvider = (story) => (
 storiesOf('Menu', module)
   .addDecorator(withProvider)
   .add('initial', () => (
-    <Menu />
+    <Menu setOpen={ () => {} } open={ false } />
   ))
   .add('showing', () => (
-    <Menu open />
+    <Menu open setOpen={ () => {} } />
   ))

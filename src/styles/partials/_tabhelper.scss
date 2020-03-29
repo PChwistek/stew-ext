@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: 210px;
+    width: 250px;
     height: 100%;
     background: $white;
     border-style: solid;
@@ -51,7 +51,7 @@
     padding: 5px;
     margin: 5px;
     cursor: pointer;
-    height: 15px;
+    height: 1.25em;
     width: 100px;
     font-weight: 600;
     text-align: center;
@@ -67,6 +67,11 @@
     &:hover {
       margin-top: 1px;
     }
+  }
+
+  &__tab-container {
+    display: flex;
+    justify-content: center;
   }
 
 }

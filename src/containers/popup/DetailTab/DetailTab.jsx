@@ -15,12 +15,11 @@ export default function DetailTab(props) {
   const [showMergeHelper, setShowMergeHelper] = useState(false)
 
   function checkTabPopup() {
-    const { tabs , session, isEditing } = props
-    if(tabs.isNew || isEditing ) {
+    const { tabs , session, isEditing, currentTab } = props
+    if(tabs.isNew || isEditing || !currentTab || Object.keys(currentTab).length === 0) {
       setShowTabHelper(false) 
       return
     }
-    const { currentTab } = tabs
     for (let index = 0; index < session.length; index++) {
       for (let tabIndex = 0; tabIndex < session[index].tabs.length; tabIndex++) {
         const tab = session[index].tabs[tabIndex]
@@ -51,10 +50,6 @@ export default function DetailTab(props) {
   }, [props.isEditing, props.session, props.liveSession])
 
   useEffect(() => {
-    if(isEditing) {
-      setShowTabHelper(false)
-      return
-    }
     if(props.visible) {
       const timer = setTimeout(() => {
         checkTabPopup()
@@ -151,7 +146,7 @@ export default function DetailTab(props) {
             title={ 'Quick Add' }
             tooltipText={ 'Allows you to add the currently active tab.' }
           >
-            <div>
+            <div className={ 'tabhelper__tab-container'}>
               <a href={ props.currentTab.url } target="blank">
                 <div className='tab__body'>
                   <img src={ props.currentTab.favIconUrl || chrome } className='tab__fav' />

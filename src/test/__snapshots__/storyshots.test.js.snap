@@ -102,6 +102,91 @@ exports[`Storyshots Checkbox unchecked 1`] = `
 </div>
 `;
 
+exports[`Storyshots Confirm Modal initial 1`] = `null`;
+
+exports[`Storyshots Confirm Modal showing 1`] = `
+<div
+  className="modal"
+>
+  <div
+    className="modal__container"
+  >
+    <div
+      className="modal__exit"
+      onClick={[Function]}
+    />
+    <h2>
+       
+      Test title. Are you sure?
+       
+    </h2>
+    <div
+      className="confirm-modal__buttons"
+    >
+      <div
+        className="confirm-modal__button"
+      >
+        <div
+          className="button button--secondary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Yes
+             
+          </p>
+        </div>
+      </div>
+      <div
+        className="confirm-modal__button"
+      >
+        <div
+          className="button button--secondary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            No
+             
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Header initial 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="header header__content"
+  >
+    <div>
+      <img
+        className="header__logo"
+        src={Object {}}
+      />
+    </div>
+    <div>
+      <img
+        className="header__more"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+  </div>
+  <hr
+    className="divider"
+  />
+</div>
+`;
+
 exports[`Storyshots Login initial 1`] = `
 <div>
   <div
@@ -201,6 +286,54 @@ exports[`Storyshots Login initial 1`] = `
           target="blank"
         >
            Register. 
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Menu initial 1`] = `null`;
+
+exports[`Storyshots Menu showing 1`] = `
+<div
+  className="menu"
+>
+  <div
+    className="menu__blank-zone"
+    onClick={[Function]}
+  />
+  <div
+    className="menu__body"
+  >
+    <div
+      className="menu__body__content"
+    >
+      <div>
+        <img
+          className="menu__body__logo"
+          src={Object {}}
+        />
+      </div>
+      version 0.5
+      <div>
+        (imagine other settings options here...)
+      </div>
+      <div
+        onClick={[Function]}
+      >
+        <a>
+           Logout 
+        </a>
+      </div>
+      <div />
+      <div />
+      <div>
+        Icons made by Freepik from 
+        <a
+          href="www.flaticon.com"
+        >
+           www.flaticon.com 
         </a>
       </div>
     </div>
@@ -322,6 +455,2843 @@ exports[`Storyshots Popup initial 1`] = `
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Search initial 1`] = `
+<div
+  className="search"
+>
+  <div
+    className="search__content"
+  >
+    <div
+      className="search__field"
+    >
+      <div
+        className="search-field  undefined && "
+      >
+        <div
+          className="search-field__image-container"
+        >
+          <img
+            className="search-field__image"
+            src={Object {}}
+          />
+        </div>
+        <input
+          autoComplete="off"
+          autoFocus={true}
+          id={1}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          placeholder="Search for recipes..."
+          type="text"
+          value=""
+        />
+        <label
+          className=""
+          htmlFor={1}
+        >
+          
+        </label>
+      </div>
+    </div>
+    <div
+      className="search__plus"
+      onClick={[Function]}
+    >
+      <img
+        className="search__image"
+        src={Object {}}
+      />
+    </div>
+  </div>
+  <hr
+    className="divider--heavy"
+  />
+</div>
+`;
+
+exports[`Storyshots Search with terms 1`] = `
+<div
+  className="search"
+>
+  <div
+    className="search__content"
+  >
+    <div
+      className="search__field"
+    >
+      <div
+        className="search-field active undefined && "
+      >
+        <div
+          className="search-field__image-container"
+        >
+          <img
+            className="search-field__image"
+            src={Object {}}
+          />
+        </div>
+        <input
+          autoComplete="off"
+          autoFocus={true}
+          id={1}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          placeholder="Search for recipes..."
+          type="text"
+          value="something"
+        />
+        <label
+          className=""
+          htmlFor={1}
+        >
+          
+        </label>
+      </div>
+    </div>
+    <div
+      className="search__plus"
+      onClick={[Function]}
+    >
+      <img
+        className="search__image"
+        src={Object {}}
+      />
+    </div>
+  </div>
+  <hr
+    className="divider--heavy"
+  />
+</div>
+`;
+
+exports[`Storyshots SlideIn initial 1`] = `null`;
+
+exports[`Storyshots SlideIn visible 1`] = `
+<div
+  className="slide-in"
+>
+  <div
+    className="slide-in-content slide-in-content__body"
+  >
+    <div>
+      <img
+        className="slide-in-button"
+        onClick={[Function]}
+        src={Object {}}
+      />
+    </div>
+    <div
+      style={
+        Object {
+          "padding": "50px",
+        }
+      }
+    >
+       test stuff... 
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table A little search 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      0 results for 'test'
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            All
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__no-results"
+    >
+      No results :(
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table Add a favorite 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      4 results for ''
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            All
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__row table__row--selected"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          sadfsdf
+        </div>
+        <div
+          className="table__row__attributes "
+        >
+          <div
+            className="tooltip"
+          >
+            <img
+              className="table__row__attribute-icon"
+              src={Object {}}
+            />
+            <span
+              className="tooltiptext"
+            >
+               
+              Favorite
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            7
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          asdf
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            6
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          another test
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          test2
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table Add some results 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      4 results for ''
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            All
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__row table__row--selected"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          sadfsdf
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            7
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          asdf
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            6
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          another test
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          test2
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table Examine next row 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      4 results for ''
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            All
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          sadfsdf
+        </div>
+        <div
+          className="table__row__attributes "
+        >
+          <div
+            className="tooltip"
+          >
+            <img
+              className="table__row__attribute-icon"
+              src={Object {}}
+            />
+            <span
+              className="tooltiptext"
+            >
+               
+              Favorite
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            7
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row table__row--selected"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          asdf
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            6
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          another test
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          test2
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table Examine previous row 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      4 results for ''
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            All
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__row table__row--selected"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          sadfsdf
+        </div>
+        <div
+          className="table__row__attributes "
+        >
+          <div
+            className="tooltip"
+          >
+            <img
+              className="table__row__attribute-icon"
+              src={Object {}}
+            />
+            <span
+              className="tooltiptext"
+            >
+               
+              Favorite
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            7
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          asdf
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            6
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          another test
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          test2
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table Examine previous row again 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      4 results for ''
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            All
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__row table__row--selected"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          sadfsdf
+        </div>
+        <div
+          className="table__row__attributes "
+        >
+          <div
+            className="tooltip"
+          >
+            <img
+              className="table__row__attribute-icon"
+              src={Object {}}
+            />
+            <span
+              className="tooltiptext"
+            >
+               
+              Favorite
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            7
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          asdf
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        9 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            3
+             of 
+            6
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="https://www.google.com/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://www.google.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Google
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://react-beautiful-dnd.netlify.com/?path=/story/accessibility--single-list"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src="https://react-beautiful-dnd.netlify.com/favicon.ico"
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Accessibility - single list ⋅ Storybook
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          another test
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table__row"
+      onClick={[Function]}
+      tabIndex={-1}
+    >
+      <div
+        className="table__row__top"
+      >
+        <div
+          className="table__row__title "
+          onClick={[Function]}
+        >
+          test2
+        </div>
+        <div
+          className="table__row__attributes "
+        />
+      </div>
+      <div
+        className="table__row__author "
+      >
+        JubJubtumTum
+         shared 
+        7 days ago
+      </div>
+      <div
+        className="table__row__tags"
+      >
+        <div
+          className="preview-tags"
+        >
+          No tags
+        </div>
+      </div>
+      <div>
+        <div
+          className="preview-tabs-container"
+        >
+          <div
+            className="preview-text"
+          >
+             Preview (
+            1
+             of 
+            1
+            ) 
+          </div>
+          <div
+            className="preview-tabs"
+          >
+            <a
+              href="chrome://extensions/"
+              target="blank"
+            >
+              <div
+                className="tab__body tab__body--preview"
+              >
+                <img
+                  className="tab__fav"
+                  src={Object {}}
+                />
+                <p
+                  className="tab__title"
+                >
+                   
+                  Extensions
+                   
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="table__row__launch"
+      >
+        <div
+          className="button button--primary"
+          onClick={[Function]}
+        >
+          <p
+            className="button__text"
+          >
+             
+            Launch
+             
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table Search for all 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      0 results for ''
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            All
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__no-results"
+    >
+      Click on the plus icon in the top-right to create your first recipe.
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table Search for favorites 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      0 results for ''
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            Favorites
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__no-results"
+    >
+      No results :(
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Table initial 1`] = `
+<div>
+  <div
+    className="table__sort-bar"
+  >
+    <div
+      className="table__sort-bar-title"
+    >
+      0 results for ''
+    </div>
+    <div
+      className="table__sort-bar-dropdown-container"
+    >
+      <div
+        className="dropdown"
+      >
+        <div
+          className="dropdown-toggler"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              className="dropdown-toggler__all-icon"
+              src={Object {}}
+            />
+          </div>
+          <div>
+            All
+          </div>
+          <div>
+            <img
+              className="dropdown-toggler__icon"
+              src={Object {}}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="table__container"
+  >
+    <div
+      className="table__no-results"
+    >
+      Click on the plus icon in the top-right to create your first recipe.
     </div>
   </div>
 </div>
