@@ -463,6 +463,36 @@ exports[`Storyshots Textfield empty 1`] = `
 </div>
 `;
 
+exports[`Storyshots Textfield has error 1`] = `
+<div
+  style={
+    Object {
+      "padding": "40px",
+    }
+  }
+>
+  <div
+    className="field active undefined && error active"
+  >
+    <input
+      autoComplete="off"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyUp={[Function]}
+      placeholder="Label"
+      value="test"
+    />
+    <label
+      className="error"
+      htmlFor={1}
+    >
+      Some error
+    </label>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Textfield some value 1`] = `
 <div
   style={

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import SessionViewDraggable from './SessionViewDraggable'
 import SessionViewNormal from './SessionViewNormal'
-
 import reload from 'Assets/reload.png'
 
 export default function SessionView(props) {
@@ -57,4 +56,11 @@ export default function SessionView(props) {
       </div>
     </div>
   )
+}
+
+SessionView.propTypes = {
+  removeWindowFromSnap: PropTypes.func.isRequired,
+  removeTabFromSnap: PropTypes.func.isRequired,
+  canEdit: PropTypes.bool.isRequired,
+  getCurrentTabs: PropTypes.func.isRequired
 }
