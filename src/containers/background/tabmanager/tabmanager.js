@@ -2,23 +2,26 @@ import browser from 'webextension-polyfill'
 import * as JsSearch from 'js-search'
 import { stemmer } from 'porter-stemmer'
 
-class Manager {
+export class Manager {
 
-  constructor() {}
-
-  async getAuth() {
-    const saved = await browser.storage.local.get('stew_auth')
-    return saved.stew_auth || { jwt: null, username: null, lastUpdated: null }
+  constructor(storageKey, browserAPI) {
+    this.storageKey = storageKey;
+    this.browserAPI = browserAPI || browser
   }
 
-  async setAuth({ jwt, username, lastUpdated}) {
+  async getAuth() {
+    const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_auth`)
+    return saved[`${this.storageKey}_auth`] || { jwt: null, username: null, lastUpdated: null }
+  }
+
+  async setAuth({ jwt, username, lastUpdated }) {
     const stew_auth =  { jwt, username, lastUpdated }
-    await browser.storage.local.set({ stew_auth })
-    this.getAuth()
+    await this.browserAPI.storage.local.set({ [`${this.storageKey}_auth`]: stew_auth })
+    return await this.getAuth()
   }
 
   async getSession(idOfLastActiveWindow) {
-    let windows = await browser.windows.getAll()
+    let windows = await this.browserAPI.windows.getAll()
     windows = windows.filter(win => win.type === 'normal')
     const indexOfwindow = windows.findIndex(win => win.id === idOfLastActiveWindow)
     
@@ -29,7 +32,7 @@ class Manager {
     var i = 0
     for (i = 0; i < windows.length; i++) {
       const index = i
-      const windowTabs = await browser.tabs.query({ windowId: windows[i].id})
+      const windowTabs = await this.browserAPI.tabs.query({ windowId: windows[i].id})
       const win = {
         index: index,
         tabs: windowTabs
@@ -42,7 +45,7 @@ class Manager {
 
   nukeAndReplace(desiredTabs) {
     desiredTabs.map( (recipeWindow, index) => {
-      browser.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
+      this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
     })
   }
 
@@ -51,7 +54,7 @@ class Manager {
     recipes = recipes || []
     recipes.push(recipe)
 
-    browser.storage.local.set({ stew: { recipes } })
+    this.browserAPI.storage.local.set({ [`${this.storageKey}`]: { recipes } })
 
     return recipes
   }
@@ -60,7 +63,7 @@ class Manager {
     let recipes = await this.fetchAllRecipes()
     const theIndex = recipes.findIndex(existingRecipe => existingRecipe._id === recipe._id)
     recipes[theIndex] = recipe
-    await browser.storage.local.set({ stew: { recipes } })
+    await this.browserAPI.storage.local.set({ [`${this.storageKey}`]: { recipes } })
     return recipes
   }
 
@@ -68,18 +71,18 @@ class Manager {
     let recipes = await this.fetchAllRecipes()
     const theIndex = recipes.findIndex(existingRecipe => existingRecipe._id === recipe._id)
     recipes.splice(theIndex, 1)
-    await browser.storage.local.set({ stew: { recipes } })
+    await this.browserAPI.storage.local.set({ [`${this.storageKey}`]: { recipes } })
     return recipes  
   }
 
   async updateRecipesFromServer(newRecipes) {
-    browser.storage.local.set({ stew: { recipes: newRecipes } })
+    this.browserAPI.storage.local.set({ [`${this.storageKey}`]: { recipes: newRecipes } })
       .then(() => {
     })
   }
 
   async fetchAllRecipes() {
-    const theResult = await browser.storage.local.get('stew')
+    const theResult = await this.browserAPI.storage.local.get(this.storageKey)
     if(theResult.stew) {
       return theResult.stew.recipes 
     }
@@ -109,7 +112,11 @@ class Manager {
     return results
   }
 
+  async clear() {
+    await this.browserAPI.storage.local.clear()
+  }
+
 }
 
-const manager = new Manager()
+const manager = new Manager('stew')
 export default manager

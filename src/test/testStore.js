@@ -1,15 +1,12 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'remote-redux-devtools' 
-import logger from 'redux-logger'
 import rootReducer from 'Background/reducers'
 
 // create aliases that are actions that only run in bg
-const devMiddleware = [thunk, logger]
+const devMiddleware = [thunk]
 
 let store = {}
-const composeEnhancers= composeWithDevTools({ port: 6888, realtime: true })
-const enhancers = composeEnhancers(applyMiddleware(...devMiddleware))
+const enhancers = applyMiddleware(...devMiddleware)
 store = createStore(
   rootReducer,
   {},
