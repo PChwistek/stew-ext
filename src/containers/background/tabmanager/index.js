@@ -1,1 +1,1 @@
-export { default } from './TabManager'
+export { default, Manager } from './TabManager'

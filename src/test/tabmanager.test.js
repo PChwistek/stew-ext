@@ -1,4 +1,4 @@
-import { Manager } from '../containers/background/TabManager/TabManager'
+import { Manager } from '../containers/background/TabManager'
 import { newRecipe } from './stories/testSearchState'
 
 import browser from './mocks/browser'
