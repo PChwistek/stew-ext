@@ -38,7 +38,8 @@ module.exports = {
       Assets: path.resolve(__dirname, './src/assets'),
       Background: path.resolve(__dirname, './src/containers/background'),
       Common: path.resolve(__dirname, './src/containers/common-ui'),
-      Popup: path.resolve(__dirname, './src/containers/popup')
+      Popup: path.resolve(__dirname, './src/containers/popup'),
+      Containers: path.resolve(__dirname, './src/containers')
     }
   }
 }

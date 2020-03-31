@@ -1,16 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import Tab from '../Tab'
+import windowSketch from 'Assets/window-sketch.png'
+import removeRed from 'Assets/remove-red.png'
 
-export default function(props) {
+export default function SessionViewDraggable(props) {
 
   return (
-    <DragDropContext onDragEnd={ props.onDragEnd } onBeforeDragStart={ props.beforeDragStart }>
+    <DragDropContext onDragEnd={ props.onDragEnd } >
       <Droppable droppableId={ 'new' }>
         {(provided) => (
-          <div  ref={ provided.innerRef}>
+          <div  ref={ provided.innerRef }>
               <div className='createtab__new-window'>     
-                <div className='createtab__window-title'>New window </div>
-                <img src={ '../../../../../assets/window-sketch.png' } className='createtab__window-icon' />
+                <div className='createtab__window-title'> New window </div>
+                <img src={ windowSketch } className='createtab__window-icon' />
               </div>
               <div className='tab__row'>
                 <div className='createtab__new-window-target' />
@@ -26,11 +30,11 @@ export default function(props) {
             <div key={ winIndex }  ref={provided.innerRef}>
               <div className='createtab__window-row'>     
                 <div className='createtab__window-title'>Window { winIndex + 1 } </div>
-                  <img src={ '../../../../../assets/window-sketch.png' } className='createtab__window-icon' />
+                  <img src={ windowSketch } className='createtab__window-icon' />
                   {
                     props.canEdit && (
                       <div className='createtab__window-remove-container' onClick={ () => props.removeWindowFromSnap(winIndex) }> 
-                        <img src={ '../../../../../assets/remove-red.png' } className='createtab__window-remove' />
+                        <img src={ removeRed } className='createtab__window-remove' />
                       </div>    
                     )
                   }
@@ -50,19 +54,14 @@ export default function(props) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                      >
-                        {
-                          props.canEdit && (
-                            <div key={ 'remove' + tabIndex} className='tab__remove-container' onClick={ () => props.removeTabFromSnap(winIndex, tabIndex) }> 
-                              <img src={ '../../../../../assets/remove-red.png' } className='tab__remove' />
-                            </div>
-                          )
-                        }
-                        <div className='tab__body'>
-                          <img src={ tab.favIconUrl || '../../../../../assets/chrome.png' } className='tab__fav' />
-                            <p className='tab__title'>
-                              { tab.title }          
-                            </p>
-                        </div>
+                      <Tab
+                        key={ 'winIndex' + winIndex + 'tab' + tabIndex }
+                        tab={ tab }
+                        index={ tabIndex }
+                        removeTabFromSnap={ props.removeTabFromSnap }
+                        canEdit={ props.canEdit }
+                        winIndex={ winIndex }
+                      />
                     </div>
                 )}
                 </Draggable>
@@ -75,4 +74,11 @@ export default function(props) {
     }
   </DragDropContext>
   )
+}
+
+SessionViewDraggable.propTypes = {
+  onDragEnd: PropTypes.func.isRequired,
+  removeTabFromSnap: PropTypes.func.isRequired,
+  removeWindowFromSnap: PropTypes.func.isRequired,
+  canEdit: PropTypes.bool.isRequired
 }

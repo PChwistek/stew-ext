@@ -7,15 +7,14 @@ import {
   AUTH_LOGOUT_ALIAS,
   TABS_RESET,
   SEARCH_RESET,
-} from '../../actionTypes'
-import manager from '../TabManager'
-import getServerHostname from '../../getServerHostName'
+} from 'Containers/actionTypes'
+import { defaultManager as manager} from '../tabmanager'
+import getServerHostname from 'Containers/getServerHostName'
 import { syncRecipesWithCloud } from './popupAliases'
 
 const serverUrl = getServerHostname()
 
 export const handle401 = (error) => {
-  console.log('error', error)
   if(error.response.status === 401) {
     return dispatch => { 
       dispatch({ type: AUTH_INVALID })
@@ -65,7 +64,6 @@ export const login = (originalAction) => {
       })
       .catch(err => {
         let errorMsg = ''
-        console.log('error', err)
         if(err.message == 'Network Error') {
           errorMsg = 'Trouble connecting to server.'
         } else {

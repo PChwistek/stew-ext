@@ -1,8 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Popup from 'Popup/Popup.container'
+import Login from 'Popup/Login'
 import TestProvider from './TestProvider'
-
 import store from '../testStore'
 
 const withProvider = (story) => (
@@ -11,9 +10,8 @@ const withProvider = (story) => (
   </TestProvider>
 )
 
-storiesOf('Popup', module)
+storiesOf('Login', module)
   .addDecorator(withProvider)
   .add('initial', () => (
-    <Popup 
-    />
+    <Login />
   ))

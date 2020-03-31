@@ -9,7 +9,7 @@ import {
   SEARCH_RESET,
   SEARCH_SETSORTBY_ALIAS,
   SEARCH_SETFAVORITE_ALIAS
-} from '../../actionTypes'
+} from 'Containers/actionTypes'
 
 const initialState = {
   searchTerms: '',

@@ -8,4 +8,6 @@ stew_dist/
 coverage/
 hermitly.zip
 src/test/__snapshots__/
+web-ext-artifacts
+web-ext-artifacts/
 *.zip

@@ -1,7 +1,9 @@
 import React, { useState, createRef } from 'react'
+import PropTypes from 'prop-types'
 import TextField from 'Common/TextField'
 import Button from 'Common/Button'
 import stewLogo from 'Assets/stew-logo.png'
+
 
 export default function Login(props) {
 
@@ -91,4 +93,11 @@ export default function Login(props) {
       </div>
     </div>
   )
+}
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  isPending: PropTypes.bool,
+  loggedIn: PropTypes.bool.isRequired
 }

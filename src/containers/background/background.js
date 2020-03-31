@@ -1,7 +1,7 @@
 import store from './store'
 import browser from 'webextension-polyfill'
 import openPopup from './openPopup'
-import { POPUP_OPENED, POPUP_SET_WINDOWID, TABS_SETCURRENTWINDOW, TABS_SETCURRENTTAB, TABS_SNAP } from '../actionTypes'
+import { POPUP_OPENED, POPUP_SET_WINDOWID, TABS_SETCURRENTWINDOW, TABS_SETCURRENTTAB, TABS_SNAP } from 'Containers/actionTypes'
 
 let popupWindowId = -1
 let currentTabId = -1

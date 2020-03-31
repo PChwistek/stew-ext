@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import SessionViewDraggable from './SessionViewDraggable'
 import SessionViewNormal from './SessionViewNormal'
+import reload from 'Assets/reload.png'
 
 export default function SessionView(props) {
 
@@ -28,7 +29,7 @@ export default function SessionView(props) {
         {
           canEdit && (
             <div onClick={ getCurrentTabs }>
-              <img src={ '../../../assets/reload.png' } className={ 'createtab__refresh' }/>
+              <img src={ reload } className={ 'createtab__refresh' }/>
             </div>
           )
         }
@@ -55,4 +56,11 @@ export default function SessionView(props) {
       </div>
     </div>
   )
+}
+
+SessionView.propTypes = {
+  removeWindowFromSnap: PropTypes.func.isRequired,
+  removeTabFromSnap: PropTypes.func.isRequired,
+  canEdit: PropTypes.bool.isRequired,
+  getCurrentTabs: PropTypes.func.isRequired
 }

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import getServerHostname from '../../getServerHostName'
+import getServerHostname from 'Containers/getServerHostName'
 
 import { 
   SEARCH_SETRESULTS_SUCCESS,
@@ -10,9 +10,9 @@ import {
   SEARCH_SETFAVORITE_SYNC_SUCCESS,
   SEARCH_SETFAVORITE_ALIAS,
   SEARCH_SETRESULTS_SYNC_FAILED,
-} from '../../actionTypes'
+} from 'Containers/actionTypes'
 
-import manager from '../TabManager'
+import { defaultManager as manager } from '../tabmanager'
 
 const serverUrl = getServerHostname()
 

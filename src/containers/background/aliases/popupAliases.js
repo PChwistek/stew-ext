@@ -1,9 +1,9 @@
 import axios from 'axios'
-import manager from '../TabManager'
+import { defaultManager as manager } from '../tabmanager'
 import { getInitialResults } from './searchAliases'
 import { addEditListeners, removeEditListeners, addInAppListeners, removeInAppListeners } from '../background'
 import { handle401 }from './authAliases'
-import getServerHostname from '../../getServerHostName'
+import getServerHostname from 'Containers/getServerHostName'
 
 import { 
   AUTH_CLEAR_ERROR,
@@ -13,7 +13,7 @@ import {
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_TOGGLEEDITING_ALIAS,
   AUTH_SET_FROM_STORE
-} from '../../actionTypes'
+} from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
 
@@ -32,7 +32,6 @@ export const syncRecipesWithCloud = (isForced) => {
       .then(res => {
         const { data } = res
         if(!data.upToDate || isForced) {
-          console.log('data', data)
           manager.updateRecipesFromServer(data.recipes)
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
           dispatch({ type: AUTH_UPDATEDSYNC, payload: { lastUpdated: data.lastUpdated }})
@@ -42,7 +41,6 @@ export const syncRecipesWithCloud = (isForced) => {
         }
       })
       .catch(err => {
-        console.log(err)
         dispatch(handle401(err))
         dispatch({ type: POPUP_SYNCRECIPES_FAILED })
       })
@@ -56,9 +54,7 @@ export const popupSync = (originalAction) => {
     const auth = getState().auth
 
     if(!auth || !auth.jwt) {
-      console.log('from store')
       const { jwt, username, lastUpdated} = await manager.getAuth()
-      console.log('jwt', jwt)
       if(jwt !== null) {
         dispatch({
           type: AUTH_SET_FROM_STORE,
@@ -90,7 +86,6 @@ export const toggleEditAlias = (originalAction) => {
   return async (dispatch) => {
     
     if(forced) {
-      console.log('adding edit listeners')
       addEditListeners()
     } else {
       removeEditListeners()

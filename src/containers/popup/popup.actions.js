@@ -27,9 +27,7 @@ import {
   TABS_SETSNAP_EXISTING,
   TABS_QUICKADD,
   TABS_MERGE_SESSION,
-  TABS_MERGE_POPUP_CLOSED,
   TABS_MOVE_TAB,
-  TABS_UPDATE_MOVE_TAB
 } from '../actionTypes'
 
 import { removeDocumentListeners } from './utils'
@@ -58,14 +56,6 @@ export function launchRecipe(recipe) {
     }
   }
 }
-
-// export function mergePopupClosed() {
-//   return {
-//     type: TABS_MERGE_POPUP_CLOSED,
-//     payload: {}
-//   }
-// }
-
 
 export function setSearchTerms(terms) {
   return {

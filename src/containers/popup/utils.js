@@ -1,11 +1,15 @@
 import date from 'date-and-time'
 
+import fire from 'Assets/fire.png'
+import star from 'Assets/star1.png'
+
+
 export function getSrc(attribute) {
   switch(attribute){
     case 'Popular': 
-      return '../../../assets/fire.png'
+      return fire
     case 'Favorite':
-      return '../../../assets/star1.png'
+      return star
   }
 }
 

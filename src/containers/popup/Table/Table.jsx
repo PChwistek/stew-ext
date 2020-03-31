@@ -1,11 +1,11 @@
 import React, { createRef } from 'react'
+import PropTypes from 'prop-types'
 import SortBar from './SortBar'
 import Button from '../../common-ui/Button'
 import { getSrc } from '../utils'
 import PreviewTabs from './PreviewTabs'
 import NoTags from './NoTags'
 import { getDaysFrom } from '../utils'
-
 
 export default function Table(props) {
   const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy, loggedIn } = props
@@ -38,6 +38,9 @@ export default function Table(props) {
       onRecipeNameClicked(selectedRow)
     }
   }
+
+  // document.onkeydown = checkKey
+
   return (
     <div>
       <SortBar title={ 'All' } numResults={ `${results.length}` } terms={ searchTerms } setSortBy={ setSortBy } sortedBy={ sortedBy } />
@@ -90,4 +93,13 @@ export default function Table(props) {
       </div>
     </div>
   )
+}
+
+Table.propTypes = {
+  slideOutVisible: PropTypes.bool.isRequired,
+  selectRow: PropTypes.func.isRequired,
+  launchRecipe: PropTypes.func.isRequired,
+  selectNextRow: PropTypes.func.isRequired,
+  selectPreviousRow: PropTypes.func.isRequired,
+  setSortBy: PropTypes.func.isRequired
 }

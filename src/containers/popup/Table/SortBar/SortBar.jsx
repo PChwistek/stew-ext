@@ -2,10 +2,13 @@ import React, { useState } from "react"
 import PropTypes from 'prop-types'
 import Dropdown from '../Dropdown'
 
+import planet from 'Assets/planet.png'
+import star2 from 'Assets/star2.png'
+
 const options = [
   {
     text: 'All',
-    src: '../../../../assets/planet.png',
+    src: planet,
     value: 'all'
   },
   // {
@@ -19,7 +22,7 @@ const options = [
   // },
   {
     text: 'Favorites',
-    src: '../../../../assets/star2.png',
+    src: star2,
     value: 'favorites'
   },
   // {

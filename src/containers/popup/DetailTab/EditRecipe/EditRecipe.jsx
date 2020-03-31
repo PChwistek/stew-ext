@@ -1,7 +1,9 @@
 import React, { createRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import TextField from '../../../common-ui/TextField'
-import Button from '../../../common-ui/Button'
+import TextField from 'Common/TextField'
+import Button from 'Common/Button'
+
+import removeWhite from 'Assets/remove-white.png'
 
 export default function EditRecipe(props) {
 
@@ -116,7 +118,7 @@ export default function EditRecipe(props) {
             <div key={ tag } className={ 'tag' }>
               { tag }
               <div className={ 'tag__remove' } onClick={ () => removeRecipeTag(tag)}>
-                <img src={'../../../assets/remove-white.png'} />
+                <img src={ removeWhite } />
               </div>
             </div>
           )
@@ -149,11 +151,10 @@ export default function EditRecipe(props) {
 
 EditRecipe.propTypes = {
   tabs: PropTypes.object,
-  setRecipeName: PropTypes.func,
-  setRecipeTag: PropTypes.func,
-  addRecipeTag: PropTypes.func,
-  removeRecipeTag: PropTypes.func, 
-  clearFields: PropTypes.func,
-  createRecipe: PropTypes.func, 
-  onCloseClick: PropTypes.func,
+  setRecipeName: PropTypes.func.isRequired,
+  setRecipeTag: PropTypes.func.isRequired,
+  addRecipeTag: PropTypes.func.isRequired,
+  removeRecipeTag: PropTypes.func.isRequired, 
+  clearFields: PropTypes.func.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
 }

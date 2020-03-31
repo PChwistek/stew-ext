@@ -99,6 +99,7 @@ $font-size-tiny: 0.6em;
   }
 
   .link {
+    font-family: $base-font-family;
     color: $link-color;
     cursor: pointer;
   }

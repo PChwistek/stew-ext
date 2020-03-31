@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { CSSTransition } from "react-transition-group"
 
+import question from 'Assets/question.png'
 
 export default function TabHelper(props) {
   return (
@@ -11,7 +12,7 @@ export default function TabHelper(props) {
           <div className='tabhelper__title'>
             { props.title }
             <div style={ {'marginLeft': 'auto' } } className={ 'tooltip' }>
-              <img src={ '../../../../assets/question.png' } className={'tabhelper__help-icon'} />
+              <img src={ question } className={'tabhelper__help-icon'} />
               <span className="tooltiptext tooltiptext--left"> { props.tooltipText } </span>
             </div>
           </div>
@@ -31,7 +32,7 @@ export default function TabHelper(props) {
 }
 
 TabHelper.propTypes = {
-  onYesClick: PropTypes.func,
-  onNoClick: PropTypes.func,
-  tooltipText: PropTypes.string,
+  onYesClick: PropTypes.func.isRequired,
+  onNoClick: PropTypes.func.isRequired,
+  tooltipText: PropTypes.string.isRequired
 }

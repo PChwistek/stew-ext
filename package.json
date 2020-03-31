@@ -10,7 +10,12 @@
   "jest": {
     "moduleNameMapper": {
       "^.+\\.(css|less|scss)$": "identity-obj-proxy",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/mocks"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/test/mocks",
+      "^Containers(.*)$": "<rootDir>/src/containers$1",
+      "^Background(.*)$": "<rootDir>/src/containers/background$1",
+      "^Common(.*)$": "<rootDir>/src/containers/common-ui$1",
+      "^Popup(.*)$": "<rootDir>/src/containers/popup$1",
+      "^Assets(.*)$": "<rootDir>/src/assets$1"
     },
     "setupFilesAfterEnv": [
       "<rootDir>/src/test/enzyme-setup.js"
@@ -29,6 +34,7 @@
     "@storybook/react": "^5.1.8",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^4.0.0",
     "babel-polyfill": "^6.26.0",
     "chai": "^4.2.0",
     "chrome-webstore-upload-cli": "^1.2.0",
@@ -51,6 +57,7 @@
     "remotedev-server": "^0.3.1",
     "sass-loader": "^7.1.0",
     "sinon": "^7.3.2",
+    "storybook-addon-specifications": "^2.1.5",
     "style-loader": "^0.23.1",
     "web-ext": "^3.2.0",
     "webextension-polyfill": "^0.4.0",
@@ -80,11 +87,12 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack --config ./webpack.config.prod.js && ./build.sh",
+    "build-firefox": "NODE_ENV=development web-ext build --source-dir ./stew_dist",
     "lint": "./node_modules/.bin/eslint  --ext .jsx --ext .js ./",
     "lint:fix": "yarn run lint --fix",
     "storybook": "start-storybook -p 2000 -s ./src/styles",
     "test": "jest",
     "watch": "NODE_ENV=development webpack --config ./webpack.config.dev.js --watch",
-    "watch-firefox": "web-ext run --source-dir ./dist"
+    "watch-firefox": "web-ext run --source-dir ./stew_dist"
   }
 }

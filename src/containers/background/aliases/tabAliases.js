@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { compareObjects } from '../../utils'
-import manager from '../TabManager'
-import getServerHostname from '../../getServerHostName'
-import { toggleSlide } from '../../popup/popup.actions'
+import { compareObjects } from 'Containers/utils'
+import { defaultManager as manager } from '../tabmanager'
+import getServerHostname from 'Containers/getServerHostName'
+import { toggleSlide } from 'Popup/popup.actions'
 import { handle401 } from './authAliases'
 import { selectRecipe, setSearchRowAlias, getInitialResults } from './searchAliases'
 import { toggleEditAlias } from './popupAliases'
@@ -23,7 +23,7 @@ import {
   TABS_QUICKADD_ALIAS,
   TABS_MERGE_SESSION_ALIAS,
   TABS_MOVE_TAB_ALIAS
-} from '../../actionTypes'
+} from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
 
@@ -105,7 +105,6 @@ export const saveRecipeAlias = () => {
         if(!areSame) {
           const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
           dispatch(selectRecipe(recipeFromServer))
-          console.log('recipe from server', recipeFromServer)
           await manager.updateRecipeInStore(recipeFromServer)
         }
         

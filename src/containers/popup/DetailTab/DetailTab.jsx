@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import SlideIn from '../SlideIn'
 import ViewRecipe from './ViewRecipe'
 import EditRecipe from './EditRecipe'
 import SessionView from './SessionView'
 import TabHelper from './TabHelper'
-import { compareObjects } from '../../utils'
+import { compareObjects } from 'Containers/utils'
+
+import chrome from 'Assets/chrome.png'
 
 export default function DetailTab(props) {
 
@@ -12,12 +15,11 @@ export default function DetailTab(props) {
   const [showMergeHelper, setShowMergeHelper] = useState(false)
 
   function checkTabPopup() {
-    const { tabs , session, isEditing } = props
-    if(tabs.isNew || isEditing ) {
+    const { tabs , session, isEditing, currentTab } = props
+    if(tabs.isNew || isEditing || !currentTab || Object.keys(currentTab).length === 0) {
       setShowTabHelper(false) 
       return
     }
-    const { currentTab } = tabs
     for (let index = 0; index < session.length; index++) {
       for (let tabIndex = 0; tabIndex < session[index].tabs.length; tabIndex++) {
         const tab = session[index].tabs[tabIndex]
@@ -48,10 +50,6 @@ export default function DetailTab(props) {
   }, [props.isEditing, props.session, props.liveSession])
 
   useEffect(() => {
-    if(isEditing) {
-      setShowTabHelper(false)
-      return
-    }
     if(props.visible) {
       const timer = setTimeout(() => {
         checkTabPopup()
@@ -148,10 +146,10 @@ export default function DetailTab(props) {
             title={ 'Quick Add' }
             tooltipText={ 'Allows you to add the currently active tab.' }
           >
-            <div>
+            <div className={ 'tabhelper__tab-container'}>
               <a href={ props.currentTab.url } target="blank">
                 <div className='tab__body'>
-                  <img src={ props.currentTab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
+                  <img src={ props.currentTab.favIconUrl || chrome } className='tab__fav' />
                   <p className='tab__title'> { props.currentTab.title } </p>
                 </div>
               </a>
@@ -172,5 +170,26 @@ export default function DetailTab(props) {
         </div>
     </SlideIn>
   )
+}
 
+DetailTab.propTypes = {
+  isEditing: PropTypes.bool.isRequired,
+  launchRecipe: PropTypes.func.isRequired,
+  removeTabFromSnap: PropTypes.func.isRequired,
+  getCurrentTabs: PropTypes.func.isRequired,
+  removeWindowFromSnap: PropTypes.func.isRequired,
+  setRecipeName: PropTypes.func.isRequired,
+  setRecipeTag: PropTypes.func.isRequired,
+  addRecipeTag: PropTypes.func.isRequired,
+  removeRecipeTag: PropTypes.func.isRequired,
+  clearFields: PropTypes.func.isRequired,
+  saveRecipe: PropTypes.func.isRequired,
+  toggleEditing: PropTypes.func.isRequired,
+  setRecipeForm: PropTypes.func.isRequired,
+  setRecipeSession: PropTypes.func.isRequired,
+  deleteRecipe: PropTypes.func.isRequired,
+  setFavorite: PropTypes.func.isRequired,
+  quickAdd: PropTypes.func.isRequired,
+  mergeSession: PropTypes.func.isRequired,
+  moveTab: PropTypes.func.isRequired
 }

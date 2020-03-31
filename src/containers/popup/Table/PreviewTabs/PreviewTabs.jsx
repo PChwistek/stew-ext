@@ -1,6 +1,6 @@
 import React from 'react'
-import { CSSTransition } from "react-transition-group"
 import PropTypes from 'prop-types'
+import chrome from 'Assets/chrome.png'
 
 export default function PreviewTabs(props) {
   const { config } = props
@@ -33,7 +33,7 @@ export default function PreviewTabs(props) {
           selectedTabs.map( (tab, index) => (
             <a href={ tab.url } target="blank" key={ 'preview' + tab.url + index } >
               <div className='tab__body tab__body--preview'>
-                  <img src={ tab.favIconUrl || '../../../assets/chrome.png' } className='tab__fav' />
+                  <img src={ tab.favIconUrl || chrome } className='tab__fav' />
                   <p className='tab__title'> { tab.title } </p>
               </div>
             </a>
@@ -46,5 +46,9 @@ export default function PreviewTabs(props) {
 }
 
 PreviewTabs.propTypes = {
-  // config: Array,
+  config: PropTypes.arrayOf(PropTypes.shape({ 
+    url: PropTypes.string, 
+    title: PropTypes.string, 
+    favIconUrl: PropTypes.string 
+  })).isRequired
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Popup from 'Popup/Popup.container'
+import Menu from 'Popup/Menu'
 import TestProvider from './TestProvider'
-
 import store from '../testStore'
 
 const withProvider = (story) => (
@@ -11,9 +10,11 @@ const withProvider = (story) => (
   </TestProvider>
 )
 
-storiesOf('Popup', module)
+storiesOf('Menu', module)
   .addDecorator(withProvider)
   .add('initial', () => (
-    <Popup 
-    />
+    <Menu setOpen={ () => {} } open={ false } />
+  ))
+  .add('showing', () => (
+    <Menu open setOpen={ () => {} } />
   ))

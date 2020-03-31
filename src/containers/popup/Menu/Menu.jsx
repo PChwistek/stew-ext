@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react"
 import PropTypes from 'prop-types'
 import { CSSTransition } from "react-transition-group"
 
+import stewLogo from 'Assets/stew-logo.png'
+
 const Menu = (props) => {
   const node = useRef()
 
@@ -12,7 +14,7 @@ const Menu = (props) => {
         <div className={ 'menu__body'}>
           <div className={ 'menu__body__content'}>
             <div>
-              <img src='../../../assets/stew-logo.png' className={ 'menu__body__logo' } />
+              <img src={ stewLogo } className={ 'menu__body__logo' } />
             </div>
             version 0.5
             <div>
@@ -35,6 +37,7 @@ const Menu = (props) => {
 
 Menu.propTypes = {
   setOpen: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired
 }
 
 export default Menu
