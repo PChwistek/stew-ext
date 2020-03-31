@@ -1,4 +1,4 @@
-import { currentSession, results } from '../stories/testSearchState'
+import { currentSession } from '../stories/testSearchState'
 
 let test_stew_auth = {}
 let test_stew = {}
