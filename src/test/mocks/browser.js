@@ -1,3 +1,5 @@
+import { currentSession, results } from '../stories/testSearchState'
+
 let test_stew_auth = {}
 let test_stew = {}
 
@@ -22,13 +24,13 @@ const mockStorageSet = jest.fn(someObject => {
 })
 
 const mockTabsQuery = jest.fn(someQuery => {
-  if (Object.keys(someObject)[0] === 'windowId') {
-    
+  if (Object.keys(someQuery)[0] === 'windowId') {
+    return currentSession.windows[0].tabs
   }
 })
 
 const mockGetAllWindows = jest.fn(() => {
-
+  return currentSession.windows
 })
 
 const browser = {

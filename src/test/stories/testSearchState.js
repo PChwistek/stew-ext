@@ -166,3 +166,56 @@ export const results = [
     "tags": []
   }
 ]
+
+export const currentSession = {
+  windows: [
+    {
+      id: 0,
+      type: 'normal',
+      tabs: [
+        {
+          "favIconUrl": "",
+          "index": 0,
+          "title": "Extensions",
+          "url": "chrome://extensions/"
+        },
+        {
+          "favIconUrl": "https://img.itch.zone/aW1nLzIzNjU2MzQucG5n/32x32%23/HGpTx0.png",
+          "index": 1,
+          "title": "DragonRuby Game Toolkit by DragonRuby",
+          "url": "https://dragonruby.itch.io/dragonruby-gtk"
+        },
+        {
+          "favIconUrl": "https://www.google.com/favicon.ico",
+          "index": 0,
+          "title": "Google",
+          "url": "https://www.google.com/"
+        }
+      ]
+    }
+  ],
+}
+
+export const newRecipe = {
+  "__v": 0,
+  "_id": "5e77b4b416274611f100dfca",
+  "attributes": [],
+  "author": "JubJubtumTum",
+  "authorId": "5e6c5311bdc938aa8e105ee8",
+  "config": [
+    {
+      "tabs": [
+        {
+          "favIconUrl": "",
+          "index": 0,
+          "title": "Extensions",
+          "url": "chrome://extensions/"
+        }
+      ]
+    }
+  ],
+  "dateCreated": "2020-03-22T18:55:48.577Z",
+  "dateModified": "2020-03-22T18:55:48.577Z",
+  "name": "newTest",
+  "tags": []
+}

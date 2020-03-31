@@ -43,11 +43,11 @@ export class Manager {
     return session
   }
 
-  nukeAndReplace(desiredTabs) {
-    desiredTabs.map( (recipeWindow, index) => {
-      this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
-    })
-  }
+  // nukeAndReplace(desiredTabs) {
+  //   desiredTabs.map( (recipeWindow, index) => {
+  //     this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
+  //   })
+  // }
 
   async addRecipeToStore(recipe) {
     let recipes = await this.fetchAllRecipes()
@@ -83,8 +83,8 @@ export class Manager {
 
   async fetchAllRecipes() {
     const theResult = await this.browserAPI.storage.local.get(this.storageKey)
-    if(theResult.stew) {
-      return theResult.stew.recipes 
+    if(theResult[`${this.storageKey}`]) {
+      return theResult[`${this.storageKey}`].recipes 
     }
     return []
   }

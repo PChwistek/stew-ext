@@ -15,8 +15,6 @@ import {
   SEARCH_SETSORTBY_ALIAS
 } from 'Containers/actionTypes'
 
-import { searchRecipes } from 'Background/aliases/searchAliases'
-
 const withProvider = (story) => (
   <TestProvider store={store}>
     { story() }
