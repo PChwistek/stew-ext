@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { compareObjects } from 'Containers/utils'
-import manager from '../TabManager'
+import manager from '../tabmanager'
 import getServerHostname from 'Containers/getServerHostName'
 import { toggleSlide } from 'Popup/popup.actions'
 import { handle401 } from './authAliases'

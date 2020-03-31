@@ -1,5 +1,5 @@
 import axios from 'axios'
-import manager from '../TabManager'
+import manager from '../tabmanager'
 import { getInitialResults } from './searchAliases'
 import { addEditListeners, removeEditListeners, addInAppListeners, removeInAppListeners } from '../background'
 import { handle401 }from './authAliases'
