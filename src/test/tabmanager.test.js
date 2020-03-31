@@ -1,5 +1,5 @@
 import { Manager } from 'Background/TabManager/tabmanager'
-import { results, currentSession, newRecipe } from './stories/testSearchState'
+import { newRecipe } from './stories/testSearchState'
 
 import browser from './mocks/browser'
 

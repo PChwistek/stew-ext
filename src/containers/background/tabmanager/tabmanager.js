@@ -119,4 +119,5 @@ export class Manager {
 }
 
 const manager = new Manager('stew')
+
 export default manager
