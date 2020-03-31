@@ -12,7 +12,7 @@ import {
   SEARCH_SETRESULTS_SYNC_FAILED,
 } from 'Containers/actionTypes'
 
-import manager from '../tabmanager'
+import { defaultManager as manager } from '../tabmanager'
 
 const serverUrl = getServerHostname()
 

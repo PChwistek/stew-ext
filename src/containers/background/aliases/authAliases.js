@@ -8,7 +8,7 @@ import {
   TABS_RESET,
   SEARCH_RESET,
 } from 'Containers/actionTypes'
-import manager from '../tabmanager'
+import { defaultManager as manager} from '../tabmanager'
 import getServerHostname from 'Containers/getServerHostName'
 import { syncRecipesWithCloud } from './popupAliases'
 
