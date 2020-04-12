@@ -1,0 +1,36 @@
+.timedalert {
+  z-index: 20;
+  @include absCenter();
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  text-align: center;
+  background: $modal-background;
+  font-family: $base-font-family;
+  font-size: $font-size-large;
+  padding: 20px;
+  color: $text-color !important;
+  border-radius: 10px;
+}
+
+
+.timedalert-anim {
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    opacity: 100%;
+    transition: opacity 200ms;
+  }
+
+  &-exit {
+    opacity: 100%;
+  }
+
+  &-exit-active{ 
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+}

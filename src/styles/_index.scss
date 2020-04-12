@@ -35,7 +35,8 @@ $text-color:       #4C5B5C !default;
 $text-color-lighter:       rgba(76, 91, 92, 0.486) !default;
 $link-color: #067bc2;
 $row-highlight: rgba(242, 244, 243, 0.884);
-$brand-color:      #BCDB71 !default;
+// $brand-color:      #BCDB71 !default;
+$brand-color: #7AC74F !default; //good one
 // $brand-color: #88498F !default; //good one
 
 $error-color: #E26D5A !default;
@@ -105,3 +106,4 @@ a:hover {
 @import "partials/menu";
 @import "partials/previewtabs";
 @import "partials/tabhelper";
+@import "partials/timedalert";

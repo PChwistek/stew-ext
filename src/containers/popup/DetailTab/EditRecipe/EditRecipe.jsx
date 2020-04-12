@@ -2,7 +2,6 @@ import React, { createRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import TextField from 'Common/TextField'
 import Button from 'Common/Button'
-
 import removeWhite from 'Assets/remove-white.png'
 
 export default function EditRecipe(props) {
