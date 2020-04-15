@@ -9,5 +9,5 @@ coverage/
 hermitly.zip
 src/test/__snapshots__/
 web-ext-artifacts
-web-ext-artifacts/
+web-ext-artifacts/*
 *.zip
