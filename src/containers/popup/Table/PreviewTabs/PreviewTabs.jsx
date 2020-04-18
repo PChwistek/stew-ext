@@ -49,6 +49,6 @@ PreviewTabs.propTypes = {
   config: PropTypes.arrayOf(PropTypes.shape({ 
     url: PropTypes.string, 
     title: PropTypes.string, 
-    favIconUrl: PropTypes.string 
+    favIconUrl: PropTypes.string
   })).isRequired
 }

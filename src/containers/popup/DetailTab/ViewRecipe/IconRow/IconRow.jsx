@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import star from 'Assets/star1.png'
 import starOutline from 'Assets/star1-outline.png'
 import edit from 'Assets/edit.png'
-import archive from 'Assets/box.png'
+import archive from 'Assets/trash.png'
 
 const IconRow = (props) => (
   <div className={ 'detailtab__icons'}>

@@ -11,7 +11,7 @@ export default function EditRecipe(props) {
 
   const [formErrors, setFormErrors] = useState([])
 
-  const { recipeForm: { recipeName, recipeTags, recipeTag } } = tabs
+  const { recipeForm: { recipeName, recipeTags, recipeTag }, isNew } = tabs
 
   let recipeNameField = createRef()
   let tagsField = createRef()
@@ -79,9 +79,14 @@ export default function EditRecipe(props) {
       }
     }
   }
-
   return (
     <div className={ 'createtab__form'}>
+      {
+        !isNew && props.selectedRecipe.authorId !== props.userId 
+          && <div className='createtab__creating-fork'>
+            This recipe was originally created by someone else. Any edits will be applied to a copy. <a> Learn more. </a>
+          </div>
+      }
       <div className={ 'createtab__form-row'}>
         <TextField 
           tabIndex={ 1 }

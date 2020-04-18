@@ -23,11 +23,12 @@ export const handle401 = (error) => {
 }
 
 export const loginSuccess = (payload) => {
-  const { access_token, username, lastUpdated } = payload
+  const { access_token, username, lastUpdated, userId } = payload
   manager.setAuth({ jwt: access_token, username, lastUpdated })
   return {
     type: AUTH_LOGIN_SUCCESS,
     payload: {
+      userId,
       access_token,
       username,
       lastUpdated

@@ -23,7 +23,8 @@ import {
 } from 'Popup/popup.actions'
 
 
-const stateToProps = ({ search, tabs, popup }) => ({
+const stateToProps = ({ search, tabs, popup, auth }) => ({
+  userId: auth.userId,
   favorites: search.favorites,
   selectedRecipe: search.selectedRecipe,
   session: tabs.recipeSession,

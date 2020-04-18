@@ -73,7 +73,8 @@ export const saveRecipeAlias = () => {
       const searchState = getState().search
 
       const { isNew } = tabsState
-      const { jwt } = authState
+      const { jwt, userId } = authState
+
       const config = {
         headers: { Authorization: `Bearer ${jwt}` }
       }
@@ -96,16 +97,23 @@ export const saveRecipeAlias = () => {
       if(!isNew) {
         const { selectedRecipe } = searchState
         theRecipe._id = selectedRecipe._id
-  
-        const areSame = compareObjects(
-          { name: theRecipe.name, tags: theRecipe.tags, config: theRecipe.config}, 
-          { name: selectedRecipe.name, tags: selectedRecipe.tags, config: selectedRecipe.config}
-        )
-        
-        if(!areSame) {
+
+        if (selectedRecipe.authorId !== userId) {
+          theRecipe.forkedFromId = selectedRecipe.shareableId
           const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
           dispatch(selectRecipe(recipeFromServer))
-          await manager.updateRecipeInStore(recipeFromServer)
+          await manager.addRecipeToStore(recipeFromServer)
+        } else {
+          const areSame = compareObjects(
+            { name: theRecipe.name, tags: theRecipe.tags, config: theRecipe.config}, 
+            { name: selectedRecipe.name, tags: selectedRecipe.tags, config: selectedRecipe.config}
+          )
+          
+          if(!areSame) {
+            const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
+            dispatch(selectRecipe(recipeFromServer))
+            await manager.updateRecipeInStore(recipeFromServer)
+          }
         }
         
       } else {

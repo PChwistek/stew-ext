@@ -131,6 +131,16 @@
     text-align: center;
   }
 
+  &__creating-fork {
+    font-family: $base-font-family;
+    font-size: $font-size-regular;
+    color: $error-color;
+    a {
+      color: $error-color;
+      text-decoration: underline;
+    }
+  }
+
 }
 
 .tab {

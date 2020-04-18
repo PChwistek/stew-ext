@@ -14,6 +14,7 @@ const initialState = {
   loggedIn: false,
   isPending: false,
   username: '',
+  userId: '',
   jwt: '',
   lastUpdated: '',
   error: ''
@@ -32,6 +33,7 @@ export default (state = initialState, action) => {
         jwt: action.payload.access_token,
         username: action.payload.username,
         lastUpdated: action.payload.lastUpdated,
+        userId: action.payload.userId,
         error: ''
       })
     case AUTH_LOGIN_FAILED:
