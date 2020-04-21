@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import star from 'Assets/star1.png'
 import starOutline from 'Assets/star1-outline.png'
 import edit from 'Assets/edit.png'
-import trash from 'Assets/trash.png'
+import archive from 'Assets/trash.png'
 
 const IconRow = (props) => (
   <div className={ 'detailtab__icons'}>
@@ -21,12 +21,16 @@ const IconRow = (props) => (
         onClick={ props.handleEditingClicked } 
       />
     </div>
-    {/* <div>
-      <img src={ '../../../assets/share.png'} className={ 'detailtab__icons__edit' } />
-    </div> */}
     <div>
       <img 
-        src={ trash } 
+        src={ '../../../assets/share.png'} 
+        className={ 'detailtab__icons__edit' } 
+        onClick={ props.handleShareClicked } 
+      />
+    </div>
+    <div>
+      <img 
+        src={ archive } 
         className={ 'detailtab__icons__edit' } 
         onClick={ props.handleDeleteClicked } 
       />
@@ -38,7 +42,8 @@ IconRow.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   handleEditingClicked: PropTypes.func.isRequired,
   handleFavoriteClicked: PropTypes.func.isRequired,
-  handleDeleteClicked: PropTypes.func.isRequired
+  handleDeleteClicked: PropTypes.func.isRequired,
+  handleShareClicked: PropTypes.func.isRequired,
 }
 
 export default IconRow

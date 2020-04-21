@@ -35,7 +35,8 @@ $text-color:       #4C5B5C !default;
 $text-color-lighter:       rgba(76, 91, 92, 0.486) !default;
 $link-color: #067bc2;
 $row-highlight: rgba(242, 244, 243, 0.884);
-$brand-color:      #BCDB71 !default;
+// $brand-color:      #BCDB71 !default;
+$brand-color: #7ac74f !default; //good one
 // $brand-color: #88498F !default; //good one
 
 $error-color: #E26D5A !default;
@@ -70,8 +71,8 @@ a:hover {
         @media only screen and (max-width: 67.25em) { @content };     //900px
     }
     @if $breakpoint == too-small {
-        @media only screen and (max-width: 600px) { @content }; 
-        @media only screen and (max-height: 600px) { @content };  
+        @media only screen and (max-width: 650px) { @content }; 
+        @media only screen and (max-height: 650px) { @content };  
     }
     @if $breakpoint == too-large {
         @media only screen and (min-width: 800px) { @content }; 
@@ -89,6 +90,7 @@ a:hover {
     height: 128px;
 }
 
+
 @import "partials/typography";
 @import "partials/button";
 @import "partials/modal";
@@ -105,3 +107,4 @@ a:hover {
 @import "partials/menu";
 @import "partials/previewtabs";
 @import "partials/tabhelper";
+@import "partials/timedalert";

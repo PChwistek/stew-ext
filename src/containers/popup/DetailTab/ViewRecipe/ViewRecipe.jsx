@@ -4,10 +4,13 @@ import IconRow from './IconRow'
 import { getSrc } from 'Containers/utils'
 import Button from 'Common/Button'
 import ConfirmModal from 'Popup/Modal/ConfirmModal'
+import { getWebsiteHostname } from 'Containers/getServerHostName'
+import TimedAlert from '../TimedAlert'
 
 const ViewRecipe = (props) => {
   const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite } = props
   const [modalVisible, setModalVisible] = useState(false)
+  const [copiedVisible, setCopiedVisible] = useState(false)
 
   function handleDeleteClicked() {
     setModalVisible(true)
@@ -15,6 +18,14 @@ const ViewRecipe = (props) => {
 
   function handleFavoriteClicked() {
     setFavorite(selectedRecipe._id, !isFavorite)
+  }
+
+  function handleShareClicked() {
+    navigator.clipboard.writeText(`${getWebsiteHostname()}/shared/${selectedRecipe.shareableId}`)
+      .then(() => {
+        setCopiedVisible(true)
+        setTimeout(() => { setCopiedVisible(false) }, 1500)
+      })
   }
 
   return ( 
@@ -53,15 +64,20 @@ const ViewRecipe = (props) => {
               <ConfirmModal 
                 show={ modalVisible } 
                 closeModal={ () => setModalVisible(false) } 
-                title={ `Are you sure you want to delete '${props.selectedRecipe.name}'?` }
+                title={ `Are you sure you want to archive '${props.selectedRecipe.name}'?` }
                 onNoClick={ () => setModalVisible(false) }
                 onYesClick={ deleteRecipe }
               />
               <IconRow
                 handleEditingClicked={ props.handleEditingClicked } 
-                handleDeleteClicked={ handleDeleteClicked } 
+                handleDeleteClicked={ handleDeleteClicked }
+                handleShareClicked={ handleShareClicked }
                 handleFavoriteClicked={ handleFavoriteClicked }
                 isFavorite={ isFavorite }
+              />
+              <TimedAlert 
+                visible={ copiedVisible }
+                text={ 'Shareable Link Copied'}
               />
             </div>
         </Fragment>

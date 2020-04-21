@@ -181,6 +181,14 @@ exports[`Storyshots DetailTab Edit name 1`] = `
         className="createtab__form"
       >
         <div
+          className="createtab__creating-fork"
+        >
+          This recipe was originally created by someone else. Any edits will be applied to a copy. 
+          <a>
+             Learn more. 
+          </a>
+        </div>
+        <div
           className="createtab__form-row"
         >
           <div
@@ -859,6 +867,13 @@ exports[`Storyshots DetailTab Favorite the recipe 1`] = `
               <img
                 className="detailtab__icons__edit"
                 onClick={[Function]}
+                src="../../../assets/share.png"
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
                 src={Object {}}
               />
             </div>
@@ -1104,6 +1119,14 @@ exports[`Storyshots DetailTab Is editing 1`] = `
       <div
         className="createtab__form"
       >
+        <div
+          className="createtab__creating-fork"
+        >
+          This recipe was originally created by someone else. Any edits will be applied to a copy. 
+          <a>
+             Learn more. 
+          </a>
+        </div>
         <div
           className="createtab__form-row"
         >
@@ -1783,6 +1806,13 @@ exports[`Storyshots DetailTab New current tab 1`] = `
               <img
                 className="detailtab__icons__edit"
                 onClick={[Function]}
+                src="../../../assets/share.png"
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
                 src={Object {}}
               />
             </div>
@@ -2083,6 +2113,13 @@ exports[`Storyshots DetailTab Quick add to the recipe 1`] = `
               <img
                 className="detailtab__icons__edit"
                 onClick={[Function]}
+                src="../../../assets/share.png"
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
                 src={Object {}}
               />
             </div>
@@ -2351,6 +2388,14 @@ exports[`Storyshots DetailTab Remove first window 1`] = `
       <div
         className="createtab__form"
       >
+        <div
+          className="createtab__creating-fork"
+        >
+          This recipe was originally created by someone else. Any edits will be applied to a copy. 
+          <a>
+             Learn more. 
+          </a>
+        </div>
         <div
           className="createtab__form-row"
         >
@@ -2859,6 +2904,14 @@ exports[`Storyshots DetailTab Remove second tab 1`] = `
       <div
         className="createtab__form"
       >
+        <div
+          className="createtab__creating-fork"
+        >
+          This recipe was originally created by someone else. Any edits will be applied to a copy. 
+          <a>
+             Learn more. 
+          </a>
+        </div>
         <div
           className="createtab__form-row"
         >
@@ -3376,6 +3429,13 @@ exports[`Storyshots DetailTab Save new version 1`] = `
               <img
                 className="detailtab__icons__edit"
                 onClick={[Function]}
+                src="../../../assets/share.png"
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
                 src={Object {}}
               />
             </div>
@@ -3558,6 +3618,14 @@ exports[`Storyshots DetailTab Write a tag 1`] = `
       <div
         className="createtab__form"
       >
+        <div
+          className="createtab__creating-fork"
+        >
+          This recipe was originally created by someone else. Any edits will be applied to a copy. 
+          <a>
+             Learn more. 
+          </a>
+        </div>
         <div
           className="createtab__form-row"
         >
@@ -4237,6 +4305,13 @@ exports[`Storyshots DetailTab initial 1`] = `
               <img
                 className="detailtab__icons__edit"
                 onClick={[Function]}
+                src="../../../assets/share.png"
+              />
+            </div>
+            <div>
+              <img
+                className="detailtab__icons__edit"
+                onClick={[Function]}
                 src={Object {}}
               />
             </div>
@@ -4482,6 +4557,14 @@ exports[`Storyshots DetailTab save a tag 1`] = `
       <div
         className="createtab__form"
       >
+        <div
+          className="createtab__creating-fork"
+        >
+          This recipe was originally created by someone else. Any edits will be applied to a copy. 
+          <a>
+             Learn more. 
+          </a>
+        </div>
         <div
           className="createtab__form-row"
         >
@@ -5674,7 +5757,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -5804,7 +5887,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -5934,7 +6017,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6024,7 +6107,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6160,7 +6243,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6290,7 +6373,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6420,7 +6503,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6510,7 +6593,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6661,7 +6744,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6791,7 +6874,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6921,7 +7004,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7011,7 +7094,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7162,7 +7245,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7292,7 +7375,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7422,7 +7505,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7512,7 +7595,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7663,7 +7746,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7793,7 +7876,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        11 days ago
+        31 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7923,7 +8006,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8013,7 +8096,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        9 days ago
+        29 days ago
       </div>
       <div
         className="table__row__tags"
