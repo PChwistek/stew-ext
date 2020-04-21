@@ -2,7 +2,9 @@ import React, { createRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import TextField from 'Common/TextField'
 import Button from 'Common/Button'
+import Select from 'react-select'
 import removeWhite from 'Assets/remove-white.png'
+
 
 export default function EditRecipe(props) {
 
@@ -10,6 +12,13 @@ export default function EditRecipe(props) {
     removeRecipeTag, clearFields, handleSaveRecipe } = props
 
   const [formErrors, setFormErrors] = useState([])
+
+  const [selected, setSelected] = useState([])
+
+  function handleSelectChange(selectedOption) {
+    setSelected(selectedOption)
+    console.log(`Option selected:`, selectedOption)
+  }
 
   const { recipeForm: { recipeName, recipeTags, recipeTag }, isNew } = tabs
 
@@ -45,8 +54,8 @@ export default function EditRecipe(props) {
   }
 
   function validateTag(tag) {
-    if(tag.length >= 25) {
-      return { isValid: false, error: 'Max character length of 25' }
+    if(tag.length >= 15) {
+      return { isValid: false, error: 'Max character length of 15' }
     }
     return { isValid: true, error: '' }
   }
@@ -79,6 +88,7 @@ export default function EditRecipe(props) {
       }
     }
   }
+
   return (
     <div className={ 'createtab__form'}>
       {
@@ -128,10 +138,7 @@ export default function EditRecipe(props) {
           )
         })
       }
-      </div>   
-      {/* <div className={ 'createtab__form-row'}>
-        <Checkbox label={ 'Make public?' } checked={ isPublic } setValue={ () => setRecipePublic(!isPublic) }/>
-      </div> */}
+      </div>
       <div className={'createtab__bottom-row'}>
         {
           formErrors && formErrors.map( (error, index) => (

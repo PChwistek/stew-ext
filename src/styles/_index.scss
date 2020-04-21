@@ -71,8 +71,8 @@ a:hover {
         @media only screen and (max-width: 67.25em) { @content };     //900px
     }
     @if $breakpoint == too-small {
-        @media only screen and (max-width: 600px) { @content }; 
-        @media only screen and (max-height: 600px) { @content };  
+        @media only screen and (max-width: 650px) { @content }; 
+        @media only screen and (max-height: 650px) { @content };  
     }
     @if $breakpoint == too-large {
         @media only screen and (min-width: 800px) { @content }; 
@@ -89,6 +89,7 @@ a:hover {
 .loading {
     height: 128px;
 }
+
 
 @import "partials/typography";
 @import "partials/button";

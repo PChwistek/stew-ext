@@ -23,8 +23,8 @@ export default async function openPopup() {
     return { isNewWindow: false, windowId }
   }
 
-  const width = 610
-  const height = 630 
+  const width = 700
+  const height = 730 
 
   let params = { 
     left: parseInt( (window.screen.availWidth - width) / 2), 

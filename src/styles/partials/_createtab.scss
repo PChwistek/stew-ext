@@ -7,8 +7,7 @@
     flex-direction: column;
     margin-left: 10px;
     margin-right: 10px;
-    padding-top: 50px;
-    height: 100%;
+    margin-top: 50px;
     max-width: 350px;
     flex-grow: 1;
   }
@@ -18,12 +17,24 @@
     color: $error-color;
   }
 
+  &__bottom-row {
+    margin:auto;
+  }
+
   &__form-row {
     padding-top: 10px;
     max-width: 400px;
     &--submit {
       padding-top: 20px;
       text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-left: 3px;
+      font-family: $base-font-family;
+      font-size: $font-size-large;
+      color: $text-color;
     }
   }
 
@@ -149,6 +160,7 @@
     display: flex;
     align-items: center;
     margin-left: 10px;
+
   }
 
   &__row:hover &__remove {
@@ -241,5 +253,5 @@
     margin-right: 10px;
     margin-top: 10px;
   }
-  
+
 }
