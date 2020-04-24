@@ -127,6 +127,7 @@
   &__top {
     display: flex;
     width: 100%;
+    padding-bottom: 20px;
   }
 
   &__link-container {
@@ -143,5 +144,14 @@
     margin-right: 10px;
     font-size: $font-size-regular;
     font-weight: 600;
+  }
+
+  &__done-container {
+    margin-top: 40px;
+    text-align: left;
+  }
+
+  &__select-override {
+    font-size: $font-size-large !important;
   }
 }

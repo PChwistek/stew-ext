@@ -1,11 +1,26 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import Select from 'Common/Select'
 import Button from 'Common/Button'
 import ModalBase from '../ModalBase'
 import TimedAlert from 'Popup/TimedAlert'
 import { getWebsiteHostname } from 'Containers/getServerHostName'
-
 import link from 'Assets/link.png'
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla2', label: 'Vanilla' },
+  { value: 'vanilla3', label: 'Vanilla' },
+  { value: 'vanilla4', label: 'Vanilla' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+
+const linkOptions = [
+  { value: 'off', label: 'No one' },
+  { value: 'anyone', label: 'Anyone' },
+  { value: 'org', label: 'Only people in my organization' }
+]
 
 export const PermssionModal = (props) => {
   const { selectedRecipe } = props
@@ -33,10 +48,21 @@ export const PermssionModal = (props) => {
             </div>
           </div>
         </div>
+        <div>
+          <p> Share to team repository </p>
+          <Select options={ options } isMulti className='permissions-modal__select-override'/>
+        </div>
+        <div>
+          <p> Link Permissions </p>
+          <Select options={ linkOptions } />
+        </div>
         <TimedAlert 
           visible={ copiedVisible }
           text={ 'Shareable Link Copied'}
         />
+        <div className='permissions-modal__done-container'>
+          <Button type='small primary' text='Done' />
+        </div>
       </div>
     </ModalBase>
   )

@@ -7,6 +7,8 @@ function getAppropriateStyle(prop) {
       return 'button button--primary'
     case 'secondary':
       return 'button button--secondary'
+    case 'small primary':
+      return 'button button--small--primary'
   }
 }
 
