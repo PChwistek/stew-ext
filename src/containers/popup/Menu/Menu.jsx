@@ -25,9 +25,6 @@ const Menu = (props) => {
             </div>
             <div />
             <div />
-            <div>
-              Icons made by Freepik from <a href="www.flaticon.com"> www.flaticon.com </a>
-            </div>
           </div>
         </div>
       </div>

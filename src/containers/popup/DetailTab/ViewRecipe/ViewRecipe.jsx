@@ -4,13 +4,12 @@ import IconRow from './IconRow'
 import { getSrc } from 'Containers/utils'
 import Button from 'Common/Button'
 import ConfirmModal from 'Popup/Modal/ConfirmModal'
-import { getWebsiteHostname } from 'Containers/getServerHostName'
-import TimedAlert from '../TimedAlert'
+import PermissionModal from 'Popup/Modal/PermissionModal'
 
 const ViewRecipe = (props) => {
   const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite } = props
   const [modalVisible, setModalVisible] = useState(false)
-  const [copiedVisible, setCopiedVisible] = useState(false)
+  const [pModalVisible, setPModalVisible] = useState(false)
 
   function handleDeleteClicked() {
     setModalVisible(true)
@@ -20,13 +19,6 @@ const ViewRecipe = (props) => {
     setFavorite(selectedRecipe._id, !isFavorite)
   }
 
-  function handleShareClicked() {
-    navigator.clipboard.writeText(`${getWebsiteHostname()}/shared/${selectedRecipe.shareableId}`)
-      .then(() => {
-        setCopiedVisible(true)
-        setTimeout(() => { setCopiedVisible(false) }, 1500)
-      })
-  }
 
   return ( 
       <div className='detailtab__details__container'>
@@ -68,16 +60,18 @@ const ViewRecipe = (props) => {
                 onNoClick={ () => setModalVisible(false) }
                 onYesClick={ deleteRecipe }
               />
+              <PermissionModal 
+                show={ pModalVisible }
+                closeModal={ () => setPModalVisible(false) }
+                title={ 'Share Recipe' }
+                selectedRecipe={ selectedRecipe }
+              />
               <IconRow
                 handleEditingClicked={ props.handleEditingClicked } 
                 handleDeleteClicked={ handleDeleteClicked }
-                handleShareClicked={ handleShareClicked }
+                handleShareClicked={ () => setPModalVisible(true) }
                 handleFavoriteClicked={ handleFavoriteClicked }
                 isFavorite={ isFavorite }
-              />
-              <TimedAlert 
-                visible={ copiedVisible }
-                text={ 'Shareable Link Copied'}
               />
             </div>
         </Fragment>

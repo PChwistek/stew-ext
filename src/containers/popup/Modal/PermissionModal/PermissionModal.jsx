@@ -1,25 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Button from 'Common/Button'
 import ModalBase from '../ModalBase'
+import TimedAlert from 'Popup/TimedAlert'
+import { getWebsiteHostname } from 'Containers/getServerHostName'
 
-export const ConfirmModal = (props) => {
+import link from 'Assets/link.png'
+
+export const PermssionModal = (props) => {
+  const { selectedRecipe } = props
+  const [copiedVisible, setCopiedVisible] = useState(false)
+
+  function copyToClipboard() {
+    navigator.clipboard.writeText(`${getWebsiteHostname()}/shared/${selectedRecipe.shareableId}`)
+      .then(() => {
+        setCopiedVisible(true)
+        setTimeout(() => { setCopiedVisible(false) }, 1500)
+      })
+  }
+
   return (
     <ModalBase show={ props.show } closeModal={ props.closeModal } >
-      <h2> { props.title } </h2>
-      <div className={ 'confirm-modal__buttons' }>
-        <div className={ 'confirm-modal__button'}>
-          <Button onClick={ props.onYesClick } type='secondary' text='Yes' />
+      <div className='permissions-modal'>
+        <div className='permissions-modal__top'> 
+          <h1> { props.title } </h1>
+          <div onClick={ copyToClipboard } className='permissions-modal__link-container'>
+            <div className='permissions-modal__link-text'>
+              Get shareable link 
+            </div>
+            <div>
+              <img src={ link } className={ 'permissions-modal__link' }/>
+            </div>
+          </div>
         </div>
-        <div className={ 'confirm-modal__button'}>
-          <Button onClick={ props.onNoClick } type='secondary' text='No' />
-        </div>
+        <TimedAlert 
+          visible={ copiedVisible }
+          text={ 'Shareable Link Copied'}
+        />
       </div>
     </ModalBase>
   )
 }
 
-ConfirmModal.propTypes = {
+PermssionModal.propTypes = {
   show: PropTypes.bool,
   closeModal: PropTypes.func,
   onYesClick: PropTypes.func,
@@ -27,4 +50,4 @@ ConfirmModal.propTypes = {
   title: PropTypes.string
 }
 
-export default ConfirmModal
+export default PermssionModal
