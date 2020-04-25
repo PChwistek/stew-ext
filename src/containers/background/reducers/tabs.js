@@ -20,7 +20,8 @@ const initialState = {
   isNew: false,
   wasMerged: false,
   currentWindow: {},
-  currentTab: {}
+  currentTab: {},
+  recipePermissions: [],
 }
 
 export default (state = initialState, action) => {

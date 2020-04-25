@@ -59,7 +59,7 @@ export const getCurrentSession = (originalAction) => {
 export const launchRecipeConfiguration = (originalAction) => {
   return async dispatch => {
     dispatch({ type: TABS_LAUNCHRECIPE_PENDING })
-    await manager.nukeAndReplace(originalAction.payload.recipe.config)
+    manager.nukeAndReplace(originalAction.payload.recipe.config)
     dispatch({ type: TABS_LAUNCHRECIPE_SUCCESS })
   }
 }
