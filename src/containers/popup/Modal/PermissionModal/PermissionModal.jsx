@@ -6,6 +6,7 @@ import ModalBase from '../ModalBase'
 import TimedAlert from 'Popup/TimedAlert'
 import { getWebsiteHostname } from 'Containers/getServerHostName'
 import link from 'Assets/link.png'
+import question from 'Assets/question.png'
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -17,7 +18,7 @@ const options = [
 ]
 
 const linkOptions = [
-  { value: 'off', label: 'No one' },
+  { value: 'off', label: 'No one (sharing off)' },
   { value: 'anyone', label: 'Anyone' },
   { value: 'org', label: 'Only people in my organization' }
 ]
@@ -25,6 +26,10 @@ const linkOptions = [
 export const PermssionModal = (props) => {
   const { selectedRecipe } = props
   const [copiedVisible, setCopiedVisible] = useState(false)
+
+  function handleDone() {
+    props.closeModal()
+  }
 
   function copyToClipboard() {
     navigator.clipboard.writeText(`${getWebsiteHostname()}/shared/${selectedRecipe.shareableId}`)
@@ -49,19 +54,23 @@ export const PermssionModal = (props) => {
           </div>
         </div>
         <div>
-          <p> Share to team repository </p>
-          <Select options={ options } isMulti className='permissions-modal__select-override'/>
+          <p> Link Permissions <div className={ 'tooltip' }>
+              <img src={ question } className={'permissions-modal__help-icon'} />
+              <span className="tooltiptext tooltiptext--right"> Who can view your recipe via shareable link? </span>
+            </div>
+          </p> 
+          <Select options={ linkOptions } defaultValue={ linkOptions[1] } />
         </div>
         <div>
-          <p> Link Permissions </p>
-          <Select options={ linkOptions } />
+          <p> Share to team repository </p>
+          <Select options={ options } isMulti className='permissions-modal__select-override' isDisabled placeholder={ 'Team upgrade needed to unlock'} />
         </div>
         <TimedAlert 
           visible={ copiedVisible }
           text={ 'Shareable Link Copied'}
         />
         <div className='permissions-modal__done-container'>
-          <Button type='small primary' text='Done' />
+          <Button type='small primary' text='Done' onClick={ handleDone } />
         </div>
       </div>
     </ModalBase>

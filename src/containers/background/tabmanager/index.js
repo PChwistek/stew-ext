@@ -11,11 +11,11 @@ export class Manager {
 
   async getAuth() {
     const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_auth`)
-    return saved[`${this.storageKey}_auth`] || { jwt: null, username: null, lastUpdated: null }
+    return saved[`${this.storageKey}_auth`] || { jwt: null, username: null, lastUpdated: null, userId: null, }
   }
 
-  async setAuth({ jwt, username, lastUpdated }) {
-    const stew_auth =  { jwt, username, lastUpdated }
+  async setAuth({ jwt, username, lastUpdated, userId }) {
+    const stew_auth =  { jwt, username, lastUpdated, userId }
     await this.browserAPI.storage.local.set({ [`${this.storageKey}_auth`]: stew_auth })
     return await this.getAuth()
   }

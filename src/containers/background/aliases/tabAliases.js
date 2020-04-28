@@ -97,12 +97,13 @@ export const saveRecipeAlias = () => {
       if(!isNew) {
         const { selectedRecipe } = searchState
         theRecipe._id = selectedRecipe._id
-
+        
         if (selectedRecipe.authorId !== userId) {
           theRecipe.forkedFromId = selectedRecipe.shareableId
           const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
           dispatch(selectRecipe(recipeFromServer))
           await manager.addRecipeToStore(recipeFromServer)
+
         } else {
           const areSame = compareObjects(
             { name: theRecipe.name, tags: theRecipe.tags, config: theRecipe.config}, 
@@ -121,6 +122,7 @@ export const saveRecipeAlias = () => {
         dispatch(selectRecipe(recipeFromServer))
         await manager.addRecipeToStore(recipeFromServer)
       }
+
       dispatch(toggleEditAlias({ payload: { forced: false }}))
       dispatch({ type: TABS_SAVERECIPE_SUCCESS })
       dispatch(getInitialResults())

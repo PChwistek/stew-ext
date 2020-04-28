@@ -18,7 +18,13 @@ const styles = {
 }
 
 const MySelect = (props) => (
-  <Select options={props.options} isMulti={ props.isMulti } styles={ styles } />
+  <Select options={props.options} 
+    isMulti={ props.isMulti } 
+    styles={ styles } 
+    isDisabled={ props.isDisabled } 
+    placeholder={ props.placeholder } 
+    defaultValue={ props.defaultValue }
+  />
 )
 
 

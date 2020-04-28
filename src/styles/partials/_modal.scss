@@ -154,4 +154,10 @@
   &__select-override {
     font-size: $font-size-large !important;
   }
+
+  &__help-icon {
+    margin-bottom: -3px;
+    height: 20px;
+    margin-left: 3px;
+  }
 }

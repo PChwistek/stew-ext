@@ -24,7 +24,7 @@ export const handle401 = (error) => {
 
 export const loginSuccess = (payload) => {
   const { access_token, username, lastUpdated, userId } = payload
-  manager.setAuth({ jwt: access_token, username, lastUpdated })
+  manager.setAuth({ jwt: access_token, username, lastUpdated, userId })
   return {
     type: AUTH_LOGIN_SUCCESS,
     payload: {
@@ -80,6 +80,6 @@ export const authLogoutAlias = () => {
     dispatch({ type: AUTH_LOGOUT_ALIAS })
     dispatch({ type: SEARCH_RESET })
     dispatch({ type: TABS_RESET })
-    manager.setAuth({ jwt: null, username: null, lastUpdated: null})
+    manager.setAuth({ jwt: null, username: null, lastUpdated: null, userId: null })
   }
 }

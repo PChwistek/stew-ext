@@ -7,7 +7,7 @@
   visibility: hidden;
   background: $brand-color;
   color: $white;
-  font-size: $font-size-tiny;
+  font-size: $font-size-smaller;
   font-weight: 400;
   text-align: center;
   border-radius: 5px;
@@ -19,12 +19,32 @@
   z-index: 1;
 
   &--left {
-    font-size: $font-size-regular;
+    font-size: $font-size-regular !important;
     z-index: 20;
     top: 0%;
     width: 150px;
     max-height: 100px;
     right: 20px;
+  }
+
+  &__menu--left {
+    font-size: $font-size-smaller !important;
+    z-index: 20;
+    top: 0%;
+    width: 150px;
+    max-height: 100px;
+    right: 20px;
+  }
+
+
+  &--right { 
+    font-size: $font-size-smaller !important;
+    z-index: 20;
+    line-height: normal;
+    top: 0%;
+    width: 150px !important;
+    max-height: 100px !important;
+    left: 20px;
   }
 
 }

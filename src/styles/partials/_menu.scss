@@ -15,21 +15,58 @@
   }
 
   &__body {
-    width: 300px;
+    width: 350px;
     height: 100%;
     background: $white-background;
+    padding-top: 20px;
 
     &__content {
       padding: 30px;
       text-align: center;
-      div {
-        padding-top: 15px;
-      }
+      display: flex;
+      flex-direction: column;
     }
 
     &__logo {
       width: 100px;
     }
+
+    &__switch-container {
+      padding-top: 15px;
+
+      label {
+        color: $text-color;
+        font-size: $font-size-large;
+        display: flex;
+            justify-content: space-between;
+      }
+    }
+
+    &__logout-container {
+      margin-top: 25%;
+    }
+
+    &__logout-text {
+      font-size: $font-size-large;
+    }
+
+    &__switches {
+      width: 100%;
+      display: flex;
+      margin-top: 60px;
+      flex-direction: column;
+    }
+
+  }
+
+  &__help-icon {
+    margin-bottom: -3px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  &__switch {
+    padding-top: 0px !important;
   }
 
 }
