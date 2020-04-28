@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Menu from 'Popup/Menu'
 
-import logo from 'Assets/144x144.png'
+import logo from 'Assets/s-letter.png'
 import more from 'Assets/more.png'
 
 export default function Header() {

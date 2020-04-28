@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react"
+import React, { useRef } from "react"
 import PropTypes from 'prop-types'
 import { CSSTransition } from "react-transition-group"
 
-import stewLogo from 'Assets/stew-logo.png'
+import stewLogo from 'Assets/stew-title.png'
 
 const Menu = (props) => {
   const node = useRef()

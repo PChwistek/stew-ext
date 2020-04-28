@@ -2,7 +2,7 @@ import React, { useState, createRef } from 'react'
 import PropTypes from 'prop-types'
 import TextField from 'Common/TextField'
 import Button from 'Common/Button'
-import stewLogo from 'Assets/stew-logo.png'
+import stewLogo from 'Assets/stew-title.png'
 
 
 export default function Login(props) {
