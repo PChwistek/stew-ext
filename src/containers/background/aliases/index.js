@@ -16,7 +16,8 @@ import {
   TABS_QUICKADD,
   SEARCH_SETFAVORITE,
   TABS_MERGE_SESSION,
-  TABS_MOVE_TAB
+  TABS_MOVE_TAB,
+  TABS_SETRECIPE_PERMISSIONS,
 } from 'Containers/actionTypes'
 
 import { 
@@ -27,7 +28,8 @@ import {
   removeRecipe, 
   quickAddAlias, 
   mergeSessionAlias,
-  moveTabAlias
+  moveTabAlias,
+  editRecipePermissions
 } from './tabAliases'
 
 import { popupSync, toggleEditAlias, } from './popupAliases'
@@ -60,4 +62,5 @@ export default {
   [SEARCH_SETFAVORITE]: setFavoriteAlias,
   [TABS_MERGE_SESSION]: mergeSessionAlias,
   [TABS_MOVE_TAB]: moveTabAlias,
+  [TABS_SETRECIPE_PERMISSIONS]: editRecipePermissions,
 }

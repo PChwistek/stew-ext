@@ -22,7 +22,8 @@ import {
   TABS_SETSNAP_EXISTING,
   TABS_QUICKADD_ALIAS,
   TABS_MERGE_SESSION_ALIAS,
-  TABS_MOVE_TAB_ALIAS
+  TABS_MOVE_TAB_ALIAS,
+  TABS_SETRECIPE_PERMISSIONS_ALIAS
 } from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
@@ -325,5 +326,37 @@ export function moveTabAlias(originalAction) {
         recipeSession,
       }
     })
+  }
+}
+
+
+export const editRecipePermissions = (originalAction) => {
+  return async (dispatch, getState) => {
+    const authState = getState().auth
+    const { jwt } = authState
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` }
+    }
+    const { recipeId, linkPermissions, repos } = originalAction.payload
+    
+    try {
+
+      const response = await axios
+      .patch(`${serverUrl}/recipe/permissions`, {
+        _id: recipeId,
+        linkPermissions,
+        repos
+      }, config)
+      const updatedRecipe = response.data
+      await manager.updateRecipeInStore(updatedRecipe)
+      dispatch({
+        type: TABS_SETRECIPE_PERMISSIONS_ALIAS,
+      })
+     
+    } catch(err) {
+      if(err && err.status) {
+        handle401(err)
+      }
+    }
   }
 }

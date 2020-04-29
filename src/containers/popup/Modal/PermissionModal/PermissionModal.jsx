@@ -24,10 +24,11 @@ const linkOptions = [
 ]
 
 export const PermssionModal = (props) => {
-  const { selectedRecipe } = props
+  const { selectedRecipe, setPermissions } = props
   const [copiedVisible, setCopiedVisible] = useState(false)
 
   function handleDone() {
+    setPermissions({ recipeId: selectedRecipe._id, repos: [], linkPermissions: ['none'] })
     props.closeModal()
   }
 
@@ -82,7 +83,8 @@ PermssionModal.propTypes = {
   closeModal: PropTypes.func,
   onYesClick: PropTypes.func,
   onNoClick: PropTypes.func,
-  title: PropTypes.string
+  title: PropTypes.string,
+  setPermissions: PropTypes.func.isRequired,
 }
 
 export default PermssionModal

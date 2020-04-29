@@ -20,6 +20,7 @@ import {
   quickAdd,
   mergeSession,
   moveTab,
+  setPermissions,
 } from 'Popup/popup.actions'
 
 
@@ -53,6 +54,7 @@ const dispatchToProps = {
   quickAdd,
   mergeSession,
   moveTab,
+  setPermissions,
 }
 
 export default connect(stateToProps, dispatchToProps)(DetailTab)

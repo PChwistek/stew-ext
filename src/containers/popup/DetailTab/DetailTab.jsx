@@ -105,7 +105,8 @@ export default function DetailTab(props) {
     deleteRecipe,
     setFavorite,
     favorites,
-    moveTab
+    moveTab,
+    setPermissions
   } = props
 
   const isFavorite = favorites.findIndex(recipe => recipe === selectedRecipe._id) > -1
@@ -129,6 +130,7 @@ export default function DetailTab(props) {
                 setFavorite={ setFavorite }
                 deleteRecipe={ deleteRecipe }
                 isFavorite={ isFavorite }
+                setPermissions={ setPermissions }
               />
           }
           <SessionView 
@@ -191,5 +193,6 @@ DetailTab.propTypes = {
   setFavorite: PropTypes.func.isRequired,
   quickAdd: PropTypes.func.isRequired,
   mergeSession: PropTypes.func.isRequired,
-  moveTab: PropTypes.func.isRequired
+  moveTab: PropTypes.func.isRequired,
+  setPermissions: PropTypes.func.isRequired,
 }

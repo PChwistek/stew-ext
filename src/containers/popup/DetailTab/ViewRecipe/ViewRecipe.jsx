@@ -7,7 +7,7 @@ import ConfirmModal from 'Popup/Modal/ConfirmModal'
 import PermissionModal from 'Popup/Modal/PermissionModal'
 
 const ViewRecipe = (props) => {
-  const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite } = props
+  const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite, setPermissions } = props
   const [modalVisible, setModalVisible] = useState(false)
   const [pModalVisible, setPModalVisible] = useState(false)
 
@@ -65,6 +65,7 @@ const ViewRecipe = (props) => {
                 closeModal={ () => setPModalVisible(false) }
                 title={ 'Share Recipe' }
                 selectedRecipe={ selectedRecipe }
+                setPermissions={ setPermissions }
               />
               <IconRow
                 handleEditingClicked={ props.handleEditingClicked } 
@@ -85,7 +86,8 @@ ViewRecipe.propTypes = {
   launchRecipe: PropTypes.func.isRequired,
   deleteRecipe: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool.isRequired,
-  setFavorite: PropTypes.func.isRequired
+  setFavorite: PropTypes.func.isRequired,
+  setPermissions: PropTypes.func.isRequired,
 }
 
 export default ViewRecipe

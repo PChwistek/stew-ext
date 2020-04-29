@@ -28,6 +28,7 @@ import {
   TABS_QUICKADD,
   TABS_MERGE_SESSION,
   TABS_MOVE_TAB,
+  TABS_SETRECIPE_PERMISSIONS,
 } from '../actionTypes'
 
 import { removeDocumentListeners } from './utils'
@@ -282,6 +283,17 @@ export function moveTab(source, destination) {
     payload: {
       source,
       destination,
+    }
+  }
+}
+
+export function setPermissions({ recipeId, linkPermissions, repos }) {
+  return {
+    type: TABS_SETRECIPE_PERMISSIONS,
+    payload: {
+      recipeId,
+      linkPermissions,
+      repos
     }
   }
 }
