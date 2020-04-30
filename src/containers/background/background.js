@@ -106,7 +106,7 @@ browser.browserAction.onClicked.addListener(async () => {
       popupWindowId = windowId
       const currentTabs = await browser.tabs.query({ windowId: theWindow.id, active: true })
       const newTabId = currentTabs.length > 0 ? currentTabs[0].id : -1
-      if(popupWindowId !== newTabId) {
+      if(popupWindowId !== currentTabs.windowId) {
         currentTabId = newTabId
         store.dispatch({
           type: TABS_SETCURRENTTAB,
