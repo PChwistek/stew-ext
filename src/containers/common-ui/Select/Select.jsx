@@ -24,6 +24,7 @@ const MySelect = (props) => (
     isDisabled={ props.isDisabled } 
     placeholder={ props.placeholder } 
     defaultValue={ props.defaultValue }
+    onChange={ props.onChange }
   />
 )
 

@@ -18,17 +18,37 @@ const options = [
 ]
 
 const linkOptions = [
+  { value: 'any', label: 'Anyone' },
+  { value: 'org', label: 'Only people in my organization' },
   { value: 'off', label: 'No one (sharing off)' },
-  { value: 'anyone', label: 'Anyone' },
-  { value: 'org', label: 'Only people in my organization' }
 ]
+
+function getRightLinkPermissions(selectedRecipe) {
+
+  const isAny = selectedRecipe.linkPermissions.findIndex(item => item === 'any') > -1
+  const isOrg = selectedRecipe.linkPermissions.findIndex(item => item === 'org') > -1
+  
+  if(isAny) {
+    return 0
+  } else if (isOrg) {
+    return 1
+  } else {
+    return 2
+  }
+}
 
 export const PermssionModal = (props) => {
   const { selectedRecipe, setPermissions } = props
   const [copiedVisible, setCopiedVisible] = useState(false)
+  const [selectedLinkOptionIndex, setSelectedLinkOptionIndex] = useState(getRightLinkPermissions(selectedRecipe))
+
+  function handleLinkChange (selectedOptions) {
+    const index = linkOptions.findIndex(item => item.value === selectedOptions.value)
+    setSelectedLinkOptionIndex(index)
+  }
 
   function handleDone() {
-    setPermissions({ recipeId: selectedRecipe._id, repos: [], linkPermissions: ['none'] })
+    setPermissions({ recipeId: selectedRecipe._id, repos: [], linkPermissions: [linkOptions[selectedLinkOptionIndex].value] })
     props.closeModal()
   }
 
@@ -55,14 +75,14 @@ export const PermssionModal = (props) => {
           </div>
         </div>
         <div>
-          <p> Link Permissions <div className={ 'tooltip' }>
+          <div className='permissions-modal__title'> Link Permissions <div className={ 'tooltip' }>
               <img src={ question } className={'permissions-modal__help-icon'} />
               <span className="tooltiptext tooltiptext--right"> Who can view your recipe via shareable link? </span>
             </div>
-          </p> 
-          <Select options={ linkOptions } defaultValue={ linkOptions[1] } />
+          </div> 
+          <Select options={ linkOptions } defaultValue={ linkOptions[selectedLinkOptionIndex] } onChange={ handleLinkChange } />
         </div>
-        <div>
+        <div className='permissions-modal__selection'>
           <p> Share to team repository </p>
           <Select options={ options } isMulti className='permissions-modal__select-override' isDisabled placeholder={ 'Team upgrade needed to unlock'} />
         </div>

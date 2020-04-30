@@ -160,4 +160,16 @@
     height: 20px;
     margin-left: 3px;
   }
+
+  &__selection {
+    margin-top: 10px;
+  }
+
+  &__title {
+    font-size: $font-size-large;
+    color: $text-color;
+    line-height: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
 }
