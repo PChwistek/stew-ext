@@ -77,10 +77,16 @@ export const PermssionModal = (props) => {
         <div>
           <div className='permissions-modal__title'> Link Permissions <div className={ 'tooltip' }>
               <img src={ question } className={'permissions-modal__help-icon'} />
-              <span className="tooltiptext tooltiptext--right"> Who can view your recipe via shareable link? </span>
+              <span className="tooltiptext tooltiptext--right"> 
+              {
+                props.isForked 
+                  ? 'You can\'t edit this permission because this recipe was created by someone else.' 
+                  : 'Who can view your recipe via shareable link?'
+              } 
+              </span>
             </div>
           </div> 
-          <Select options={ linkOptions } defaultValue={ linkOptions[selectedLinkOptionIndex] } onChange={ handleLinkChange } />
+          <Select options={ linkOptions } defaultValue={ linkOptions[selectedLinkOptionIndex] } onChange={ handleLinkChange } isDisabled={ props.isForked } />
         </div>
         <div className='permissions-modal__selection'>
           <p> Share to team repository </p>
@@ -105,6 +111,7 @@ PermssionModal.propTypes = {
   onNoClick: PropTypes.func,
   title: PropTypes.string,
   setPermissions: PropTypes.func.isRequired,
+  isForked: PropTypes.bool,
 }
 
 export default PermssionModal

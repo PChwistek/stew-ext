@@ -111,10 +111,6 @@ exports[`Storyshots Confirm Modal showing 1`] = `
   <div
     className="modal__container"
   >
-    <div
-      className="modal__exit"
-      onClick={[Function]}
-    />
     <h2>
        
       Test title. Are you sure?
@@ -5339,26 +5335,565 @@ exports[`Storyshots Menu showing 1`] = `
         />
       </div>
       version 0.5
-      <div>
-        (imagine other settings options here...)
+      <div
+        className="menu__body__switches"
+      >
+        <div
+          className="menu__body__switch-container"
+        >
+          <label>
+            <span>
+              <div
+                className="tooltip"
+              >
+                <img
+                  className="menu__help-icon"
+                  src={Object {}}
+                />
+                <span
+                  className="tooltiptext tooltiptext__menu--left"
+                >
+                   Removes all open tabs and replaces them with the recipe. 
+                </span>
+              </div>
+              Clean workspace
+            </span>
+            <div
+              className="menu__switch"
+              style={
+                Object {
+                  "MozTransition": "opacity 0.25s",
+                  "MozUserSelect": "none",
+                  "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                  "WebkitTransition": "opacity 0.25s",
+                  "WebkitUserSelect": "none",
+                  "borderRadius": 14,
+                  "direction": "ltr",
+                  "display": "inline-block",
+                  "msUserSelect": "none",
+                  "opacity": 1,
+                  "position": "relative",
+                  "textAlign": "left",
+                  "touchAction": "none",
+                  "transition": "opacity 0.25s",
+                  "userSelect": "none",
+                }
+              }
+            >
+              <div
+                className="react-switch-bg"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                style={
+                  Object {
+                    "MozTransition": "background 0.25s",
+                    "WebkitTransition": "background 0.25s",
+                    "background": "#EE6352",
+                    "borderRadius": 14,
+                    "cursor": "pointer",
+                    "height": 28,
+                    "margin": 0,
+                    "position": "relative",
+                    "transition": "background 0.25s",
+                    "width": 56,
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "MozTransition": "opacity 0.25s",
+                      "WebkitTransition": "opacity 0.25s",
+                      "height": 28,
+                      "opacity": 0,
+                      "pointerEvents": "none",
+                      "position": "relative",
+                      "transition": "opacity 0.25s",
+                      "width": 30,
+                    }
+                  }
+                >
+                  <svg
+                    height="100%"
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "top": 0,
+                      }
+                    }
+                    viewBox="-2 -5 17 21"
+                    width="100%"
+                  >
+                    <path
+                      d="M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0"
+                      fill="#fff"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "MozTransition": "opacity 0.25s",
+                      "WebkitTransition": "opacity 0.25s",
+                      "height": 28,
+                      "opacity": 1,
+                      "pointerEvents": "none",
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transition": "opacity 0.25s",
+                      "width": 30,
+                    }
+                  }
+                >
+                  <svg
+                    height="100%"
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "top": 0,
+                      }
+                    }
+                    viewBox="-2 -5 14 20"
+                    width="100%"
+                  >
+                    <path
+                      d="M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12"
+                      fill="#fff"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="react-switch-handle"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                style={
+                  Object {
+                    "MozTransition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "WebkitTransition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "background": "#ffffff",
+                    "border": 0,
+                    "borderRadius": "50%",
+                    "boxShadow": null,
+                    "cursor": "pointer",
+                    "display": "inline-block",
+                    "height": 26,
+                    "outline": 0,
+                    "position": "absolute",
+                    "top": 1,
+                    "transform": "translateX(1px)",
+                    "transition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "width": 26,
+                  }
+                }
+              />
+              <input
+                checked={false}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyUp={[Function]}
+                role="switch"
+                style={
+                  Object {
+                    "border": 0,
+                    "clip": "rect(0 0 0 0)",
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "width": 1,
+                  }
+                }
+                type="checkbox"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="menu__body__switch-container"
+        >
+          <label>
+            <span>
+              <div
+                className="tooltip"
+              >
+                <img
+                  className="menu__help-icon"
+                  src={Object {}}
+                />
+                <span
+                  className="tooltiptext tooltiptext__menu--left"
+                >
+                   Enable quick add popup. 
+                </span>
+              </div>
+              Quick Add
+            </span>
+            <div
+              className="menu__switch"
+              style={
+                Object {
+                  "MozTransition": "opacity 0.25s",
+                  "MozUserSelect": "none",
+                  "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                  "WebkitTransition": "opacity 0.25s",
+                  "WebkitUserSelect": "none",
+                  "borderRadius": 14,
+                  "direction": "ltr",
+                  "display": "inline-block",
+                  "msUserSelect": "none",
+                  "opacity": 1,
+                  "position": "relative",
+                  "textAlign": "left",
+                  "touchAction": "none",
+                  "transition": "opacity 0.25s",
+                  "userSelect": "none",
+                }
+              }
+            >
+              <div
+                className="react-switch-bg"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                style={
+                  Object {
+                    "MozTransition": "background 0.25s",
+                    "WebkitTransition": "background 0.25s",
+                    "background": "#55C090",
+                    "borderRadius": 14,
+                    "cursor": "pointer",
+                    "height": 28,
+                    "margin": 0,
+                    "position": "relative",
+                    "transition": "background 0.25s",
+                    "width": 56,
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "MozTransition": "opacity 0.25s",
+                      "WebkitTransition": "opacity 0.25s",
+                      "height": 28,
+                      "opacity": 1,
+                      "pointerEvents": "none",
+                      "position": "relative",
+                      "transition": "opacity 0.25s",
+                      "width": 30,
+                    }
+                  }
+                >
+                  <svg
+                    height="100%"
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "top": 0,
+                      }
+                    }
+                    viewBox="-2 -5 17 21"
+                    width="100%"
+                  >
+                    <path
+                      d="M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0"
+                      fill="#fff"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "MozTransition": "opacity 0.25s",
+                      "WebkitTransition": "opacity 0.25s",
+                      "height": 28,
+                      "opacity": 0,
+                      "pointerEvents": "none",
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transition": "opacity 0.25s",
+                      "width": 30,
+                    }
+                  }
+                >
+                  <svg
+                    height="100%"
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "top": 0,
+                      }
+                    }
+                    viewBox="-2 -5 14 20"
+                    width="100%"
+                  >
+                    <path
+                      d="M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12"
+                      fill="#fff"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="react-switch-handle"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                style={
+                  Object {
+                    "MozTransition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "WebkitTransition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "background": "#ffffff",
+                    "border": 0,
+                    "borderRadius": "50%",
+                    "boxShadow": null,
+                    "cursor": "pointer",
+                    "display": "inline-block",
+                    "height": 26,
+                    "outline": 0,
+                    "position": "absolute",
+                    "top": 1,
+                    "transform": "translateX(29px)",
+                    "transition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "width": 26,
+                  }
+                }
+              />
+              <input
+                checked={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyUp={[Function]}
+                role="switch"
+                style={
+                  Object {
+                    "border": 0,
+                    "clip": "rect(0 0 0 0)",
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "width": 1,
+                  }
+                }
+                type="checkbox"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="menu__body__switch-container"
+        >
+          <label>
+            <span>
+              <div
+                className="tooltip"
+              >
+                <img
+                  className="menu__help-icon"
+                  src={Object {}}
+                />
+                <span
+                  className="tooltiptext tooltiptext__menu--left"
+                >
+                   Enable tab merge popup. 
+                </span>
+              </div>
+              Merge helper
+            </span>
+            <div
+              className="menu__switch"
+              style={
+                Object {
+                  "MozTransition": "opacity 0.25s",
+                  "MozUserSelect": "none",
+                  "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+                  "WebkitTransition": "opacity 0.25s",
+                  "WebkitUserSelect": "none",
+                  "borderRadius": 14,
+                  "direction": "ltr",
+                  "display": "inline-block",
+                  "msUserSelect": "none",
+                  "opacity": 1,
+                  "position": "relative",
+                  "textAlign": "left",
+                  "touchAction": "none",
+                  "transition": "opacity 0.25s",
+                  "userSelect": "none",
+                }
+              }
+            >
+              <div
+                className="react-switch-bg"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                style={
+                  Object {
+                    "MozTransition": "background 0.25s",
+                    "WebkitTransition": "background 0.25s",
+                    "background": "#55C090",
+                    "borderRadius": 14,
+                    "cursor": "pointer",
+                    "height": 28,
+                    "margin": 0,
+                    "position": "relative",
+                    "transition": "background 0.25s",
+                    "width": 56,
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "MozTransition": "opacity 0.25s",
+                      "WebkitTransition": "opacity 0.25s",
+                      "height": 28,
+                      "opacity": 1,
+                      "pointerEvents": "none",
+                      "position": "relative",
+                      "transition": "opacity 0.25s",
+                      "width": 30,
+                    }
+                  }
+                >
+                  <svg
+                    height="100%"
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "top": 0,
+                      }
+                    }
+                    viewBox="-2 -5 17 21"
+                    width="100%"
+                  >
+                    <path
+                      d="M11.264 0L5.26 6.004 2.103 2.847 0 4.95l5.26 5.26 8.108-8.107L11.264 0"
+                      fill="#fff"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "MozTransition": "opacity 0.25s",
+                      "WebkitTransition": "opacity 0.25s",
+                      "height": 28,
+                      "opacity": 0,
+                      "pointerEvents": "none",
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transition": "opacity 0.25s",
+                      "width": 30,
+                    }
+                  }
+                >
+                  <svg
+                    height="100%"
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "top": 0,
+                      }
+                    }
+                    viewBox="-2 -5 14 20"
+                    width="100%"
+                  >
+                    <path
+                      d="M9.9 2.12L7.78 0 4.95 2.828 2.12 0 0 2.12l2.83 2.83L0 7.776 2.123 9.9 4.95 7.07 7.78 9.9 9.9 7.776 7.072 4.95 9.9 2.12"
+                      fill="#fff"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="react-switch-handle"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                style={
+                  Object {
+                    "MozTransition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "WebkitTransition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "background": "#ffffff",
+                    "border": 0,
+                    "borderRadius": "50%",
+                    "boxShadow": null,
+                    "cursor": "pointer",
+                    "display": "inline-block",
+                    "height": 26,
+                    "outline": 0,
+                    "position": "absolute",
+                    "top": 1,
+                    "transform": "translateX(29px)",
+                    "transition": "background-color 0.25s, transform 0.25s, box-shadow 0.15s",
+                    "width": 26,
+                  }
+                }
+              />
+              <input
+                checked={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyUp={[Function]}
+                role="switch"
+                style={
+                  Object {
+                    "border": 0,
+                    "clip": "rect(0 0 0 0)",
+                    "height": 1,
+                    "margin": -1,
+                    "overflow": "hidden",
+                    "padding": 0,
+                    "position": "absolute",
+                    "width": 1,
+                  }
+                }
+                type="checkbox"
+              />
+            </div>
+          </label>
+        </div>
       </div>
       <div
+        className="menu__body__logout-container"
         onClick={[Function]}
       >
-        <a>
+        <a
+          className="menu__body__logout-text"
+        >
            Logout 
         </a>
       </div>
       <div />
       <div />
-      <div>
-        Icons made by Freepik from 
-        <a
-          href="www.flaticon.com"
-        >
-           www.flaticon.com 
-        </a>
-      </div>
     </div>
   </div>
 </div>
@@ -5757,7 +6292,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -5887,7 +6422,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6017,7 +6552,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6107,7 +6642,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6243,7 +6778,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6373,7 +6908,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6503,7 +7038,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6593,7 +7128,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6744,7 +7279,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6874,7 +7409,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7004,7 +7539,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7094,7 +7629,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7245,7 +7780,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7375,7 +7910,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7505,7 +8040,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7595,7 +8130,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7746,7 +8281,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7876,7 +8411,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        31 days ago
+        42 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8006,7 +8541,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8096,7 +8631,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        29 days ago
+        40 days ago
       </div>
       <div
         className="table__row__tags"
