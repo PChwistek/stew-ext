@@ -93,6 +93,7 @@ export const saveRecipeAlias = () => {
         titles: titlesForSearch,
         attributes: [],
         config: tabsState.recipeSession,
+        linkPermissions: ['any']
       }
      
       if(!isNew) {
