@@ -60,6 +60,7 @@ export default (state = initialState, action) => {
         isPending: false,
         jwt: action.payload.jwt,
         username: action.payload.username,
+        userId: action.payload.userId,
         lastUpdated: action.payload.lastUpdated,
         error: ''
       })
