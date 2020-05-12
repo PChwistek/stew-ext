@@ -8,7 +8,6 @@ import { selectRecipe, setSearchRowAlias, getInitialResults } from './searchAlia
 import { toggleEditAlias } from './popupAliases'
 import { cloneDeep } from 'lodash'
 
-
 import { 
   TABS_SETSNAP, 
   TABS_DELETERECIPE_PENDING,
@@ -189,11 +188,26 @@ export const quickAddAlias = () => {
     const { currentTab, recipeSession } = getState().tabs
     const { selectedRecipe } = getState().search
 
+    const { favIconUrl, title, url, index } = currentTab
+
     if(recipeSession.length > 0) {
-      recipeSession[0].tabs.unshift({ ...currentTab })
+      recipeSession[0].tabs.unshift({  
+        favIconUrl,
+        title,
+        url,
+        index, 
+      })
     } else {
-      recipeSession.push({ tabs: [ { ...currentTab } ]})
+      recipeSession.push({ tabs: 
+        [{ 
+          favIconUrl,
+          title,
+          url,
+          index, 
+        }]
+      })
     }
+    console.log('recipe session', recipeSession)
     dispatch({
       type: TABS_QUICKADD_ALIAS,
       payload: {
