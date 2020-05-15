@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import PropTypes from 'prop-types'
 import Switch from "react-switch"
 import { CSSTransition } from "react-transition-group"
@@ -8,6 +8,37 @@ import question from 'Assets/question.png'
 
 const Menu = (props) => {
   const node = useRef()
+  const { settings } = props
+  const [quickAdd, setQuickAdd] = useState(settings.quickAdd)
+  const [mergeHelper, setMergeHelper] = useState(settings.mergeHelper)
+  const [cleanWorkspace, setCleanWorkspace] = useState(settings.cleanWorkspace)
+
+  function handleWorkspaceChange(checked) {
+    setCleanWorkspace(checked)
+    props.setSettings({
+      cleanWorkspace: checked,
+      quickAdd,
+      mergeHelper
+    })
+  }
+
+  function handleQuickAddChange(checked) {
+    setQuickAdd(checked)
+    props.setSettings({
+      cleanWorkspace,
+      quickAdd: checked,
+      mergeHelper
+    })
+  }
+
+  function handleMergeHelperChange(checked) {
+    setMergeHelper(checked)
+    props.setSettings({
+      cleanWorkspace,
+      quickAdd,
+      mergeHelper: checked,
+    })
+  }
 
   return (
     <CSSTransition in={ props.open } timeout={ 200 } className='menu' classNames={ 'slide-in' } unmountOnExit>
@@ -29,7 +60,7 @@ const Menu = (props) => {
                     </div>
                     Clean workspace 
                   </span>
-                  <Switch onChange={ () => {} } checked={ false } className='menu__switch' offColor='#EE6352' onColor='#55C090' />
+                  <Switch onChange={ handleWorkspaceChange } checked={ cleanWorkspace } className='menu__switch' offColor='#EE6352' onColor='#55C090' />
                 </label>
               </div>
               <div className='menu__body__switch-container'>
@@ -41,7 +72,7 @@ const Menu = (props) => {
                     </div>
                     Quick Add 
                   </span>
-                  <Switch onChange={ () => {} } checked={ true} className='menu__switch' offColor='#EE6352' onColor='#55C090' />
+                  <Switch onChange={ handleQuickAddChange } checked={ quickAdd } className='menu__switch' offColor='#EE6352' onColor='#55C090' />
                 </label>
               </div>
               <div className='menu__body__switch-container'>
@@ -53,7 +84,7 @@ const Menu = (props) => {
                       </div>
                       Merge helper 
                   </span>
-                  <Switch onChange={ () => {} } checked={ true} className='menu__switch' offColor='#EE6352' onColor='#55C090' />
+                  <Switch onChange={ handleMergeHelperChange } checked={ mergeHelper } className='menu__switch' offColor='#EE6352' onColor='#55C090' />
                 </label>
               </div>
             </div>

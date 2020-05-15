@@ -20,6 +20,17 @@ export class Manager {
     return await this.getAuth()
   }
 
+  async getSettings() {
+    const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_settings`)
+    return saved[`${this.storageKey}_settings`] || { cleanWorkspace: null, quickAdd: null, mergeHelper: null }
+  }
+
+  async setSettings({ cleanWorkspace, quickAdd, mergeHelper }) {
+    const stew_settings =  { cleanWorkspace, quickAdd, mergeHelper}
+    await this.browserAPI.storage.local.set({ [`${this.storageKey}_settings`]: stew_settings })
+    return await this.getSettings()
+  }
+
   async getSession(idOfLastActiveWindow) {
     let windows = await this.browserAPI.windows.getAll()
     windows = windows.filter(win => win.type === 'normal')

@@ -12,7 +12,8 @@ import {
   POPUP_SYNCRECIPES_PENDING,
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_TOGGLEEDITING_ALIAS,
-  AUTH_SET_FROM_STORE
+  AUTH_SET_FROM_STORE,
+  SETTINGS_SET_FROM_STORE,
 } from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
@@ -66,6 +67,18 @@ export const popupSync = (originalAction) => {
           }
         })
       }
+
+      const { cleanWorkspace, quickAdd, mergeHelper } = await manager.getSettings()
+      if (cleanWorkspace !== null) {
+        dispatch({
+          type: SETTINGS_SET_FROM_STORE,
+          payload: {
+            cleanWorkspace,
+            quickAdd,
+            mergeHelper
+          }
+        })
+      }
     }
 
     const loggedIn = getState().auth.loggedIn
@@ -98,5 +111,20 @@ export const toggleEditAlias = (originalAction) => {
         ...originalAction.payload
       } 
     })
+  }
+}
+
+export const setSettingsAlias = (originalAction) => {
+  const { cleanWorkspace, quickAdd, mergeHelper } = originalAction.payload
+  return async (dispatch) => {
+      manager.setSettings({ cleanWorkspace, quickAdd, mergeHelper })
+      dispatch({
+        type: SETTINGS_SET_FROM_STORE,
+        payload: {
+          cleanWorkspace,
+          quickAdd,
+          mergeHelper
+        }
+      })
   }
 }
