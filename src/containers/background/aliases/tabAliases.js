@@ -57,9 +57,12 @@ export const getCurrentSession = (originalAction) => {
 }
 
 export const launchRecipeConfiguration = (originalAction) => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const tabsState = getState().tabs
+    const currentWindowId = tabsState.currentWindow.id
     dispatch({ type: TABS_LAUNCHRECIPE_PENDING })
-    manager.nukeAndReplace(originalAction.payload.recipe.config)
+
+    manager.nukeAndReplace(originalAction.payload.recipe.config, currentWindowId)
     dispatch({ type: TABS_LAUNCHRECIPE_SUCCESS })
   }
 }

@@ -143,7 +143,7 @@ export default function DetailTab(props) {
             moveTab={ moveTab }
           />
           <TabHelper 
-            in={ showTabHelper } 
+            in={ props.settings.quickAdd && showTabHelper } 
             onNoClick={ () => setShowTabHelper(false) }
             onYesClick={ handleQuickAdd }
             title={ 'Quick Add' }
@@ -159,7 +159,7 @@ export default function DetailTab(props) {
             </div>
           </TabHelper>
           <TabHelper 
-            in={ showMergeHelper } 
+            in={ props.settings.mergeHelper && showMergeHelper } 
             onNoClick={ () => { 
               setShowMergeHelper(false) } 
             }

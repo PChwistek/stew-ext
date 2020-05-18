@@ -25,16 +25,19 @@ const linkOptions = [
 
 function getRightLinkPermissions(selectedRecipe) {
 
-  const isAny = selectedRecipe.linkPermissions.findIndex(item => item === 'any') > -1
-  const isOrg = selectedRecipe.linkPermissions.findIndex(item => item === 'org') > -1
-  
-  if(isAny) {
-    return 0
-  } else if (isOrg) {
-    return 1
-  } else {
-    return 2
+  if(selectedRecipe) {
+    const isAny = selectedRecipe.linkPermissions.findIndex(item => item === 'any') > -1
+    const isOrg = selectedRecipe.linkPermissions.findIndex(item => item === 'org') > -1
+    
+    if(isAny) {
+      return 0
+    } else if (isOrg) {
+      return 1
+    } else {
+      return 2
+    }
   }
+  return 2
 }
 
 export const PermssionModal = (props) => {

@@ -32,7 +32,8 @@ const stateToProps = ({ search, tabs, popup, auth }) => ({
   tabs,
   liveSession: tabs.session,
   currentTab: tabs.currentTab,
-  isEditing: popup.isEditing
+  isEditing: popup.isEditing,
+  settings: auth.settings,
 })
 
 const dispatchToProps = {
