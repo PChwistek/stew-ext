@@ -4,6 +4,7 @@ import Switch from "react-switch"
 import { CSSTransition } from "react-transition-group"
 
 import stewLogo from 'Assets/stew-title.png'
+import teamAd from 'Assets/new-team.png'
 import question from 'Assets/question.png'
 
 const Menu = (props) => {
@@ -90,6 +91,12 @@ const Menu = (props) => {
             </div>
             <div onClick={ props.logout } className='menu__body__logout-container'>
               <a className='menu__body__logout-text'> Logout </a>
+            </div>
+            <div className='menu__body__footer'>
+              <img src={ teamAd } className='menu__body__footer__icon'/>
+              <p className='menu__body__footer__ad-text-container'>
+                <a target='blank' href='https://getstew.com/about-teams' className='menu__body__footer__ad-text'>  Learn about Stew for teams  </a>
+              </p>
             </div>
             <div />
             <div />

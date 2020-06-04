@@ -26,8 +26,8 @@ const linkOptions = [
 function getRightLinkPermissions(selectedRecipe) {
 
   if(selectedRecipe) {
-    const isAny = selectedRecipe.linkPermissions.findIndex(item => item === 'any') > -1
-    const isOrg = selectedRecipe.linkPermissions.findIndex(item => item === 'org') > -1
+    const isAny = selectedRecipe && selectedRecipe.linkPermissions.findIndex(item => item === 'any') > -1
+    const isOrg = selectedRecipe && selectedRecipe.linkPermissions.findIndex(item => item === 'org') > -1
     
     if(isAny) {
       return 0

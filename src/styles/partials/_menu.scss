@@ -27,6 +27,23 @@
       flex-direction: column;
     }
 
+    &__footer {
+
+      margin-top: 60px;
+
+      &__icon {
+        width: 150px;
+      }
+
+      &__ad-text-container {
+        margin-top: 15px;
+      }
+      
+      &__ad-text {
+        font-size: $font-size-large;
+      }
+    }
+
     &__logo {
       width: 100px;
     }
