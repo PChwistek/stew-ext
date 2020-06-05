@@ -20,6 +20,17 @@ export class Manager {
     return await this.getAuth()
   }
 
+  async getSortBys() {
+    const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_sorts`)
+    return saved[`${this.storageKey}_sorts`] || { favorites, repos }
+  }
+
+  async setSortBys({ favories, repos }) {
+    const stew_sorts =  { favories, repos }
+    await this.browserAPI.storage.local.set({ [`${this.storageKey}_sorts`]: stew_sorts })
+    return await this.getAuth()
+  }
+
   async getSettings() {
     const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_settings`)
     return saved[`${this.storageKey}_settings`] || { cleanWorkspace: null, quickAdd: null, mergeHelper: null }
@@ -131,7 +142,7 @@ export class Manager {
     return []
   }
 
-  async searchRecipes(searchTerm, { sortedBy, filterList }) {
+  async searchRecipes(searchTerm, { sortedBy, filteredList }) {
     const allRecipes = await this.fetchAllRecipes()
     var search = new JsSearch.Search('_id')
     search.tokenizer = new JsSearch.StemmingTokenizer( stemmer, new JsSearch.SimpleTokenizer());
@@ -144,11 +155,15 @@ export class Manager {
     let results = search.search(searchTerm)
 
     if(sortedBy) {
+<<<<<<< Updated upstream
       switch(sortedBy) {
         case 'favorites':
           results = results.filter(recipe => filterList.findIndex(fav => fav == recipe._id) > -1)
           break
       }
+=======
+      results = results.filter(recipe => filteredList.findIndex(fav => fav == recipe._id) > -1)
+>>>>>>> Stashed changes
     }
 
     return results

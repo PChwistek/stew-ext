@@ -14,6 +14,7 @@ import {
   POPUP_TOGGLEEDITING_ALIAS,
   AUTH_SET_FROM_STORE,
   SETTINGS_SET_FROM_STORE,
+  SEARCH_SORTS_SET_FROM_STORE,
 } from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
@@ -30,10 +31,11 @@ export const syncRecipesWithCloud = (isForced) => {
     dispatch({ type: POPUP_SYNCRECIPES_PENDING})
     axios
       .post(`${serverUrl}/recipe/sync`, { lastUpdated, isForced }, config)
-      .then(res => {
+      .then(async res => {
         const { data } = res
         if(!data.upToDate || isForced) {
-          manager.updateRecipesFromServer(data.recipes)
+          await manager.updateRecipesFromServer(data.recipes)
+          await manager.setSortBys({ favorites: data.favoriteRecipes , repos: data.repos })
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
           dispatch({ type: AUTH_UPDATEDSYNC, payload: { lastUpdated: data.lastUpdated }})
           dispatch(getInitialResults())
@@ -79,6 +81,17 @@ export const popupSync = (originalAction) => {
           }
         })
       }
+    }
+
+    const { favorite, repos } = await manager.getSortBys()
+    if (repos && favorite) {
+      dispatch({
+        type: SEARCH_SORTS_SET_FROM_STORE,
+        payload: {
+          repos,
+          favorites,
+        }
+      })
     }
 
     const loggedIn = getState().auth.loggedIn
