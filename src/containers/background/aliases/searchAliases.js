@@ -9,6 +9,7 @@ import {
   SEARCH_SETSORTBY_ALIAS,
   SEARCH_SETFAVORITE_SYNC_SUCCESS,
   SEARCH_SETFAVORITE_ALIAS,
+  SEARCH_SETRESULTS_SYNC_FAILED,
 } from 'Containers/actionTypes'
 
 import { defaultManager as manager } from '../tabmanager'
@@ -17,13 +18,10 @@ const serverUrl = getServerHostname()
 
 export const getInitialResults = (originalAction) => {
   return async (dispatch, getState) => {
-    const { search: { sortedBy, favorites, repos } } = getState()
+    const { search: { sortedBy, favorites } } = getState()
     let recipes = await manager.fetchAllRecipes()
-    let repoIndex = repos.findIndex(repo => repo.repoId === sortedBy)
-    if (sortedBy == 'favorites') {
+    if(sortedBy == 'favorites') {
       recipes = recipes.filter(recipe => favorites.findIndex(fav => fav == recipe._id) > -1)
-    } else if (repoIndex > -1) {
-      recipes = recipes.filter(recipe => repos[repoIndex].recipes.findIndex(repoRecipe => repoRecipe == recipe._id) > -1) 
     }
     dispatch(searchSuccess(recipes))
   }
@@ -49,17 +47,9 @@ export const setSearchRowAlias = (rowIndex) => {
 
 export const searchRecipes = (originalAction) => {
   return async (dispatch, getState) => {
-    const { search: { sortedBy, favorites, repos } } = getState()
+    const { search: { sortedBy, favorites } } = getState()
     dispatch(setSearchTerms(originalAction))
-    
-    let filteredList = []
-    let repoIndex = repos.findIndex(repo => repo.id === sortedBy)
-    if (sortedBy === 'favorites') {
-      filteredList = favorites
-    } else if (repoIndex > -1) {
-      filteredList = repos[repoIndex].recipes
-    }
-    const recipes = await manager.searchRecipes(originalAction.payload.searchTerms, { sortedBy, filterList })
+    const recipes = await manager.searchRecipes(originalAction.payload.searchTerms, { sortedBy, filterList: favorites })
     dispatch(searchSuccess(recipes))
   }
 }

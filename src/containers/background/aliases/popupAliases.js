@@ -13,7 +13,6 @@ import {
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_TOGGLEEDITING_ALIAS,
   AUTH_SET_FROM_STORE,
-  SEARCH_SET_REPOS,
   SETTINGS_SET_FROM_STORE,
 } from 'Containers/actionTypes'
 
@@ -37,7 +36,6 @@ export const syncRecipesWithCloud = (isForced) => {
           manager.updateRecipesFromServer(data.recipes)
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
           dispatch({ type: AUTH_UPDATEDSYNC, payload: { lastUpdated: data.lastUpdated }})
-          dispatch({ type: SEARCH_SET_REPOS, payload: { repos: data.repos } })
           dispatch(getInitialResults())
         } else {
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
