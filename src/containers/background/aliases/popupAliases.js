@@ -13,6 +13,7 @@ import {
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_TOGGLEEDITING_ALIAS,
   AUTH_SET_FROM_STORE,
+  SEARCH_SET_SORTBYS,
   SETTINGS_SET_FROM_STORE,
 } from 'Containers/actionTypes'
 
@@ -33,7 +34,9 @@ export const syncRecipesWithCloud = (isForced) => {
       .then(async res => {
         const { data } = res
         if(!data.upToDate || isForced) {
+          dispatch({ type: SEARCH_SET_SORTBYS, payload: { repos: data.repos, favorites: data.favorites } })
           await manager.updateRecipesFromServer(data.recipes)
+          manager.setSortBys({ favorites: data.favorites , repos: data.repos })
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
           dispatch({ type: AUTH_UPDATEDSYNC, payload: { lastUpdated: data.lastUpdated }})
           dispatch(getInitialResults())
@@ -64,6 +67,17 @@ export const popupSync = (originalAction) => {
             username,
             lastUpdated,
             userId
+          }
+        })
+      }
+
+      const { favorites, repos } = await manager.getSortBys()
+      if (favorites !== null) {
+        dispatch({
+          type: SEARCH_SET_SORTBYS,
+          payload: {
+            favorites, 
+            repos,
           }
         })
       }

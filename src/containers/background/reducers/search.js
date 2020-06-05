@@ -9,7 +9,7 @@ import {
   SEARCH_RESET,
   SEARCH_SETSORTBY_ALIAS,
   SEARCH_SETFAVORITE_ALIAS,
-  SEARCH_SET_REPOS,
+  SEARCH_SET_SORTBYS,
 } from 'Containers/actionTypes'
 
 const initialState = {
@@ -74,9 +74,10 @@ export default (state = initialState, action) => {
         favorites: action.payload.favs
       })
     }
-    case SEARCH_SET_REPOS: {
+    case SEARCH_SET_SORTBYS: {
       return Object.assign({}, state, {
         repos: action.payload.repos,
+        favorites: action.payload.favorites,
       })
     }
     case SEARCH_RESET:

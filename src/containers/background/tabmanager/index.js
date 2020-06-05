@@ -9,6 +9,17 @@ export class Manager {
     this.browserAPI = browserAPI || browser
   }
 
+  async getSortBys() {
+    const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_sortBys`)
+    return saved[`${this.storageKey}_sortBys`] || { repos: null, favorites: null }
+  }
+
+  async setSortBys({ favorites, repos }) {
+    const stew_sortBys =  { favorites, repos }
+    await this.browserAPI.storage.local.set({ [`${this.storageKey}_sortBys`]: stew_sortBys })
+    return await this.getSortBys()
+  }
+
   async getAuth() {
     const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_auth`)
     return saved[`${this.storageKey}_auth`] || { jwt: null, username: null, lastUpdated: null, userId: null, }
