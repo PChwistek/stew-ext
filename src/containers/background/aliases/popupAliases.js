@@ -30,10 +30,10 @@ export const syncRecipesWithCloud = (isForced) => {
     dispatch({ type: POPUP_SYNCRECIPES_PENDING})
     axios
       .post(`${serverUrl}/recipe/sync`, { lastUpdated, isForced }, config)
-      .then(res => {
+      .then(async res => {
         const { data } = res
         if(!data.upToDate || isForced) {
-          manager.updateRecipesFromServer(data.recipes)
+          await manager.updateRecipesFromServer(data.recipes)
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
           dispatch({ type: AUTH_UPDATEDSYNC, payload: { lastUpdated: data.lastUpdated }})
           dispatch(getInitialResults())

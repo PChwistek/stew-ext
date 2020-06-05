@@ -9,7 +9,6 @@ import {
   SEARCH_SETSORTBY_ALIAS,
   SEARCH_SETFAVORITE_SYNC_SUCCESS,
   SEARCH_SETFAVORITE_ALIAS,
-  SEARCH_SETRESULTS_SYNC_FAILED,
 } from 'Containers/actionTypes'
 
 import { defaultManager as manager } from '../tabmanager'
