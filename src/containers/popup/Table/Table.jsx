@@ -9,7 +9,7 @@ import { getDaysFrom } from '../utils'
 
 export default function Table(props) {
   const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy, loggedIn } = props
-  const { selectedRow = 0, results = [], searchTerms, sortedBy, favorites } = props.search
+  const { selectedRow = 0, results = [], searchTerms, sortedBy, favorites, repos } = props.search
 
   const refDictionary = {}
   const keyMap = {}
@@ -43,7 +43,14 @@ export default function Table(props) {
 
   return (
     <div>
-      <SortBar title={ 'All' } numResults={ `${results.length}` } terms={ searchTerms } setSortBy={ setSortBy } sortedBy={ sortedBy } />
+      <SortBar 
+        title={ 'All' } 
+        numResults={ `${results.length}` } 
+        terms={ searchTerms } 
+        setSortBy={ setSortBy } 
+        sortedBy={ sortedBy } 
+        repos={ repos }
+      />
       <div className={ 'table__container'}>
       {
         results.length <= 0 

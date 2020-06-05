@@ -8,7 +8,8 @@ import {
   SEARCH_CLEARSELECTEDRECIPE,
   SEARCH_RESET,
   SEARCH_SETSORTBY_ALIAS,
-  SEARCH_SETFAVORITE_ALIAS
+  SEARCH_SETFAVORITE_ALIAS,
+  SEARCH_SET_REPOS,
 } from 'Containers/actionTypes'
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   results: [],
   isDropdownOpen: false,
   selectedRow: 0,
+  repos: [],
   sortedBy: 'all',
   selectedRecipe: {},
   favorites: []
@@ -70,6 +72,11 @@ export default (state = initialState, action) => {
     case SEARCH_SETFAVORITE_ALIAS: {
       return Object.assign({}, state, {
         favorites: action.payload.favs
+      })
+    }
+    case SEARCH_SET_REPOS: {
+      return Object.assign({}, state, {
+        repos: action.payload.repos,
       })
     }
     case SEARCH_RESET:

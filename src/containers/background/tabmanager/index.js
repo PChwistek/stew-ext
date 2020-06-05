@@ -144,11 +144,7 @@ export class Manager {
     let results = search.search(searchTerm)
 
     if(sortedBy) {
-      switch(sortedBy) {
-        case 'favorites':
-          results = results.filter(recipe => filterList.findIndex(fav => fav == recipe._id) > -1)
-          break
-      }
+      results = results.filter(recipe => filterList.findIndex(fav => fav == recipe._id) > -1)
     }
 
     return results
