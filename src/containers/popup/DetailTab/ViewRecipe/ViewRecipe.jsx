@@ -7,7 +7,7 @@ import ConfirmModal from 'Popup/Modal/ConfirmModal'
 import PermissionModal from 'Popup/Modal/PermissionModal'
 
 const ViewRecipe = (props) => {
-  const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite, setPermissions, isForked } = props
+  const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite, setPermissions, isForked, repos, orgs } = props
   const [modalVisible, setModalVisible] = useState(false)
   const [pModalVisible, setPModalVisible] = useState(false)
 
@@ -41,14 +41,14 @@ const ViewRecipe = (props) => {
               </div>
               <div>
                 <div className={ 'table__row__tags'}>
-                    {
-                      selectedRecipe.tags && selectedRecipe.tags.map(tag => (
-                        <div key={ tag } className={ 'tag-result' }>
-                          { tag }
-                        </div>
-                      ))
-                    }
-                    </div>
+                  {
+                    selectedRecipe.tags && selectedRecipe.tags.map(tag => (
+                      <div key={ tag } className={ 'tag-result' }>
+                        { tag }
+                      </div>
+                    ))
+                  }
+                  </div>
               </div>
               <div className={ 'detailtab__launch' }>
                 <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(selectedRecipe || {}) } />
@@ -67,6 +67,8 @@ const ViewRecipe = (props) => {
                 selectedRecipe={ selectedRecipe }
                 setPermissions={ setPermissions }
                 isForked={ isForked }
+                repos={ repos }
+                orgs={ orgs }
               />
               <IconRow
                 handleEditingClicked={ props.handleEditingClicked } 

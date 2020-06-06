@@ -15,6 +15,7 @@ const initialState = {
   isPending: false,
   username: '',
   userId: '',
+  orgs: [],
   jwt: '',
   lastUpdated: '',
   error: '',
@@ -39,6 +40,7 @@ export default (state = initialState, action) => {
         username: action.payload.username,
         lastUpdated: action.payload.lastUpdated,
         userId: action.payload.userId,
+        orgs: action.payload.orgs,
         error: ''
       })
     case AUTH_LOGIN_FAILED:
@@ -67,6 +69,7 @@ export default (state = initialState, action) => {
         username: action.payload.username,
         userId: action.payload.userId,
         lastUpdated: action.payload.lastUpdated,
+        orgs: action.payload.orgs,
         error: ''
       })
     case SETTINGS_SET_FROM_STORE:

@@ -8,21 +8,6 @@ import { getWebsiteHostname } from 'Containers/getServerHostName'
 import link from 'Assets/link.png'
 import question from 'Assets/question.png'
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla2', label: 'Vanilla' },
-  { value: 'vanilla3', label: 'Vanilla' },
-  { value: 'vanilla4', label: 'Vanilla' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
-
-const linkOptions = [
-  { value: 'any', label: 'Anyone' },
-  { value: 'org', label: 'Only people in my organization' },
-  { value: 'off', label: 'No one (sharing off)' },
-]
-
 function getRightLinkPermissions(selectedRecipe) {
 
   if(selectedRecipe) {
@@ -41,9 +26,25 @@ function getRightLinkPermissions(selectedRecipe) {
 }
 
 export const PermssionModal = (props) => {
+
+  const repoOptions = props.repos.map(repo => ({
+    label: repo.name,
+    value: repo.repoId,
+  }))
+
+  const linkOptions = [
+    { value: 'any', label: 'Anyone' },
+    { value: 'off', label: 'No one (sharing off)' },
+  ]
+
+  if (props.orgs.length > 0) {
+    linkOptions.push({ value: 'org', label: 'Only people in my organization' })
+  }
+  
   const { selectedRecipe, setPermissions } = props
   const [copiedVisible, setCopiedVisible] = useState(false)
   const [selectedLinkOptionIndex, setSelectedLinkOptionIndex] = useState(getRightLinkPermissions(selectedRecipe))
+  const [selectedRepos, setSelectedRepos] = useState([])
 
   function handleLinkChange (selectedOptions) {
     const index = linkOptions.findIndex(item => item.value === selectedOptions.value)
@@ -51,7 +52,7 @@ export const PermssionModal = (props) => {
   }
 
   function handleDone() {
-    setPermissions({ recipeId: selectedRecipe._id, repos: [], linkPermissions: [linkOptions[selectedLinkOptionIndex].value] })
+    setPermissions({ recipeId: selectedRecipe._id, repos: selectedRepos, linkPermissions: [linkOptions[selectedLinkOptionIndex].value] })
     props.closeModal()
   }
 
@@ -63,6 +64,7 @@ export const PermssionModal = (props) => {
       })
   }
 
+  console.log('selectedRecipe', selectedRecipe)
   return (
     <ModalBase show={ props.show } closeModal={ props.closeModal } >
       <div className='permissions-modal'>
@@ -93,7 +95,15 @@ export const PermssionModal = (props) => {
         </div>
         <div className='permissions-modal__selection'>
           <p> Share to team repository </p>
-          <Select options={ options } isMulti className='permissions-modal__select-override' isDisabled placeholder={ 'Team upgrade needed to unlock'} />
+          <Select 
+            options={ repoOptions } 
+            isMulti 
+            className='permissions-modal__select-override' 
+            defaultValue={ selectedRecipe.repos }
+            isDisabled= { repoOptions.length < 1 }
+            onChange={ (selectedOptions) => setSelectedRepos(selectedOptions) }
+            placeholder={  repoOptions.length > 0 ? 'Select repositories from the list' : 'No available repositories'} 
+          />
         </div>
         <TimedAlert 
           visible={ copiedVisible }

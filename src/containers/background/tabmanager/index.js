@@ -22,11 +22,11 @@ export class Manager {
 
   async getAuth() {
     const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_auth`)
-    return saved[`${this.storageKey}_auth`] || { jwt: null, username: null, lastUpdated: null, userId: null, }
+    return saved[`${this.storageKey}_auth`] || { jwt: null, username: null, lastUpdated: null, userId: null, orgs: null }
   }
 
-  async setAuth({ jwt, username, lastUpdated, userId }) {
-    const stew_auth =  { jwt, username, lastUpdated, userId }
+  async setAuth({ jwt, username, lastUpdated, userId, orgs }) {
+    const stew_auth =  { jwt, username, lastUpdated, userId, orgs }
     await this.browserAPI.storage.local.set({ [`${this.storageKey}_auth`]: stew_auth })
     return await this.getAuth()
   }
@@ -142,7 +142,7 @@ export class Manager {
     return []
   }
 
-  async searchRecipes(searchTerm, { sortedBy, filterList }) {
+  async searchRecipes(searchTerm, { sortedBy, filteredList }) {
     const allRecipes = await this.fetchAllRecipes()
     var search = new JsSearch.Search('_id')
     search.tokenizer = new JsSearch.StemmingTokenizer( stemmer, new JsSearch.SimpleTokenizer());
@@ -157,7 +157,7 @@ export class Manager {
     if(sortedBy) {
       switch(sortedBy) {
         case 'favorites':
-          results = results.filter(recipe => filterList.findIndex(fav => fav == recipe._id) > -1)
+          results = results.filter(recipe => filteredList.findIndex(fav => fav == recipe._id) > -1)
           break
       }
     }

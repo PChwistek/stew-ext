@@ -58,7 +58,7 @@ export const popupSync = (originalAction) => {
     const auth = getState().auth
 
     if(!auth || !auth.jwt) {
-      const { jwt, username, lastUpdated, userId} = await manager.getAuth()
+      const { jwt, username, lastUpdated, userId, orgs } = await manager.getAuth()
       if(jwt !== null) {
         dispatch({
           type: AUTH_SET_FROM_STORE,
@@ -66,7 +66,8 @@ export const popupSync = (originalAction) => {
             jwt,
             username,
             lastUpdated,
-            userId
+            userId,
+            orgs
           }
         })
       }

@@ -59,7 +59,7 @@ export const searchRecipes = (originalAction) => {
     } else if (repoIndex > -1) {
       filteredList = repos[repoIndex].recipes
     }
-    const recipes = await manager.searchRecipes(originalAction.payload.searchTerms, { sortedBy, filterList })
+    const recipes = await manager.searchRecipes(originalAction.payload.searchTerms, { sortedBy, filteredList })
     dispatch(searchSuccess(recipes))
   }
 }

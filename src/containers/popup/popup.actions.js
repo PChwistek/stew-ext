@@ -305,7 +305,7 @@ export function setPermissions({ recipeId, linkPermissions, repos }) {
     payload: {
       recipeId,
       linkPermissions,
-      repos
+      repos,
     }
   }
 }

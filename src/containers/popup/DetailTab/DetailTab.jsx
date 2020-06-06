@@ -131,6 +131,8 @@ export default function DetailTab(props) {
                 deleteRecipe={ deleteRecipe }
                 isFavorite={ isFavorite }
                 setPermissions={ setPermissions }
+                repos={ props.repos }
+                orgs={ props.orgs }
                 isForked={ !props.tabs.isNew && props.selectedRecipe.authorId !== props.userId  }
               />
           }

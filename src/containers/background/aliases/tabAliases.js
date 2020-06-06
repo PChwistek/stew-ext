@@ -351,7 +351,7 @@ export function moveTabAlias(originalAction) {
 export const editRecipePermissions = (originalAction) => {
   return async (dispatch, getState) => {
     const authState = getState().auth
-    const { jwt } = authState
+    const { jwt, orgs } = authState
     const config = {
       headers: { Authorization: `Bearer ${jwt}` }
     }
@@ -363,7 +363,8 @@ export const editRecipePermissions = (originalAction) => {
       .patch(`${serverUrl}/recipe/permissions`, {
         _id: recipeId,
         linkPermissions,
-        repos
+        repos,
+        orgId: orgs.length > 0 ? orgs[0] : '' 
       }, config)
       const updatedRecipe = response.data
       await manager.updateRecipeInStore(updatedRecipe)
