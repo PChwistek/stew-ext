@@ -22,7 +22,8 @@ import {
   TABS_QUICKADD_ALIAS,
   TABS_MERGE_SESSION_ALIAS,
   TABS_MOVE_TAB_ALIAS,
-  TABS_SETRECIPE_PERMISSIONS_ALIAS
+  TABS_SETRECIPE_PERMISSIONS_ALIAS,
+  SEARCH_UPDATE_SELECTED_RECIPE,
 } from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
@@ -360,14 +361,34 @@ export const editRecipePermissions = (originalAction) => {
     try {
 
       const response = await axios
-      .patch(`${serverUrl}/recipe/permissions`, {
-        _id: recipeId,
-        linkPermissions,
-        repos,
-        orgId: orgs.length > 0 ? orgs[0] : '' 
-      }, config)
-      const updatedRecipe = response.data
-      await manager.updateRecipeInStore(updatedRecipe)
+        .patch(`${serverUrl}/recipe/permissions`, {
+          _id: recipeId,
+          linkPermissions,
+          repos: repos === null ? []: repos,
+          orgId: orgs.length > 0 ? orgs[0] : '' 
+        }, config)
+      const updated = response.data
+      await manager.updateRecipeInStore(updated.newRecipe)
+
+      console.log('response', updated)
+      dispatch({
+        type: SEARCH_UPDATE_SELECTED_RECIPE,
+        payload: {
+          newRecipe: updated.newRecipe,
+        }
+      })
+
+      const favorites = getState().search.favorites
+
+      dispatch({
+        type: SEARCH_SET_SORTBYS,
+        payload: {
+          favorites,
+          repos: updated.updatedRepos,
+        }
+      })
+
+      await manager.setSortBys({ favorites, repos: updated.updatedRepos })
       dispatch({
         type: TABS_SETRECIPE_PERMISSIONS_ALIAS,
       })

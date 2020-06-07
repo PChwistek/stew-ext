@@ -60,7 +60,8 @@ const ViewRecipe = (props) => {
                 onNoClick={ () => setModalVisible(false) }
                 onYesClick={ deleteRecipe }
               />
-              <PermissionModal 
+              {
+                pModalVisible && <PermissionModal 
                 show={ pModalVisible }
                 closeModal={ () => setPModalVisible(false) }
                 title={ 'Share Recipe' }
@@ -70,6 +71,7 @@ const ViewRecipe = (props) => {
                 repos={ repos }
                 orgs={ orgs }
               />
+              }
               <IconRow
                 handleEditingClicked={ props.handleEditingClicked } 
                 handleDeleteClicked={ handleDeleteClicked }

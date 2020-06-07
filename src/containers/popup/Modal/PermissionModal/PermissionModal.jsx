@@ -44,7 +44,7 @@ export const PermssionModal = (props) => {
   const { selectedRecipe, setPermissions } = props
   const [copiedVisible, setCopiedVisible] = useState(false)
   const [selectedLinkOptionIndex, setSelectedLinkOptionIndex] = useState(getRightLinkPermissions(selectedRecipe))
-  const [selectedRepos, setSelectedRepos] = useState([])
+  const [selectedRepos, setSelectedRepos] = useState(selectedRecipe.repos || [])
 
   function handleLinkChange (selectedOptions) {
     const index = linkOptions.findIndex(item => item.value === selectedOptions.value)

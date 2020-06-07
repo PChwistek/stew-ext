@@ -10,6 +10,7 @@ import {
   SEARCH_SETSORTBY_ALIAS,
   SEARCH_SETFAVORITE_ALIAS,
   SEARCH_SET_SORTBYS,
+  SEARCH_UPDATE_SELECTED_RECIPE,
 } from 'Containers/actionTypes'
 
 const initialState = {
@@ -78,6 +79,11 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         repos: action.payload.repos,
         favorites: action.payload.favorites,
+      })
+    }
+    case SEARCH_UPDATE_SELECTED_RECIPE: {
+      return Object.assign({}, state, {
+        selectedRecipe: action.payload.newRecipe,
       })
     }
     case SEARCH_RESET:
