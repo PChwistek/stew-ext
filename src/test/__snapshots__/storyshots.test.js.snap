@@ -5334,7 +5334,7 @@ exports[`Storyshots Menu showing 1`] = `
           src={Object {}}
         />
       </div>
-      version 0.5
+      Version 1.0.0
       <div
         className="menu__body__switches"
       >
@@ -5892,6 +5892,25 @@ exports[`Storyshots Menu showing 1`] = `
            Logout 
         </a>
       </div>
+      <div
+        className="menu__body__footer"
+      >
+        <img
+          className="menu__body__footer__icon"
+          src={Object {}}
+        />
+        <p
+          className="menu__body__footer__ad-text-container"
+        >
+          <a
+            className="menu__body__footer__ad-text"
+            href="https://getstew.com/about-teams"
+            target="blank"
+          >
+              Learn about Stew for teams  
+          </a>
+        </p>
+      </div>
       <div />
       <div />
     </div>
@@ -6292,7 +6311,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6422,7 +6441,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6552,7 +6571,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6642,7 +6661,7 @@ exports[`Storyshots Table Add a favorite 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6778,7 +6797,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -6908,7 +6927,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7038,7 +7057,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7128,7 +7147,7 @@ exports[`Storyshots Table Add some results 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7279,7 +7298,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7409,7 +7428,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7539,7 +7558,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7629,7 +7648,7 @@ exports[`Storyshots Table Examine next row 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7780,7 +7799,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -7910,7 +7929,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8040,7 +8059,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8130,7 +8149,7 @@ exports[`Storyshots Table Examine previous row 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8281,7 +8300,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8411,7 +8430,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        59 days ago
+        80 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8541,7 +8560,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
@@ -8631,7 +8650,7 @@ exports[`Storyshots Table Examine previous row again 1`] = `
       >
         JubJubtumTum
          shared 
-        57 days ago
+        78 days ago
       </div>
       <div
         className="table__row__tags"
