@@ -33,7 +33,7 @@ export class Manager {
 
   async getSettings() {
     const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_settings`)
-    return saved[`${this.storageKey}_settings`] || { cleanWorkspace: null, quickAdd: null, mergeHelper: null }
+    return saved[`${this.storageKey}_settings`] || { cleanWorkspace: true, quickAdd: true, mergeHelper: true }
   }
 
   async setSettings({ cleanWorkspace, quickAdd, mergeHelper }) {
@@ -73,8 +73,12 @@ export class Manager {
       const currentWindows = await this.browserAPI.windows.getAll()
       for (let index = 0; index < currentWindows.length; index++) {
         const theWindow = currentWindows[index]
-        if (theWindow.id !== currentWindowId) {
-          await this.browserAPI.windows.remove(theWindow.id)
+        if (!theWindow || theWindow.type === 'popup') {
+          const urls = desiredTabs[0].tabs.map(tab => tab.url)
+          this.browserAPI.windows.create({ url: urls })
+          return 
+        } else if (theWindow.id !== currentWindowId) {
+            await this.browserAPI.windows.remove(theWindow.id)
         }
       }
 

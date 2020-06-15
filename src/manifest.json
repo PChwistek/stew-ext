@@ -1,7 +1,7 @@
 {
   "name": "Stew",
   "description": "the smart tab manager built for collaboration",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 2,
   "icons": {
     "144": "assets/logo-144x144.png"
