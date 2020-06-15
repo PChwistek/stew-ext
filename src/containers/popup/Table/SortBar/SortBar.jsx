@@ -13,11 +13,11 @@ const options = [
     src: planet,
     value: 'all'
   },
-  {
-    text: 'Used Recently',
-    src: rocket,
-    value: 'recently'
-  },
+  // {
+  //   text: 'Used Recently',
+  //   src: rocket,
+  //   value: 'recently'
+  // },
   {
     text: 'Favorites',
     src: star2,
