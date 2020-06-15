@@ -1,10 +1,10 @@
 {
-  "name": "stew",
+  "name": "Stew",
   "description": "the smart tab manager built for collaboration",
-  "version": "0.5",
+  "version": "1.0.0",
   "manifest_version": 2,
   "icons": {
-    "212": "assets/310x310.png"
+    "144": "assets/logo-144x144.png"
   },
   "permissions": [
     "storage",
@@ -18,12 +18,12 @@
   },
   "browser_action": {
     "default_icon": {
-      "100": "assets/120x120.png"
+      "144": "assets/s-letter.png"
     },
-    "default_title": "stew",
+    "default_title": "Stew",
     "theme_icons": [{
-      "light": "assets/310x310.png",
-      "dark": "assets/310x310.png",
+      "light": "assets/logo-144x144.png",
+      "dark": "assets/logo-144x144.png",
       "size": 128
     }]
   },

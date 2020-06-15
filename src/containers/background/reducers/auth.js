@@ -6,8 +6,8 @@ import {
   AUTH_UPDATEDSYNC, 
   AUTH_CLEAR_ERROR, 
   AUTH_LOGOUT_ALIAS,
-  AUTH_SET_FROM_STORE
-
+  AUTH_SET_FROM_STORE,
+  SETTINGS_SET_FROM_STORE,
 } from 'Containers/actionTypes'
 
 const initialState = {
@@ -15,9 +15,15 @@ const initialState = {
   isPending: false,
   username: '',
   userId: '',
+  orgs: [],
   jwt: '',
   lastUpdated: '',
-  error: ''
+  error: '',
+  settings: {
+    cleanWorkspace: true,
+    quickAdd: true,
+    mergeHelper: true,
+  }
 }
 
 export default (state = initialState, action) => {
@@ -34,6 +40,7 @@ export default (state = initialState, action) => {
         username: action.payload.username,
         lastUpdated: action.payload.lastUpdated,
         userId: action.payload.userId,
+        orgs: action.payload.orgs,
         error: ''
       })
     case AUTH_LOGIN_FAILED:
@@ -60,8 +67,18 @@ export default (state = initialState, action) => {
         isPending: false,
         jwt: action.payload.jwt,
         username: action.payload.username,
+        userId: action.payload.userId,
         lastUpdated: action.payload.lastUpdated,
+        orgs: action.payload.orgs,
         error: ''
+      })
+    case SETTINGS_SET_FROM_STORE:
+      return Object.assign({}, state, {
+        settings: {
+          cleanWorkspace: action.payload.cleanWorkspace,
+          quickAdd: action.payload.quickAdd,
+          mergeHelper: action.payload.mergeHelper,
+        }
       })
     case AUTH_LOGOUT_ALIAS:
       return initialState

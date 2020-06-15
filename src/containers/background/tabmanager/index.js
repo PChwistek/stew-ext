@@ -9,15 +9,37 @@ export class Manager {
     this.browserAPI = browserAPI || browser
   }
 
-  async getAuth() {
-    const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_auth`)
-    return saved[`${this.storageKey}_auth`] || { jwt: null, username: null, lastUpdated: null }
+  async getSortBys() {
+    const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_sortBys`)
+    return saved[`${this.storageKey}_sortBys`] || { repos: null, favorites: null }
   }
 
-  async setAuth({ jwt, username, lastUpdated }) {
-    const stew_auth =  { jwt, username, lastUpdated }
+  async setSortBys({ favorites, repos }) {
+    const stew_sortBys =  { favorites, repos }
+    await this.browserAPI.storage.local.set({ [`${this.storageKey}_sortBys`]: stew_sortBys })
+    return await this.getSortBys()
+  }
+
+  async getAuth() {
+    const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_auth`)
+    return saved[`${this.storageKey}_auth`] || { jwt: null, username: null, lastUpdated: null, userId: null, orgs: null }
+  }
+
+  async setAuth({ jwt, username, lastUpdated, userId, orgs }) {
+    const stew_auth =  { jwt, username, lastUpdated, userId, orgs }
     await this.browserAPI.storage.local.set({ [`${this.storageKey}_auth`]: stew_auth })
     return await this.getAuth()
+  }
+
+  async getSettings() {
+    const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_settings`)
+    return saved[`${this.storageKey}_settings`] || { cleanWorkspace: null, quickAdd: null, mergeHelper: null }
+  }
+
+  async setSettings({ cleanWorkspace, quickAdd, mergeHelper }) {
+    const stew_settings =  { cleanWorkspace, quickAdd, mergeHelper}
+    await this.browserAPI.storage.local.set({ [`${this.storageKey}_settings`]: stew_settings })
+    return await this.getSettings()
   }
 
   async getSession(idOfLastActiveWindow) {
@@ -43,11 +65,42 @@ export class Manager {
     return session
   }
 
-  // nukeAndReplace(desiredTabs) {
-  //   desiredTabs.map( (recipeWindow, index) => {
-  //     this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
-  //   })
-  // }
+  async nukeAndReplace(desiredTabs, currentWindowId) {
+
+    const { cleanWorkspace } = await this.getSettings()
+    
+    if (cleanWorkspace) {
+      const currentWindows = await this.browserAPI.windows.getAll()
+      for (let index = 0; index < currentWindows.length; index++) {
+        const theWindow = currentWindows[index]
+        if (theWindow.id !== currentWindowId) {
+          await this.browserAPI.windows.remove(theWindow.id)
+        }
+      }
+
+      const tabs = await this.browserAPI.tabs.query({ windowId: currentWindowId })
+      await this.browserAPI.tabs.update(tabs[0].id, { url: desiredTabs[0].tabs[0].url })
+      tabs.shift()
+      await this.browserAPI.tabs.remove(tabs.map(tab => tab.id))
+
+      for (let index = 1; index < desiredTabs[0].tabs.length; index++) {
+        const newUrl = desiredTabs[0].tabs[index].url
+        await this.browserAPI.tabs.create({ url: newUrl })
+      }
+
+      if(desiredTabs.length > 1) {
+        desiredTabs.shift()
+        desiredTabs.map( (recipeWindow, index) => {
+          this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
+        })
+      }
+
+    } else {
+      desiredTabs.map( (recipeWindow, index) => {
+        this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
+      })
+    }
+  }
 
   async addRecipeToStore(recipe) {
     let recipes = await this.fetchAllRecipes()
@@ -89,7 +142,7 @@ export class Manager {
     return []
   }
 
-  async searchRecipes(searchTerm, { sortedBy, filterList }) {
+  async searchRecipes(searchTerm, { sortedBy, filteredList }) {
     const allRecipes = await this.fetchAllRecipes()
     var search = new JsSearch.Search('_id')
     search.tokenizer = new JsSearch.StemmingTokenizer( stemmer, new JsSearch.SimpleTokenizer());
@@ -104,7 +157,7 @@ export class Manager {
     if(sortedBy) {
       switch(sortedBy) {
         case 'favorites':
-          results = results.filter(recipe => filterList.findIndex(fav => fav == recipe._id) > -1)
+          results = results.filter(recipe => filteredList.findIndex(fav => fav == recipe._id) > -1)
           break
       }
     }

@@ -4,13 +4,12 @@ import IconRow from './IconRow'
 import { getSrc } from 'Containers/utils'
 import Button from 'Common/Button'
 import ConfirmModal from 'Popup/Modal/ConfirmModal'
-import { getWebsiteHostname } from 'Containers/getServerHostName'
-import TimedAlert from '../TimedAlert'
+import PermissionModal from 'Popup/Modal/PermissionModal'
 
 const ViewRecipe = (props) => {
-  const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite } = props
+  const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite, setPermissions, isForked, repos, orgs } = props
   const [modalVisible, setModalVisible] = useState(false)
-  const [copiedVisible, setCopiedVisible] = useState(false)
+  const [pModalVisible, setPModalVisible] = useState(false)
 
   function handleDeleteClicked() {
     setModalVisible(true)
@@ -20,13 +19,6 @@ const ViewRecipe = (props) => {
     setFavorite(selectedRecipe._id, !isFavorite)
   }
 
-  function handleShareClicked() {
-    navigator.clipboard.writeText(`${getWebsiteHostname()}/shared/${selectedRecipe.shareableId}`)
-      .then(() => {
-        setCopiedVisible(true)
-        setTimeout(() => { setCopiedVisible(false) }, 1500)
-      })
-  }
 
   return ( 
       <div className='detailtab__details__container'>
@@ -49,14 +41,14 @@ const ViewRecipe = (props) => {
               </div>
               <div>
                 <div className={ 'table__row__tags'}>
-                    {
-                      selectedRecipe.tags && selectedRecipe.tags.map(tag => (
-                        <div key={ tag } className={ 'tag-result' }>
-                          { tag }
-                        </div>
-                      ))
-                    }
-                    </div>
+                  {
+                    selectedRecipe.tags && selectedRecipe.tags.map(tag => (
+                      <div key={ tag } className={ 'tag-result' }>
+                        { tag }
+                      </div>
+                    ))
+                  }
+                  </div>
               </div>
               <div className={ 'detailtab__launch' }>
                 <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(selectedRecipe || {}) } />
@@ -68,16 +60,24 @@ const ViewRecipe = (props) => {
                 onNoClick={ () => setModalVisible(false) }
                 onYesClick={ deleteRecipe }
               />
+              {
+                pModalVisible && <PermissionModal 
+                show={ pModalVisible }
+                closeModal={ () => setPModalVisible(false) }
+                title={ 'Share Recipe' }
+                selectedRecipe={ selectedRecipe }
+                setPermissions={ setPermissions }
+                isForked={ isForked }
+                repos={ repos }
+                orgs={ orgs }
+              />
+              }
               <IconRow
                 handleEditingClicked={ props.handleEditingClicked } 
                 handleDeleteClicked={ handleDeleteClicked }
-                handleShareClicked={ handleShareClicked }
+                handleShareClicked={ () => setPModalVisible(true) }
                 handleFavoriteClicked={ handleFavoriteClicked }
                 isFavorite={ isFavorite }
-              />
-              <TimedAlert 
-                visible={ copiedVisible }
-                text={ 'Shareable Link Copied'}
               />
             </div>
         </Fragment>
@@ -91,7 +91,9 @@ ViewRecipe.propTypes = {
   launchRecipe: PropTypes.func.isRequired,
   deleteRecipe: PropTypes.func.isRequired,
   isFavorite: PropTypes.bool.isRequired,
-  setFavorite: PropTypes.func.isRequired
+  setFavorite: PropTypes.func.isRequired,
+  setPermissions: PropTypes.func.isRequired,
+  isForked: PropTypes.bool,
 }
 
 export default ViewRecipe

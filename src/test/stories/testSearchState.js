@@ -60,7 +60,8 @@ export const results = [
     "dateCreated": "2020-03-21T04:26:53.770Z",
     "dateModified": "2020-03-21T04:36:38.980Z",
     "name": "sadfsdf",
-    "tags": []
+    "tags": [],
+    "linkPermissions": ['any']
   },
   {
     "__v": 1,
@@ -117,7 +118,8 @@ export const results = [
     "dateCreated": "2020-03-21T04:27:38.421Z",
     "dateModified": "2020-03-22T18:53:55.138Z",
     "name": "asdf",
-    "tags": []
+    "tags": [],
+    "linkPermissions": ['any']
   },
   {
     "__v": 0,
@@ -140,7 +142,8 @@ export const results = [
     "dateCreated": "2020-03-22T18:50:49.277Z",
     "dateModified": "2020-03-22T18:50:49.277Z",
     "name": "another test",
-    "tags": []
+    "tags": [],
+    "linkPermissions": ['any']
   },
   {
     "__v": 0,
@@ -163,7 +166,8 @@ export const results = [
     "dateCreated": "2020-03-22T18:55:48.577Z",
     "dateModified": "2020-03-22T18:55:48.577Z",
     "name": "test2",
-    "tags": []
+    "tags": [],
+    "linkPermissions": ['any']
   }
 ]
 
@@ -217,5 +221,6 @@ export const newRecipe = {
   "dateCreated": "2020-03-22T18:55:48.577Z",
   "dateModified": "2020-03-22T18:55:48.577Z",
   "name": "newTest",
-  "tags": []
+  "tags": [],
+  "linkPermissions": ['any']
 }

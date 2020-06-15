@@ -20,6 +20,7 @@ import {
   quickAdd,
   mergeSession,
   moveTab,
+  setPermissions,
 } from 'Popup/popup.actions'
 
 
@@ -31,7 +32,10 @@ const stateToProps = ({ search, tabs, popup, auth }) => ({
   tabs,
   liveSession: tabs.session,
   currentTab: tabs.currentTab,
-  isEditing: popup.isEditing
+  isEditing: popup.isEditing,
+  settings: auth.settings,
+  repos: search.repos,
+  orgs: auth.orgs,
 })
 
 const dispatchToProps = {
@@ -53,6 +57,7 @@ const dispatchToProps = {
   quickAdd,
   mergeSession,
   moveTab,
+  setPermissions,
 }
 
 export default connect(stateToProps, dispatchToProps)(DetailTab)

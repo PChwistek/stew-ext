@@ -17,7 +17,6 @@ export default function EditRecipe(props) {
 
   function handleSelectChange(selectedOption) {
     setSelected(selectedOption)
-    console.log(`Option selected:`, selectedOption)
   }
 
   const { recipeForm: { recipeName, recipeTags, recipeTag }, isNew } = tabs

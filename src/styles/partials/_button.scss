@@ -31,6 +31,19 @@
       border-radius: 5px;
     }
 
+    &--small--primary {
+      background-color: $brand-color;
+      border: none;
+      color: white;
+      padding: 2px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-family: $base-font-family;
+      font-size: $font-size-regular;
+      border-radius: 5px;
+    }
+
     &:focus {
         outline: 0;
     }

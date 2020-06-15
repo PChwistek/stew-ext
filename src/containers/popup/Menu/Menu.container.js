@@ -1,12 +1,14 @@
 import { connect } from 'react-redux'
 import Menu from './Menu'
-import { logout } from '../popup.actions'
+import { logout, setSettings } from '../popup.actions'
 
-const stateToProps = () => ({
+const stateToProps = ({ auth }) => ({
+  settings: auth.settings,
 })
 
 const dispatchToProps = {
-  logout
+  logout,
+  setSettings,
 }
 
 export default connect(stateToProps, dispatchToProps)(Menu)

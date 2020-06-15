@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { defaultManager as manager } from '../tabmanager'
 import { getInitialResults } from './searchAliases'
-import { addEditListeners, removeEditListeners, addInAppListeners, removeInAppListeners } from '../background'
+import { addEditListeners, removeEditListeners } from '../background'
 import { handle401 }from './authAliases'
 import getServerHostname from 'Containers/getServerHostName'
 
@@ -12,7 +12,9 @@ import {
   POPUP_SYNCRECIPES_PENDING,
   POPUP_SYNCRECIPES_SUCCESS,
   POPUP_TOGGLEEDITING_ALIAS,
-  AUTH_SET_FROM_STORE
+  AUTH_SET_FROM_STORE,
+  SEARCH_SET_SORTBYS,
+  SETTINGS_SET_FROM_STORE,
 } from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
@@ -29,10 +31,12 @@ export const syncRecipesWithCloud = (isForced) => {
     dispatch({ type: POPUP_SYNCRECIPES_PENDING})
     axios
       .post(`${serverUrl}/recipe/sync`, { lastUpdated, isForced }, config)
-      .then(res => {
+      .then(async res => {
         const { data } = res
         if(!data.upToDate || isForced) {
-          manager.updateRecipesFromServer(data.recipes)
+          dispatch({ type: SEARCH_SET_SORTBYS, payload: { repos: data.repos, favorites: data.favorites } })
+          await manager.updateRecipesFromServer(data.recipes)
+          manager.setSortBys({ favorites: data.favorites , repos: data.repos })
           dispatch({ type: POPUP_SYNCRECIPES_SUCCESS })
           dispatch({ type: AUTH_UPDATEDSYNC, payload: { lastUpdated: data.lastUpdated }})
           dispatch(getInitialResults())
@@ -54,14 +58,39 @@ export const popupSync = (originalAction) => {
     const auth = getState().auth
 
     if(!auth || !auth.jwt) {
-      const { jwt, username, lastUpdated} = await manager.getAuth()
+      const { jwt, username, lastUpdated, userId, orgs } = await manager.getAuth()
       if(jwt !== null) {
         dispatch({
           type: AUTH_SET_FROM_STORE,
           payload: {
             jwt,
             username,
-            lastUpdated
+            lastUpdated,
+            userId,
+            orgs
+          }
+        })
+      }
+
+      const { favorites, repos } = await manager.getSortBys()
+      if (favorites !== null) {
+        dispatch({
+          type: SEARCH_SET_SORTBYS,
+          payload: {
+            favorites, 
+            repos,
+          }
+        })
+      }
+
+      const { cleanWorkspace, quickAdd, mergeHelper } = await manager.getSettings()
+      if (cleanWorkspace !== null) {
+        dispatch({
+          type: SETTINGS_SET_FROM_STORE,
+          payload: {
+            cleanWorkspace,
+            quickAdd,
+            mergeHelper
           }
         })
       }
@@ -97,5 +126,20 @@ export const toggleEditAlias = (originalAction) => {
         ...originalAction.payload
       } 
     })
+  }
+}
+
+export const setSettingsAlias = (originalAction) => {
+  const { cleanWorkspace, quickAdd, mergeHelper } = originalAction.payload
+  return async (dispatch) => {
+      manager.setSettings({ cleanWorkspace, quickAdd, mergeHelper })
+      dispatch({
+        type: SETTINGS_SET_FROM_STORE,
+        payload: {
+          cleanWorkspace,
+          quickAdd,
+          mergeHelper
+        }
+      })
   }
 }

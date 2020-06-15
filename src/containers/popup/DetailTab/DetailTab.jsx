@@ -105,7 +105,8 @@ export default function DetailTab(props) {
     deleteRecipe,
     setFavorite,
     favorites,
-    moveTab
+    moveTab,
+    setPermissions
   } = props
 
   const isFavorite = favorites.findIndex(recipe => recipe === selectedRecipe._id) > -1
@@ -129,6 +130,10 @@ export default function DetailTab(props) {
                 setFavorite={ setFavorite }
                 deleteRecipe={ deleteRecipe }
                 isFavorite={ isFavorite }
+                setPermissions={ setPermissions }
+                repos={ props.repos }
+                orgs={ props.orgs }
+                isForked={ !props.tabs.isNew && props.selectedRecipe.authorId !== props.userId  }
               />
           }
           <SessionView 
@@ -140,7 +145,7 @@ export default function DetailTab(props) {
             moveTab={ moveTab }
           />
           <TabHelper 
-            in={ showTabHelper } 
+            in={ props.settings.quickAdd && showTabHelper } 
             onNoClick={ () => setShowTabHelper(false) }
             onYesClick={ handleQuickAdd }
             title={ 'Quick Add' }
@@ -156,7 +161,7 @@ export default function DetailTab(props) {
             </div>
           </TabHelper>
           <TabHelper 
-            in={ showMergeHelper } 
+            in={ props.settings.mergeHelper && showMergeHelper } 
             onNoClick={ () => { 
               setShowMergeHelper(false) } 
             }
@@ -191,5 +196,6 @@ DetailTab.propTypes = {
   setFavorite: PropTypes.func.isRequired,
   quickAdd: PropTypes.func.isRequired,
   mergeSession: PropTypes.func.isRequired,
-  moveTab: PropTypes.func.isRequired
+  moveTab: PropTypes.func.isRequired,
+  setPermissions: PropTypes.func.isRequired,
 }

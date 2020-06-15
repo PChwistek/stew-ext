@@ -8,7 +8,6 @@ import { selectRecipe, setSearchRowAlias, getInitialResults } from './searchAlia
 import { toggleEditAlias } from './popupAliases'
 import { cloneDeep } from 'lodash'
 
-
 import { 
   TABS_SETSNAP, 
   TABS_DELETERECIPE_PENDING,
@@ -22,7 +21,9 @@ import {
   TABS_SETSNAP_EXISTING,
   TABS_QUICKADD_ALIAS,
   TABS_MERGE_SESSION_ALIAS,
-  TABS_MOVE_TAB_ALIAS
+  TABS_MOVE_TAB_ALIAS,
+  TABS_SETRECIPE_PERMISSIONS_ALIAS,
+  SEARCH_UPDATE_SELECTED_RECIPE,
 } from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
@@ -57,9 +58,12 @@ export const getCurrentSession = (originalAction) => {
 }
 
 export const launchRecipeConfiguration = (originalAction) => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
+    const tabsState = getState().tabs
+    const currentWindowId = tabsState.currentWindow.id
     dispatch({ type: TABS_LAUNCHRECIPE_PENDING })
-    await manager.nukeAndReplace(originalAction.payload.recipe.config)
+
+    manager.nukeAndReplace(originalAction.payload.recipe.config, currentWindowId)
     dispatch({ type: TABS_LAUNCHRECIPE_SUCCESS })
   }
 }
@@ -92,17 +96,19 @@ export const saveRecipeAlias = () => {
         titles: titlesForSearch,
         attributes: [],
         config: tabsState.recipeSession,
+        linkPermissions: ['any']
       }
      
       if(!isNew) {
         const { selectedRecipe } = searchState
         theRecipe._id = selectedRecipe._id
-
+        
         if (selectedRecipe.authorId !== userId) {
           theRecipe.forkedFromId = selectedRecipe.shareableId
           const { data: recipeFromServer } = await axios.patch(`${serverUrl}/recipe/edit`, {...theRecipe}, config)
           dispatch(selectRecipe(recipeFromServer))
           await manager.addRecipeToStore(recipeFromServer)
+
         } else {
           const areSame = compareObjects(
             { name: theRecipe.name, tags: theRecipe.tags, config: theRecipe.config}, 
@@ -121,6 +127,7 @@ export const saveRecipeAlias = () => {
         dispatch(selectRecipe(recipeFromServer))
         await manager.addRecipeToStore(recipeFromServer)
       }
+
       dispatch(toggleEditAlias({ payload: { forced: false }}))
       dispatch({ type: TABS_SAVERECIPE_SUCCESS })
       dispatch(getInitialResults())
@@ -185,11 +192,26 @@ export const quickAddAlias = () => {
     const { currentTab, recipeSession } = getState().tabs
     const { selectedRecipe } = getState().search
 
+    const { favIconUrl, title, url, index } = currentTab
+
     if(recipeSession.length > 0) {
-      recipeSession[0].tabs.unshift({ ...currentTab })
+      recipeSession[0].tabs.unshift({  
+        favIconUrl,
+        title,
+        url,
+        index, 
+      })
     } else {
-      recipeSession.push({ tabs: [ { ...currentTab } ]})
+      recipeSession.push({ tabs: 
+        [{ 
+          favIconUrl,
+          title,
+          url,
+          index, 
+        }]
+      })
     }
+    console.log('recipe session', recipeSession)
     dispatch({
       type: TABS_QUICKADD_ALIAS,
       payload: {
@@ -323,5 +345,58 @@ export function moveTabAlias(originalAction) {
         recipeSession,
       }
     })
+  }
+}
+
+
+export const editRecipePermissions = (originalAction) => {
+  return async (dispatch, getState) => {
+    const authState = getState().auth
+    const { jwt, orgs } = authState
+    const config = {
+      headers: { Authorization: `Bearer ${jwt}` }
+    }
+    const { recipeId, linkPermissions, repos } = originalAction.payload
+    
+    try {
+
+      const response = await axios
+        .patch(`${serverUrl}/recipe/permissions`, {
+          _id: recipeId,
+          linkPermissions,
+          repos: repos === null ? []: repos,
+          orgId: orgs.length > 0 ? orgs[0] : '' 
+        }, config)
+      const updated = response.data
+      await manager.updateRecipeInStore(updated.newRecipe)
+
+      console.log('response', updated)
+      dispatch({
+        type: SEARCH_UPDATE_SELECTED_RECIPE,
+        payload: {
+          newRecipe: updated.newRecipe,
+        }
+      })
+
+      const favorites = getState().search.favorites
+
+      dispatch({
+        type: SEARCH_SET_SORTBYS,
+        payload: {
+          favorites,
+          repos: updated.updatedRepos,
+        }
+      })
+
+      await manager.setSortBys({ favorites, repos: updated.updatedRepos })
+      dispatch({
+        type: TABS_SETRECIPE_PERMISSIONS_ALIAS,
+      })
+     
+    } catch(err) {
+      if(err && err.status) {
+        handle401(err)
+      }
+    }
   }
 }

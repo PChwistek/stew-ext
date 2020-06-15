@@ -19,7 +19,8 @@ test('it should store authentication', async () => {
     const toAuthSave = {
       jwt: '123456',
       username: 'test',
-      lastUpdated: 'today'
+      lastUpdated: 'today',
+      userId: "3432141234123412341"
     }
 
     const { jwt, username, lastUpdated } = await manager.setAuth({ ...toAuthSave })

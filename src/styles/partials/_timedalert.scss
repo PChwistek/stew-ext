@@ -1,11 +1,10 @@
 .timedalert {
-  z-index: 20;
+  @include absCenter();
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  left: 40px;
-  bottom: 80px;
   text-align: center;
   background: $modal-background;
   font-family: $base-font-family;

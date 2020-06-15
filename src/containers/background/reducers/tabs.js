@@ -5,7 +5,7 @@ import {
   TABS_ADDRECIPETAG, TABS_SETRECIPETAG, TABS_REMOVERECIPETAG, TABS_CLEARFIELDS,
   TABS_SETRECIPEFORM, TABS_RESET, TABS_SETCURRENTTAB, TABS_SETCURRENTWINDOW,
   TABS_SETSNAP_EXISTING, TABS_QUICKADD_ALIAS, TABS_MERGE_SESSION_ALIAS,
-  TABS_MOVE_TAB_ALIAS
+  TABS_MOVE_TAB_ALIAS,
 } from 'Containers/actionTypes'
 
 const initialState = {
@@ -20,7 +20,8 @@ const initialState = {
   isNew: false,
   wasMerged: false,
   currentWindow: {},
-  currentTab: {}
+  currentTab: {},
+  recipePermissions: [],
 }
 
 export default (state = initialState, action) => {
