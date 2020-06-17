@@ -79,7 +79,7 @@ export class Manager {
       }
     }
 
-    desiredTabs.map( (recipeWindow, index) => {
+    desiredTabs.map( async (recipeWindow, index) => {
       await this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
     })
   }
