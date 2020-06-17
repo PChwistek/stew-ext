@@ -73,37 +73,15 @@ export class Manager {
       const currentWindows = await this.browserAPI.windows.getAll()
       for (let index = 0; index < currentWindows.length; index++) {
         const theWindow = currentWindows[index]
-        if (!theWindow || theWindow.type === 'popup') {
-          const urls = desiredTabs[0].tabs.map(tab => tab.url)
-          this.browserAPI.windows.create({ url: urls })
-          return 
-        } else if (theWindow.id !== currentWindowId) {
-            await this.browserAPI.windows.remove(theWindow.id)
-        }
+        if (theWindow && theWindow.type !== 'popup') {
+          await this.browserAPI.windows.remove(theWindow.id)
+        } 
       }
-
-      const tabs = await this.browserAPI.tabs.query({ windowId: currentWindowId })
-      await this.browserAPI.tabs.update(tabs[0].id, { url: desiredTabs[0].tabs[0].url })
-      tabs.shift()
-      await this.browserAPI.tabs.remove(tabs.map(tab => tab.id))
-
-      for (let index = 1; index < desiredTabs[0].tabs.length; index++) {
-        const newUrl = desiredTabs[0].tabs[index].url
-        await this.browserAPI.tabs.create({ url: newUrl })
-      }
-
-      if(desiredTabs.length > 1) {
-        desiredTabs.shift()
-        desiredTabs.map( (recipeWindow, index) => {
-          this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
-        })
-      }
-
-    } else {
-      desiredTabs.map( (recipeWindow, index) => {
-        this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
-      })
     }
+
+    desiredTabs.map( (recipeWindow, index) => {
+      await this.browserAPI.windows.create({ url: recipeWindow.tabs.map(tab => tab.url )})
+    })
   }
 
   async addRecipeToStore(recipe) {
