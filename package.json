@@ -1,6 +1,6 @@
 {
   "name": "stew-ext",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "the stew-ext codebase",
   "main": "index.js",
   "repository": "https://github.com/PChwistek/stew-ext.git",
