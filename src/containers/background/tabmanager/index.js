@@ -33,7 +33,7 @@ export class Manager {
 
   async getSettings() {
     const saved = await this.browserAPI.storage.local.get(`${this.storageKey}_settings`)
-    return saved[`${this.storageKey}_settings`] || { cleanWorkspace: true, quickAdd: true, mergeHelper: true }
+    return saved[`${this.storageKey}_settings`] || { cleanWorkspace: false, quickAdd: true, mergeHelper: true }
   }
 
   async setSettings({ cleanWorkspace, quickAdd, mergeHelper }) {

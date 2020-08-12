@@ -87,6 +87,10 @@ export default function Login(props) {
         </div>
         <div className={ 'login__form-row--register' }>
           <div className={ 'link' }>
+            <a href="https://www.getstew.com/password-reset" target="blank"> Forgot password? </a>
+          </div>
+          <br />
+          <div className={ 'link' }>
             Need an account? <a href="https://www.getstew.com/sign-up" target="blank"> Register. </a>
           </div>
         </div>

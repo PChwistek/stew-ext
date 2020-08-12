@@ -50,7 +50,7 @@ const Menu = (props) => {
             <div>
               <img src={ stewLogo } className={ 'menu__body__logo' } />
             </div>
-            Version 1.0.5
+            Version 1.0.6
             <div className='menu__body__switches'>
               <div className='menu__body__switch-container'>
                 <label>
