@@ -11,6 +11,7 @@ import {
 import { defaultManager as manager} from '../tabmanager'
 import getServerHostname from 'Containers/getServerHostName'
 import { syncRecipesWithCloud } from './popupAliases'
+import { trackLogin, trackLogout } from '../../analytics'
 
 const serverUrl = getServerHostname()
 
@@ -24,6 +25,7 @@ export const handle401 = (error) => {
 
 export const loginSuccess = (payload) => {
   const { access_token, username, lastUpdated, userId, orgs } = payload
+  trackLogin(true)
   manager.setAuth({ jwt: access_token, username, lastUpdated, userId, orgs })
   return {
     type: AUTH_LOGIN_SUCCESS,
@@ -45,6 +47,7 @@ export const loginPending = () => {
 }
 
 export const loginFailure = (error) => {
+  trackLogin(false)
   return {
     type: AUTH_LOGIN_FAILED,
     payload: {
@@ -77,6 +80,7 @@ export const login = (originalAction) => {
 }
 
 export const authLogoutAlias = () => {
+  trackLogout()
   return dispatch => {
     dispatch({ type: AUTH_LOGOUT_ALIAS })
     dispatch({ type: SEARCH_RESET })

@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill'
-
+import { trackOpenExtension } from '../analytics'
 let windowId = -1
 
 export default async function openPopup() {
@@ -12,6 +12,7 @@ export default async function openPopup() {
       if (navigator.userAgent.indexOf('Firefox') !== -1) {
         browser.windows.update(win.id, { focused: true, ...customOptions })
       }
+      trackOpenExtension('test')
       return { isNewWindow: true, windowId }
     }
     customOptions.focused = true
