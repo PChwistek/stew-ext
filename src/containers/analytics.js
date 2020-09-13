@@ -39,5 +39,9 @@ export function trackLaunchedRecipe(fromListView) {
   ga('send', 'event', 'recipe', `launch-${fromListView ? 'from-list': 'from-detail'}`)
 }
 
+export function updatedSettings(theSetting, changedTo) {
+  ga('send', 'event', 'settings', `${theSetting}-${changedTo}`)
+}
+
 
 //add analytics events
