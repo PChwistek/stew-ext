@@ -2,7 +2,7 @@
   "name": "Stew - Tab and Workspace Management",
   "short_name": "Stew",
   "description": "Browsers were built for browsing. Make sure your browser works for work.",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "manifest_version": 2,
   "icons": {
     "144": "assets/logo-144x144.png"
