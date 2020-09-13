@@ -39,6 +39,11 @@ export default function Table(props) {
     }
   }
 
+  function handleRowLaunch(row) {
+    trackLaunchedRecipe(true)
+    launchRecipe(row)
+  }
+
   // document.onkeydown = checkKey
 
   return (
@@ -92,7 +97,7 @@ export default function Table(props) {
                   extraPadding={ row.tags.length <= 0 }
                 /> 
                 <div className={ 'table__row__launch' }>
-                  <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(row)} />
+                  <Button text={ 'Launch' } type={ 'primary' } onClick={ () => handleRowLaunch(row) } />
                 </div>
               </div>
           ))

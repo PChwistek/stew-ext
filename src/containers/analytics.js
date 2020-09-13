@@ -27,15 +27,15 @@ export function trackViewSettings() {
   ga('send', 'event', 'nav', 'settings')
 }
 
-export function viewRecipe() {
+export function trackViewRecipe() {
   ga('send', 'event', 'nav', 'recipe-detail')
 }
 
-export function openCreate() {
+export function trackOpenCreate() {
   ga('send', 'event', 'nav', 'create')
 }
 
-export function launchedRecipe(fromListView) {
+export function trackLaunchedRecipe(fromListView) {
   ga('send', 'event', 'recipe', `launch-${fromListView ? 'from-list': 'from-detail'}`)
 }
 
