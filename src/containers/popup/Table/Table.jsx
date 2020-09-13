@@ -6,6 +6,7 @@ import { getSrc } from '../utils'
 import PreviewTabs from './PreviewTabs'
 import NoTags from './NoTags'
 import { getDaysFrom } from '../utils'
+import { trackLaunchedRecipe } from '../../analytics'
 
 export default function Table(props) {
   const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy, loggedIn } = props
@@ -37,6 +38,11 @@ export default function Table(props) {
     if (e.ctrlKey) {
       onRecipeNameClicked(selectedRow)
     }
+  }
+
+  function handleRowLaunch(row) {
+    trackLaunchedRecipe(true)
+    launchRecipe(row)
   }
 
   // document.onkeydown = checkKey
@@ -92,7 +98,7 @@ export default function Table(props) {
                   extraPadding={ row.tags.length <= 0 }
                 /> 
                 <div className={ 'table__row__launch' }>
-                  <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(row)} />
+                  <Button text={ 'Launch' } type={ 'primary' } onClick={ () => handleRowLaunch(row) } />
                 </div>
               </div>
           ))

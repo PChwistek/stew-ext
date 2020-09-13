@@ -6,6 +6,7 @@ import Table from './Table'
 import DetailTab from './DetailTab'
 import Login from './Login'
 import './popup.scss'
+import { trackOpenCreate } from '../analytics'
 import { removeDocumentListeners } from './utils'
 
 const Popup = (props) => {
@@ -16,6 +17,7 @@ const Popup = (props) => {
       getCurrentTabs(true)
       setRecipeForm('', [], true)
       toggleEditing(true)
+      trackOpenCreate()
     }
     toggleSlide(!slideOutVisible, true)
   }

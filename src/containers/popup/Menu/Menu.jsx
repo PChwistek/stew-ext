@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import PropTypes from 'prop-types'
 import Switch from "react-switch"
 import { CSSTransition } from "react-transition-group"
+import { updatedSettings } from '../../analytics'
 
 import stewLogo from 'Assets/stew-title.png'
 import teamAd from 'Assets/new-team.png'
@@ -21,6 +22,7 @@ const Menu = (props) => {
       quickAdd,
       mergeHelper
     })
+    updatedSettings('clean-workspace', `${checked}`)
   }
 
   function handleQuickAddChange(checked) {
@@ -30,6 +32,7 @@ const Menu = (props) => {
       quickAdd: checked,
       mergeHelper
     })
+    updatedSettings('quick-add', `${checked}`)
   }
 
   function handleMergeHelperChange(checked) {
@@ -39,6 +42,7 @@ const Menu = (props) => {
       quickAdd,
       mergeHelper: checked,
     })
+    updatedSettings('merge-helper', `${checked}`)
   }
 
   return (
@@ -50,7 +54,7 @@ const Menu = (props) => {
             <div>
               <img src={ stewLogo } className={ 'menu__body__logo' } />
             </div>
-            Version 1.0.6
+            Version 1.0.7
             <div className='menu__body__switches'>
               <div className='menu__body__switch-container'>
                 <label>

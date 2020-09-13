@@ -7,6 +7,7 @@ import { handle401 } from './authAliases'
 import { selectRecipe, setSearchRowAlias, getInitialResults } from './searchAliases'
 import { toggleEditAlias } from './popupAliases'
 import { cloneDeep } from 'lodash'
+import { trackViewRecipe } from '../../analytics'
 
 import { 
   TABS_SETSNAP, 
@@ -145,6 +146,7 @@ export const saveRecipeAlias = () => {
 
 export const selectRecipeFromRow = (originalAction) => {
   const { rowIndex } = originalAction.payload
+  trackViewRecipe()
   return (dispatch, getState) => {
     const { results } = getState().search
     const selectedRecipe = results[rowIndex]

@@ -5,6 +5,7 @@ import { getSrc } from 'Containers/utils'
 import Button from 'Common/Button'
 import ConfirmModal from 'Popup/Modal/ConfirmModal'
 import PermissionModal from 'Popup/Modal/PermissionModal'
+import { trackLaunchedRecipe } from '../../../analytics'
 
 const ViewRecipe = (props) => {
   const { selectedRecipe, launchRecipe, deleteRecipe, isFavorite, setFavorite, setPermissions, isForked, repos, orgs } = props
@@ -19,6 +20,10 @@ const ViewRecipe = (props) => {
     setFavorite(selectedRecipe._id, !isFavorite)
   }
 
+  function handleLaunchFromDetail(selectedRecipe) {
+    launchRecipe(selectedRecipe || {})
+    trackLaunchedRecipe(false)
+  }
 
   return ( 
       <div className='detailtab__details__container'>
@@ -51,7 +56,7 @@ const ViewRecipe = (props) => {
                   </div>
               </div>
               <div className={ 'detailtab__launch' }>
-                <Button text={ 'Launch' } type={ 'primary' } onClick={ () => launchRecipe(selectedRecipe || {}) } />
+                <Button text={ 'Launch' } type={ 'primary' } onClick={ () => handleLaunchFromDetail(selectedRecipe) } />
               </div>
               <ConfirmModal 
                 show={ modalVisible } 
