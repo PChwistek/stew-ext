@@ -6,6 +6,7 @@ import { getSrc } from '../utils'
 import PreviewTabs from './PreviewTabs'
 import NoTags from './NoTags'
 import { getDaysFrom } from '../utils'
+import { trackLaunchedRecipe } from '../../analytics'
 
 export default function Table(props) {
   const { onRecipeNameClicked, selectRow, launchRecipe, selectNextRow, selectPreviousRow, slideOutVisible, setSortBy, loggedIn } = props

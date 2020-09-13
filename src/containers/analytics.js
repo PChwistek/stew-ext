@@ -4,7 +4,7 @@
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
 
 
-window.ga_debug = {trace: true}
+// window.ga_debug = {trace: true}
 ga('create', 'UA-140783934-3', 'auto')
 
 ga('set', 'checkProtocolTask', null); // Disables file protocol checking.
