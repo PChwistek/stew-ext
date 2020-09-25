@@ -21,7 +21,7 @@ export class Manager {
   async installNotice() {
     const isInstalled = await this.getNoticeIsInstalled()
     console.log('is installed', isInstalled)
-    if (isInstalled == {}) {
+    if (isInstalled['stew_install-time']) {
       return
     }
   
