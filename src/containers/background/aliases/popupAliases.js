@@ -15,6 +15,7 @@ import {
   AUTH_SET_FROM_STORE,
   SEARCH_SET_SORTBYS,
   SETTINGS_SET_FROM_STORE,
+  // POPUP_SET_HELP_INSTALLED,
 } from 'Containers/actionTypes'
 
 const serverUrl = getServerHostname()
@@ -143,3 +144,26 @@ export const setSettingsAlias = (originalAction) => {
       })
   }
 }
+
+// export const setHelpInstalledAlias = (originalAction) => {
+  
+//   return async (dispatch) => {
+//     const isInstalled = manager.getNoticeIsInstalled()
+//     if (isInstalled) {
+//       dispatch({
+//         type: POPUP_SET_HELP_INSTALLED,
+//         payload: {
+//           isInstalled
+//         }
+//       })
+//     } else {
+//       await manager.installNotice()
+//       dispatch({
+//         type: POPUP_SET_HELP_INSTALLED,
+//         payload: {
+//           isInstalled
+//         }
+//       })
+//     }
+//   }
+// }

@@ -1,9 +1,11 @@
 import browser from 'webextension-polyfill'
 import { trackOpenExtension } from '../analytics'
 let windowId = -1
+import { defaultManager as manager } from './tabmanager'
+
 
 export default async function openPopup() {
-
+  
   async function popWindow(url, customOptions) {
 
     if (windowId < 0) {
@@ -12,7 +14,8 @@ export default async function openPopup() {
       if (navigator.userAgent.indexOf('Firefox') !== -1) {
         browser.windows.update(win.id, { focused: true, ...customOptions })
       }
-      trackOpenExtension('test')
+      trackOpenExtension()
+      await manager.installNotice()
       return { isNewWindow: true, windowId }
     }
     customOptions.focused = true

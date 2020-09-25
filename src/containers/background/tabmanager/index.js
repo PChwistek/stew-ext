@@ -14,6 +14,22 @@ export class Manager {
     return saved[`${this.storageKey}_sortBys`] || { repos: null, favorites: null }
   }
 
+  async getNoticeIsInstalled() {
+    return await this.browserAPI.storage.local.get(`${this.storageKey}_install-time`)
+  }
+
+  async installNotice() {
+    const isInstalled = await this.getNoticeIsInstalled()
+    console.log('is installed', isInstalled)
+    if (isInstalled == {}) {
+      return
+    }
+  
+    var now = new Date().getTime();
+    this.browserAPI.storage.local.set({ [`${this.storageKey}_install-time`]: now })
+    this.browserAPI.tabs.create({url: "https://www.getstew.com/faq"})
+  }
+
   async setSortBys({ favorites, repos }) {
     const stew_sortBys =  { favorites, repos }
     await this.browserAPI.storage.local.set({ [`${this.storageKey}_sortBys`]: stew_sortBys })
