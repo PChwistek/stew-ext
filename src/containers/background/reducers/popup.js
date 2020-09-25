@@ -3,7 +3,8 @@ import { POPUP_TOGGLE_SLIDE, POPUP_TOGGLEEDITING_ALIAS, POPUP_SET_WINDOWID } fro
 const initialState = {
   slideOutVisible: false,
   isEditing: false,
-  windowId: ''
+  windowId: '',
+  installedHelp: false,
 }
 
 export default (state = initialState, action) => {
@@ -21,6 +22,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         windowId: action.payload.windowId
       })
+    // case POPUP_SET_HELP_INSTALLED:
+    //   return Object.assign({}, state, {
+    //     installedHelp: action.payload.isInstalled,
+    //   })
     default:
       return state
   }
