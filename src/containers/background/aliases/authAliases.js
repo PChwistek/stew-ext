@@ -8,7 +8,7 @@ import {
   TABS_RESET,
   SEARCH_RESET,
 } from 'Containers/actionTypes'
-import { defaultManager as manager} from '../tabmanager'
+import { defaultManager as manager } from '../tabmanager'
 import getServerHostname from 'Containers/getServerHostName'
 import { syncRecipesWithCloud } from './popupAliases'
 import { trackLogin, trackLogout } from '../../analytics'
@@ -21,6 +21,34 @@ export const handle401 = (error) => {
       dispatch({ type: AUTH_INVALID })
     }
   }
+}
+
+export const oAuthAction = () => {
+    const theToken = manager.handleOAuth()
+    console.log('theToken', theToken)
+    return {
+      
+    }
+  // return dispatch => {
+  //   dispatch(loginPending())
+  //   axios
+  //     .post(`${serverUrl}/auth/oauth`, {
+  //       ...originalAction.payload
+  //     })
+  //     .then(res => {
+  //       dispatch(loginSuccess(res.data))
+  //       dispatch(syncRecipesWithCloud(true))
+  //     })
+  //     .catch(err => {
+  //       let errorMsg = ''
+  //       if(err.message == 'Network Error') {
+  //         errorMsg = 'Trouble connecting to server.'
+  //       } else {
+  //         errorMsg = 'Sorry, we couldn\'t find an account with those details.'
+  //       }
+  //       dispatch(loginFailure(errorMsg))
+  //     })
+  // }
 }
 
 export const loginSuccess = (payload) => {

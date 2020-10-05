@@ -167,6 +167,11 @@ export class Manager {
     await this.browserAPI.storage.local.clear()
   }
 
+  async handleOAuth() {
+   const token = await this.browserAPI.identity.getAuthToken({interactive: true})
+   return token
+  }
+
 }
 
 export const defaultManager = new Manager('stew')

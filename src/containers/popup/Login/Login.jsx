@@ -7,7 +7,7 @@ import stewLogo from 'Assets/stew-title.png'
 
 export default function Login(props) {
 
-  const { login, error, isPending, loggedIn } = props
+  const { login, error, isPending, loggedIn, launchOAuth } = props
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -53,6 +53,11 @@ export default function Login(props) {
       <div className={ 'login' }>
         <div className={ 'login__image-container'}>
           <img src={ stewLogo } className={ 'login__image '} />
+        </div>
+        <div className={ 'login__form-row'}>
+         <div onClick={ launchOAuth } >
+          OAuth
+         </div>
         </div>
         <div className='login__error'> { error } </div>
         <div className={ 'login__form-row'}>
