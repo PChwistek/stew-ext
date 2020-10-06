@@ -25,30 +25,33 @@ export const handle401 = (error) => {
 
 export const oAuthAction = () => {
 
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
       const theToken = await manager.handleOAuth()
-      console.log('theToken', theToken)
+      const { data: { email, id } } = await axios.get(`https://www.googleapis.com/oauth2/v2/userinfo?access_token=${theToken}`)
+
+      dispatch(loginPending())
+      if (!theToken) {
+        dispatch(loginFailure('Trouble connecting to Google OAuth.'))
+      }
+      axios
+      .post(`${serverUrl}/auth/oauth-ext`, {
+        email,
+        tokenId: theToken,
+      })
+      .then(res => {
+        dispatch(loginSuccess(res.data))
+        dispatch(syncRecipesWithCloud(true))
+      })
+      .catch(err => {
+        let errorMsg = ''
+        if(err.message == 'Network Error') {
+          errorMsg = 'Trouble connecting to server.'
+        } else {
+          errorMsg = 'Sorry, we couldn\'t find an account with those details.'
+        }
+        dispatch(loginFailure(errorMsg))
+      })
   }
-  // return dispatch => {
-  //   dispatch(loginPending())
-  //   axios
-  //     .post(`${serverUrl}/auth/oauth`, {
-  //       ...originalAction.payload
-  //     })
-  //     .then(res => {
-  //       dispatch(loginSuccess(res.data))
-  //       dispatch(syncRecipesWithCloud(true))
-  //     })
-  //     .catch(err => {
-  //       let errorMsg = ''
-  //       if(err.message == 'Network Error') {
-  //         errorMsg = 'Trouble connecting to server.'
-  //       } else {
-  //         errorMsg = 'Sorry, we couldn\'t find an account with those details.'
-  //       }
-  //       dispatch(loginFailure(errorMsg))
-  //     })
-  // }
 }
 
 export const loginSuccess = (payload) => {
