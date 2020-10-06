@@ -1,4 +1,5 @@
 import React, { useState, createRef } from 'react'
+import GoogleButton from 'react-google-button'
 import PropTypes from 'prop-types'
 import TextField from 'Common/TextField'
 import Button from 'Common/Button'
@@ -55,9 +56,15 @@ export default function Login(props) {
           <img src={ stewLogo } className={ 'login__image '} />
         </div>
         <div className={ 'login__form-row'}>
-         <div onClick={ launchOAuth } >
-          OAuth
+         <div>
+          <GoogleButton
+              type='light'
+              onClick={ launchOAuth }
+              className={ 'login__form-oauth'}
+            />
          </div>
+         <br />
+         <p style={ { 'text-align': 'center' } }> Or </p> 
         </div>
         <div className='login__error'> { error } </div>
         <div className={ 'login__form-row'}>
