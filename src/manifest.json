@@ -1,6 +1,7 @@
 {
   "name": "Stew - Tab and Workspace Management",
   "short_name": "Stew",
+  "key": "mpgembgbcmglafhihbhendibhekajjep",
   "description": "Browsers were built for browsing. Make sure your browser works for work.",
   "version": "1.0.9",
   "manifest_version": 2,
@@ -40,7 +41,7 @@
   },
   "oauth2": {
     "client_id": "804631623349-jqtj1jappfno7286mkj4tl29i21au8mk.apps.googleusercontent.com",
-    "scopes":[""]
+    "scopes":["https://www.googleapis.com/auth/userinfo.email"]
   },
   "content_security_policy": "script-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://google-analytics.com https://apis.google.com; object-src 'self'"
 }

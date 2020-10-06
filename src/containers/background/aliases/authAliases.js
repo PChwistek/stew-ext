@@ -24,11 +24,11 @@ export const handle401 = (error) => {
 }
 
 export const oAuthAction = () => {
-    const theToken = manager.handleOAuth()
-    console.log('theToken', theToken)
-    return {
-      
-    }
+
+  return async (dispatch, getState) => {
+      const theToken = await manager.handleOAuth()
+      console.log('theToken', theToken)
+  }
   // return dispatch => {
   //   dispatch(loginPending())
   //   axios
