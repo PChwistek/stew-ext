@@ -32,6 +32,11 @@
     }
   }
 
+  &__form-oauth {
+    width: 100% !important;
+    text-align: left !important;
+  }
+
   &__error {
     color: $error-color;
   }

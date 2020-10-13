@@ -1,4 +1,5 @@
 import React, { useState, createRef } from 'react'
+import GoogleButton from 'react-google-button'
 import PropTypes from 'prop-types'
 import TextField from 'Common/TextField'
 import Button from 'Common/Button'
@@ -7,7 +8,7 @@ import stewLogo from 'Assets/stew-title.png'
 
 export default function Login(props) {
 
-  const { login, error, isPending, loggedIn } = props
+  const { login, error, isPending, loggedIn, launchOAuth } = props
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -53,6 +54,17 @@ export default function Login(props) {
       <div className={ 'login' }>
         <div className={ 'login__image-container'}>
           <img src={ stewLogo } className={ 'login__image '} />
+        </div>
+        <div className={ 'login__form-row'}>
+         <div>
+          <GoogleButton
+              type='light'
+              onClick={ launchOAuth }
+              className={ 'login__form-oauth'}
+            />
+         </div>
+         <br />
+         <p style={ { 'text-align': 'center' } }> Or </p> 
         </div>
         <div className='login__error'> { error } </div>
         <div className={ 'login__form-row'}>

@@ -18,7 +18,8 @@ import {
   TABS_MERGE_SESSION,
   TABS_MOVE_TAB,
   TABS_SETRECIPE_PERMISSIONS,
-  AUTH_SET_SETTING
+  AUTH_SET_SETTING,
+  AUTH_SET_OAUTH
 } from 'Containers/actionTypes'
 
 import { 
@@ -34,7 +35,7 @@ import {
 } from './tabAliases'
 
 import { popupSync, toggleEditAlias, setSettingsAlias } from './popupAliases'
-import { login, authLogoutAlias } from './authAliases.js'
+import { login, authLogoutAlias, oAuthAction } from './authAliases.js'
 import { getInitialResults, searchRecipes, sortBySearch, setFavoriteAlias } from './searchAliases'
 
 // if(process.env.NODE_ENV === 'development') {
@@ -65,4 +66,5 @@ export default {
   [TABS_MOVE_TAB]: moveTabAlias,
   [TABS_SETRECIPE_PERMISSIONS]: editRecipePermissions,
   [AUTH_SET_SETTING]: setSettingsAlias,
+  [AUTH_SET_OAUTH]: oAuthAction,
 }

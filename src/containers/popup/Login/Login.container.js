@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Login from './Login'
-import { login } from 'Popup/popup.actions'
+import { login, launchOAuth } from 'Popup/popup.actions'
 
 const stateToProps = ({ auth }) => ({
   pending: auth.pending,
@@ -9,7 +9,8 @@ const stateToProps = ({ auth }) => ({
 })
 
 const dispatchToProps = {
-  login
+  login,
+  launchOAuth,
 }
 
 export default connect(stateToProps, dispatchToProps)(Login)
