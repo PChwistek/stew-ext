@@ -167,6 +167,14 @@ export class Manager {
     await this.browserAPI.storage.local.clear()
   }
 
+  handleOAuth() {
+    return new Promise( (resolve, reject) => {
+      chrome.identity.getAuthToken({ interactive: true }, (token) => {
+        if(!token) return reject('No token')
+        resolve(token)
+      })
+    })
+  }
 }
 
 export const defaultManager = new Manager('stew')

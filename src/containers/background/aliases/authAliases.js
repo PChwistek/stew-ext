@@ -8,7 +8,7 @@ import {
   TABS_RESET,
   SEARCH_RESET,
 } from 'Containers/actionTypes'
-import { defaultManager as manager} from '../tabmanager'
+import { defaultManager as manager } from '../tabmanager'
 import getServerHostname from 'Containers/getServerHostName'
 import { syncRecipesWithCloud } from './popupAliases'
 import { trackLogin, trackLogout } from '../../analytics'
@@ -20,6 +20,37 @@ export const handle401 = (error) => {
     return dispatch => { 
       dispatch({ type: AUTH_INVALID })
     }
+  }
+}
+
+export const oAuthAction = () => {
+
+  return async (dispatch) => {
+      const theToken = await manager.handleOAuth()
+      const { data: { email, id } } = await axios.get(`https://www.googleapis.com/oauth2/v2/userinfo?access_token=${theToken}`)
+
+      dispatch(loginPending())
+      if (!theToken) {
+        dispatch(loginFailure('Trouble connecting to Google OAuth.'))
+      }
+      axios
+      .post(`${serverUrl}/auth/oauth-ext`, {
+        email,
+        tokenId: theToken,
+      })
+      .then(res => {
+        dispatch(loginSuccess(res.data))
+        dispatch(syncRecipesWithCloud(true))
+      })
+      .catch(err => {
+        let errorMsg = ''
+        if(err.message == 'Network Error') {
+          errorMsg = 'Trouble connecting to server.'
+        } else {
+          errorMsg = 'Sorry, we couldn\'t find an account with those details.'
+        }
+        dispatch(loginFailure(errorMsg))
+      })
   }
 }
 

@@ -29,7 +29,8 @@ import {
   TABS_MERGE_SESSION,
   TABS_MOVE_TAB,
   TABS_SETRECIPE_PERMISSIONS,
-  AUTH_SET_SETTING
+  AUTH_SET_SETTING, 
+  AUTH_SET_OAUTH
 } from '../actionTypes'
 
 import { removeDocumentListeners } from './utils'
@@ -215,6 +216,13 @@ export function toggleSlide(visible, isEditing) {
 export function deleteRecipe() {
   return {
     type: TABS_DELETERECIPE,
+    payload: {}
+  }
+}
+
+export function launchOAuth() {
+  return {
+    type: AUTH_SET_OAUTH,
     payload: {}
   }
 }
