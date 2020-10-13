@@ -3,7 +3,7 @@
   "short_name": "Stew",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAseQq4ui8/BdNkvb9Yky8wt7e2XFRTCT2uohuYMFvMS/kxP+Sei4R1gda85r8Fk/SSzi4KR3SyjQfPnDdx9HKPCTGMXviZYJPeZervmP9dHpeXXsRxEPAX99QccAzYBtfSomD/8KignwM/FWSQljUVy6ktygz0ErtYmF4x9RtiUMWwTiDttho9JBtDhge8ShLCGEaeZy5Q2nnqV95PHXmv/IfndZZCuKZUTQtWT6SFawjOrdwrJmQfS6SCO/mCoO1c2yOAgUN5wyaJxI+BLJuvc/iwLUWlSrtdB96O7puY2s2yKtCNIb1Qb0xODoCxpf9bYcMkZ9k9fEPyXuyVE5SGQIDAQAB",
   "description": "Browsers were built for browsing. Make sure your browser works for work.",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "manifest_version": 2,
   "icons": {
     "144": "assets/logo-144x144.png"
