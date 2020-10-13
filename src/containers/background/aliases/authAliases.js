@@ -112,10 +112,13 @@ export const login = (originalAction) => {
 
 export const authLogoutAlias = () => {
   trackLogout()
-  return dispatch => {
+  return async (dispatch) => {
     dispatch({ type: AUTH_LOGOUT_ALIAS })
     dispatch({ type: SEARCH_RESET })
     dispatch({ type: TABS_RESET })
     manager.setAuth({ jwt: null, username: null, lastUpdated: null, userId: null, orgs: null })
+    const token = await manager.getOAuthToken()
+    axios.post(`https://oauth2.googleapis.com/revoke?token=${token}`)
+    manager.revokeOAuthToken()
   }
 }

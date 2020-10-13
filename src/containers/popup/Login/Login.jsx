@@ -64,7 +64,7 @@ export default function Login(props) {
             />
          </div>
          <br />
-         <p style={ { 'text-align': 'center' } }> Or </p> 
+         <p style={ { 'textAlign': 'center' } }> Or </p> 
         </div>
         <div className='login__error'> { error } </div>
         <div className={ 'login__form-row'}>

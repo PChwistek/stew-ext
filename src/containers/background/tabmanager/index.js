@@ -171,9 +171,21 @@ export class Manager {
     return new Promise( (resolve, reject) => {
       chrome.identity.getAuthToken({ interactive: true }, (token) => {
         if(!token) return reject('No token')
+        this.browserAPI.storage.local.set({ [`${this.storageKey}_oauth`]: token })
         resolve(token)
       })
     })
+  }
+
+  async getOAuthToken() {
+    const token = await this.browserAPI.storage.local.get(`${this.storageKey}_oauth`)
+    return token[`${this.storageKey}_oauth`]
+  }
+
+  revokeOAuthToken() {
+    const token = this.getOAuthToken()
+    chrome.identity.removeCachedAuthToken({token})
+    this.browserAPI.storage.local.set({ [`${this.storageKey}_oauth`]: null })
   }
 }
 
