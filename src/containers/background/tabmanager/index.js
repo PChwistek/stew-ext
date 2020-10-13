@@ -182,8 +182,8 @@ export class Manager {
     return token[`${this.storageKey}_oauth`]
   }
 
-  revokeOAuthToken() {
-    const token = this.getOAuthToken()
+  async revokeOAuthToken() {
+    const token = await this.getOAuthToken()
     chrome.identity.removeCachedAuthToken({token})
     this.browserAPI.storage.local.set({ [`${this.storageKey}_oauth`]: null })
   }
