@@ -34,6 +34,7 @@ export const PermssionModal = (props) => {
 
   const linkOptions = [
     { value: 'any', label: 'Anyone' },
+    { value: 'stew', label: 'Anyone with a Stew account' },
     { value: 'off', label: 'No one (sharing off)' },
   ]
 
